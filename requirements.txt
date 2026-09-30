@@ -1,0 +1,12 @@
+flask
+joblib
+librosa
+numpy
+pandas
+safetensors
+scikit-learn
+soundfile
+torch
+# torch-directml
+transformers
+huggingface_hub

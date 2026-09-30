@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raspberry Pi Parkinson Simulator — INMP441 + RPi4</title>
+<meta name="description" content="Mô phỏng hệ thống sàng lọc Parkinson sử dụng Microphone INMP441 và Raspberry Pi 4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════════════════════
+   ROOT & RESET
+   ══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#060a13;--bg2:#0c1221;--bg3:#111b2e;--bg4:#182440;
+  --border:#1e2d4a;--border-glow:#10b981;
+  --text:#e2e8f0;--text-muted:#64748b;--text-dim:#334155;
+  --green:#10b981;--green-dim:#065f46;--green-glow:rgba(16,185,129,.25);
+  --cyan:#06b6d4;--blue:#3b82f6;--amber:#f59e0b;--red:#ef4444;
+  --purple:#8b5cf6;
+  --radius:12px;--radius-sm:8px;
+  --shadow:0 4px 24px rgba(0,0,0,.4);
+  --font:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono','Fira Code',monospace;
+}
+html{font-size:14px}
+body{
+  font-family:var(--font);color:var(--text);background:var(--bg);
+  min-height:100vh;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(16,185,129,.06),transparent),
+             radial-gradient(ellipse 60% 40% at 80% 100%,rgba(6,182,212,.04),transparent);
+  pointer-events:none;z-index:0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LAYOUT
+   ══════════════════════════════════════════════════════════════ */
+.app{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100vh}
+
+/* TOP BAR */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 24px;background:var(--bg2);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;
+}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.topbar-logo{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(135deg,var(--green),var(--cyan));
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:800;color:var(--bg);
+}
+.topbar-title{font-size:1.15rem;font-weight:700;letter-spacing:-.02em}
+.topbar-subtitle{font-size:.75rem;color:var(--text-muted);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:20px}
+.status-badge{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:20px;
+  background:var(--bg3);border:1px solid var(--border);
+  font-size:.78rem;font-family:var(--mono);
+}
+.status-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 8px var(--green);
+  animation:pulse-dot 2s ease infinite;
+}
+.status-dot.offline{background:var(--red);box-shadow:0 0 8px var(--red)}
+.status-dot.connecting{background:var(--amber);box-shadow:0 0 8px var(--amber);animation:pulse-dot .6s ease infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* MAIN GRID */
+.main-grid{
+  display:grid;grid-template-columns:340px 1fr 360px;
+  gap:20px;padding:20px 24px;flex:1;
+}
+@media(max-width:1200px){.main-grid{grid-template-columns:1fr;}}
+
+/* CARDS */
+.card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+}
+.card-header{
+  padding:16px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+  font-weight:600;font-size:.9rem;
+}
+.card-header .icon{
+  width:32px;height:32px;border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.card-body{padding:20px}
+
+/* ══════════════════════════════════════════════════════════════
+   HARDWARE PANEL (LEFT)
+   ══════════════════════════════════════════════════════════════ */
+.hw-panel .card-header .icon{background:rgba(16,185,129,.15);color:var(--green)}
+
+/* Raspberry Pi Board */
+.pi-board{
+  position:relative;width:260px;height:160px;margin:0 auto 20px;
+  background:linear-gradient(145deg,#1a5c2a,#1e7535);
+  border-radius:10px;border:2px solid #2a8a42;
+  box-shadow:0 4px 20px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.pi-board::before{
+  content:'Raspberry Pi 4';position:absolute;top:8px;left:12px;
+  font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.7);
+  font-weight:700;letter-spacing:.05em;
+}
+.pi-chip{
+  position:absolute;width:32px;height:32px;border-radius:3px;
+  background:linear-gradient(135deg,#333,#555);border:1px solid #666;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.pi-chip::after{content:'BCM';font-size:.45rem;color:#aaa;display:flex;align-items:center;justify-content:center;height:100%}
+.pi-usb{
+  position:absolute;right:-4px;width:14px;height:20px;
+  background:#888;border:1px solid #aaa;border-radius:2px;
+}
+.pi-usb:nth-child(3){top:30px}.pi-usb:nth-child(4){top:58px}
+.pi-usb:nth-child(5){top:86px}
+.pi-eth{
+  position:absolute;right:-4px;bottom:10px;width:16px;height:22px;
+  background:#778;border:1px solid #99a;border-radius:2px;
+}
+.pi-gpio{
+  position:absolute;top:6px;right:20px;
+  display:grid;grid-template-columns:repeat(20,4px);gap:2px;
+}
+.pi-gpio span{width:4px;height:4px;border-radius:1px;background:gold}
+.pi-led{
+  position:absolute;bottom:8px;left:12px;
+  display:flex;gap:8px;
+}
+.pi-led-dot{
+  width:6px;height:6px;border-radius:50%;
+}
+.pi-led-dot.power{background:#e33;box-shadow:0 0 6px #e33;animation:pulse-dot 1.5s infinite}
+.pi-led-dot.activity{background:#0c0;box-shadow:0 0 6px #0c0;animation:blink-led .3s infinite}
+@keyframes blink-led{0%,100%{opacity:1}50%{opacity:.2}}
+.pi-sd{
+  position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);
+  width:20px;height:8px;background:#444;border:1px solid #666;border-radius:1px;
+}
+.pi-hdmi{
+  position:absolute;bottom:8px;right:60px;width:22px;height:8px;
+  background:#555;border:1px solid #777;border-radius:1px;
+}
+
+/* I2S Connection Lines */
+.connection{
+  display:flex;align-items:center;justify-content:center;
+  margin:10px 0;gap:8px;
+}
+.conn-line{
+  flex:1;height:2px;position:relative;overflow:hidden;
+  background:var(--border);border-radius:1px;
+}
+.conn-line::after{
+  content:'';position:absolute;top:0;left:-30%;width:30%;height:100%;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);
+  animation:flow 1.5s linear infinite;
+}
+@keyframes flow{to{left:100%}}
+.conn-label{
+  font-family:var(--mono);font-size:.65rem;color:var(--green);
+  white-space:nowrap;padding:2px 8px;
+  background:var(--bg3);border:1px solid var(--green-dim);border-radius:4px;
+}
+
+/* INMP441 Module */
+.inmp441{
+  position:relative;width:120px;height:90px;margin:0 auto;
+  background:linear-gradient(145deg,#1a1a4a,#252570);
+  border-radius:8px;border:2px solid #3535a0;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);
+}
+.inmp441::before{
+  content:'INMP441';position:absolute;top:6px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.7);font-weight:700;
+}
+.inmp441-hole{
+  width:24px;height:24px;border-radius:50%;
+  background:radial-gradient(circle,#111,#222);border:2px solid #444;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.6);
+}
+.inmp441-hole.active{
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.6),0 0 12px var(--green);
+  border-color:var(--green);
+}
+.inmp441-pins{
+  position:absolute;bottom:4px;left:50%;transform:translateX(-50%);
+  display:flex;gap:6px;
+}
+.inmp441-pins span{
+  font-family:var(--mono);font-size:.45rem;color:var(--text-muted);
+}
+
+/* GPIO Info */
+.gpio-info{
+  margin-top:16px;background:var(--bg3);border-radius:var(--radius-sm);
+  padding:12px;font-family:var(--mono);font-size:.72rem;
+}
+.gpio-row{
+  display:flex;justify-content:space-between;padding:3px 0;
+  border-bottom:1px solid var(--border);
+}
+.gpio-row:last-child{border:none}
+.gpio-pin{color:var(--amber);font-weight:600}
+.gpio-func{color:var(--text-muted)}
+
+/* ══════════════════════════════════════════════════════════════
+   AUDIO PANEL (CENTER)
+   ══════════════════════════════════════════════════════════════ */
+.audio-panel .card-header .icon{background:rgba(6,182,212,.15);color:var(--cyan)}
+
+/* Waveform Canvas */
+.waveform-container{
+  position:relative;height:180px;background:var(--bg);
+  border:1px solid var(--border);border-radius:var(--radius-sm);
+  overflow:hidden;margin-bottom:16px;
+}
+#waveformCanvas{width:100%;height:100%;display:block}
+.waveform-overlay{
+  position:absolute;bottom:8px;right:8px;
+  font-family:var(--mono);font-size:.7rem;color:var(--text-muted);
+  background:rgba(0,0,0,.5);padding:2px 8px;border-radius:4px;
+}
+
+/* Recording Controls */
+.controls{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:var(--radius-sm);
+  font-family:var(--font);font-size:.85rem;font-weight:600;
+  border:none;cursor:pointer;transition:all .2s;
+}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-record{
+  background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;
+  box-shadow:0 2px 12px rgba(239,68,68,.3);
+}
+.btn-record:hover:not(:disabled){box-shadow:0 4px 20px rgba(239,68,68,.5);transform:translateY(-1px)}
+.btn-record.recording{animation:rec-pulse 1s ease infinite}
+@keyframes rec-pulse{0%,100%{box-shadow:0 2px 12px rgba(239,68,68,.3)}50%{box-shadow:0 4px 30px rgba(239,68,68,.6)}}
+.btn-stop{background:var(--bg3);color:var(--text);border:1px solid var(--border)}
+.btn-stop:hover:not(:disabled){background:var(--bg4)}
+.btn-analyze{
+  background:linear-gradient(135deg,var(--green),var(--cyan));color:var(--bg);
+  box-shadow:0 2px 12px var(--green-glow);
+}
+.btn-analyze:hover:not(:disabled){box-shadow:0 4px 20px var(--green-glow);transform:translateY(-1px)}
+.btn-upload{background:var(--bg3);color:var(--text);border:1px solid var(--border)}
+.btn-upload:hover:not(:disabled){background:var(--bg4);border-color:var(--blue)}
+
+.timer{
+  font-family:var(--mono);font-size:1.4rem;font-weight:700;
+  color:var(--cyan);margin-left:auto;
+  text-shadow:0 0 10px rgba(6,182,212,.3);
+}
+
+/* Level Meter */
+.level-meter{
+  display:flex;align-items:center;gap:10px;margin-bottom:16px;
+}
+.level-label{font-size:.75rem;color:var(--text-muted);min-width:50px}
+.level-bar-bg{
+  flex:1;height:8px;background:var(--bg);border-radius:4px;
+  border:1px solid var(--border);overflow:hidden;
+}
+.level-bar{
+  height:100%;border-radius:4px;transition:width .1s;
+  background:linear-gradient(90deg,var(--green),var(--amber),var(--red));
+}
+
+/* Instruction text */
+.instruction{
+  background:var(--bg3);border-radius:var(--radius-sm);
+  padding:14px 16px;font-size:.82rem;color:var(--text-muted);
+  line-height:1.6;border-left:3px solid var(--green);
+}
+.instruction strong{color:var(--text);font-weight:600}
+
+/* File input hidden */
+.file-input-hidden{display:none}
+
+/* ══════════════════════════════════════════════════════════════
+   RESULTS PANEL (RIGHT)
+   ══════════════════════════════════════════════════════════════ */
+.results-panel .card-header .icon{background:rgba(139,92,246,.15);color:var(--purple)}
+
+/* Circular Gauge */
+.gauge-wrap{display:flex;justify-content:center;margin-bottom:20px}
+.gauge{position:relative;width:180px;height:180px}
+.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gauge-bg{fill:none;stroke:var(--bg);stroke-width:12}
+.gauge-fill{
+  fill:none;stroke-width:12;stroke-linecap:round;
+  transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1),stroke 1s;
+}
+.gauge-center{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  text-align:center;
+}
+.gauge-value{font-size:2.4rem;font-weight:800;letter-spacing:-.03em}
+.gauge-unit{font-size:.75rem;color:var(--text-muted);margin-top:-4px}
+.gauge-label{
+  margin-top:4px;font-size:.8rem;font-weight:600;
+  padding:3px 12px;border-radius:12px;display:inline-block;
+}
+.gauge-label.low{background:rgba(16,185,129,.15);color:var(--green)}
+.gauge-label.mid{background:rgba(245,158,11,.15);color:var(--amber)}
+.gauge-label.high{background:rgba(239,68,68,.15);color:var(--red)}
+
+/* Feature Bars */
+.feature-list{margin-bottom:16px}
+.feature-item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 0;border-bottom:1px solid var(--border);
+}
+.feature-item:last-child{border:none}
+.feature-name{font-size:.78rem;color:var(--text-muted);min-width:90px}
+.feature-bar-bg{flex:1;height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
+.feature-bar{height:100%;border-radius:3px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.feature-val{font-family:var(--mono);font-size:.72rem;min-width:55px;text-align:right}
+
+/* Indicators */
+.indicator{
+  padding:10px 14px;border-radius:var(--radius-sm);
+  margin-bottom:8px;font-size:.82rem;
+  border-left:3px solid;
+}
+.indicator.cao{background:rgba(239,68,68,.08);border-color:var(--red);color:#fca5a5}
+.indicator.trung_binh{background:rgba(245,158,11,.08);border-color:var(--amber);color:#fcd34d}
+.indicator-title{font-weight:600;margin-bottom:2px}
+.indicator-detail{font-size:.75rem;opacity:.7}
+
+/* Advice box */
+.advice-box{
+  background:var(--bg3);border-radius:var(--radius-sm);
+  padding:14px 16px;font-size:.82rem;line-height:1.6;
+  margin-top:12px;
+}
+.advice-box .disclaimer{
+  margin-top:10px;padding-top:10px;border-top:1px solid var(--border);
+  font-size:.72rem;color:var(--text-muted);font-style:italic;
+}
+
+/* Placeholder/Empty state */
+.empty-state{
+  text-align:center;padding:40px 20px;color:var(--text-dim);
+}
+.empty-state .empty-icon{font-size:3rem;margin-bottom:12px;opacity:.5}
+.empty-state p{font-size:.85rem}
+
+/* ══════════════════════════════════════════════════════════════
+   TERMINAL (BOTTOM)
+   ══════════════════════════════════════════════════════════════ */
+.terminal-wrap{
+  padding:0 24px 20px;
+}
+.terminal{
+  background:#0a0a0a;border:1px solid #222;border-radius:var(--radius);
+  overflow:hidden;
+}
+.terminal-bar{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:#161616;border-bottom:1px solid #222;
+}
+.terminal-dot{width:10px;height:10px;border-radius:50%}
+.terminal-dot:nth-child(1){background:#ff5f57}
+.terminal-dot:nth-child(2){background:#ffbd2e}
+.terminal-dot:nth-child(3){background:#28ca42}
+.terminal-title{
+  font-family:var(--mono);font-size:.72rem;color:#666;margin-left:8px;
+}
+.terminal-body{
+  padding:12px 16px;height:180px;overflow-y:auto;
+  font-family:var(--mono);font-size:.75rem;line-height:1.7;
+}
+.terminal-body::-webkit-scrollbar{width:6px}
+.terminal-body::-webkit-scrollbar-track{background:transparent}
+.terminal-body::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+.t-line{white-space:pre-wrap;word-break:break-all}
+.t-green{color:#4ade80}.t-cyan{color:#22d3ee}.t-amber{color:#fbbf24}
+.t-red{color:#f87171}.t-dim{color:#555}.t-white{color:#e5e7eb}
+
+/* ══════════════════════════════════════════════════════════════
+   LOADING SPINNER
+   ══════════════════════════════════════════════════════════════ */
+.spinner{
+  width:40px;height:40px;border:3px solid var(--border);
+  border-top-color:var(--green);border-radius:50%;
+  animation:spin .8s linear infinite;margin:20px auto;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{text-align:center;color:var(--text-muted);font-size:.85rem;margin-top:8px}
+
+/* ══════════════════════════════════════════════════════════════
+   HARDWARE INFO TABLE
+   ══════════════════════════════════════════════════════════════ */
+.hw-info-table{width:100%;margin-top:12px;font-size:.75rem}
+.hw-info-table td{padding:4px 0;vertical-align:top}
+.hw-info-table td:first-child{color:var(--text-muted);width:40%}
+.hw-info-table td:last-child{color:var(--text);font-family:var(--mono)}
+
+/* Animations */
+.fade-in{animation:fadeIn .6s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ══════════════ TOP BAR ══════════════ -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">P</div>
+      <div>
+        <div class="topbar-title">Parkinson Voice Screener</div>
+        <div class="topbar-subtitle">Raspberry Pi 4 + INMP441 Simulator</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="status-badge">
+        <span class="status-dot" id="statusPi"></span>
+        <span>RPi4</span>
+      </div>
+      <div class="status-badge">
+        <span class="status-dot" id="statusMic"></span>
+        <span>INMP441</span>
+      </div>
+      <div class="status-badge">
+        <span class="status-dot" id="statusServer"></span>
+        <span>Server</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ MAIN 3-COLUMN GRID ══════════════ -->
+  <div class="main-grid">
+
+    <!-- ── LEFT: HARDWARE ── -->
+    <div class="hw-panel card">
+      <div class="card-header">
+        <div class="icon">🔧</div>
+        Phần cứng mô phỏng
+      </div>
+      <div class="card-body">
+        <!-- Raspberry Pi -->
+        <div class="pi-board">
+          <div class="pi-chip"></div>
+          <div class="pi-usb"></div>
+          <div class="pi-usb"></div>
+          <div class="pi-usb"></div>
+          <div class="pi-eth"></div>
+          <div class="pi-gpio">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="pi-led">
+            <div class="pi-led-dot power"></div>
+            <div class="pi-led-dot activity" id="activityLed"></div>
+          </div>
+          <div class="pi-sd"></div>
+          <div class="pi-hdmi"></div>
+        </div>
+
+        <!-- I2S Connection -->
+        <div class="connection">
+          <div class="conn-line"></div>
+          <div class="conn-label">I2S Bus</div>
+          <div class="conn-line"></div>
+        </div>
+
+        <!-- INMP441 -->
+        <div class="inmp441">
+          <div class="inmp441-hole" id="micHole"></div>
+          <div class="inmp441-pins">
+            <span>WS</span><span>SCK</span><span>SD</span><span>VDD</span><span>GND</span><span>L/R</span>
+          </div>
+        </div>
+
+        <!-- GPIO Mapping -->
+        <div class="gpio-info">
+          <div style="font-weight:600;margin-bottom:8px;color:var(--green)">I2S GPIO Mapping</div>
+          <div class="gpio-row"><span class="gpio-pin">GPIO 18</span><span class="gpio-func">→ BCLK (SCK)</span></div>
+          <div class="gpio-row"><span class="gpio-pin">GPIO 19</span><span class="gpio-func">→ LRCLK (WS)</span></div>
+          <div class="gpio-row"><span class="gpio-pin">GPIO 20</span><span class="gpio-func">→ DIN (SD)</span></div>
+          <div class="gpio-row"><span class="gpio-pin">3.3V</span><span class="gpio-func">→ VDD</span></div>
+          <div class="gpio-row"><span class="gpio-pin">GND</span><span class="gpio-func">→ GND</span></div>
+        </div>
+
+        <table class="hw-info-table">
+          <tr><td>Sample Rate</td><td>16,000 Hz</td></tr>
+          <tr><td>Bit Depth</td><td>24-bit (I2S)</td></tr>
+          <tr><td>SNR</td><td>65 dBA</td></tr>
+          <tr><td>Sensitivity</td><td>-26 dBFS</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── CENTER: AUDIO CAPTURE ── -->
+    <div class="audio-panel card">
+      <div class="card-header">
+        <div class="icon">🎙️</div>
+        Thu âm & Phân tích
+      </div>
+      <div class="card-body">
+        <!-- Waveform -->
+        <div class="waveform-container">
+          <canvas id="waveformCanvas"></canvas>
+          <div class="waveform-overlay" id="waveformInfo">16kHz · Mono · Idle</div>
+        </div>
+
+        <!-- Level Meter -->
+        <div class="level-meter">
+          <span class="level-label">Mức âm</span>
+          <div class="level-bar-bg">
+            <div class="level-bar" id="levelBar" style="width:0%"></div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+          <button class="btn btn-record" id="btnRecord" onclick="startRecording()">
+            <span>●</span> Thu âm
+          </button>
+          <button class="btn btn-stop" id="btnStop" onclick="stopRecording()" disabled>
+            <span>■</span> Dừng
+          </button>
+          <button class="btn btn-analyze" id="btnAnalyze" onclick="analyzeAudio()" disabled>
+            ⚡ Phân tích Parkinson
+          </button>
+          <button class="btn btn-upload" onclick="document.getElementById('fileInput').click()">
+            📁 Tải file
+          </button>
+          <input type="file" id="fileInput" class="file-input-hidden"
+                 accept="audio/*" onchange="handleFileUpload(event)">
+          <div class="timer" id="timer">00:00</div>
+        </div>
+
+        <!-- Instruction -->
+        <div class="instruction">
+          <strong>Hướng dẫn:</strong> Nhấn <strong>Thu âm</strong> và đọc nguyên âm
+          <strong>"Aaaaaa..."</strong> kéo dài 5–10 giây (sustained vowel phonation).
+          Đây là kỹ thuật chuẩn trong sàng lọc Parkinson qua giọng nói.<br><br>
+          💡 <strong>Mô phỏng phần cứng:</strong> Microphone máy tính đóng vai trò INMP441,
+          trình duyệt đóng vai trò Raspberry Pi thu & xử lý tín hiệu I2S.
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RIGHT: RESULTS ── -->
+    <div class="results-panel card">
+      <div class="card-header">
+        <div class="icon">📊</div>
+        Kết quả sàng lọc
+      </div>
+      <div class="card-body" id="resultsBody">
+        <div class="empty-state">
+          <div class="empty-icon">🧠</div>
+          <p>Thu âm hoặc tải file audio để bắt đầu sàng lọc Parkinson</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════ TERMINAL ══════════════ -->
+  <div class="terminal-wrap">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <span class="terminal-title">raspi@parkinson-screener:~$</span>
+      </div>
+      <div class="terminal-body" id="terminalBody"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   GLOBALS
+   ══════════════════════════════════════════════════════════════ */
+const API_BASE = '';  // same origin
+let mediaRecorder = null;
+let audioChunks = [];
+let audioBlob = null;
+let audioCtx = null;
+let analyserNode = null;
+let sourceNode = null;
+let mediaStream = null;
+let waveformAnim = null;
+let timerInterval = null;
+let recordStartTime = 0;
+
+const canvas = document.getElementById('waveformCanvas');
+const ctx = canvas.getContext('2d');
+
+/* ══════════════════════════════════════════════════════════════
+   TERMINAL
+   ══════════════════════════════════════════════════════════════ */
+const termEl = document.getElementById('terminalBody');
+function tLog(text, cls = 't-white') {
+  const line = document.createElement('div');
+  line.className = `t-line ${cls}`;
+  line.textContent = text;
+  termEl.appendChild(line);
+  termEl.scrollTop = termEl.scrollHeight;
+}
+
+async function bootSequence() {
+  const msgs = [
+    ['[BOOT] Raspberry Pi 4 Model B — 4GB RAM', 't-green'],
+    ['[BOOT] Linux raspberrypi 6.1.21-v8+ #1642 aarch64', 't-dim'],
+    ['[I2S]  Loading snd-bcm2835 driver...', 't-cyan'],
+    ['[I2S]  INMP441 detected on GPIO 18/19/20', 't-cyan'],
+    ['[I2S]  Sample rate: 16000 Hz, Bit depth: 24-bit', 't-cyan'],
+    ['[MIC]  INMP441 MEMS microphone — SNR 65 dBA', 't-green'],
+    ['[NET]  Connected to Flask server: 127.0.0.1:5000', 't-green'],
+    ['[SYS]  Parkinson Voice Screener v2.0 — Ready', 't-green'],
+    ['', ''],
+    ['  Hệ thống sẵn sàng. Thu âm hoặc tải file để sàng lọc.', 't-amber'],
+  ];
+  for (const [msg, cls] of msgs) {
+    await new Promise(r => setTimeout(r, 150 + Math.random() * 200));
+    if (msg) tLog(msg, cls);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   STATUS DOTS
+   ══════════════════════════════════════════════════════════════ */
+function setStatus(id, state) {
+  const el = document.getElementById(id);
+  el.className = 'status-dot' + (state === 'on' ? '' : state === 'off' ? ' offline' : ' connecting');
+}
+
+async function checkServer() {
+  try {
+    const r = await fetch(API_BASE + '/api/health', { signal: AbortSignal.timeout(3000) });
+    if (r.ok) { setStatus('statusServer', 'on'); return true; }
+  } catch {}
+  setStatus('statusServer', 'off');
+  return false;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   WAVEFORM DRAWING
+   ══════════════════════════════════════════════════════════════ */
+function resizeCanvas() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * window.devicePixelRatio;
+  canvas.height = rect.height * window.devicePixelRatio;
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+}
+
+function drawIdle() {
+  const w = canvas.width / window.devicePixelRatio;
+  const h = canvas.height / window.devicePixelRatio;
+  ctx.clearRect(0, 0, w, h);
+
+  // Grid lines
+  ctx.strokeStyle = '#1a2540';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i < w; i += 40) {
+    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke();
+  }
+  for (let i = 0; i < h; i += 30) {
+    ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(w, i); ctx.stroke();
+  }
+
+  // Center line
+  ctx.strokeStyle = '#1e3a5f';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2); ctx.stroke();
+}
+
+function drawWaveform() {
+  if (!analyserNode) return;
+  waveformAnim = requestAnimationFrame(drawWaveform);
+
+  const bufLen = analyserNode.fftSize;
+  const data = new Uint8Array(bufLen);
+  analyserNode.getByteTimeDomainData(data);
+
+  const w = canvas.width / window.devicePixelRatio;
+  const h = canvas.height / window.devicePixelRatio;
+  ctx.clearRect(0, 0, w, h);
+
+  // Grid
+  ctx.strokeStyle = '#1a2540';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i < w; i += 40) {
+    ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, h); ctx.stroke();
+  }
+  for (let i = 0; i < h; i += 30) {
+    ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(w, i); ctx.stroke();
+  }
+
+  // Waveform glow
+  ctx.shadowColor = '#10b981';
+  ctx.shadowBlur = 6;
+  ctx.strokeStyle = '#10b981';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  const sliceW = w / bufLen;
+  for (let i = 0; i < bufLen; i++) {
+    const v = data[i] / 128.0;
+    const y = (v * h) / 2;
+    i === 0 ? ctx.moveTo(0, y) : ctx.lineTo(i * sliceW, y);
+  }
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // Level meter
+  const rms = Math.sqrt(data.reduce((s, v) => s + (v - 128) ** 2, 0) / bufLen) / 128;
+  document.getElementById('levelBar').style.width = Math.min(rms * 400, 100) + '%';
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RECORDING
+   ══════════════════════════════════════════════════════════════ */
+async function startRecording() {
+  try {
+    tLog('[REC]  Requesting microphone access (simulating INMP441)...', 't-cyan');
+    mediaStream = await navigator.mediaDevices.getUserMedia({
+      audio: { sampleRate: 16000, channelCount: 1, echoCancellation: false, noiseSuppression: false }
+    });
+
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+    analyserNode = audioCtx.createAnalyser();
+    analyserNode.fftSize = 2048;
+    sourceNode = audioCtx.createMediaStreamSource(mediaStream);
+    sourceNode.connect(analyserNode);
+
+    mediaRecorder = new MediaRecorder(mediaStream, { mimeType: 'audio/webm;codecs=opus' });
+    audioChunks = [];
+    mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+      audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+      tLog(`[REC]  Recording saved: ${(audioBlob.size / 1024).toFixed(1)} KB`, 't-green');
+      document.getElementById('btnAnalyze').disabled = false;
+      document.getElementById('waveformInfo').textContent = '16kHz · Mono · Ready to analyze';
+      drawIdle();
+    };
+
+    mediaRecorder.start(250);
+    tLog('[REC]  ● Recording started — speak sustained vowel "Aaa..."', 't-red');
+    document.getElementById('waveformInfo').textContent = '16kHz · Mono · ● RECORDING';
+
+    // UI state
+    document.getElementById('btnRecord').disabled = true;
+    document.getElementById('btnRecord').classList.add('recording');
+    document.getElementById('btnStop').disabled = false;
+    document.getElementById('btnAnalyze').disabled = true;
+    document.getElementById('micHole').classList.add('active');
+    document.getElementById('activityLed').style.background = '#f33';
+    setStatus('statusMic', 'on');
+
+    // Timer
+    recordStartTime = Date.now();
+    timerInterval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - recordStartTime) / 1000);
+      const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+      const s = String(elapsed % 60).padStart(2, '0');
+      document.getElementById('timer').textContent = `${m}:${s}`;
+    }, 250);
+
+    // Waveform
+    resizeCanvas();
+    drawWaveform();
+
+  } catch (err) {
+    tLog(`[ERR]  Microphone access denied: ${err.message}`, 't-red');
+    setStatus('statusMic', 'off');
+  }
+}
+
+function stopRecording() {
+  if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+    mediaRecorder.stop();
+    tLog('[REC]  ■ Recording stopped', 't-amber');
+  }
+  if (mediaStream) mediaStream.getTracks().forEach(t => t.stop());
+  if (waveformAnim) cancelAnimationFrame(waveformAnim);
+  clearInterval(timerInterval);
+
+  document.getElementById('btnRecord').disabled = false;
+  document.getElementById('btnRecord').classList.remove('recording');
+  document.getElementById('btnStop').disabled = true;
+  document.getElementById('micHole').classList.remove('active');
+  document.getElementById('activityLed').style.background = '#0c0';
+  document.getElementById('levelBar').style.width = '0%';
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FILE UPLOAD
+   ══════════════════════════════════════════════════════════════ */
+function handleFileUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  audioBlob = file;
+  tLog(`[FILE] Loaded: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`, 't-cyan');
+  document.getElementById('btnAnalyze').disabled = false;
+  document.getElementById('waveformInfo').textContent = `16kHz · Mono · ${file.name}`;
+  document.getElementById('timer').textContent = '--:--';
+  event.target.value = '';
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ANALYZE (SEND TO SERVER)
+   ══════════════════════════════════════════════════════════════ */
+async function analyzeAudio() {
+  if (!audioBlob) { tLog('[ERR]  No audio data.', 't-red'); return; }
+
+  const resultsBody = document.getElementById('resultsBody');
+  resultsBody.innerHTML = '<div class="spinner"></div><div class="loading-text">Đang phân tích đặc trưng giọng nói…</div>';
+
+  tLog('[API]  Sending audio to server for Parkinson screening...', 't-cyan');
+  document.getElementById('btnAnalyze').disabled = true;
+  setStatus('statusServer', 'connecting');
+
+  const fd = new FormData();
+  fd.append('file', audioBlob, 'recording.webm');
+
+  try {
+    const resp = await fetch(API_BASE + '/api/parkinson/screen', { method: 'POST', body: fd });
+    const data = await resp.json();
+    setStatus('statusServer', 'on');
+
+    if (!data.ok) {
+      tLog(`[ERR]  Server error: ${data.error}`, 't-red');
+      resultsBody.innerHTML = `<div class="empty-state"><div class="empty-icon">❌</div><p>${data.error}</p></div>`;
+      document.getElementById('btnAnalyze').disabled = false;
+      return;
+    }
+
+    tLog(`[OK]   Risk score: ${data.risk_score}% — ${data.risk_level}`, data.risk_level === 'cao' ? 't-red' : data.risk_level === 'trung bình' ? 't-amber' : 't-green');
+    tLog(`[OK]   Indicators found: ${data.indicator_count}`, 't-white');
+    renderResults(data);
+    document.getElementById('btnAnalyze').disabled = false;
+
+  } catch (err) {
+    tLog(`[ERR]  Network error: ${err.message}`, 't-red');
+    setStatus('statusServer', 'off');
+    resultsBody.innerHTML = `<div class="empty-state"><div class="empty-icon">🔌</div><p>Không thể kết nối server.<br>Hãy chạy: <code>python web_app.py</code></p></div>`;
+    document.getElementById('btnAnalyze').disabled = false;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RENDER RESULTS
+   ══════════════════════════════════════════════════════════════ */
+function renderResults(data) {
+  const el = document.getElementById('resultsBody');
+  const score = data.risk_score;
+  const f = data.features || {};
+  const circumference = 2 * Math.PI * 70; // r=70
+  const offset = circumference - (score / 100) * circumference;
+  const strokeColor = score >= 60 ? 'var(--red)' : score >= 30 ? 'var(--amber)' : 'var(--green)';
+  const levelCls = score >= 60 ? 'high' : score >= 30 ? 'mid' : 'low';
+
+  // Feature bars config
+  const featureBars = [
+    { name: 'Jitter', val: f.jitter_local || 0, max: 0.05, color: 'var(--red)' },
+    { name: 'Shimmer', val: f.shimmer_local || 0, max: 0.3, color: 'var(--amber)' },
+    { name: 'HNR', val: Math.max(0, 30 - (f.hnr || 0)) / 30, max: 1, color: 'var(--cyan)', display: `${(f.hnr||0).toFixed(1)} dB` },
+    { name: 'PPE', val: f.ppe || 0, max: 1, color: 'var(--purple)' },
+    { name: 'F0 Range', val: Math.min(f.f0_range || 0, 200), max: 200, color: 'var(--blue)', display: `${(f.f0_range||0).toFixed(0)} Hz` },
+    { name: 'NHR', val: f.nhr || 0, max: 0.3, color: 'var(--amber)' },
+    { name: 'Speech Rate', val: f.speech_rate || 0, max: 8, color: 'var(--green)', display: `${(f.speech_rate||0).toFixed(1)} /s` },
+  ];
+
+  let html = `<div class="fade-in">`;
+
+  // Gauge
+  html += `
+    <div class="gauge-wrap">
+      <div class="gauge">
+        <svg viewBox="0 0 160 160">
+          <circle class="gauge-bg" cx="80" cy="80" r="70"
+                  stroke-dasharray="${circumference}" />
+          <circle class="gauge-fill" cx="80" cy="80" r="70"
+                  stroke="${strokeColor}"
+                  stroke-dasharray="${circumference}"
+                  stroke-dashoffset="${offset}" />
+        </svg>
+        <div class="gauge-center">
+          <div class="gauge-value" style="color:${strokeColor}">${score}</div>
+          <div class="gauge-unit">% nguy cơ</div>
+          <div class="gauge-label ${levelCls}">${data.risk_level_vi}</div>
+        </div>
+      </div>
+    </div>`;
+
+  // Feature bars
+  html += `<div class="feature-list">`;
+  for (const fb of featureBars) {
+    const pct = Math.min((fb.val / fb.max) * 100, 100);
+    const display = fb.display || fb.val.toFixed(4);
+    html += `
+      <div class="feature-item">
+        <span class="feature-name">${fb.name}</span>
+        <div class="feature-bar-bg">
+          <div class="feature-bar" style="width:${pct}%;background:${fb.color}"></div>
+        </div>
+        <span class="feature-val">${display}</span>
+      </div>`;
+  }
+  html += `</div>`;
+
+  // Indicators
+  if (data.indicators && data.indicators.length) {
+    html += `<div style="font-weight:600;margin-bottom:8px;font-size:.85rem">Dấu hiệu phát hiện (${data.indicator_count})</div>`;
+    for (const ind of data.indicators) {
+      const cls = ind.severity === 'cao' ? 'cao' : 'trung_binh';
+      html += `
+        <div class="indicator ${cls}">
+          <div class="indicator-title">${ind.feature}</div>
+          <div class="indicator-detail">${ind.detail}</div>
+        </div>`;
+    }
+  }
+
+  // Advice
+  html += `
+    <div class="advice-box">
+      <strong>💡 Khuyến nghị:</strong><br>${data.advice}
+      <div class="disclaimer">${data.disclaimer}</div>
+    </div>`;
+
+  html += `</div>`;
+  el.innerHTML = html;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   INIT
+   ══════════════════════════════════════════════════════════════ */
+window.addEventListener('load', async () => {
+  resizeCanvas();
+  drawIdle();
+  window.addEventListener('resize', () => { resizeCanvas(); drawIdle(); });
+
+  setStatus('statusPi', 'on');
+  setStatus('statusMic', 'on');
+  await bootSequence();
+  await checkServer();
+  setInterval(checkServer, 15000);
+});
+</script>
+</body>
+</html>

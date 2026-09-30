@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easy Kit — Audio Detection</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f1a;--bg2:#111827;
+  --glass:rgba(255,255,255,0.045);--glass-b:rgba(255,255,255,0.08);--glass-h:rgba(255,255,255,0.09);
+  --pri:#6366f1;--pri-g:rgba(99,102,241,.35);
+  --cyan:#06b6d4;--cyan-g:rgba(6,182,212,.25);
+  --grn:#10b981;--grn-l:rgba(16,185,129,.12);
+  --org:#f59e0b;--org-l:rgba(245,158,11,.12);
+  --red:#ef4444;--red-l:rgba(239,68,68,.12);
+  --txt:#e2e8f0;--mut:#64748b;
+  --brd:rgba(255,255,255,.07);
+  --sh:0 8px 32px rgba(0,0,0,.32);--sh-lg:0 16px 48px rgba(0,0,0,.45);
+  --male:#38bdf8;--female:#f472b6;
+  --r:16px;--rs:10px;--blur:blur(16px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:'Be Vietnam Pro',sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.6}
+
+/* ── Orbs ───────────────────────────────────────────── */
+.bg-orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.45;animation:float 18s ease-in-out infinite}
+.orb-1{width:420px;height:420px;background:radial-gradient(circle,rgba(99,102,241,.5),transparent 70%);top:-80px;left:-60px;animation-delay:0s}
+.orb-2{width:350px;height:350px;background:radial-gradient(circle,rgba(6,182,212,.45),transparent 70%);bottom:10%;right:-40px;animation-delay:-6s}
+.orb-3{width:300px;height:300px;background:radial-gradient(circle,rgba(244,114,182,.35),transparent 70%);top:50%;left:40%;animation-delay:-12s}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-40px) scale(1.08)}}
+
+/* ── Navigation ─────────────────────────────────────── */
+.nav-wrapper{position:sticky;top:0;z-index:1000;padding:12px 16px;background:rgba(11,15,26,.85);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border-bottom:1px solid var(--brd);animation:fadeDown .4s ease both}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:800;font-size:1rem}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--pri),var(--cyan));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 4px 12px var(--pri-g)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-link{color:var(--mut);text-decoration:none;font-size:.85rem;font-weight:600;transition:color .2s;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--pri);transition:width .3s ease}
+.nav-link:hover{color:var(--pri)}
+.nav-link:hover::after{width:100%}
+.nav-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:700;background:rgba(255,255,255,.06);border:1.5px solid var(--brd);color:var(--mut);transition:.3s}
+.nav-badge.on{background:var(--grn-l);border-color:var(--grn);color:var(--grn)}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.nav-badge.on .dot{animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:linear-gradient(135deg,var(--pri),#818cf8);color:#fff;border-radius:999px;font-size:.82rem;font-weight:700;cursor:pointer;border:none;font-family:inherit;box-shadow:0 4px 16px var(--pri-g);transition:.25s}
+.nav-cta:hover{filter:brightness(1.1);transform:translateY(-1px)}
+@media(max-width:700px){.nav-links{display:none}}
+
+/* ── Layout ─────────────────────────────────────────── */
+.wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:24px 16px 64px}
+.page-layout{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+.sidebar{position:sticky;top:72px;display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 88px);overflow:hidden}
+.main-content{min-width:0}
+@media(max-width:900px){
+  .page-layout{grid-template-columns:1fr}
+  .sidebar{position:relative;top:0;max-height:none;order:10}
+}
+
+/* ── Emotion Hero (thay thế GIF / Text cũ) ── */
+.emotion-hero {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  background: var(--glass);
+  border: 1px solid var(--glass-b);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  box-shadow: var(--sh);
+  animation: fadeUp .45s ease both;
+}
+.emotion-orb {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pri), var(--cyan));
+  box-shadow: 0 0 50px var(--pri-g), inset 0 0 30px rgba(255,255,255,0.4);
+  animation: breathe 3.5s ease-in-out infinite;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 24px;
+  position: relative;
+}
+.emotion-orb::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: inherit;
+  filter: blur(25px);
+  opacity: 0.6;
+  z-index: -1;
+  transition: all 0.6s ease;
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(1) translateY(0); box-shadow: 0 0 40px var(--pri-g); }
+  50% { transform: scale(1.08) translateY(-5px); box-shadow: 0 0 80px var(--cyan-g), inset 0 0 40px rgba(255,255,255,0.8); }
+}
+
+/* Các trạng thái Cảm xúc của Orb */
+.emotion-orb.happy { background: linear-gradient(135deg, #f59e0b, #fbbf24); box-shadow: 0 0 50px rgba(245,158,11,0.5); animation-duration: 2s; }
+.emotion-orb.sad { background: linear-gradient(135deg, #3b82f6, #93c5fd); box-shadow: 0 0 50px rgba(59,130,246,0.5); animation-duration: 5s; }
+.emotion-orb.angry { background: linear-gradient(135deg, #ef4444, #fca5a5); box-shadow: 0 0 70px rgba(239,68,68,0.7); animation: angry-pulse 1s infinite; }
+.emotion-orb.fear { background: linear-gradient(135deg, #8b5cf6, #c4b5fd); box-shadow: 0 0 50px rgba(139,92,246,0.5); animation: shiver 0.4s infinite; }
+.emotion-orb.surprise { background: linear-gradient(135deg, #10b981, #6ee7b7); box-shadow: 0 0 60px rgba(16,185,129,0.5); animation-duration: 1.5s; }
+.emotion-orb.neutral { background: linear-gradient(135deg, var(--pri), var(--cyan)); }
+.emotion-orb.silent { background: rgba(255,255,255,0.05); box-shadow: none; animation: none; transform: scale(0.9); }
+
+@keyframes angry-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); box-shadow: 0 0 90px rgba(239,68,68,0.8); }
+}
+@keyframes shiver {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px) scale(0.97); }
+  75% { transform: translateX(4px) scale(0.97); }
+}
+
+.emotion-text h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--pri), var(--cyan), #f472b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 8px;
+  transition: all 0.5s;
+}
+.emotion-text p {
+  color: var(--mut);
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: 520px;
+}
+
+/* ── Sidebar ────────────────────────────────────────── */
+.sidebar-profile{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);padding:20px;text-align:center;box-shadow:var(--sh);animation:fadeUp .35s ease both}
+.avatar-ring{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--pri),var(--female));padding:2px;margin:0 auto 12px}
+.avatar-inner{width:100%;height:100%;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.profile-name{font-size:.9rem;font-weight:800;color:var(--txt)}
+.profile-role{font-size:.72rem;color:var(--female);font-weight:700;letter-spacing:.5px;margin-top:2px}
+.profile-meta{display:flex;justify-content:center;gap:16px;margin-top:14px;padding-top:14px;border-top:1px solid var(--brd)}
+.profile-meta-item{text-align:center}
+.profile-meta-item .pm-val{font-size:1rem;font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--txt)}
+.profile-meta-item .pm-key{font-size:.66rem;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+
+.log-card{flex:1;background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--sh);overflow:hidden;animation:fadeUp .4s ease both;display:flex;flex-direction:column}
+.log-header{padding:14px 16px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between}
+.log-header .log-title{font-size:.72rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:1.8px;display:flex;align-items:center;gap:6px}
+.btn-ghost-sm{background:transparent;border:1px solid var(--brd);border-radius:6px;padding:4px 10px;font-size:.72rem;color:var(--mut);cursor:pointer;font-family:inherit;transition:.2s}
+.btn-ghost-sm:hover{border-color:var(--cyan);color:var(--cyan)}
+.log-box{flex:1;height:240px;overflow-y:auto;padding:10px 12px;scrollbar-width:thin;scrollbar-color:var(--brd) transparent}
+.log-box::-webkit-scrollbar{width:3px}
+.log-box::-webkit-scrollbar-thumb{background:var(--brd);border-radius:4px}
+.log-row{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.76rem;animation:slideIn .25s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.log-time{color:var(--mut);font-family:'JetBrains Mono',monospace;font-size:.68rem;flex-shrink:0;padding-top:1px}
+.log-msg{color:var(--txt);line-height:1.4}
+.log-msg.xanh{color:var(--grn);font-weight:600}
+.log-msg.vang{color:var(--org);font-weight:600}
+.log-msg.do{color:var(--red);font-weight:600}
+
+/* ── Cards ──────────────────────────────────────────── */
+.card{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);padding:24px;margin-bottom:16px;backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--sh);transition:transform .25s,box-shadow .25s,border-color .25s;animation:fadeUp .5s ease both}
+.card:hover{transform:translateY(-2px);box-shadow:var(--sh-lg);border-color:rgba(255,255,255,.11)}
+.card.active{border-color:var(--pri);box-shadow:0 0 30px var(--pri-g)}
+.card-title{font-size:.72rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:1.8px;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.card-title-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.card-title-icon.purple{background:rgba(99,102,241,.15)}
+.card-title-icon.cyan{background:rgba(6,182,212,.15)}
+.card-title-icon.green{background:rgba(16,185,129,.15)}
+.card-title-icon.pink{background:rgba(244,114,182,.15)}
+.card-title-icon.orange{background:rgba(245,158,11,.15)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ── Buttons ────────────────────────────────────────── */
+button{font-family:'Be Vietnam Pro',sans-serif;font-weight:700;font-size:.85rem;border:none;border-radius:var(--rs);padding:10px 20px;cursor:pointer;transition:.25s;display:inline-flex;align-items:center;gap:7px}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--pri),#818cf8);color:#fff;box-shadow:0 4px 16px var(--pri-g)}
+.btn-primary:hover:not(:disabled){filter:brightness(1.12);transform:translateY(-1px);box-shadow:0 6px 24px var(--pri-g)}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.btn-danger{background:var(--red-l);color:var(--red);border:1.5px solid var(--red)}
+.btn-danger:hover:not(:disabled){background:var(--red);color:#fff}
+.btn-danger:disabled{opacity:.3;cursor:not-allowed}
+.btn-outline{background:rgba(255,255,255,.05);color:var(--mut);border:1.5px solid var(--brd)}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn-success{background:var(--grn-l);color:var(--grn);border:1.5px solid var(--grn)}
+.btn-success:hover{background:var(--grn);color:#fff}
+.btn-record{padding:10px 22px;border-radius:999px;border:2px solid var(--red);background:rgba(239,68,68,.12);color:var(--red);font-weight:700;font-size:.84rem;cursor:pointer;transition:.2s;font-family:inherit}
+.btn-record:hover{background:rgba(239,68,68,.25)}
+.btn-record.recording{background:var(--red);color:#fff;animation:pulse-rec 1s infinite}
+@keyframes pulse-rec{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{box-shadow:0 0 0 12px rgba(239,68,68,0)}}
+
+/* ── Form ────────────────────────────────────────────── */
+.form-control{width:100%;padding:10px 14px;border-radius:var(--rs);border:1.5px solid var(--brd);background:rgba(255,255,255,.04);font-family:'Be Vietnam Pro',sans-serif;color:var(--txt);font-size:.85rem;transition:.2s}
+.form-control:focus{outline:none;border-color:var(--pri);box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+
+/* ── Mic row ─────────────────────────────────────────── */
+.mic-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.mic-row .form-control{min-width:200px;flex:1}
+
+/* ── Wave & Freq ─────────────────────────────────────── */
+.wave-container{background:rgba(0,0,0,.3);border-radius:var(--rs);border:1px solid var(--brd);position:relative;overflow:hidden;margin-bottom:12px}
+canvas{width:100%;display:block;border-radius:var(--rs)}
+.time-display{position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.6);padding:3px 8px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--txt)}
+.vol-track{height:8px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;border:1px solid var(--brd);margin-bottom:14px}
+.vol-fill{height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--male),var(--female));transition:width .06s linear}
+
+/* ── Level chips ─────────────────────────────────────── */
+.level-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.level-chip{font-size:.74rem;font-weight:600;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.04);border:1.5px solid var(--brd);color:var(--mut);transition:.2s}
+.level-chip.on-green{background:var(--grn-l);border-color:var(--grn);color:var(--grn)}
+.level-chip.on-blue{background:rgba(99,102,241,.12);border-color:var(--pri);color:var(--pri)}
+.level-chip.on-orange{background:var(--org-l);border-color:var(--org);color:var(--org)}
+.level-chip.on-red{background:var(--red-l);border-color:var(--red);color:var(--red)}
+
+/* ── Stats grid ──────────────────────────────────────── */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.stat-card{background:rgba(255,255,255,.03);border-radius:14px;padding:16px;text-align:center;border:1px solid var(--brd);transition:.25s}
+.stat-card.ping{border-color:var(--cyan);box-shadow:0 0 18px var(--cyan-g)}
+.stat-card .big{font-size:1.8rem;font-weight:800;color:var(--txt);font-family:'JetBrains Mono',monospace;line-height:1}
+.stat-card .small-unit{font-size:.64rem;font-weight:700;color:var(--mut);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.stat-card .desc{font-size:.7rem;color:var(--mut);margin-top:3px}
+
+/* ── Gender bar ──────────────────────────────────────── */
+.gender-hint{margin-top:4px;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+.gender-track{flex:1;height:8px;border-radius:999px;background:linear-gradient(90deg,var(--male),var(--female));border:1px solid var(--brd);position:relative}
+.gender-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;border:2px solid var(--bg);background:#fff;box-shadow:0 0 10px rgba(255,255,255,.3);left:50%;transition:left .12s}
+.gender-label{font-size:.76rem;color:var(--mut);font-weight:700;min-width:150px;text-align:right}
+
+/* ── Tone chips ──────────────────────────────────────── */
+.tone-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px;margin-bottom:10px}
+.tone-chip{text-align:center;border-radius:var(--rs);border:1.5px solid var(--brd);padding:10px 6px;background:rgba(255,255,255,.03);color:var(--mut);font-size:.72rem;font-weight:700;transition:.2s;line-height:1.4}
+.tone-chip.on{border-color:var(--cyan);background:rgba(6,182,212,.1);color:var(--cyan)}
+.tone-current{font-size:.8rem;color:var(--mut);font-weight:700;margin-bottom:6px}
+
+/* ── Emotion chips ───────────────────────────────────── */
+.emotion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.emotion-chip{border:1.5px solid var(--brd);border-radius:12px;padding:10px 8px;text-align:center;font-size:.82rem;color:var(--mut);background:rgba(255,255,255,.03);font-weight:700;transition:.2s}
+.emotion-chip.on{border-color:var(--pri);background:rgba(99,102,241,.12);color:#a5b4fc;transform:translateY(-1px)}
+
+/* ── Vocal range ─────────────────────────────────────── */
+.range-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.range-stat{border:1px solid var(--brd);border-radius:12px;background:rgba(255,255,255,.03);padding:10px 8px;text-align:center}
+.range-stat .k{font-size:.66rem;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.range-stat .v{margin-top:4px;font-size:1rem;font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--txt)}
+
+/* ── STT ─────────────────────────────────────────────── */
+.stt-box{min-height:80px;border-radius:12px;border:1px solid var(--brd);background:rgba(0,0,0,.2);padding:14px;line-height:1.6;color:var(--txt);font-size:.88rem;margin-top:14px}
+.stt-muted{color:var(--mut);font-size:.78rem;margin-top:8px}
+
+/* ── AI emotion row ──────────────────────────────────── */
+.ai-row{margin-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:12px}
+.ai-row-label{font-size:.72rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:1px;flex-shrink:0}
+.ai-row-val{font-size:.9rem;font-weight:800;color:var(--pri)}
+.ai-row-conf{font-size:.76rem;color:var(--mut)}
+
+/* ── Upload area ─────────────────────────────────────── */
+.upload-area{border:2px dashed var(--brd);border-radius:var(--rs);padding:28px;text-align:center;transition:.2s;cursor:pointer;position:relative}
+.upload-area:hover{border-color:var(--pri);background:rgba(99,102,241,.04)}
+.upload-area.dragover{border-color:var(--pri);background:rgba(99,102,241,.08)}
+.upload-icon{font-size:2rem;margin-bottom:10px;display:block}
+.upload-text{color:var(--mut);font-size:.85rem;font-weight:600;margin-bottom:6px}
+.upload-hint{font-size:.76rem;color:var(--mut)}
+.upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+
+/* ── Med upload row ──────────────────────────────────── */
+.med-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0}
+
+/* ── Med result ──────────────────────────────────────── */
+.med-result{display:none;margin-top:16px;padding:20px;border-radius:14px;border:1px solid var(--brd);background:rgba(0,0,0,.2);animation:fadeUp .3s ease}
+.med-result.show{display:block}
+.med-level{text-align:center;font-size:1.1rem;font-weight:800;margin-bottom:12px}
+.med-score{font-size:2.2rem;font-weight:900;font-family:'JetBrains Mono',monospace;text-align:center;margin:8px 0;line-height:1}
+.med-indicators{list-style:none;padding:0;margin:0}
+.med-indicators li{padding:8px 14px;border-radius:var(--rs);margin-bottom:6px;font-size:.83rem;border-left:3px solid var(--pri);background:rgba(255,255,255,.03)}
+.med-indicators li.sev-cao{border-left-color:var(--red)}
+.med-indicators li.sev-trung{border-left-color:var(--org)}
+.med-advice{margin-top:12px;padding:12px 16px;border-radius:var(--rs);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);font-size:.83rem;line-height:1.5}
+.med-disclaimer{margin-top:10px;padding:10px;border-radius:var(--rs);background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);font-size:.74rem;color:var(--mut);line-height:1.4}
+.med-feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.med-feat{text-align:center;padding:8px;border-radius:8px;border:1px solid var(--brd);background:rgba(255,255,255,.02)}
+.med-feat .k{font-size:.66rem;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+.med-feat .v{font-size:1rem;font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--txt)}
+.cough-scores{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.cough-sc{text-align:center;padding:10px;border-radius:10px;border:1px solid var(--brd);background:rgba(255,255,255,.03)}
+.cough-sc .label{font-size:.7rem;color:var(--mut);font-weight:700}
+.cough-sc .val{font-size:1.2rem;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--txt)}
+
+/* ── Pronunciation ───────────────────────────────────── */
+.pron-sentence-list{max-height:190px;overflow-y:auto;border:1px solid var(--brd);border-radius:var(--rs);background:rgba(0,0,0,.2);padding:6px;scrollbar-width:thin;scrollbar-color:var(--brd) transparent}
+.pron-sentence-list::-webkit-scrollbar{width:3px}
+.pron-sentence-list::-webkit-scrollbar-thumb{background:var(--brd);border-radius:4px}
+.pron-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--rs);cursor:pointer;transition:.15s;font-size:.83rem;color:var(--txt);border:1.5px solid transparent}
+.pron-item:hover{background:rgba(255,255,255,.05)}
+.pron-item.active{border-color:var(--pri);background:rgba(99,102,241,.1)}
+.pron-item .pron-text{flex:1;line-height:1.35}
+.pron-item .pron-dur{font-size:.7rem;color:var(--mut);font-family:'JetBrains Mono',monospace;flex-shrink:0}
+.pron-ref-box{margin-top:16px;padding:18px;border-radius:14px;border:1px solid var(--brd);background:rgba(0,0,0,.2)}
+.pron-ref-text{font-size:1.1rem;font-weight:700;color:var(--txt);line-height:1.5;margin-bottom:12px;min-height:30px}
+.pron-audio-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.pron-audio-row audio{flex:1;min-width:200px;height:36px;border-radius:var(--rs)}
+.pron-record-area{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.pron-rec-status{font-size:.8rem;color:var(--mut)}
+.pron-result-area{display:none}
+.pron-result-area.show{display:block;animation:fadeUp .3s ease}
+.pron-score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:18px}
+.pron-score-card{text-align:center;padding:16px 8px;border-radius:12px;border:1px solid var(--brd);background:rgba(255,255,255,.03)}
+.pron-score-card .pron-sc-val{font-size:1.7rem;font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1}
+.pron-score-card .pron-sc-label{font-size:.66rem;color:var(--mut);text-transform:uppercase;letter-spacing:1px;margin-top:5px;font-weight:700}
+.pron-score-card.overall .pron-sc-val{color:var(--pri)}
+.pron-score-card.pitch .pron-sc-val{color:var(--cyan)}
+.pron-score-card.mfcc .pron-sc-val{color:var(--grn)}
+.pron-score-card.rhythm .pron-sc-val{color:var(--org)}
+.pron-grade{text-align:center;margin-top:14px;font-size:1.4rem;font-weight:800}
+.pron-feedback{margin-top:10px;padding:14px;border-radius:var(--rs);border:1px solid var(--brd);background:rgba(0,0,0,.2);font-size:.83rem;color:var(--txt);line-height:1.5}
+
+/* ── Section dividers ────────────────────────────────── */
+.section-divider{display:flex;align-items:center;gap:14px;margin:32px 0 18px;padding:0 4px}
+.section-divider .section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--brd),transparent)}
+.section-divider .section-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;white-space:nowrap;padding:6px 18px;border-radius:999px}
+.section-divider .section-label.done{color:var(--grn);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2)}
+.section-divider .section-label.planned{color:var(--org);background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.2)}
+.section-count{font-size:.7rem;color:var(--mut);font-weight:600}
+
+/* ── Planned cards ───────────────────────────────────── */
+.planned-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.planned-card{padding:20px;border-radius:14px;border:1.5px dashed var(--brd);background:rgba(255,255,255,.02);transition:.2s}
+.planned-card:hover{border-color:var(--org);background:rgba(251,146,60,.04);transform:translateY(-2px)}
+.planned-card .pc-icon{font-size:1.8rem;margin-bottom:8px}
+.planned-card .pc-title{font-size:.94rem;font-weight:800;color:var(--txt);margin-bottom:6px}
+.planned-card .pc-desc{font-size:.78rem;color:var(--mut);line-height:1.5}
+.planned-card .pc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pc-tag{display:inline-block;font-size:.64rem;font-weight:700;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.5px}
+.pc-tag.dataset{background:rgba(99,102,241,.1);color:var(--pri);border:1px solid rgba(99,102,241,.2)}
+.pc-tag.model{background:rgba(16,185,129,.1);color:var(--grn);border:1px solid rgba(16,185,129,.2)}
+
+/* ── Status info row ─────────────────────────────────── */
+.status-info{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--mut);margin-bottom:12px}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media(max-width:700px){
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .emotion-grid{grid-template-columns:1fr 1fr}
+  .tone-grid{grid-template-columns:repeat(2,1fr)}
+  .range-grid{grid-template-columns:repeat(2,1fr)}
+  .pron-score-grid{grid-template-columns:repeat(2,1fr)}
+  .med-feat-grid{grid-template-columns:repeat(2,1fr)}
+  .cough-scores{grid-template-columns:1fr}
+  .planned-grid{grid-template-columns:1fr}
+  .emotion-text h1{font-size:1.7rem}
+}
+
+.card:nth-child(2){animation-delay:.06s}
+.card:nth-child(3){animation-delay:.12s}
+.card:nth-child(4){animation-delay:.18s}
+.card:nth-child(5){animation-delay:.24s}
+</style>
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- ── Navigation ── -->
+<nav class="nav-wrapper">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">🎙</div>
+      Easy Kit
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="#phan-tich">Phân tích</a>
+      <a class="nav-link" href="#phat-am">Phát âm</a>
+      <a class="nav-link" href="#y-te">Y tế</a>
+      <a class="nav-link" href="#sap-toi">Sắp tới</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="nav-badge" id="badge"><div class="dot"></div><span id="badgeText">Chưa kết nối</span></div>
+      <button class="nav-cta" onclick="batDauTatCa()">▶ Bắt đầu</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ── New Emotion Hero ── -->
+  <div class="emotion-hero">
+    
+    <!-- Emotion Orb -->
+    <div class="emotion-orb" id="emotionOrb"></div>
+    
+    <div class="emotion-text">
+      <h1 id="emotionTitle">Easy Kit Audio AI</h1>
+    </div>
+  </div>
+
+  <div class="page-layout">
+
+    <!-- ── Sidebar ── -->
+    <div class="sidebar">
+      <div class="sidebar-profile">
+        <div class="avatar-ring">
+          <div class="avatar-inner">👩💻</div>
+        </div>
+        <div class="profile-name">23070287</div>
+        <div class="profile-role">✨ Audio Detection</div>
+        <div class="profile-meta">
+          <div class="profile-meta-item"><div class="pm-val" id="numClap">0</div><div class="pm-key">Va chạm</div></div>
+          <div class="profile-meta-item"><div class="pm-val" id="numDb">--</div><div class="pm-key">dB</div></div>
+          <div class="profile-meta-item"><div class="pm-val" id="numHz">--</div><div class="pm-key">Hz</div></div>
+        </div>
+      </div>
+
+      <div class="log-card">
+        <div class="log-header">
+          <div class="log-title">📋 Nhật ký</div>
+          <button class="btn-ghost-sm" onclick="xoaNhatKy()">↺ Xoá</button>
+        </div>
+        <div class="log-box" id="logBox">
+          <div class="log-row"><span class="log-time">--:--:--</span><span class="log-msg">ang ch kết nối microphone…</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Main ── -->
+    <div class="main-content">
+
+      <!--  Ã TRIỂN KHAI  -->
+      <div class="section-divider" id="phan-tich">
+        <div class="section-line"></div>
+        <div class="section-label done">✅ ã triển khai</div>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Card: Phân tích real-time -->
+      <div class="card" id="waveCard">
+        <div class="card-title">
+          <div class="card-title-icon purple">🎧</div>
+          Phân Tích Âm Thanh Real-time
+        </div>
+
+        <div class="mic-row">
+          <select id="micSelect" class="form-control"></select>
+          <button class="btn-outline" onclick="taiLaiDanhSachMic()" style="padding:10px 14px;white-space:nowrap">↻ Mic</button>
+          <select id="sttLang" class="form-control" style="max-width:160px">
+            <option value="vi-VN">🇻🇳 Tiếng Việt</option>
+            <option value="en-US">🇺🇸 English</option>
+          </select>
+        </div>
+
+        <div class="status-info" id="micStatus">ang tải danh sách microphone...</div>
+
+        <div class="btn-row" style="margin-bottom:18px">
+          <button class="btn-primary" id="btnBatDau" onclick="batDauTatCa()">▶ Bắt đầu đo tất cả</button>
+          <button class="btn-danger" id="btnDungAll" onclick="dungTatCa()" disabled>■ Dừng</button>
+          <button class="btn-outline" onclick="datLaiQuang()">↺ Reset quãng</button>
+          <button class="btn-outline" onclick="xoaVanBan()">🗑 Xoá STT</button>
+        </div>
+
+        <!-- Waveform -->
+        <div class="wave-container">
+          <canvas id="waveCanvas" height="90"></canvas>
+        </div>
+        <div class="vol-track"><div class="vol-fill" id="volFill"></div></div>
+
+        <div class="level-row">
+          <div class="level-chip" id="chipYen">🔇 Im lặng</div>
+          <div class="level-chip" id="chipNho">🔉 Nh</div>
+          <div class="level-chip" id="chipVua">🔊 Vừa</div>
+          <div class="level-chip" id="chipTo">📢 To</div>
+          <div class="level-chip" id="chipVo"> Vỗ tay</div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card" id="scDb"><div class="big" id="sideDb">--</div><div class="small-unit">dB</div><div class="desc">Âm lượng</div></div>
+          <div class="stat-card" id="scHz"><div class="big" id="sideHz">--</div><div class="small-unit">Hz</div><div class="desc">Tần số đỉnh</div></div>
+          <div class="stat-card" id="scClap"><div class="big" id="sideClap">0</div><div class="small-unit">lần</div><div class="desc">Va chạm</div></div>
+        </div>
+
+        <!-- Phổ tần số -->
+        <div class="wave-container">
+          <canvas id="freqCanvas" height="110"></canvas>
+        </div>
+
+        <!-- Giới tính -->
+        <div class="gender-hint">
+          <div class="gender-track"><div class="gender-dot" id="genderDot"></div></div>
+          <div class="gender-label" id="genderRealtime">Thiên hướng: trung tính</div>
+        </div>
+
+        <!-- Tone ging -->
+        <div class="tone-current" id="toneCurrent">Quãng ging hiện tại: --</div>
+        <div class="tone-grid">
+          <div class="tone-chip" id="tone_bass">Bass<br>85–155 Hz</div>
+          <div class="tone-chip" id="tone_baritone">Baritone<br>110–196 Hz</div>
+          <div class="tone-chip" id="tone_tenor">Tenor<br>130–262 Hz</div>
+          <div class="tone-chip" id="tone_alto">Alto<br>175–330 Hz</div>
+          <div class="tone-chip" id="tone_soprano">Soprano<br>240–520 Hz</div>
+        </div>
+
+        <!-- Cảm xúc -->
+        <div class="emotion-grid">
+          <div class="emotion-chip" id="emo_happy">😄 Vui vẻ</div>
+          <div class="emotion-chip" id="emo_sad">😢 Buồn</div>
+          <div class="emotion-chip" id="emo_angry">😠 Tức giận</div>
+          <div class="emotion-chip" id="emo_fear">😨 Lo lắng</div>
+          <div class="emotion-chip" id="emo_surprise">😲 Ngạc nhiên</div>
+          <div class="emotion-chip" id="emo_neutral"> Bình thưng</div>
+        </div>
+
+        <!-- AI Emotion -->
+        <div class="ai-row">
+          <span class="ai-row-label">🧠 AI Cảm xúc</span>
+          <span id="aiEmotionLabel" class="ai-row-val">Chưa phân tích</span>
+          <span id="aiEmotionConf" class="ai-row-conf"></span>
+          <span id="aiEmotionScores" class="ai-row-conf"></span>
+        </div>
+
+        <!-- Vocal Range -->
+        <div class="range-grid">
+          <div class="range-stat"><div class="k">Nốt thấp nhất</div><div class="v" id="rangeLow">--</div></div>
+          <div class="range-stat"><div class="k">Nốt cao nhất</div><div class="v" id="rangeHigh">--</div></div>
+          <div class="range-stat"><div class="k">ộ rộng</div><div class="v" id="rangeSpan">--</div></div>
+          <div class="range-stat"><div class="k">Loại quãng</div><div class="v" id="rangeType">--</div></div>
+        </div>
+
+        <!-- STT -->
+        <div class="stt-box" id="sttText">Nội dung nhận dạng sẽ hiện ở đây...</div>
+        <div class="stt-muted" id="sttStatus">Nhận dạng ging nói chạy đồng thi khi bấm Bắt đầu.</div>
+      </div>
+
+
+      <!--  LUYỆN PHT ÂM  -->
+      <div class="card" id="phat-am">
+        <div class="card-title">
+          <div class="card-title-icon cyan">🇻🇳</div>
+          Luyện Phát Âm Tiếng Việt — AI ánh Giá Ngữ iệu
+        </div>
+        <p style="color:var(--mut);font-size:.82rem;margin-bottom:16px">Chn câu mẫu → Nghe mẫu → Ghi âm → AI chấm điểm ngữ điệu, âm sắc, nhịp điệu</p>
+
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <button class="btn-primary" onclick="taiDanhSachCau()" id="btnLoadSentences">📋 Tải danh sách câu</button>
+          <span id="pronSentenceCount" style="font-size:.78rem;color:var(--mut)"></span>
+        </div>
+
+        <div class="pron-sentence-list" id="pronSentenceList">
+          <div style="text-align:center;padding:20px;color:var(--mut);font-size:.84rem">Bấm "Tải danh sách câu" để bắt đầu</div>
+        </div>
+
+        <div class="pron-ref-box" id="pronRefBox" style="display:none">
+          <div style="font-size:.7rem;color:var(--mut);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Câu mẫu cần đc:</div>
+          <div class="pron-ref-text" id="pronRefText"></div>
+          <div class="pron-audio-row">
+            <span style="font-size:.78rem;color:var(--mut);font-weight:600;flex-shrink:0">🔊 Nghe mẫu:</span>
+            <audio id="pronRefAudio" controls preload="none"></audio>
+          </div>
+          <div class="pron-record-area">
+            <button class="btn-record" id="btnPronRecord" onclick="batDauGhiAmPron()">🎙 Ghi âm</button>
+            <span class="pron-rec-status" id="pronRecStatus">Sẵn sàng ghi âm</span>
+            <audio id="pronUserAudio" controls style="display:none;height:36px;border-radius:var(--rs)"></audio>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <button class="btn-primary" onclick="danhGiaPhatAm()" id="btnPronEval" disabled>📊 Chấm điểm</button>
+            <label class="btn-outline" style="cursor:pointer;padding:10px 20px">
+               Upload file
+              <input id="pronUserFile" type="file" accept=".wav,.mp3,.flac,.ogg,.m4a" style="display:none" onchange="pronFileChosen()">
+            </label>
+          </div>
+        </div>
+
+        <div class="pron-result-area" id="pronResultArea">
+          <div class="pron-score-grid">
+            <div class="pron-score-card overall"><div class="pron-sc-val" id="pronScoreOverall">—</div><div class="pron-sc-label">Tổng điểm</div></div>
+            <div class="pron-score-card pitch"><div class="pron-sc-val" id="pronScorePitch">—</div><div class="pron-sc-label">Ngữ điệu</div></div>
+            <div class="pron-score-card mfcc"><div class="pron-sc-val" id="pronScoreMfcc">—</div><div class="pron-sc-label">Âm sắc</div></div>
+            <div class="pron-score-card rhythm"><div class="pron-sc-val" id="pronScoreRhythm">—</div><div class="pron-sc-label">Nhịp điệu</div></div>
+            <div class="pron-score-card" style="border-color:var(--org)"><div class="pron-sc-val" id="pronScoreEnergy" style="color:var(--org)">—</div><div class="pron-sc-label">Năng lượng</div></div>
+          </div>
+          <div class="pron-grade" id="pronGrade"></div>
+          <div class="pron-feedback" id="pronFeedback"></div>
+        </div>
+      </div>
+
+
+      <!--  TIẾNG HO  -->
+      <div class="card" id="y-te">
+        <div class="card-title">
+          <div class="card-title-icon green">🤧</div>
+          Phân Tích Tiếng Ho — AI Chẩn oán
+        </div>
+        <p style="color:var(--mut);font-size:.82rem;margin-bottom:16px">Upload hoặc ghi âm tiếng ho → AI phân loại: ho khan, ho có đm, không phải ho</p>
+
+        <div class="med-row">
+          <button class="btn-record" id="btnCoughRec" onclick="toggleCoughRec()">🎙 Ghi âm ho</button>
+          <span id="coughRecStatus" style="font-size:.8rem;color:var(--mut)">Sẵn sàng</span>
+        </div>
+
+        <div class="upload-area">
+          <span class="upload-icon">🎵</span>
+          <div class="upload-text">Kéo thả file audio hoặc bấm để chn</div>
+          <div class="upload-hint">Hỗ trợ .wav · .mp3 · .flac · .ogg · .m4a · .webm</div>
+          <input id="coughFile" type="file" accept=".wav,.mp3,.flac,.ogg,.m4a,.webm">
+        </div>
+
+        <div style="margin-top:14px">
+          <button class="btn-primary" onclick="analyzeCough()" id="btnCoughAnalyze">🔬 Phân tích tiếng ho</button>
+        </div>
+
+        <div class="med-result" id="coughResult">
+          <div class="med-level" id="coughLabel"></div>
+          <div class="cough-scores" id="coughScores"></div>
+          <div style="font-size:.78rem;color:var(--mut);text-align:center" id="coughConf"></div>
+        </div>
+      </div>
+
+
+      <!--  TRẦM CẢM  -->
+      <div class="card">
+        <div class="card-title">
+          <div class="card-title-icon purple">🧠</div>
+          Sàng Lc Trầm Cảm Qua Ging Nói
+        </div>
+        <p style="color:var(--mut);font-size:.82rem;margin-bottom:16px">Ghi âm ging nói ~10 giây → AI phân tích pitch, energy, jitter, shimmer, nhịp nói → đánh giá nguy cơ</p>
+
+        <div class="med-row">
+          <button class="btn-record" id="btnDepRec" onclick="toggleDepRec()">🎙 Ghi âm ging nói</button>
+          <span id="depRecStatus" style="font-size:.8rem;color:var(--mut)">Sẵn sàng (nói ~10 giây)</span>
+        </div>
+
+        <div class="upload-area">
+          <span class="upload-icon">🎤</span>
+          <div class="upload-text">Kéo thả file audio hoặc bấm để chn</div>
+          <div class="upload-hint">Hỗ trợ .wav · .mp3 · .flac · .ogg · .m4a · .webm</div>
+          <input id="depFile" type="file" accept=".wav,.mp3,.flac,.ogg,.m4a,.webm">
+        </div>
+
+        <div style="margin-top:14px">
+          <button class="btn-primary" onclick="analyzeDep()" id="btnDepAnalyze">🔬 Sàng lc trầm cảm</button>
+        </div>
+
+        <div class="med-result" id="depResult">
+          <div class="med-score" id="depScore"></div>
+          <div class="med-level" id="depLevel"></div>
+          <ul class="med-indicators" id="depIndicators"></ul>
+          <div class="med-feat-grid" id="depFeats"></div>
+          <div class="med-advice" id="depAdvice"></div>
+          <div class="med-disclaimer" id="depDisclaimer"></div>
+        </div>
+      </div>
+
+
+      <!--  SẮP TỚI  -->
+      <div class="section-divider" id="sap-toi">
+        <div class="section-line"></div>
+        <div class="section-label planned">🔮 Sắp triển khai —  tưởng</div>
+        <span class="section-count">4 tính năng dự kiến</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="planned-grid">
+        <div class="planned-card">
+          <div class="pc-icon"></div>
+          <div class="pc-title">Phân Tích Âm Phổi</div>
+          <div class="pc-desc">Phát hiện wheezing, crackles, stridor từ âm thanh phổi. Hỗ trợ chẩn đoán hen suyễn, viêm phổi, COPD.</div>
+          <div class="pc-tags"><span class="pc-tag dataset">ICBHI 2017 — 920 recordings</span><span class="pc-tag model">CNN + Mel Spectrogram</span></div>
+        </div>
+        <div class="planned-card">
+          <div class="pc-icon">🫀</div>
+          <div class="pc-title">Phân Tích Âm Tim</div>
+          <div class="pc-desc">Phát hiện tiếng thổi tim, nhịp bất thưng, van tim hở từ audio ống nghe đặt lên ngực.</div>
+          <div class="pc-tags"><span class="pc-tag dataset">PhysioNet/CinC 2016 — 3,000 recordings</span><span class="pc-tag model">CNN + MFCC</span></div>
+        </div>
+        <div class="planned-card">
+          <div class="pc-icon">🗣</div>
+          <div class="pc-title">Phát Hiện Parkinson</div>
+          <div class="pc-desc">Phân tích run ging, jitter, shimmer bất thưng. Phát hiện sớm dấu hiệu Parkinson từ ging nói hàng ngày.</div>
+          <div class="pc-tags"><span class="pc-tag dataset">UCI Parkinson's Dataset</span><span class="pc-tag model">KNN / Random Forest</span></div>
+        </div>
+        <div class="planned-card">
+          <div class="pc-icon">👶</div>
+          <div class="pc-title">Phân Loại Tiếng Khóc Trẻ</div>
+          <div class="pc-desc">Nhận diện trẻ khóc vì đói, đau, mệt, khó chịu. Hỗ trợ bố mẹ và y tá chăm sóc trẻ hiệu quả hơn.</div>
+          <div class="pc-tags"><span class="pc-tag dataset">Donate-a-Cry / Baby Chillanto</span><span class="pc-tag model">MFCC + Random Forest</span></div>
+        </div>
+      </div>
+
+    </div><!-- end main-content -->
+  </div><!-- end page-layout -->
+</div><!-- end wrap -->
+
+
+<script>
+const $=id=>document.getElementById(id);
+let ctx,analyser,src,stream,animId,dangChay=false,soVa=0,thoiGianVaTruoc=0,volTruoc=0,trangThaiTruoc='';
+let emotionBefore='',recognition=null,sttRunning=false,rangeDetectRunning=false;
+let minHz=null,maxHz=null,stablePitchHz=null,selectedMicId='';
+const NOISE_GATE_RMS=0.012,EMA=0.25,EMOTION_HOLD_MS=800,CHIP_HOLD_MS=500,HZ_BUF_SIZE=8;
+let smoothRms=0,smoothHz=0,smoothGender=0.5,emotionHoldUntil=0,chipHoldUntil=0,hzBuffer=[];
+const cvWave=$('waveCanvas'),cvFreq=$('freqCanvas'),wx=cvWave.getContext('2d'),fx=cvFreq.getContext('2d');
+function resize(){const w=cvWave.parentElement.clientWidth-2;cvWave.width=cvFreq.width=w;cvWave.height=90;cvFreq.height=110}
+resize();window.addEventListener('resize',resize);
+
+function syncStats(db,hz,clap){
+  $('numDb').textContent=db;$('numHz').textContent=hz;$('numClap').textContent=clap;
+  $('sideDb').textContent=db;$('sideHz').textContent=hz;$('sideClap').textContent=clap;
+}
+
+async function batDau(){
+  if(dangChay)return;
+  try{
+    if(!navigator.mediaDevices?.getUserMedia)throw new Error('Trình duyệt không hỗ trợ getUserMedia');
+    if(!selectedMicId)await taiLaiDanhSachMic();
+    stream=await navigator.mediaDevices.getUserMedia({audio:selectedMicId?{deviceId:{exact:selectedMicId}}:true});
+    ctx=new(window.AudioContext||window.webkitAudioContext)();
+    analyser=ctx.createAnalyser();analyser.fftSize=2048;analyser.smoothingTimeConstant=0.78;
+    src=ctx.createMediaStreamSource(stream);src.connect(analyser);
+    dangChay=true;
+    $('btnDungAll').disabled=false;$('btnBatDau').disabled=true;
+    $('badge').className='nav-badge on';$('badgeText').textContent='ang lắng nghe…';
+    $('waveCard').classList.add('active');
+    ghiLog('🟢','Microphone đã kết nối — đang phân tích','xanh');ve();
+  }catch(e){
+    $('badge').className='nav-badge';
+    const msg=e?.name==='NotAllowedError'?'Mic bị chặn quyn':e?.name==='NotFoundError'?'Không tìm thấy mic':e?.name==='NotReadableError'?'Mic đang bị app khác chiếm':e?.message||'Lỗi quyn mic';
+    $('badgeText').textContent=msg;alert('Không thể truy cập microphone.');ghiLog('🔴','Lỗi mic: '+msg,'do');
+  }
+}
+function dungLai(){
+  if(!dangChay)return;dangChay=false;cancelAnimationFrame(animId);
+  stream?.getTracks().forEach(t=>t.stop());ctx?.close();
+  $('btnDungAll').disabled=true;$('btnBatDau').disabled=false;
+  $('badge').className='nav-badge';$('badgeText').textContent='Chưa kết nối';
+  $('waveCard').classList.remove('active');
+  $('emotionOrb').className='emotion-orb silent';$('emotionTitle').textContent='Tạm dừng';$('emotionDesc').textContent='ã ngắt microphone.';
+  ghiLog('⬛','ã dừng phân tích','');datLaiChip();capNhatQuangGiong(0);veXuong();
+}
+
+function ve(){
+  if(!dangChay)return;animId=requestAnimationFrame(ve);
+  const tg=new Uint8Array(analyser.fftSize),fq=new Uint8Array(analyser.frequencyBinCount);
+  analyser.getByteTimeDomainData(tg);analyser.getByteFrequencyData(fq);veSong(tg);vePho(fq);capNhat(tg,fq);
+}
+
+function veSong(d){
+  const w=cvWave.width,h=cvWave.height;wx.clearRect(0,0,w,h);
+  wx.fillStyle='rgba(11,15,26,0.6)';wx.fillRect(0,0,w,h);
+  wx.strokeStyle='rgba(255,255,255,0.04)';wx.lineWidth=1;wx.beginPath();wx.moveTo(0,h/2);wx.lineTo(w,h/2);wx.stroke();
+  const sw=w/d.length;let x=0;wx.beginPath();
+  for(let i=0;i<d.length;i++){const y=(d[i]/128)*h/2;i===0?wx.moveTo(x,y):wx.lineTo(x,y);x+=sw}
+  const grad=wx.createLinearGradient(0,0,w,0);grad.addColorStop(0,'#6366f1');grad.addColorStop(.5,'#06b6d4');grad.addColorStop(1,'#8b5cf6');
+  wx.strokeStyle=grad;wx.lineWidth=2;wx.shadowColor='#6366f1';wx.shadowBlur=12;wx.stroke();wx.shadowBlur=0;
+}
+function vePho(d){
+  const w=cvFreq.width,h=cvFreq.height;fx.clearRect(0,0,w,h);fx.fillStyle='rgba(11,15,26,0.6)';fx.fillRect(0,0,w,h);
+  const n=72,bw=w/n-1.5,step=Math.floor(d.length/n);
+  for(let i=0;i<n;i++){
+    let s=0;for(let j=0;j<step;j++)s+=d[i*step+j];
+    const bh=(s/step/255)*(h-6),x=i*(w/n),t=i/n;
+    const[r,g,b]=t<.33?[99,102,241]:t<.66?[6,182,212]:[236,72,153];
+    const grd=fx.createLinearGradient(0,h-bh,0,h);grd.addColorStop(0,`rgba(${r},${g},${b},.85)`);grd.addColorStop(1,`rgba(${r},${g},${b},.15)`);
+    fx.fillStyle=grd;fx.beginPath();fx.roundRect?fx.roundRect(x,h-bh,bw,bh,[3,3,0,0]):fx.rect(x,h-bh,bw,bh);fx.fill();
+  }
+}
+
+function getRMS(d){let s=0;for(let i=0;i<d.length;i++){const n=(d[i]-128)/128;s+=n*n}return Math.sqrt(s/d.length)}
+function capNhat(td,fd){
+  const rawRms=getRMS(td);smoothRms=smoothRms*(1-EMA)+rawRms*EMA;const rms=smoothRms;
+  const db=rms>0?20*Math.log10(rms):-100,dbC=Math.max(-60,Math.min(0,db));
+  $('volFill').style.width=((dbC+60)/60*100)+'%';
+  const dbTxt=db<-60?'<−60':dbC.toFixed(1);
+
+  let maxI=0,maxV=0;for(let i=0;i<fd.length;i++)if(fd[i]>maxV){maxV=fd[i];maxI=i}
+  const rawHz=Math.round(maxI*(ctx.sampleRate/analyser.fftSize)),isSilent=rms<NOISE_GATE_RMS;
+  if(!isSilent&&rawHz>20){hzBuffer.push(rawHz);if(hzBuffer.length>HZ_BUF_SIZE)hzBuffer.shift()}else if(isSilent)hzBuffer.length=0;
+  let hzD=null;
+  if(hzBuffer.length>=3){const s=hzBuffer.slice().sort((a,b)=>a-b);hzD=s[Math.floor(s.length/2)]}else if(hzBuffer.length>0)hzD=hzBuffer[hzBuffer.length-1];
+
+  const yp=tinhPitchYIN(td,ctx.sampleRate);stablePitchHz=(!isSilent&&(yp||hzD))?(yp||hzD):null;
+  if(rangeDetectRunning&&stablePitchHz&&stablePitchHz>=70&&stablePitchHz<=1200){
+    minHz=minHz===null?stablePitchHz:Math.min(minHz,stablePitchHz);
+    maxHz=maxHz===null?stablePitchHz:Math.max(maxHz,stablePitchHz);capNhatBangQuang();
+  }
+  capNhatQuangGiong(hzD||0);
+  const rg=Math.max(0,Math.min(1,((hzD||190)-120)/140));smoothGender=smoothGender*.8+rg*.2;
+  const dp=Math.round(smoothGender*100);$('genderDot').style.left=dp+'%';
+  $('genderRealtime').textContent=isSilent?'Thiên hướng: trung tính (im lặng)':smoothGender>=.55?'Thiên hướng: nữ':smoothGender<=.45?'Thiên hướng: nam':'Thiên hướng: trung tính';
+  $('volFill').style.background='linear-gradient(90deg,var(--male) 0%,var(--male) '+dp+'%,var(--female) '+dp+'%,var(--female) 100%)';
+
+  syncStats(dbTxt, hzD||'--', soVa);
+
+  const now=Date.now();let trang='yen';if(rms>.005)trang='nho';if(rms>.03)trang='vua';if(rms>.1)trang='to';
+  if(now>=chipHoldUntil||trang==='to'){capNhatChip(trang);if(trang!==trangThaiTruoc){chipHoldUntil=now+CHIP_HOLD_MS;
+    if(trang==='to')ghiLog('📢','Âm thanh to ('+dbC.toFixed(1)+' dB)','vang');if(trang==='vua')ghiLog('🔊','Âm thanh vừa','');
+    if(trang==='yen'&&trangThaiTruoc&&trangThaiTruoc!=='yen')ghiLog('🔇','Im lặng','');trangThaiTruoc=trang}}
+  let emotion='neutral';const hzE=hzD||0;
+  if(isSilent)emotion='silent';
+  else if(rms>.11&&hzE>250)emotion='angry';else if(rms>.09&&hzE>=190)emotion='surprise';else if(rms>.05&&hzE>=170&&hzE<240)emotion='happy';else if(rms>.06&&hzE<170)emotion='fear';else if(rms<.02&&hzE<160)emotion='sad';
+  if(now>=emotionHoldUntil&&emotion!==emotionBefore){emotionHoldUntil=now+EMOTION_HOLD_MS;capNhatCamXuc(emotion);
+    if(emotion!=='silent'){ghiLog('😊','Cảm xúc: '+{happy:'Vui vẻ',sad:'Buồn',angry:'Tức giận',fear:'Lo lắng',surprise:'Ngạc nhiên',neutral:'Bình thưng'}[emotion],'')}
+    emotionBefore=emotion}
+  const delta=rawRms-volTruoc;
+  if(!isSilent&&delta>.08&&now-thoiGianVaTruoc>400){thoiGianVaTruoc=now;soVa++;
+    const sc=$('scClap');sc.classList.add('ping');setTimeout(()=>sc.classList.remove('ping'),350);
+    batChip('chipVo','on-red',500);ghiLog('','Phát hiện tiếng đập / vỗ tay!','do')}
+  volTruoc=rawRms;
+}
+
+function tinhPitchYIN(td,sr){
+  const f=new Float32Array(td.length);for(let i=0;i<td.length;i++)f[i]=(td[i]-128)/128;
+  const th=.1,ys=Math.floor(f.length/2),y=new Float32Array(ys);
+  for(let tau=1;tau<ys;tau++){let s=0;for(let i=0;i<ys;i++){const d=f[i]-f[i+tau];s+=d*d}y[tau]=s}
+  y[0]=1;let run=0;for(let tau=1;tau<ys;tau++){run+=y[tau];y[tau]=run===0?1:y[tau]*tau/run}
+  let tau=-1;for(let t=2;t<ys;t++)if(y[t]<th){while(t+1<ys&&y[t+1]<y[t])t++;tau=t;break}
+  return tau<=0?null:sr/tau;
+}
+const hzToMidi=hz=>Math.round(69+12*Math.log2(hz/440));
+const midiToNote=m=>'C,C#,D,D#,E,F,F#,G,G#,A,A#,B'.split(',')[(m%12+12)%12]+String(Math.floor(m/12)-1);
+const phanLoaiDoRong=s=>s<8?'Hẹp':s<14?'Trung bình':s<22?'Rộng':'Rất rộng';
+function capNhatBangQuang(){
+  if(minHz===null||maxHz===null)return;const lo=hzToMidi(minHz),hi=hzToMidi(maxHz),st=Math.max(0,hi-lo);
+  $('rangeLow').textContent=midiToNote(lo);$('rangeHigh').textContent=midiToNote(hi);
+  $('rangeSpan').textContent=st+' st';$('rangeType').textContent=phanLoaiDoRong(st);
+}
+function batDauDoQuang(){rangeDetectRunning=true;ghiLog('🎼','Bắt đầu đo quãng ging','xanh')}
+function dungDoQuang(){rangeDetectRunning=false;ghiLog('🎼','Dừng đo quãng ging','')}
+async function batDauTatCa(){await batDau();if(!dangChay)return;batDauDoQuang();batDauSTT();startAiEmotion()}
+function dungTatCa(){stopAiEmotion();dungSTT();dungDoQuang();dungLai()}
+function datLaiQuang(){minHz=maxHz=null;['rangeLow','rangeHigh','rangeSpan','rangeType'].forEach(id=>$(id).textContent='--')}
+function capNhatQuangGiong(hz){
+  const tones=[['tone_bass',85,155,'Bass'],['tone_baritone',155,196,'Baritone'],['tone_tenor',196,262,'Tenor'],['tone_alto',262,330,'Alto'],['tone_soprano',330,521,'Soprano']];
+  tones.forEach(t=>$(t[0]).classList.remove('on'));let name='--',aid='';
+  for(const[id,lo,hi,n]of tones)if(hz>=lo&&hz<hi){name=n;aid=id;break}
+  if(aid)$(aid).classList.add('on');$('toneCurrent').textContent=hz>20?'Quãng ging hiện tại: '+name+' ('+hz+' Hz)':'Quãng ging hiện tại: --';
+}
+function capNhatChip(t){
+  const map={yen:['chipYen','on-green'],nho:['chipNho','on-blue'],vua:['chipVua','on-orange'],to:['chipTo','on-red']};
+  ['chipYen','chipNho','chipVua','chipTo'].forEach(id=>$(id).className='level-chip');if(map[t]){const[id,cls]=map[t];$(id).classList.add(cls)}
+}
+function batChip(id,cls,dur){const el=$(id);el.classList.add(cls);setTimeout(()=>el.classList.remove(cls),dur)}
+function datLaiChip(){['chipYen','chipNho','chipVua','chipTo','chipVo'].forEach(id=>$(id).className='level-chip')}
+function capNhatCamXuc(e){
+  ['happy','sad','angry','fear','surprise','neutral'].forEach(k=>$('emo_'+k).classList.remove('on'));
+  if(e!=='silent'&&$('emo_'+e))$('emo_'+e).classList.add('on');
+  const d={silent:['ang Lắng Nghe...','Hệ thống AI đang phân tích tĩnh lặng.'],happy:['Vui Vẻ & Tích Cực','Năng lượng âm thanh cao, đầy hoan hỉ.'],sad:['Trầm Ngâm & Buồn','Nhịp điệu chậm, âm vực sâu lắng.'],angry:['Mạnh Mẽ & Tức Giận','Sóng âm gay gắt, cưng độ cao.'],fear:['Lo Lắng & Bất An','Rung động âm vực không đu.'],surprise:['Ngạc Nhiên & Bất Ng','Cưng độ âm thanh tăng vt đột ngột.'],neutral:['Trạng Thái Bình Thưng','Sóng âm phẳng, cảm xúc ổn định.']};
+  $('emotionOrb').className='emotion-orb ' + e;
+  if(d[e]){$('emotionTitle').textContent=d[e][0];$('emotionDesc').textContent=d[e][1];}
+  else{$('emotionTitle').textContent='Sẵn sàng';$('emotionDesc').textContent='ang ch âm thanh...';}
+}
+function ghiLog(icon,msg,loai){
+  const log=$('logBox'),row=document.createElement('div');row.className='log-row';
+  row.innerHTML='<span class="log-time">'+new Date().toTimeString().slice(0,8)+'</span><span>'+icon+'</span><span class="log-msg '+loai+'">'+msg+'</span>';
+  log.insertBefore(row,log.firstChild);while(log.children.length>60)log.removeChild(log.lastChild);
+}
+function xoaNhatKy(){$('logBox').innerHTML=''}
+
+function batDauSTT(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){$('sttStatus').textContent='Trình duyệt không hỗ trợ.';return}
+  if(sttRunning)return;recognition=new SR();const lang=$('sttLang').value;
+  recognition.lang=lang;recognition.continuous=true;recognition.interimResults=true;
+  recognition.onstart=()=>{sttRunning=true;$('sttStatus').textContent='ang nghe...';ghiLog('','Bắt đầu nhận dạng','xanh')};
+  recognition.onresult=ev=>{let ft='',it='';for(let i=ev.resultIndex;i<ev.results.length;i++){const t=ev.results[i][0].transcript;ev.results[i].isFinal?ft+=t+' ':it+=t}
+    const b=$('sttText'),m=((b.dataset.finalText||'')+ft).trim();b.dataset.finalText=m;b.textContent=(m+(it?' '+it:'')).trim()||'Nội dung nhận dạng sẽ hiện ở đây...'};
+  recognition.onerror=ev=>{$('sttStatus').textContent='Lỗi: '+ev.error};
+  recognition.onend=()=>{sttRunning=false;$('sttStatus').textContent='ã dừng nhận dạng.'};
+  recognition.start();
+}
+function dungSTT(){if(recognition&&sttRunning)recognition.stop()}
+function xoaVanBan(){const b=$('sttText');b.dataset.finalText='';b.textContent='Nội dung nhận dạng sẽ hiện ở đây...'}
+
+function veXuong(){
+  const w=cvWave.width,h=cvWave.height;wx.clearRect(0,0,w,h);wx.fillStyle='rgba(11,15,26,0.6)';wx.fillRect(0,0,w,h);
+  wx.strokeStyle='rgba(255,255,255,0.04)';wx.lineWidth=1;wx.beginPath();wx.moveTo(0,h/2);wx.lineTo(w,h/2);wx.stroke();
+  fx.clearRect(0,0,cvFreq.width,cvFreq.height);fx.fillStyle='rgba(11,15,26,0.6)';fx.fillRect(0,0,cvFreq.width,cvFreq.height);
+}
+async function kiemTraQuyenMic(){
+  const bt=$('badgeText');if(!navigator.mediaDevices?.getUserMedia){bt.textContent='Không hỗ trợ mic';return}
+  if(!navigator.permissions?.query){bt.textContent='Sẵn sàng xin quyn mic';return}
+  try{const p=await navigator.permissions.query({name:'microphone'});bt.textContent=p.state==='granted'?'Sẵn sàng kết nối':p.state==='denied'?'Mic bị chặn':'Cần cho phép mic'}catch(_){bt.textContent='Sẵn sàng xin quyn mic'}
+}
+async function taiLaiDanhSachMic(){
+  const sel=$('micSelect'),st=$('micStatus');sel.innerHTML='';
+  if(!navigator.mediaDevices?.enumerateDevices){st.textContent='Không hỗ trợ.';return}
+  try{try{(await navigator.mediaDevices.getUserMedia({audio:true})).getTracks().forEach(t=>t.stop())}catch(e){}
+    const mics=(await navigator.mediaDevices.enumerateDevices()).filter(d=>d.kind==='audioinput');
+    if(!mics.length){sel.innerHTML='<option>Không tìm thấy mic</option>';selectedMicId='';st.textContent='Không có mic.';return}
+    mics.forEach((m,i)=>{const o=document.createElement('option');o.value=m.deviceId;o.textContent=m.label||'Mic '+(i+1);sel.appendChild(o)});
+    if(selectedMicId&&mics.some(m=>m.deviceId===selectedMicId))sel.value=selectedMicId;else{selectedMicId=mics[0].deviceId;sel.value=selectedMicId}
+    st.textContent=mics.length+' mic tìm thấy: '+(sel.options[sel.selectedIndex]?.text||'?');
+  }catch(e){st.textContent='Lỗi: '+(e.message||e)}
+}
+$('micSelect').addEventListener('change',function(){selectedMicId=this.value;$('micStatus').textContent='Chn: '+(this.options[this.selectedIndex]?.text||'?')});
+
+/* ── AI Emotion ── */
+const AI_EMO_MAP={happy:'😄 Vui vẻ',sad:'😢 Buồn',angry:'😠 Tức giận',fear:'😨 Lo lắng',surprise:'😲 Ngạc nhiên',neutral:' Bình thưng'};
+let aiEmoRunning=false,aiEmoInterval=null,aiEmoRecorder=null;
+function startAiEmotion(){
+  if(aiEmoRunning)return;aiEmoRunning=true;
+  aiEmoInterval=setInterval(async()=>{
+    if(!dangChay||!aiEmoRunning)return;
+    try{
+      const s=await navigator.mediaDevices.getUserMedia({audio:selectedMicId?{deviceId:{exact:selectedMicId}}:true});
+      const chunks=[];aiEmoRecorder=new MediaRecorder(s,{mimeType:'audio/webm'});
+      aiEmoRecorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
+      aiEmoRecorder.onstop=async()=>{
+        s.getTracks().forEach(t=>t.stop());
+        const blob=new Blob(chunks,{type:'audio/webm'});
+        const fd=new FormData();fd.append('file',new File([blob],'emotion.webm',{type:'audio/webm'}));
+        try{
+          const r=await(await fetch('/api/emotion/predict',{method:'POST',body:fd})).json();
+          if(!r.ok)return;
+          $('aiEmotionLabel').textContent=AI_EMO_MAP[r.emotion]||r.emotion_vi;
+          $('aiEmotionConf').textContent=Math.round(r.confidence*100)+'%';
+          const sc=r.all_scores.map(s=>s.label_vi+' '+Math.round(s.score*100)+'%').join(' · ');
+          $('aiEmotionScores').textContent=sc;
+          capNhatCamXuc(r.emotion==='angry'?'angry':r.emotion==='happy'?'happy':r.emotion==='sad'?'sad':'neutral');
+          ghiLog('🧠','AI cảm xúc: '+r.emotion_vi+' ('+Math.round(r.confidence*100)+'%)','');
+        }catch(e){}
+      };
+      aiEmoRecorder.start();setTimeout(()=>{if(aiEmoRecorder?.state==='recording')aiEmoRecorder.stop()},3000);
+    }catch(e){}
+  },5000);
+}
+function stopAiEmotion(){aiEmoRunning=false;clearInterval(aiEmoInterval);if(aiEmoRecorder?.state==='recording')aiEmoRecorder.stop()}
+
+/* ── Pronunciation ── */
+let pronSelectedId='',pronRecorder=null,pronBlob=null,pronRecording=false;
+async function taiDanhSachCau(){
+  const list=$('pronSentenceList'),cnt=$('pronSentenceCount');list.innerHTML=' ang tải...';
+  try{const d=await(await fetch('/api/pronunciation/sentences')).json();if(!d.ok)throw new Error(d.error);
+    cnt.textContent=d.count+' câu';list.innerHTML='';
+    d.sentences.forEach(s=>{const div=document.createElement('div');div.className='pron-item';
+      div.innerHTML='<span class="pron-text">'+s.text+'</span><span class="pron-dur">'+s.duration_sec+'s</span>';
+      div.onclick=()=>{document.querySelectorAll('.pron-item').forEach(x=>x.classList.remove('active'));div.classList.add('active');
+        pronSelectedId=s.id;$('pronRefText').textContent=s.text;$('pronRefAudio').src='/api/pronunciation/audio/'+s.id;
+        $('pronRefBox').style.display='block';$('btnPronEval').disabled=false;$('pronResultArea').classList.remove('show')};
+      list.appendChild(div)});
+  }catch(e){list.innerHTML=' '+e.message}
+}
+async function batDauGhiAmPron(){
+  if(pronRecording){pronRecorder?.stop();return}
+  try{const rs=await navigator.mediaDevices.getUserMedia({audio:selectedMicId?{deviceId:{exact:selectedMicId}}:true});
+    const chunks=[];pronRecorder=new MediaRecorder(rs,{mimeType:'audio/webm'});
+    pronRecorder.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
+    pronRecorder.onstop=()=>{pronBlob=new Blob(chunks,{type:'audio/webm'});$('pronUserAudio').src=URL.createObjectURL(pronBlob);
+      $('pronUserAudio').style.display='block';rs.getTracks().forEach(t=>t.stop());pronRecording=false;
+      $('btnPronRecord').textContent='🎙 Ghi âm';$('btnPronRecord').classList.remove('recording');
+      $('pronRecStatus').textContent='ã ghi xong';$('btnPronEval').disabled=false};
+    pronRecorder.start();pronRecording=true;$('btnPronRecord').textContent=' Dừng';
+    $('btnPronRecord').classList.add('recording');$('pronRecStatus').textContent='ang ghi...';
+  }catch(e){$('pronRecStatus').textContent='Lỗi: '+e.message}
+}
+function pronFileChosen(){
+  const f=$('pronUserFile').files[0];
+  if(f){pronBlob=f;$('pronRecStatus').textContent='ã chn: '+f.name;$('btnPronEval').disabled=false}
+}
+async function danhGiaPhatAm(){
+  const file=pronBlob||$('pronUserFile').files[0];
+  if(!file){$('pronRecStatus').textContent='Chưa có audio — ghi âm hoặc upload file';return}
+  if(!pronSelectedId){$('pronRecStatus').textContent='Vui lòng chn câu mẫu trước';return}
+  $('btnPronEval').disabled=true;$('pronRecStatus').textContent='ang chấm điểm...';
+  const fd=new FormData();
+  fd.append('file',file instanceof Blob&&!(file instanceof File)?new File([file],'pron.webm',{type:'audio/webm'}):file);
+  fd.append('reference_id',pronSelectedId);
+  try{
+    const r=await(await fetch('/api/pronunciation/evaluate',{method:'POST',body:fd})).json();
+    if(!r.ok)throw new Error(r.error);
+    $('pronScoreOverall').textContent=r.overall_score;
+    $('pronScorePitch').textContent=r.pitch_score;
+    $('pronScoreMfcc').textContent=r.mfcc_score;
+    $('pronScoreRhythm').textContent=r.rhythm_score;
+    $('pronScoreEnergy').textContent=r.energy_score;
+    $('pronGrade').textContent=r.grade;
+    $('pronGrade').style.color=r.overall_score>=80?'var(--grn)':r.overall_score>=60?'var(--org)':'var(--red)';
+    $('pronFeedback').textContent=r.feedback||'';
+    $('pronResultArea').classList.add('show');
+    $('pronRecStatus').textContent='Hoàn tất!';
+    ghiLog('🇻🇳','Phát âm: '+r.overall_score+'/100 — '+r.grade,'');
+  }catch(e){$('pronRecStatus').textContent=' '+e.message}
+  finally{$('btnPronEval').disabled=false}
+}
+
+/* ── Cough ── */
+let coughRec=null,coughBlob=null,coughRecording=false;
+async function toggleCoughRec(){
+  if(coughRecording){coughRec.stop();return}
+  try{
+    const s=await navigator.mediaDevices.getUserMedia({audio:selectedMicId?{deviceId:{exact:selectedMicId}}:true});
+    const chunks=[];coughRec=new MediaRecorder(s,{mimeType:'audio/webm'});
+    coughRec.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
+    coughRec.onstop=()=>{coughBlob=new Blob(chunks,{type:'audio/webm'});coughRecording=false;
+      s.getTracks().forEach(t=>t.stop());
+      $('btnCoughRec').textContent='🎙 Ghi âm ho';$('btnCoughRec').classList.remove('recording');
+      $('coughRecStatus').textContent='ã ghi xong ('+Math.round(coughBlob.size/1024)+'KB)'};
+    coughRec.start();coughRecording=true;
+    $('btnCoughRec').textContent=' Dừng ghi';$('btnCoughRec').classList.add('recording');
+    $('coughRecStatus').textContent='ang ghi... ho vào mic';
+    setTimeout(()=>{if(coughRec?.state==='recording')coughRec.stop()},5000);
+  }catch(e){$('coughRecStatus').textContent='Lỗi mic: '+e.message}
+}
+async function analyzeCough(){
+  const file=$('coughFile').files[0]||coughBlob;
+  if(!file){$('coughRecStatus').textContent='Chưa có audio — ghi âm hoặc upload file';return}
+  $('btnCoughAnalyze').disabled=true;$('coughRecStatus').textContent='ang phân tích...';
+  const fd=new FormData();
+  fd.append('file',file instanceof Blob&&!(file instanceof File)?new File([file],'cough.webm',{type:'audio/webm'}):file);
+  try{const r=await(await fetch('/api/cough/predict',{method:'POST',body:fd})).json();
+    if(!r.ok)throw new Error(r.error);
+    const colors={dry_cough:'var(--org)',wet_cough:'var(--cyan)',not_cough:'var(--grn)'};
+    $('coughLabel').textContent=r.prediction_vi;$('coughLabel').style.color=colors[r.prediction]||'var(--txt)';
+    let scHtml='';for(const[k,v]of Object.entries(r.scores_vi)){scHtml+=`<div class="cough-sc"><div class="val">${Math.round(v*100)}%</div><div class="label">${k}</div></div>`}
+    $('coughScores').innerHTML=scHtml;$('coughConf').textContent='ộ tin cậy: '+Math.round(r.confidence*100)+'%';
+    $('coughResult').classList.add('show');$('coughRecStatus').textContent='Hoàn tất!';
+    ghiLog('🤧','Ho: '+r.prediction_vi+' ('+Math.round(r.confidence*100)+'%)','');
+  }catch(e){$('coughRecStatus').textContent=' '+e.message}
+  finally{$('btnCoughAnalyze').disabled=false}
+}
+
+/* ── Depression ── */
+let depRec=null,depBlob=null,depRecording=false;
+async function toggleDepRec(){
+  if(depRecording){depRec.stop();return}
+  try{
+    const s=await navigator.mediaDevices.getUserMedia({audio:selectedMicId?{deviceId:{exact:selectedMicId}}:true});
+    const chunks=[];depRec=new MediaRecorder(s,{mimeType:'audio/webm'});
+    depRec.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
+    depRec.onstop=()=>{depBlob=new Blob(chunks,{type:'audio/webm'});depRecording=false;
+      s.getTracks().forEach(t=>t.stop());
+      $('btnDepRec').textContent='🎙 Ghi âm ging nói';$('btnDepRec').classList.remove('recording');
+      $('depRecStatus').textContent='ã ghi xong ('+Math.round(depBlob.size/1024)+'KB)'};
+    depRec.start();depRecording=true;
+    $('btnDepRec').textContent=' Dừng ghi';$('btnDepRec').classList.add('recording');
+    $('depRecStatus').textContent='ang ghi... nói bình thưng ~10 giây';
+    setTimeout(()=>{if(depRec?.state==='recording')depRec.stop()},12000);
+  }catch(e){$('depRecStatus').textContent='Lỗi mic: '+e.message}
+}
+async function analyzeDep(){
+  const file=$('depFile').files[0]||depBlob;
+  if(!file){$('depRecStatus').textContent='Chưa có audio — ghi âm hoặc upload file';return}
+  $('btnDepAnalyze').disabled=true;$('depRecStatus').textContent='ang phân tích ging nói...';
+  const fd=new FormData();
+  fd.append('file',file instanceof Blob&&!(file instanceof File)?new File([file],'voice.webm',{type:'audio/webm'}):file);
+  try{const r=await(await fetch('/api/depression/screen',{method:'POST',body:fd})).json();
+    if(!r.ok)throw new Error(r.error);
+    const col=r.risk_level==='cao'?'var(--red)':r.risk_level==='trung bình'?'var(--org)':'var(--grn)';
+    $('depScore').textContent=r.risk_score+'%';$('depScore').style.color=col;
+    $('depLevel').textContent=r.risk_level_vi;$('depLevel').style.color=col;
+    let indHtml='';for(const ind of r.indicators){
+      const cls=ind.severity==='cao'?'sev-cao':ind.severity==='trung bình'?'sev-trung':'';
+      indHtml+=`<li class="${cls}"><strong>${ind.feature}</strong> — ${ind.detail}</li>`}
+    $('depIndicators').innerHTML=indHtml||'<li>Không phát hiện dấu hiệu bất thưng</li>';
+    const featMap={pitch_mean:'Pitch TB',pitch_std:'Pitch Std',pitch_range:'Pitch Range',energy_mean:'Energy',jitter:'Jitter',shimmer:'Shimmer',hnr:'HNR (dB)',speech_rate:'Nhịp nói',pause_ratio:'Khoảng lặng'};
+    let fHtml='';for(const[k,label]of Object.entries(featMap)){const v=r.features[k];if(v!==undefined)fHtml+=`<div class="med-feat"><div class="k">${label}</div><div class="v">${typeof v==='number'?v.toFixed(3):v}</div></div>`}
+    $('depFeats').innerHTML=fHtml;$('depAdvice').textContent=r.advice;$('depDisclaimer').textContent=r.disclaimer;
+    $('depResult').classList.add('show');$('depRecStatus').textContent='Hoàn tất!';
+    ghiLog('🧠','Trầm cảm: '+r.risk_score+'% - '+r.risk_level_vi,'');
+  }catch(e){$('depRecStatus').textContent=' '+e.message}
+  finally{$('btnDepAnalyze').disabled=false}
+}
+
+veXuong();kiemTraQuyenMic();taiLaiDanhSachMic();
+navigator.mediaDevices?.addEventListener?.('devicechange',taiLaiDanhSachMic);
+</script>
+</body>
+</html>
