@@ -1,0 +1,109 @@
+# Parkinson's Disease Detection Using Machine Learning
+
+> ⚠️ **DISCLAIMER**: This project is for **educational and research purposes only**. It is NOT a medical diagnostic tool. Do not use it to make health decisions. Always consult a qualified healthcare professional for medical advice.
+
+Detects Parkinson's disease from voice recordings using an SVM (Support Vector Machine) classifier. The system analyzes phonation features — the sounds produced when pronouncing sustained vowels — since phonation is the most affected component of speech in Parkinson's patients.
+
+## How It Works
+
+1. **Feature Extraction**: Voice recordings (`.wav`) are processed using [PRAAT](https://www.fon.hum.uva.nl/praat/) (via [`parselmouth`](https://github.com/YannickJadworski/Parselmouth)) to extract acoustic features: jitter, shimmer, NHR, HNR, pitch statistics, pulse counts, and period measurements.
+2. **Training**: A Gradient Boosting classifier (200 estimators, max_depth=5) is trained on the UCI voice dataset (1040 recordings from 56 subjects). Feature scaling is applied via `StandardScaler`, and the scaler is saved alongside the model.
+3. **Prediction**: New voice samples are analyzed, features are extracted and scaled using the saved scaler, then classified as Parkinson's-positive or healthy.
+
+## Project Structure
+
+```
+├── features.py           # Shared feature extraction module (PRAAT parsing + validation)
+├── train.py              # Train the SVM model and save it with the scaler
+├── predict.py            # CLI prediction from a .wav file
+├── gui.py                # Tkinter GUI for file selection and prediction
+├── final2.csv            # Training dataset (1040 samples, 29 columns)
+├── requirements.txt      # Pinned Python dependencies
+├── LICENSE               # MIT License
+└── README.md
+```
+
+## Setup
+
+```bash
+# Python 3.10+ required
+pip install -r requirements.txt
+```
+
+## Usage
+
+### 1. Train the model
+
+```bash
+python train.py
+```
+
+Example output:
+```
+Cross-validation accuracy: 0.6670 (+/- 0.0567)
+
+Confusion Matrix:
+[[74 33]
+ [26 75]]
+
+              precision    recall  f1-score   support
+
+     Healthy       0.74      0.69      0.71       107
+  Parkinsons       0.69      0.74      0.72       101
+
+    accuracy                           0.72       208
+
+Model and scaler saved to svmclassifier.pkl
+```
+
+### 2. Predict from a .wav file (CLI)
+
+```bash
+python predict.py path/to/voice_recording.wav
+```
+
+```
+Healthy — No Parkinson's Detected
+```
+
+### 3. Predict using the GUI
+
+```bash
+python gui.py
+```
+
+Use **File → Open** to select a `.wav` file containing a sustained vowel ('a' or 'o'), then click **Detect**.
+
+## Dataset
+
+- **Source**: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/301/) — Parkinson Speech Dataset with Multiple Types of Sound Recordings
+- **License**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- **Samples**: 1040 recordings from 56 subjects (sustained vowels 'a' and 'o', 3 times each)
+- **Features**: 26 acoustic features including jitter variants, shimmer variants, autocorrelation, noise-to-harmonics ratio, pitch statistics, pulse/period measurements, voicing breaks
+- **Label**: Binary (1 = Parkinson's, 0 = Healthy) at column index 28
+
+### Citation
+
+If you use this dataset, please cite:
+
+> Sakar, B.E., Isenkul, M.E., Sakar, C.O., Sertbas, A., Gurgen, F., Delil, S., Apaydin, H., Kursun, O. (2013).
+> *Collection and Analysis of a Parkinson Speech Dataset with Multiple Types of Sound Recordings.*
+> IEEE Journal of Biomedical and Health Informatics, 17(4), 828-834.
+
+## Model Accuracy
+
+The model achieves ~72% accuracy on `final2.csv` using Gradient Boosting with all 26 acoustic features. This is an improvement over the original SVM with 10 PSO-selected features (~64%), achieved by using all available PRAAT features (including voicing break metrics) and hyperparameter tuning via GridSearchCV.
+
+## Limitations
+
+- **No automated tests.** Contributions adding unit tests for `extract_features()`, `train()`, and `predict()` are welcome.
+- **Model accuracy is ~72%** on the available dataset. See [Model Accuracy](#model-accuracy) for context.
+- **Pickle security:** The model is saved/loaded via `pickle`, which can execute arbitrary code. Only load `.pkl` files you generated yourself with `train.py`. Never load untrusted pickle files.
+
+## License
+
+This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.

@@ -1,0 +1,186 @@
+name: Build & Deploy → HuggingFace Space
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+env:
+  HF_USERNAME:   Aadithya1122
+  HF_SPACE_NAME: parkinsons-voice-detection
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: /home/runner/work/Parkinson-s_voice_detection/Parkinson-s_voice_detection
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install system deps
+        run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends ffmpeg build-essential
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Feature extractor sanity checks
+        run: PYTHONPATH=. python tests/test_extractor.py
+
+      - name: Flask smoke test
+        run: |
+          PYTHONPATH=. python -c "
+          import sys, types
+          m = types.ModuleType('src.wav2vec2_inference')
+          m.is_available = lambda: False
+          m.load_error   = lambda: 'ci-skip'
+          sys.modules['src.wav2vec2_inference'] = m
+          import app
+          print(f'OK — backend={app.BACKEND} threshold={app.TUNED_THRESHOLD:.3f}')
+          "
+
+  deploy-space:
+    name: Assemble & push to HuggingFace
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Assemble space_build/
+        run: |
+          mkdir -p space_build/src
+          mkdir -p space_build/models
+          mkdir -p space_build/templates
+          mkdir -p space_build/static
+          mkdir -p space_build/data
+          mkdir -p space_build/scripts
+          mkdir -p space_build/uploads
+
+          # ── src: all runtime modules ──────────────────────────────────────
+          for f in \
+            src/__init__.py \
+            src/audio_utils.py \
+            src/feature_extractor.py \
+            src/extra_features.py \
+            src/nonlinear_features.py \
+            src/wav2vec2_inference.py \
+            src/llm_explainer.py \
+            src/database.py \
+            src/auth.py \
+            src/spiral_inference.py \
+            src/motor_analyzer.py; do
+            [ -f "$f" ] && cp "$f" "space_build/$f" && echo "  ✓ $f" || echo "  WARN: $f not found"
+          done
+
+          # ── Flask app ─────────────────────────────────────────────────────
+          cp app.py space_build/
+          echo "  ✓ app.py"
+
+          # ── Trained model ─────────────────────────────────────────────────
+          cp models/parkinsons_pipeline.joblib space_build/models/
+          cp models/feature_names.pkl          space_build/models/
+          cp models/training_report.json       space_build/models/
+          mkdir -p space_build/models_motor
+          [ -d models_motor ] && cp models_motor/*.joblib space_build/models_motor/ 2>/dev/null || true
+          [ -d models_motor ] && cp models_motor/*.pkl    space_build/models_motor/ 2>/dev/null || true
+          [ -d models_motor ] && cp models_motor/*.json   space_build/models_motor/ 2>/dev/null || true
+          echo '  ✓ models_motor/'
+          echo "  ✓ models/"
+
+          # ── All templates ─────────────────────────────────────────────────
+          cp templates/index.html     space_build/templates/
+          cp templates/login.html      space_build/templates/
+          cp templates/report.html    space_build/templates/
+          cp templates/export.html    space_build/templates/
+          cp templates/dashboard.html space_build/templates/
+          cp templates/motor.html        space_build/templates/
+          echo "  ✓ templates/"
+
+          # ── Static assets ─────────────────────────────────────────────────
+          [ -d static ] && cp -r static/. space_build/static/ && echo "  ✓ static/" || true
+
+          # ── Data (needed for refit step in Dockerfile) ────────────────────
+          cp data/italian_w2v2.csv space_build/data/
+          echo "  ✓ data/italian_w2v2.csv"
+
+          # ── Scripts ───────────────────────────────────────────────────────
+          cp scripts/refit_w2v2_local.py space_build/scripts/
+          echo "  ✓ scripts/refit_w2v2_local.py"
+
+          # ── Space-specific files ──────────────────────────────────────────
+          cp parkinsons_space/README.md                  space_build/README.md
+          cp parkinsons_space/Dockerfile                 space_build/Dockerfile
+          cp parkinsons_space/.dockerignore              space_build/.dockerignore
+          cp parkinsons_space/requirements.txt           space_build/requirements.txt
+          cp parkinsons_space/requirements_wav2vec2.txt  space_build/requirements_wav2vec2.txt
+          echo "  ✓ space files"
+
+          touch space_build/uploads/.gitkeep
+
+          echo ""
+          echo "=== Final space_build contents ==="
+          find space_build -type f | sort
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install huggingface_hub
+        run: pip install --quiet huggingface_hub
+
+      - name: Push to HuggingFace Spaces
+        env:
+          HF_TOKEN:      ${{ secrets.HF_TOKEN }}
+          GROQ_API_KEY:  ${{ secrets.GROQ_API_KEY }}
+          MONGODB_URI:   ${{ secrets.MONGODB_URI }}
+          JWT_SECRET:    ${{ secrets.JWT_SECRET }}
+        run: |
+          python - <<'PYEOF'
+          import os
+          from huggingface_hub import HfApi
+
+          token    = os.environ["HF_TOKEN"]
+          username = "${{ env.HF_USERNAME }}"
+          space    = "${{ env.HF_SPACE_NAME }}"
+          repo_id  = f"{username}/{space}"
+          api      = HfApi(token=token)
+
+          # Push all secrets to the Space
+          for key in ["GROQ_API_KEY", "MONGODB_URI", "JWT_SECRET"]:
+              val = os.environ.get(key, "")
+              if val:
+                  try:
+                      api.add_space_secret(repo_id=repo_id, key=key, value=val)
+                      print(f"  ✓ secret {key} set")
+                  except Exception as e:
+                      print(f"  ! {key}: {e}")
+
+          print(f"\nUploading space_build/ → {repo_id} ...")
+          api.upload_folder(
+              folder_path="space_build",
+              repo_id=repo_id,
+              repo_type="space",
+              commit_message="Deploy from GitHub Actions",
+          )
+          print(f"\n✅ Live: https://huggingface.co/spaces/{repo_id}")
+          PYEOF
+
+      - name: Summary
+        run: |
+          echo ""
+          echo "════════════════════════════════════════════════════"
+          echo "  DEPLOYED"
+          echo "  https://huggingface.co/spaces/${{ env.HF_USERNAME }}/${{ env.HF_SPACE_NAME }}"
+          echo "════════════════════════════════════════════════════"

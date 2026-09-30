@@ -1,0 +1,479 @@
+"""
+Run from pva2/ folder:  python patch_dashboard.py
+Rewrites the dashboard with delete, edit notes, share panel, export PDF.
+"""
+
+NEW_DASHBOARD = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dashboard — Voice·PD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;
+    --blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;
+    --ink:#0B1533;--ink-soft:#3E4A6F;--ink-mute:#6B7796;
+    --panel:rgba(255,255,255,0.80);--panel-solid:#FFFFFF;
+    --stroke:rgba(13,37,88,0.10);--stroke-strong:rgba(13,37,88,0.18);
+    --success:#0EA371;--danger:#DC2B4C;--warn:#D97706;
+    --shadow-md:0 6px 16px rgba(16,38,90,0.08),0 2px 4px rgba(16,38,90,0.04);
+    --display:"Space Grotesk",system-ui,sans-serif;
+    --sans:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);color:var(--ink);background:#F6F9FF;
+       -webkit-font-smoothing:antialiased;min-height:100vh;}
+  .bg{position:fixed;inset:0;z-index:-2;
+    background:radial-gradient(ellipse 80% 55% at 20% 0%,#E0ECFF 0%,transparent 55%),
+               radial-gradient(ellipse 60% 45% at 100% 30%,#DEEBFF 0%,transparent 50%),
+               linear-gradient(180deg,#F6F9FF 0%,#FFFFFF 100%);}
+  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.45;mix-blend-mode:multiply;}
+  .blob.b1{width:500px;height:500px;top:-180px;left:-120px;background:radial-gradient(circle,#BFDBFE 0%,transparent 70%);}
+  .blob.b2{width:400px;height:400px;bottom:-100px;right:-100px;background:radial-gradient(circle,#93C5FD 0%,transparent 70%);}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 28px 80px;}
+
+  nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-mark{width:36px;height:36px;border-radius:10px;
+    background:linear-gradient(135deg,var(--blue-500),var(--blue-700));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 12px rgba(59,130,246,0.35);}
+  .brand-name{font-family:var(--display);font-weight:700;font-size:17px;}
+  .nav-links{display:flex;gap:8px;align-items:center;}
+  .btn-nav{font-family:var(--sans);font-weight:500;font-size:13px;padding:8px 16px;
+    border-radius:10px;border:0;cursor:pointer;text-decoration:none;display:inline-block;}
+  .btn-outline{background:white;border:1px solid var(--stroke-strong);color:var(--ink);}
+  .btn-outline:hover{background:var(--blue-50);border-color:var(--blue-300);color:var(--blue-700);}
+  .btn-danger-sm{background:#FEF2F4;border:1px solid #FBCFE8;color:var(--danger);}
+  .btn-primary-sm{background:linear-gradient(180deg,var(--blue-500),var(--blue-700));
+    color:white;box-shadow:0 3px 10px rgba(37,99,235,0.25);}
+  .btn-primary-sm:hover{transform:translateY(-1px);}
+
+  .hero{margin-bottom:32px;}
+  .hero-eyebrow{font-size:12px;font-weight:500;letter-spacing:0.06em;
+    text-transform:uppercase;color:var(--blue-600);margin-bottom:8px;}
+  .hero h1{font-family:var(--display);font-weight:700;
+    font-size:clamp(26px,4vw,40px);letter-spacing:-0.03em;margin-bottom:6px;}
+  .hero-sub{font-size:14px;color:var(--ink-mute);}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+  @media(max-width:700px){.stats{grid-template-columns:1fr 1fr;}}
+  .stat-card{background:var(--panel);backdrop-filter:blur(16px);
+    border:1px solid var(--stroke);border-radius:16px;padding:20px;box-shadow:var(--shadow-md);}
+  .stat-label{font-size:11px;font-weight:500;letter-spacing:0.07em;
+    text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px;}
+  .stat-value{font-family:var(--display);font-weight:700;font-size:26px;
+    letter-spacing:-0.02em;color:var(--blue-700);}
+  .stat-sub{font-size:12px;color:var(--ink-mute);margin-top:3px;}
+
+  .trend{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;
+    border-radius:999px;font-size:12px;font-weight:600;}
+  .trend.improving{background:#ECFDF5;color:var(--success);border:1px solid #A7F3D0;}
+  .trend.stable{background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-200);}
+  .trend.worsening{background:#FEF2F4;color:var(--danger);border:1px solid #FBCFE8;}
+  .trend.insufficient{background:#F9FAFB;color:var(--ink-mute);border:1px solid var(--stroke);}
+
+  .panel{background:var(--panel);backdrop-filter:blur(16px);border:1px solid var(--stroke);
+    border-radius:20px;padding:26px;box-shadow:var(--shadow-md);margin-bottom:20px;}
+  .panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+  .panel-title{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-0.01em;}
+  .panel-actions{display:flex;gap:8px;}
+  .chart-wrap{position:relative;height:270px;}
+
+  /* Share panel */
+  .share-panel{background:linear-gradient(135deg,#F5F3FF,#EFF6FF);
+    border:1px solid #DDD6FE;border-radius:14px;padding:18px;margin-bottom:16px;}
+  .share-title{font-family:var(--display);font-weight:600;font-size:14px;
+    color:#5B21B6;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+  .share-url{display:flex;gap:8px;align-items:center;}
+  .share-input{flex:1;padding:9px 12px;border:1.5px solid #DDD6FE;border-radius:10px;
+    font-size:13px;color:var(--ink);background:white;outline:none;font-family:var(--sans);}
+  .btn-copy{padding:9px 16px;border-radius:10px;border:0;cursor:pointer;
+    font-family:var(--sans);font-weight:600;font-size:13px;
+    background:#7C3AED;color:white;white-space:nowrap;}
+  .btn-copy:hover{background:#6D28D9;}
+  .btn-revoke{padding:9px 14px;border-radius:10px;border:0;cursor:pointer;
+    font-family:var(--sans);font-weight:500;font-size:13px;
+    background:#FEF2F4;color:var(--danger);border:1px solid #FBCFE8;}
+
+  /* Table */
+  .table-wrap{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{font-size:10px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--ink-mute);padding:9px 10px;text-align:left;border-bottom:1px solid var(--stroke);}
+  td{padding:11px 10px;border-bottom:1px solid var(--stroke);vertical-align:middle;}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:rgba(239,246,255,0.5);}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;}
+  .badge.pd{background:#FEF2F4;color:var(--danger);}
+  .badge.healthy{background:#ECFDF5;color:var(--success);}
+  .prob-bar{height:5px;border-radius:999px;
+    background:linear-gradient(90deg,#D1FAE5 0%,#FEF3C7 50%,#FECACA 100%);
+    position:relative;width:100px;}
+  .prob-fill{position:absolute;top:-2px;bottom:-2px;width:3px;
+    background:var(--ink);border-radius:2px;transform:translateX(-50%);}
+
+  /* Inline notes edit */
+  .notes-cell{max-width:160px;}
+  .notes-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    color:var(--ink-mute);font-style:italic;font-size:12px;cursor:pointer;}
+  .notes-text:hover{color:var(--blue-600);text-decoration:underline;}
+  .notes-edit{display:none;align-items:center;gap:4px;}
+  .notes-input{padding:4px 8px;border:1.5px solid var(--blue-300);border-radius:7px;
+    font-size:12px;font-family:var(--sans);width:130px;outline:none;}
+  .notes-save{padding:4px 8px;border-radius:7px;border:0;cursor:pointer;
+    background:var(--blue-600);color:white;font-size:11px;font-weight:600;}
+  .notes-cancel{padding:4px 6px;border-radius:7px;border:0;cursor:pointer;
+    background:#F3F4F6;color:var(--ink-mute);font-size:11px;}
+
+  /* Delete btn */
+  .del-btn{background:none;border:none;cursor:pointer;padding:5px;border-radius:8px;
+    color:#CBD5E1;transition:all .15s;}
+  .del-btn:hover{background:#FEF2F4;color:var(--danger);}
+
+  .empty{text-align:center;padding:48px 20px;color:var(--ink-mute);}
+  .empty-icon{font-size:36px;margin-bottom:10px;}
+  .empty h3{font-family:var(--display);font-size:18px;margin-bottom:6px;color:var(--ink);}
+  .empty a{color:var(--blue-600);font-weight:500;text-decoration:none;}
+  .loading{text-align:center;padding:40px;color:var(--ink-mute);}
+  .spin{display:inline-block;width:18px;height:18px;border-radius:50%;
+    border:2px solid var(--blue-200);border-top-color:var(--blue-600);
+    animation:spin .8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);
+    background:#0B1533;color:white;padding:10px 20px;border-radius:10px;
+    font-size:13px;font-weight:500;opacity:0;transition:opacity .25s;pointer-events:none;z-index:999;}
+  .toast.show{opacity:1;}
+</style>
+</head>
+<body>
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+<div class="toast" id="toast"></div>
+
+<div class="wrap">
+  <nav>
+    <div class="brand">
+      <div class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/>
+        </svg>
+      </div>
+      <span class="brand-name">Voice<span style="color:var(--blue-600)">·</span>PD</span>
+    </div>
+    <div class="nav-links">
+      <a href="/" class="btn-nav btn-outline">← Analyser</a>
+      <button class="btn-nav btn-danger-sm" onclick="logout()">Sign out</button>
+    </div>
+  </nav>
+
+  <div id="main-content">
+    <div class="loading"><span class="spin"></span><br/><br/>Loading your data...</div>
+  </div>
+</div>
+
+<script>
+const token = localStorage.getItem("pvd_token");
+if (!token) { window.location.href = "/login"; }
+
+function logout() {
+  localStorage.removeItem("pvd_token");
+  localStorage.removeItem("pvd_name");
+  window.location.href = "/";
+}
+function authH() {
+  return {"Authorization":"Bearer "+token,"Content-Type":"application/json"};
+}
+function fmt(ts) {
+  const d = new Date(ts+(ts.endsWith("Z")?"":"Z"));
+  return d.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
+}
+function fmtFull(ts) {
+  const d = new Date(ts+(ts.endsWith("Z")?"":"Z"));
+  return d.toLocaleString("en-IN",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
+}
+function trendBadge(t) {
+  const m={improving:["improving","↓ Improving"],stable:["stable","→ Stable"],
+           worsening:["worsening","↑ Worsening"],insufficient_data:["insufficient","Not enough data"]};
+  const [c,l]=m[t]||["insufficient","Unknown"];
+  return `<span class="trend ${c}">${l}</span>`;
+}
+function showToast(msg) {
+  const t=document.getElementById("toast");
+  t.textContent=msg; t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2500);
+}
+
+let _readings=[], _stats={}, _me={};
+
+async function loadDashboard() {
+  try {
+    const [meR,readR,statR,shareR] = await Promise.all([
+      fetch("/api/me",{headers:authH()}),
+      fetch("/api/readings",{headers:authH()}),
+      fetch("/api/stats",{headers:authH()}),
+      fetch("/api/share",{headers:authH()}),
+    ]);
+    if (meR.status===401){logout();return;}
+    _me=await meR.json(); _readings=await readR.json();
+    _stats=await statR.json();
+    const shareData=await shareR.json();
+    render(_me,_readings,_stats,shareData);
+  } catch(e) {
+    document.getElementById("main-content").innerHTML=
+      \'<div class="loading" style="color:#DC2B4C">Failed to load. Please refresh.</div>\';
+  }
+}
+
+function render(me,readings,stats,shareData) {
+  const total=stats.total;
+  const avgP=stats.avg_probability!==null?(stats.avg_probability*100).toFixed(1)+"%":"—";
+  const roll7=stats.rolling_avg_7!==null?(stats.rolling_avg_7*100).toFixed(1)+"%":"—";
+  const shareUrl=shareData.url||"";
+
+  document.getElementById("main-content").innerHTML=`
+    <div class="hero">
+      <div class="hero-eyebrow">Personal dashboard</div>
+      <h1>Welcome back, ${me.name.split(" ")[0]} 👋</h1>
+      <div class="hero-sub">${me.email} · member since ${fmt(me.created_at)}</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-label">Total readings</div>
+        <div class="stat-value">${total}</div>
+        <div class="stat-sub">voice samples</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Overall avg probability</div>
+        <div class="stat-value">${avgP}</div>
+        <div class="stat-sub">all readings</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Last 7 readings avg</div>
+        <div class="stat-value">${roll7}</div>
+        <div class="stat-sub">rolling average</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Trend</div>
+        <div style="margin-top:6px">${trendBadge(stats.trend)}</div>
+        <div class="stat-sub" style="margin-top:8px">${total} reading${total!==1?"s":""}</div>
+      </div>
+    </div>
+
+    <!-- Share + Export panel -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">🔗 Share with your doctor</div>
+        <div class="panel-actions">
+          <button class="btn-nav btn-primary-sm" onclick="exportPDF()"
+            style="font-size:12px;padding:7px 14px">🖨️ Export PDF</button>
+        </div>
+      </div>
+      <div class="share-panel">
+        <div class="share-title">🔒 Read-only report link for your neurologist</div>
+        ${shareUrl ? `
+        <div class="share-url">
+          <input class="share-input" id="shareInput" value="${shareUrl}" readonly/>
+          <button class="btn-copy" onclick="copyShare()">Copy link</button>
+          <button class="btn-revoke" onclick="revokeShare()">Revoke</button>
+        </div>
+        <p style="font-size:11px;color:var(--ink-mute);margin-top:8px">
+          Valid for 30 days · Doctor sees trend chart and readings only · No login needed</p>
+        ` : `
+        <p style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">
+          Generate a link your doctor can open to view your trend chart and reading history.
+          No login required on their end.</p>
+        <button class="btn-nav btn-primary-sm" onclick="createShare()" style="font-size:13px">
+          Generate doctor link
+        </button>
+        `}
+      </div>
+    </div>
+
+    ${total===0?`
+    <div class="panel">
+      <div class="empty">
+        <div class="empty-icon">🎙️</div>
+        <h3>No readings yet</h3>
+        <p>Go to the <a href="/">analyser</a>, record your voice, and save your first reading.</p>
+      </div>
+    </div>`:`
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Parkinson\'s Probability over time</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chart"></canvas></div>
+    </div>`}
+
+    ${total>0?`
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Reading history</div>
+      </div>
+      <div class="table-wrap">${buildTable(readings)}</div>
+    </div>`:""}
+  `;
+
+  if (total>0) renderChart(readings);
+}
+
+function buildTable(readings) {
+  if (!readings.length) return \'<div class="empty"><p>No readings.</p></div>\';
+  const rows=readings.slice(0,100).map(r=>{
+    const pct=(r.probability_pd*100).toFixed(1);
+    const badge=r.prediction===1
+      ?\'<span class="badge pd">PD indicators</span>\'
+      :\'<span class="badge healthy">Healthy</span>\';
+    const notes=r.notes||"";
+    return `<tr id="row-${r._id}">
+      <td style="color:var(--ink-mute);font-size:12px">${fmtFull(r.timestamp)}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="prob-bar"><div class="prob-fill" style="left:${pct}%"></div></div>
+          <span style="font-weight:600;font-variant-numeric:tabular-nums">${pct}%</span>
+        </div>
+      </td>
+      <td>${badge}</td>
+      <td class="notes-cell">
+        <span class="notes-text" onclick="editNotes(\'${r._id}\')"
+          title="Click to edit">${notes||\'<span style="color:#aaa">Add note…</span>\'}</span>
+        <div class="notes-edit" id="edit-${r._id}">
+          <input class="notes-input" id="ni-${r._id}" value="${notes}" maxlength="500"/>
+          <button class="notes-save" onclick="saveNotes(\'${r._id}\')">✓</button>
+          <button class="notes-cancel" onclick="cancelEdit(\'${r._id}\')">✕</button>
+        </div>
+      </td>
+      <td>
+        <button class="del-btn" onclick="deleteReading(\'${r._id}\')" title="Delete reading">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6l-1 14H6L5 6"/>
+            <path d="M10 11v6M14 11v6"/>
+          </svg>
+        </button>
+      </td>
+    </tr>`;
+  }).join("");
+  return `<table>
+    <thead><tr>
+      <th>Date & time</th><th>Probability</th><th>Result</th>
+      <th>Notes</th><th></th>
+    </tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+function renderChart(readings) {
+  const chrono=[...readings].reverse();
+  const labels=chrono.map(r=>fmt(r.timestamp));
+  const probs=chrono.map(r=>+(r.probability_pd*100).toFixed(1));
+  const rolling=probs.map((_,i)=>{
+    const w=probs.slice(Math.max(0,i-6),i+1);
+    return +(w.reduce((a,b)=>a+b,0)/w.length).toFixed(1);
+  });
+  new Chart(document.getElementById("chart").getContext("2d"),{
+    type:"line",
+    data:{labels,datasets:[
+      {label:"Parkinson\'s Probability %",data:probs,borderColor:"#2563EB",
+       backgroundColor:"rgba(37,99,235,0.08)",borderWidth:2.5,fill:true,tension:0.3,
+       pointBackgroundColor:probs.map(p=>p>=38?"#DC2B4C":"#0EA371"),pointRadius:5,pointHoverRadius:7},
+      {label:"7-reading avg",data:rolling,borderColor:"#8B5CF6",borderWidth:2,
+       borderDash:[5,4],pointRadius:0,fill:false,tension:0.3},
+      {label:"Threshold (38%)",data:new Array(probs.length).fill(38),
+       borderColor:"rgba(220,43,76,0.35)",borderWidth:1.5,borderDash:[4,4],pointRadius:0,fill:false},
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      interaction:{mode:"index",intersect:false},
+      plugins:{legend:{labels:{font:{family:"Inter",size:11},boxWidth:14,padding:14}},
+        tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y}%`}}},
+      scales:{
+        x:{grid:{color:"rgba(13,37,88,0.05)"},
+           ticks:{font:{family:"Inter",size:10},color:"#6B7796",maxTicksLimit:8,maxRotation:30}},
+        y:{min:0,max:100,grid:{color:"rgba(13,37,88,0.05)"},
+           ticks:{font:{family:"Inter",size:11},color:"#6B7796",callback:v=>v+"%"}},
+      }},
+  });
+}
+
+// ── Delete reading ───────────────────────────────────────────────────────────
+async function deleteReading(id) {
+  if (!confirm("Delete this reading? This cannot be undone.")) return;
+  try {
+    const res=await fetch(`/api/readings/${id}`,{method:"DELETE",headers:authH()});
+    if (!res.ok) throw new Error((await res.json()).message);
+    document.getElementById("row-"+id)?.remove();
+    showToast("Reading deleted");
+    _readings=_readings.filter(r=>r._id!==id);
+  } catch(e) { showToast("Failed: "+e.message); }
+}
+
+// ── Edit notes ───────────────────────────────────────────────────────────────
+function editNotes(id) {
+  const txt=document.querySelector(`#row-${id} .notes-text`);
+  const edit=document.getElementById("edit-"+id);
+  if (txt) txt.style.display="none";
+  if (edit) { edit.style.display="flex"; document.getElementById("ni-"+id)?.focus(); }
+}
+function cancelEdit(id) {
+  const txt=document.querySelector(`#row-${id} .notes-text`);
+  const edit=document.getElementById("edit-"+id);
+  if (txt) txt.style.display="";
+  if (edit) edit.style.display="none";
+}
+async function saveNotes(id) {
+  const val=document.getElementById("ni-"+id)?.value||"";
+  try {
+    const res=await fetch(`/api/readings/${id}`,{method:"PATCH",headers:authH(),
+      body:JSON.stringify({notes:val})});
+    if (!res.ok) throw new Error((await res.json()).message);
+    const txt=document.querySelector(`#row-${id} .notes-text`);
+    if (txt) txt.innerHTML=val||\'<span style="color:#aaa">Add note…</span>\';
+    cancelEdit(id);
+    showToast("Notes saved");
+    const r=_readings.find(x=>x._id===id); if (r) r.notes=val;
+  } catch(e) { showToast("Failed: "+e.message); }
+}
+
+// ── Share ────────────────────────────────────────────────────────────────────
+async function createShare() {
+  try {
+    const res=await fetch("/api/share",{method:"POST",headers:authH()});
+    const data=await res.json();
+    if (!res.ok) throw new Error(data.message);
+    showToast("Doctor link created!");
+    loadDashboard();
+  } catch(e) { showToast("Failed: "+e.message); }
+}
+async function revokeShare() {
+  if (!confirm("Revoke this link? Your doctor will no longer be able to access it.")) return;
+  try {
+    await fetch("/api/share",{method:"DELETE",headers:authH()});
+    showToast("Link revoked");
+    loadDashboard();
+  } catch(e) { showToast("Failed: "+e.message); }
+}
+function copyShare() {
+  const input=document.getElementById("shareInput");
+  if (!input) return;
+  navigator.clipboard.writeText(input.value).then(()=>showToast("Link copied to clipboard!"));
+}
+
+// ── Export PDF ───────────────────────────────────────────────────────────────
+function exportPDF() {
+  window.open(`/dashboard/export?token=${token}`, "_blank");
+}
+
+loadDashboard();
+</script>
+</body>
+</html>'''
+
+open("templates/dashboard.html", "w").write(NEW_DASHBOARD)
+print("✓ dashboard.html rewritten with delete, edit notes, share, export PDF")
