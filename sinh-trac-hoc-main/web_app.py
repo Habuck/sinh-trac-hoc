@@ -52,7 +52,9 @@ from audio_project.parkinson import (
     predict_parkinson,
     train_parkinson_model,
     is_model_trained as parkinson_model_trained,
+    get_model_info as parkinson_model_info_data,
     PARKINSON_MODEL_PATH,
+    json_safe,
 )
 from audio_project.glucose_alarm import (
     load_glucose_model, predict_glucose_alarm, get_glucose_model_info,
@@ -357,27 +359,48 @@ def parkinson_train():
         roc_auc      : float
         sensitivity  : float
         specificity  : float
+        cv_roc_auc   : float — ROC-AUC cross-validation theo subject trên tập train
+        nested_cv    : dict — metrics nested CV theo subject trên toàn bộ dữ liệu
+        train_subjects / test_subjects : int — số bệnh nhân mỗi tập (không chồng lấn)
         model_path   : str
+        comparison   : list — metrics của tất cả model
     """
     try:
         result = train_parkinson_model(verbose=False)
-        return jsonify({
-            "ok"         : True,
-            "model"      : result.model_name,
-            "train_size" : result.train_size,
-            "test_size"  : result.test_size,
-            "accuracy"   : round(result.accuracy,    4),
-            "precision"  : round(result.precision,   4),
-            "recall"     : round(result.recall,      4),
-            "f1"         : round(result.f1,          4),
-            "roc_auc"    : round(result.roc_auc,     4),
-            "sensitivity": round(result.sensitivity, 4),
-            "specificity": round(result.specificity, 4),
-            "model_path" : result.model_path,
-            "report"     : result.report,
-        })
+        return jsonify(json_safe({
+            "ok"            : True,
+            "model"         : result.model_name,
+            "train_size"    : result.train_size,
+            "test_size"     : result.test_size,
+            "train_subjects": result.train_subjects,
+            "test_subjects" : result.test_subjects,
+            "accuracy"      : round(result.accuracy,    4),
+            "precision"     : round(result.precision,   4),
+            "recall"        : round(result.recall,      4),
+            "f1"            : round(result.f1,          4),
+            "roc_auc"       : round(result.roc_auc,     4),
+            "sensitivity"   : round(result.sensitivity, 4),
+            "specificity"   : round(result.specificity, 4),
+            "cv_roc_auc"    : round(result.cv_roc_auc,  4),
+            "nested_cv"     : result.nested_cv,
+            "best_params"   : result.best_params,
+            "model_path"    : result.model_path,
+            "report"        : result.report,
+            "comparison"    : result.comparison,
+        }))
     except FileNotFoundError as e:
         return jsonify({"ok": False, "error": str(e)}), 400
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/parkinson/model-info")
+def parkinson_model_info():
+    """Metrics và bảng so sánh của model Parkinson đã train."""
+    if not parkinson_model_trained():
+        return jsonify({"ok": False, "error": "Parkinson model is not trained yet."}), 404
+    try:
+        return jsonify({"ok": True, **parkinson_model_info_data()})
     except Exception as e:
         return jsonify({"ok": False, "error": str(e)}), 500
 

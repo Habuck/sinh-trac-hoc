@@ -4,6 +4,8 @@ librosa
 matplotlib
 numpy
 pandas
+praat-parselmouth
+pytest
 safetensors
 scikit-learn
 soundfile

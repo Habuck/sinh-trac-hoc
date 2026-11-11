@@ -30,10 +30,15 @@ except Exception as e:
 # Phase 6: Inference
 try:
     import joblib
+    from audio_project.parkinson import UCI_MODEL_COLS
     bundle = joblib.load('models/parkinson_classifier.joblib')
     name = bundle['model_name']
     auc = bundle['metrics']['roc_auc']
-    print(f'Phase 6 (Inference): OK - model={name}, AUC={auc:.4f}')
+    assert bundle['feature_names'] == UCI_MODEL_COLS, 'model cũ — hãy train lại (POST /api/parkinson/train)'
+    split = bundle['split']
+    print(f'Phase 6 (Inference): OK - model={name}, test AUC={auc:.4f}, '
+          f'nested-CV AUC={bundle["metrics"]["nested_cv"]["roc_auc"]:.4f}, '
+          f'subjects train/test={split["train_subjects"]}/{split["test_subjects"]}')
 except Exception as e:
     print(f'Phase 6 FAILED: {e}')
 

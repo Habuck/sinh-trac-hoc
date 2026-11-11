@@ -5,25 +5,32 @@ Parkinson's Disease Voice Screening Module — Đồ án 2.1
 Pipeline:
     Audio Input
       → Preprocessing (mono, 16 kHz, normalize, trim silence)
-      → Feature Extraction (MFCC, F0, Jitter, Shimmer, HNR, Spectral)
-      → Machine Learning (LR / SVM / RF / GradientBoosting)
+      → Feature Extraction
+          · Praat (parselmouth): F0, Jitter, Shimmer, HNR, NHR  — cùng định nghĩa MDVP của UCI
+          · Librosa: MFCC, Spectral, ZCR, RMS
+      → Machine Learning (LR / SVM / RF / GradientBoosting, GridSearchCV theo nhóm bệnh nhân)
       → Evaluation (Accuracy, Precision, Recall, F1, ROC-AUC, Sensitivity, Specificity)
       → Inference (predict new audio)
 
 Dataset hỗ trợ:
-  1. UCI Parkinson's Voice Dataset (parkinsons.data — CSV features)
-  2. Parkinson audio recordings (data/raw/parkinson/{parkinson,control}/)
+  1. UCI Parkinson's Voice Dataset (data/parkinsons.data — CSV features, 32 subjects)
+  2. Parkinson audio recordings (data/raw/parkinson/{parkinson,control}/<subject>_<n>.wav)
+
+Chống data leakage: mọi bản ghi của cùng một bệnh nhân nằm trọn trong train hoặc test
+(StratifiedGroupKFold), và model được chọn bằng CV theo nhóm trên tập train — không nhìn tập test.
 
 Tham khảo:
-  - Little MA et al. (2007) — "Exploiting Nonlinear Recurrence..."
-  - Tsanas A et al. (2012) — "Novel speech signal processing algorithms..."
-  - UCI ML Repository — Parkinson's Disease Data Set (195 samples)
+  - Little MA et al. (2009) — "Suitability of dysphonia measurements for telemonitoring
+    of Parkinson's disease", IEEE TBME (UCI dataset)
+  - Boersma P. & Weenink D. — Praat: doing phonetics by computer
 
 Phần cứng mục tiêu: Microphone INMP441 (I2S MEMS) + Raspberry Pi 4
 """
 
 from __future__ import annotations
 
+import logging
+import math
 import warnings
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -37,6 +44,8 @@ import pandas as pd
 warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
 
+log = logging.getLogger(__name__)
+
 # ── Đường dẫn ────────────────────────────────────────────────────────────────
 _PROJECT_ROOT = Path(__file__).resolve().parents[1]
 _DATA_DIR     = _PROJECT_ROOT / "data"
@@ -44,24 +53,28 @@ _MODELS_DIR   = _PROJECT_ROOT / "models"
 _RESULTS_DIR  = _PROJECT_ROOT / "results"
 _FEATURES_DIR = _DATA_DIR / "features"
 
-# UCI CSV (được copy vào data/ hoặc dùng trực tiếp từ các project khác)
 UCI_CSV_PATH = _DATA_DIR / "parkinsons.data"
 
-# Parkinson audio directories
 RAW_PARKINSON_DIR  = _DATA_DIR / "raw"    / "parkinson"
 PROC_PARKINSON_DIR = _DATA_DIR / "processed" / "parkinson"
 FEATURES_CSV_PATH  = _FEATURES_DIR / "parkinson_features.csv"
 
-# Model
 PARKINSON_MODEL_PATH = _MODELS_DIR / "parkinson_classifier.joblib"
+COMPARISON_CSV_PATH  = _RESULTS_DIR / "parkinson_model_comparison.csv"
 
 # ── Hằng số xử lý audio ──────────────────────────────────────────────────────
 SR         = 16_000   # 16 kHz — INMP441 native
 N_MFCC     = 13
 HOP_LENGTH = 512
 TOP_DB     = 25       # Trim silence threshold
+F0_MIN     = 75.0     # Praat pitch floor (Hz)
+F0_MAX     = 500.0    # Praat pitch ceiling (Hz)
+RANDOM_STATE = 42
 
-# ── UCI feature columns ───────────────────────────────────────────────────────
+# Praat jitter/shimmer arguments (giá trị mặc định của Praat Voice Report)
+_PERIOD_FLOOR, _PERIOD_CEIL, _MAX_PERIOD_FACTOR, _MAX_AMP_FACTOR = 0.0001, 0.02, 1.3, 1.6
+
+# ── UCI feature columns (toàn bộ 22 thuộc tính của dataset) ──────────────────
 UCI_FEATURE_COLS: List[str] = [
     "MDVP:Fo(Hz)", "MDVP:Fhi(Hz)", "MDVP:Flo(Hz)",
     "MDVP:Jitter(%)", "MDVP:Jitter(Abs)", "MDVP:RAP", "MDVP:PPQ", "Jitter:DDP",
@@ -71,12 +84,15 @@ UCI_FEATURE_COLS: List[str] = [
     "RPDE", "DFA", "spread1", "spread2", "D2", "PPE",
 ]
 
-# ── Ánh xạ audio feature → UCI feature (cho inference từ audio thực) ──────────
+# Audio feature → UCI column. Model UCI chỉ được train trên các cột tính được từ audio
+# (RPDE, DFA, spread1/2, D2, PPE là độ đo phi tuyến không tái tạo được nên bị loại),
+# để lúc suy luận không phải điền giá trị giả cho cột thiếu.
 _AUDIO_TO_UCI: Dict[str, str] = {
     "f0_mean"       : "MDVP:Fo(Hz)",
     "f0_max"        : "MDVP:Fhi(Hz)",
     "f0_min"        : "MDVP:Flo(Hz)",
     "jitter_local"  : "MDVP:Jitter(%)",
+    "jitter_abs"    : "MDVP:Jitter(Abs)",
     "jitter_rap"    : "MDVP:RAP",
     "jitter_ppq5"   : "MDVP:PPQ",
     "jitter_ddp"    : "Jitter:DDP",
@@ -84,15 +100,28 @@ _AUDIO_TO_UCI: Dict[str, str] = {
     "shimmer_db"    : "MDVP:Shimmer(dB)",
     "shimmer_apq3"  : "Shimmer:APQ3",
     "shimmer_apq5"  : "Shimmer:APQ5",
+    "shimmer_apq11" : "MDVP:APQ",
+    "shimmer_dda"   : "Shimmer:DDA",
     "nhr"           : "NHR",
     "hnr"           : "HNR",
-    "ppe"           : "PPE",
 }
+UCI_MODEL_COLS: List[str] = list(_AUDIO_TO_UCI.values())
+
+# Khóa metadata — không dùng làm đầu vào model
+_META_KEYS = {"duration_sec", "voiced_ratio"}
+
+DISCLAIMER_EN = (
+    "This system is intended for research and preliminary screening purposes only. "
+    "It is not a medical diagnostic tool and should not replace professional medical evaluation."
+)
+DISCLAIMER_VI = (
+    "Hệ thống chỉ phục vụ mục đích nghiên cứu và sàng lọc ban đầu, không phải công cụ chẩn đoán "
+    "y khoa và không thay thế đánh giá của chuyên gia y tế."
+)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
 #  PHASE 3 — AUDIO PREPROCESSING
-#  Tái sử dụng logic từ core.py, chuyên biệt cho Parkinson
 # ══════════════════════════════════════════════════════════════════════════════
 
 def preprocess_audio_parkinson(
@@ -103,30 +132,14 @@ def preprocess_audio_parkinson(
     """
     Tiền xử lý audio cho phân tích Parkinson.
 
-    Bước:
-      1. Load → mono
-      2. Resample → sr (mặc định 16 kHz)
-      3. Normalize amplitude
-      4. Trim silence
-
-    Parameters
-    ----------
-    path    : đường dẫn file audio
-    sr      : target sample rate
-    top_db  : ngưỡng cắt silence (dB)
-
-    Returns
-    -------
-    (y, sr) — waveform đã xử lý và sample rate
+    Bước: load → mono → resample `sr` → peak-normalize → trim silence.
     """
     y, _ = librosa.load(str(path), sr=sr, mono=True)
 
-    # Normalize amplitude
-    peak = np.max(np.abs(y))
+    peak = np.max(np.abs(y)) if len(y) else 0.0
     if peak > 0:
         y = y / peak
 
-    # Trim silence
     yt, _ = librosa.effects.trim(y, top_db=top_db)
     if len(yt) < sr * 0.3:   # nếu còn quá ngắn, dùng nguyên
         yt = y
@@ -138,192 +151,182 @@ def preprocess_audio_parkinson(
 #  PHASE 3 — FEATURE EXTRACTION
 # ══════════════════════════════════════════════════════════════════════════════
 
-# ── Jitter helpers ────────────────────────────────────────────────────────────
-
-def _jitter_local(f0: np.ndarray) -> float:
-    """Jitter (local) — biến thiên chu kỳ tương đối giữa các chu kỳ liền kề."""
-    v = f0[f0 > 0]
-    if len(v) < 3:
-        return 0.0
-    p = 1.0 / v
-    return float(np.mean(np.abs(np.diff(p))) / (np.mean(p) + 1e-10))
+def _nan_if_undefined(v) -> float:
+    try:
+        v = float(v)
+    except (TypeError, ValueError):
+        return float("nan")
+    return v if math.isfinite(v) else float("nan")
 
 
-def _jitter_rap(f0: np.ndarray) -> float:
-    """Jitter (RAP) — Relative Average Perturbation (3-point smoothing)."""
-    v = f0[f0 > 0]
-    if len(v) < 5:
-        return 0.0
-    p = 1.0 / v
-    s = np.convolve(p, [1/3, 1/3, 1/3], mode="valid")
-    return float(np.mean(np.abs(p[1:-1] - s)) / (np.mean(p) + 1e-10))
+def _praat_voice_measures(y: np.ndarray, sr: int) -> Dict[str, float]:
+    """
+    Đo F0 / Jitter / Shimmer / HNR / NHR bằng Praat (parselmouth).
 
+    Đây là cùng họ thuật toán (chu kỳ-đến-chu kỳ) mà dataset UCI dùng, nên giá trị
+    tương thích trực tiếp với các cột MDVP. Giá trị không xác định trả về NaN
+    (SimpleImputer trong pipeline sẽ xử lý).
+    """
+    import parselmouth
+    from parselmouth.praat import call
 
-def _jitter_ppq5(f0: np.ndarray) -> float:
-    """Jitter (PPQ5) — 5-point Period Perturbation Quotient."""
-    v = f0[f0 > 0]
-    if len(v) < 7:
-        return 0.0
-    p = 1.0 / v
-    s = np.convolve(p, np.ones(5) / 5, mode="valid")
-    return float(np.mean(np.abs(p[2:-2] - s)) / (np.mean(p) + 1e-10))
+    snd = parselmouth.Sound(np.asarray(y, dtype=np.float64), sampling_frequency=sr)
 
+    pitch = snd.to_pitch(pitch_floor=F0_MIN, pitch_ceiling=F0_MAX)
+    f0 = pitch.selected_array["frequency"]
+    voiced = f0[f0 > 0]
 
-def _jitter_ddp(f0: np.ndarray) -> float:
-    """Jitter (DDP) — average absolute second difference of periods."""
-    v = f0[f0 > 0]
-    if len(v) < 4:
-        return 0.0
-    p = 1.0 / v
-    return float(np.mean(np.abs(np.diff(np.diff(p)))) / (np.mean(p) + 1e-10))
+    m: Dict[str, float] = {
+        "f0_mean" : float(np.mean(voiced)) if len(voiced) else float("nan"),
+        "f0_std"  : float(np.std(voiced))  if len(voiced) else float("nan"),
+        "f0_min"  : float(np.min(voiced))  if len(voiced) else float("nan"),
+        "f0_max"  : float(np.max(voiced))  if len(voiced) else float("nan"),
+        "voiced_ratio": float(len(voiced) / len(f0)) if len(f0) else 0.0,
+    }
+    m["f0_range"] = m["f0_max"] - m["f0_min"]
 
+    pp = call(snd, "To PointProcess (periodic, cc)", F0_MIN, F0_MAX)
+    jit_args = (0, 0, _PERIOD_FLOOR, _PERIOD_CEIL, _MAX_PERIOD_FACTOR)
+    shim_args = jit_args + (_MAX_AMP_FACTOR,)
+    for key, cmd in [
+        ("jitter_local", "Get jitter (local)"),
+        ("jitter_abs",   "Get jitter (local, absolute)"),
+        ("jitter_rap",   "Get jitter (rap)"),
+        ("jitter_ppq5",  "Get jitter (ppq5)"),
+        ("jitter_ddp",   "Get jitter (ddp)"),
+    ]:
+        m[key] = _nan_if_undefined(call(pp, cmd, *jit_args))
+    for key, cmd in [
+        ("shimmer_local", "Get shimmer (local)"),
+        ("shimmer_db",    "Get shimmer (local_dB)"),
+        ("shimmer_apq3",  "Get shimmer (apq3)"),
+        ("shimmer_apq5",  "Get shimmer (apq5)"),
+        ("shimmer_apq11", "Get shimmer (apq11)"),
+        ("shimmer_dda",   "Get shimmer (dda)"),
+    ]:
+        m[key] = _nan_if_undefined(call([snd, pp], cmd, *shim_args))
 
-# ── Shimmer helpers ───────────────────────────────────────────────────────────
+    # Praat đánh dấu frame vô thanh bằng -200 dB
+    harm = snd.to_harmonicity_cc(time_step=0.01, minimum_pitch=F0_MIN)
+    hv = harm.values[0]
+    hv = hv[hv > -200]
+    m["hnr"] = float(np.mean(hv)) if len(hv) else float("nan")
+    m["nhr"] = float(np.mean(10.0 ** (-hv / 10.0))) if len(hv) else float("nan")
+    return m
 
-def _frame_amps(y: np.ndarray, sr: int = SR) -> np.ndarray:
-    fl = max(256, int(sr * 0.03))
-    hl = max(64,  int(sr * 0.01))
-    frames = librosa.util.frame(y, frame_length=fl, hop_length=hl)
-    return np.max(np.abs(frames), axis=0)
-
-
-def _shimmer_local(y: np.ndarray, sr: int = SR) -> float:
-    a = _frame_amps(y, sr)
-    if len(a) < 3:
-        return 0.0
-    return float(np.mean(np.abs(np.diff(a))) / (np.mean(a) + 1e-10))
-
-
-def _shimmer_db(y: np.ndarray, sr: int = SR) -> float:
-    a = _frame_amps(y, sr)
-    a = a[a > 0]
-    if len(a) < 3:
-        return 0.0
-    return float(np.mean(np.abs(np.diff(20 * np.log10(a + 1e-10)))))
-
-
-def _shimmer_apq(y: np.ndarray, sr: int = SR, n: int = 3) -> float:
-    a = _frame_amps(y, sr)
-    if len(a) < n + 2:
-        return 0.0
-    s = np.convolve(a, np.ones(n) / n, mode="valid")
-    offset = n // 2
-    t = a[offset: offset + len(s)]
-    return float(np.mean(np.abs(t - s)) / (np.mean(a) + 1e-10))
-
-
-# ── HNR / NHR ─────────────────────────────────────────────────────────────────
-
-def _hnr(y: np.ndarray, sr: int = SR) -> float:
-    ac = librosa.autocorrelate(y, max_size=sr // 60)
-    if len(ac) < 2 or ac[0] == 0:
-        return 0.0
-    peak  = np.max(ac[1:])
-    ratio = np.clip(peak / ac[0], 1e-10, 1 - 1e-10)
-    return float(10 * np.log10(ratio / (1 - ratio)))
-
-
-def _nhr(y: np.ndarray, sr: int = SR) -> float:
-    h = _hnr(y, sr)
-    return float(10 ** (-h / 10)) if h != 0 else 0.0
-
-
-# ── PPE ───────────────────────────────────────────────────────────────────────
-
-def _ppe(f0: np.ndarray) -> float:
-    v = f0[f0 > 0]
-    if len(v) < 10:
-        return 0.0
-    semi = 12 * np.log2(v / (np.median(v) + 1e-10))
-    n_bins = max(3, min(20, len(semi) // 3))
-    hist, _ = np.histogram(semi, bins=n_bins, density=True)
-    w = (semi.max() - semi.min() + 1e-10) / n_bins
-    probs = (hist * w)
-    probs = probs[probs > 0]
-    return float(-np.sum(probs * np.log2(probs + 1e-10)))
-
-
-# ── MAIN FEATURE EXTRACTION ───────────────────────────────────────────────────
 
 def extract_parkinson_features(y: np.ndarray, sr: int = SR) -> Dict[str, float]:
     """
-    Trích xuất toàn bộ đặc trưng giọng nói cho phân tích Parkinson.
+    Trích xuất đặc trưng giọng nói cho phân tích Parkinson (spec mục 8).
 
-    Nhóm đặc trưng (theo spec mục 8):
-      - MFCC (13 × mean + std = 26)
-      - Fundamental Frequency F0 (mean, std, min, max, range)
-      - Voice quality: Jitter, Shimmer, HNR
-      - Spectral: Centroid, Bandwidth, Rolloff, ZCR, RMS Energy
-      - Pitch-related: mean, variance, range
-      - PPE (Pitch Period Entropy)
+      - F0 (mean, std, min, max, range) + pitch mean/variance/range   [Praat]
+      - Jitter: local, absolute, RAP, PPQ5, DDP                        [Praat]
+      - Shimmer: local, dB, APQ3, APQ5, APQ11, DDA                     [Praat]
+      - HNR, NHR                                                       [Praat]
+      - MFCC 1–13 (mean + std)                                         [Librosa]
+      - Spectral Centroid / Bandwidth / Rolloff, ZCR, RMS Energy       [Librosa]
 
-    Returns
-    -------
-    dict tên đặc trưng → giá trị float
+    Giá trị không đo được (vd. audio không có đoạn hữu thanh) là NaN.
     """
     feats: Dict[str, float] = {}
 
-    # ── MFCC ─────────────────────────────────────────────────────────────
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=N_MFCC)
     for i in range(N_MFCC):
         feats[f"mfcc_{i+1}_mean"] = float(np.mean(mfcc[i]))
         feats[f"mfcc_{i+1}_std"]  = float(np.std(mfcc[i]))
 
-    # ── Fundamental Frequency (F0) via pYIN ──────────────────────────────
-    f0, _, _ = librosa.pyin(y, fmin=50, fmax=500, sr=sr)
-    f0 = np.nan_to_num(f0, nan=0.0)
-    voiced = f0[f0 > 0]
+    feats.update(_praat_voice_measures(y, sr))
 
-    feats["f0_mean"]  = float(np.mean(voiced))  if len(voiced) else 0.0
-    feats["f0_std"]   = float(np.std(voiced))   if len(voiced) else 0.0
-    feats["f0_min"]   = float(np.min(voiced))   if len(voiced) else 0.0
-    feats["f0_max"]   = float(np.max(voiced))   if len(voiced) else 0.0
-    feats["f0_range"] = float(np.ptp(voiced))   if len(voiced) else 0.0
+    feats["spectral_centroid"]  = float(np.mean(librosa.feature.spectral_centroid(y=y, sr=sr)))
+    feats["spectral_bandwidth"] = float(np.mean(librosa.feature.spectral_bandwidth(y=y, sr=sr)))
+    feats["spectral_rolloff"]   = float(np.mean(librosa.feature.spectral_rolloff(y=y, sr=sr)))
+    feats["zcr_mean"]           = float(np.mean(librosa.feature.zero_crossing_rate(y)))
+    feats["rms_energy"]         = float(np.mean(librosa.feature.rms(y=y, hop_length=HOP_LENGTH)))
 
-    # ── Voice quality: Jitter ────────────────────────────────────────────
-    feats["jitter_local"] = _jitter_local(f0)
-    feats["jitter_rap"]   = _jitter_rap(f0)
-    feats["jitter_ppq5"]  = _jitter_ppq5(f0)
-    feats["jitter_ddp"]   = _jitter_ddp(f0)
-
-    # ── Voice quality: Shimmer ────────────────────────────────────────────
-    feats["shimmer_local"] = _shimmer_local(y, sr)
-    feats["shimmer_db"]    = _shimmer_db(y, sr)
-    feats["shimmer_apq3"]  = _shimmer_apq(y, sr, 3)
-    feats["shimmer_apq5"]  = _shimmer_apq(y, sr, 5)
-
-    # ── HNR / NHR ────────────────────────────────────────────────────────
-    feats["hnr"] = _hnr(y, sr)
-    feats["nhr"] = _nhr(y, sr)
-
-    # ── Spectral features ─────────────────────────────────────────────────
-    feats["spectral_centroid"]   = float(np.mean(librosa.feature.spectral_centroid(y=y, sr=sr)))
-    feats["spectral_bandwidth"]  = float(np.mean(librosa.feature.spectral_bandwidth(y=y, sr=sr)))
-    feats["spectral_rolloff"]    = float(np.mean(librosa.feature.spectral_rolloff(y=y, sr=sr)))
-    feats["zcr_mean"]            = float(np.mean(librosa.feature.zero_crossing_rate(y)))
-    feats["rms_energy"]          = float(np.mean(librosa.feature.rms(y=y, hop_length=HOP_LENGTH)))
-
-    # ── Pitch-related (từ đặc trưng F0 đã tính) ──────────────────────────
     feats["pitch_mean"]     = feats["f0_mean"]
-    feats["pitch_variance"] = float(np.var(voiced)) if len(voiced) else 0.0
+    feats["pitch_variance"] = feats["f0_std"] ** 2
     feats["pitch_range"]    = feats["f0_range"]
 
-    # ── PPE ──────────────────────────────────────────────────────────────
-    feats["ppe"] = _ppe(f0)
-
-    # ── Metadata ─────────────────────────────────────────────────────────
     feats["duration_sec"] = round(len(y) / sr, 3)
-
     return feats
 
 
-def extract_features_from_file(
-    path: str | Path,
-    sr: int = SR,
-) -> Dict[str, float]:
+def extract_features_from_file(path: str | Path, sr: int = SR) -> Dict[str, float]:
     """Load, preprocess và trích xuất đặc trưng từ file audio."""
     y, sr_out = preprocess_audio_parkinson(path, sr=sr)
     return extract_parkinson_features(y, sr_out)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  PHASE 2 — DATASET LOADING
+# ══════════════════════════════════════════════════════════════════════════════
+
+def uci_subject_ids(names: pd.Series) -> pd.Series:
+    """'phon_R01_S01_1' → 'S01' (mỗi subject có ~6 bản ghi)."""
+    subj = names.astype(str).str.extract(r"_(S\d+)_")[0]
+    if subj.isna().any():
+        bad = names[subj.isna()].tolist()[:3]
+        raise ValueError(f"Không đọc được subject ID từ cột 'name': {bad}")
+    return subj
+
+
+def _load_uci_dataset() -> Optional[Tuple[pd.DataFrame, pd.Series, pd.Series]]:
+    """
+    Tải UCI Parkinson's Dataset → (X, y, groups).
+
+    X chỉ gồm UCI_MODEL_COLS (các cột tái tạo được từ audio); groups = subject ID.
+    """
+    for path in [UCI_CSV_PATH, _DATA_DIR / "raw_medical" / "parkinsons.data"]:
+        if not path.exists():
+            continue
+        df = pd.read_csv(path)
+        if {"status", "name"} <= set(df.columns) and all(c in df.columns for c in UCI_MODEL_COLS):
+            return (
+                df[UCI_MODEL_COLS].astype(float),
+                df["status"].astype(int),
+                uci_subject_ids(df["name"]),
+            )
+    return None
+
+
+def _load_audio_dataset() -> Optional[Tuple[pd.DataFrame, pd.Series, pd.Series]]:
+    """
+    Trích xuất features từ data/raw/parkinson/{parkinson,control}/.
+
+    Tên file phải có dạng `<subjectID>_<anything>.wav` để gom nhóm theo bệnh nhân.
+    Kết quả được lưu ra data/features/parkinson_features.csv.
+    """
+    if not RAW_PARKINSON_DIR.exists():
+        return None
+
+    audio_ext = {".wav", ".mp3", ".flac", ".ogg", ".m4a"}
+    rows = []
+    for label_dir, label in [("parkinson", 1), ("control", 0)]:
+        class_dir = RAW_PARKINSON_DIR / label_dir
+        if not class_dir.exists():
+            continue
+        for audio_file in sorted(class_dir.rglob("*")):
+            if audio_file.suffix.lower() not in audio_ext:
+                continue
+            try:
+                feats = extract_features_from_file(audio_file)
+            except Exception as e:
+                log.warning("Bỏ qua %s: %s", audio_file, e)
+                continue
+            feats["label"]   = label
+            feats["subject"] = f"{label_dir}:{audio_file.stem.split('_')[0]}"
+            feats["file"]    = str(audio_file.relative_to(RAW_PARKINSON_DIR))
+            rows.append(feats)
+
+    if not rows:
+        return None
+
+    df = pd.DataFrame(rows)
+    _FEATURES_DIR.mkdir(parents=True, exist_ok=True)
+    df.to_csv(FEATURES_CSV_PATH, index=False)
+
+    feature_cols = [c for c in df.columns if c not in {"label", "subject", "file"} | _META_KEYS]
+    return df[feature_cols].astype(float), df["label"].astype(int), df["subject"]
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -340,49 +343,55 @@ class TrainResult:
     roc_auc: float
     sensitivity: float
     specificity: float
+    cv_roc_auc: float
     train_size: int
     test_size: int
+    train_subjects: int
+    test_subjects: int
     model_path: str
     report: str
     confusion_matrix: List[List[int]]
     best_params: Dict = field(default_factory=dict)
+    nested_cv: Dict = field(default_factory=dict)
+    comparison: List[Dict] = field(default_factory=list)
 
 
-def _build_models() -> Dict:
-    """Tạo dict các model ML cần huấn luyện và so sánh."""
+def _build_models() -> Dict[str, Tuple[object, Dict[str, list]]]:
+    """Model + lưới siêu tham số cho GridSearchCV."""
+    from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
     from sklearn.linear_model import LogisticRegression
     from sklearn.svm import SVC
-    from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 
     return {
-        "LogisticRegression": LogisticRegression(
-            max_iter=2000, random_state=42, C=1.0,
+        "LogisticRegression": (
+            LogisticRegression(max_iter=5000, class_weight="balanced", random_state=RANDOM_STATE),
+            {"clf__C": [0.01, 0.1, 1, 10]},
         ),
-        "SVM": SVC(
-            kernel="rbf", C=10, gamma="scale",
-            probability=True, random_state=42,
+        "SVM": (
+            SVC(kernel="rbf", probability=True, class_weight="balanced", random_state=RANDOM_STATE),
+            {"clf__C": [0.1, 1, 10, 100], "clf__gamma": ["scale", 0.01, 0.1]},
         ),
-        "RandomForest": RandomForestClassifier(
-            n_estimators=200, random_state=42, n_jobs=-1,
+        "RandomForest": (
+            RandomForestClassifier(n_estimators=300, class_weight="balanced",
+                                   random_state=RANDOM_STATE, n_jobs=-1),
+            {"clf__max_depth": [None, 4, 8], "clf__min_samples_leaf": [1, 3]},
         ),
-        "GradientBoosting": GradientBoostingClassifier(
-            n_estimators=200, learning_rate=0.1,
-            max_depth=4, random_state=42,
+        "GradientBoosting": (
+            GradientBoostingClassifier(random_state=RANDOM_STATE),
+            {"clf__n_estimators": [100, 200], "clf__max_depth": [2, 3],
+             "clf__learning_rate": [0.05, 0.1]},
         ),
     }
 
 
 def _evaluate(y_true, y_pred, y_proba, model_name: str) -> Dict:
-    """Tính toàn bộ metric theo spec mục 11."""
+    """Tính toàn bộ metric theo spec mục 11 (Parkinson = lớp dương)."""
     from sklearn.metrics import (
-        accuracy_score, precision_score, recall_score,
-        f1_score, roc_auc_score, confusion_matrix, classification_report,
+        accuracy_score, classification_report, confusion_matrix,
+        f1_score, precision_score, recall_score, roc_auc_score,
     )
-    cm = confusion_matrix(y_true, y_pred)
+    cm = confusion_matrix(y_true, y_pred, labels=[0, 1])
     tn, fp, fn, tp = cm.ravel()
-    sensitivity = tp / (tp + fn + 1e-10)   # Recall for positive class
-    specificity = tn / (tn + fp + 1e-10)   # True Negative Rate
-
     return {
         "model"          : model_name,
         "accuracy"       : float(accuracy_score(y_true, y_pred)),
@@ -390,269 +399,253 @@ def _evaluate(y_true, y_pred, y_proba, model_name: str) -> Dict:
         "recall"         : float(recall_score(y_true, y_pred, zero_division=0)),
         "f1"             : float(f1_score(y_true, y_pred, zero_division=0)),
         "roc_auc"        : float(roc_auc_score(y_true, y_proba)),
-        "sensitivity"    : float(sensitivity),
-        "specificity"    : float(specificity),
+        "sensitivity"    : float(tp / (tp + fn)) if (tp + fn) else float("nan"),
+        "specificity"    : float(tn / (tn + fp)) if (tn + fp) else float("nan"),
         "confusion_matrix": cm.tolist(),
         "report"         : classification_report(
-            y_true, y_pred,
-            target_names=["Control", "Parkinson"],
-            zero_division=0,
+            y_true, y_pred, labels=[0, 1],
+            target_names=["Control", "Parkinson"], zero_division=0,
         ),
     }
 
 
-def _save_plots(
-    y_true, y_proba_best,
-    cm_data,
-    best_model_name: str,
-    out_dir: Path,
-) -> None:
-    """Lưu Confusion Matrix và ROC Curve (spec mục 12)."""
+def _save_plots(y_true, probas: Dict[str, np.ndarray], cm_data, best_model_name: str,
+                out_dir: Path) -> None:
+    """Lưu Confusion Matrix (model tốt nhất) và ROC Curve (tất cả model)."""
     try:
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        from sklearn.metrics import roc_curve, auc
+        from sklearn.metrics import auc, roc_curve
+    except ImportError:
+        log.warning("matplotlib chưa cài — bỏ qua vẽ biểu đồ.")
+        return
 
-        out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-        # ── Confusion Matrix ──────────────────────────────────────────────
-        fig, ax = plt.subplots(figsize=(5, 4))
-        cm_arr = np.array(cm_data)
-        im = ax.imshow(cm_arr, cmap="Blues")
-        ax.set_xticks([0, 1]);  ax.set_xticklabels(["Control", "Parkinson"])
-        ax.set_yticks([0, 1]);  ax.set_yticklabels(["Control", "Parkinson"])
-        ax.set_xlabel("Predicted"); ax.set_ylabel("Actual")
-        ax.set_title(f"Confusion Matrix — {best_model_name}")
-        for i in range(2):
-            for j in range(2):
-                ax.text(j, i, str(cm_arr[i, j]), ha="center", va="center",
-                        color="white" if cm_arr[i, j] > cm_arr.max() / 2 else "black",
-                        fontsize=14, fontweight="bold")
-        plt.colorbar(im, ax=ax)
-        fig.tight_layout()
-        fig.savefig(out_dir / "confusion_matrix.png", dpi=150)
-        plt.close(fig)
+    fig, ax = plt.subplots(figsize=(5, 4))
+    cm_arr = np.array(cm_data)
+    im = ax.imshow(cm_arr, cmap="Blues")
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["Control", "Parkinson"])
+    ax.set_yticks([0, 1]); ax.set_yticklabels(["Control", "Parkinson"])
+    ax.set_xlabel("Predicted"); ax.set_ylabel("Actual")
+    ax.set_title(f"Confusion Matrix — {best_model_name}\n(nested CV theo subject)", fontsize=10)
+    for i in range(2):
+        for j in range(2):
+            ax.text(j, i, str(cm_arr[i, j]), ha="center", va="center",
+                    color="white" if cm_arr[i, j] > cm_arr.max() / 2 else "black",
+                    fontsize=14, fontweight="bold")
+    plt.colorbar(im, ax=ax)
+    fig.tight_layout()
+    fig.savefig(out_dir / "confusion_matrix.png", dpi=150)
+    plt.close(fig)
 
-        # ── ROC Curve ─────────────────────────────────────────────────────
-        fpr, tpr, _ = roc_curve(y_true, y_proba_best)
-        roc_auc_val = auc(fpr, tpr)
-        fig, ax = plt.subplots(figsize=(5, 4))
-        ax.plot(fpr, tpr, color="#6366f1", lw=2,
-                label=f"ROC curve (AUC = {roc_auc_val:.3f})")
-        ax.plot([0, 1], [0, 1], "k--", lw=1)
-        ax.set_xlim([0.0, 1.0]); ax.set_ylim([0.0, 1.05])
-        ax.set_xlabel("False Positive Rate"); ax.set_ylabel("True Positive Rate")
-        ax.set_title(f"ROC Curve — {best_model_name}")
-        ax.legend(loc="lower right")
-        fig.tight_layout()
-        fig.savefig(out_dir / "roc_curve.png", dpi=150)
-        plt.close(fig)
-
-    except Exception:
-        pass   # matplotlib optional
+    fig, ax = plt.subplots(figsize=(5.5, 4.5))
+    for name, proba in probas.items():
+        fpr, tpr, _ = roc_curve(y_true, proba)
+        lw = 2.5 if name == best_model_name else 1.2
+        ax.plot(fpr, tpr, lw=lw, label=f"{name} (AUC = {auc(fpr, tpr):.3f})")
+    ax.plot([0, 1], [0, 1], "k--", lw=1)
+    ax.set_xlim([0.0, 1.0]); ax.set_ylim([0.0, 1.05])
+    ax.set_xlabel("False Positive Rate (1 − Specificity)")
+    ax.set_ylabel("True Positive Rate (Sensitivity)")
+    ax.set_title("ROC Curve — nested CV theo subject")
+    ax.legend(loc="lower right", fontsize=8)
+    fig.tight_layout()
+    fig.savefig(out_dir / "roc_curve.png", dpi=150)
+    plt.close(fig)
 
 
-def _load_uci_dataset() -> Optional[Tuple[pd.DataFrame, pd.Series]]:
+def _group_cv(y: pd.Series, groups: pd.Series, max_splits: int, random_state: int = RANDOM_STATE):
+    """StratifiedGroupKFold với số fold không vượt quá số subject của lớp nhỏ nhất."""
+    from sklearn.model_selection import StratifiedGroupKFold
+
+    n_splits = int(min(max_splits, groups.groupby(y).nunique().min()))
+    if n_splits < 2:
+        raise ValueError(
+            "Cần ít nhất 2 subject cho mỗi lớp (Parkinson/Control) để chia dữ liệu theo bệnh nhân."
+        )
+    return StratifiedGroupKFold(n_splits=n_splits, shuffle=True, random_state=random_state)
+
+
+def _nested_cv_proba(pipe, grid, X: pd.DataFrame, y: pd.Series, groups: pd.Series,
+                     outer_splits: int = 5) -> np.ndarray:
     """
-    Tải UCI Parkinson's Dataset (CSV dạng features).
-
-    Tìm kiếm theo thứ tự:
-      1. data/parkinsons.data (UCI canonical)
-      2. audio_project/voice.csv (dataset hiện có trong Đồ án 2.1)
+    Nested CV theo subject: vòng ngoài ước lượng hiệu năng, vòng trong GridSearchCV.
+    Trả về xác suất out-of-fold cho mọi bản ghi — mỗi bản ghi được dự đoán bởi model
+    chưa từng thấy bệnh nhân đó.
     """
-    candidates = [
-        UCI_CSV_PATH,
-        _DATA_DIR / "raw_medical" / "parkinsons.data",
-        _PROJECT_ROOT / "audio_project" / "voice.csv",
-    ]
-    for path in candidates:
-        if path.exists():
-            df = pd.read_csv(path)
-            # UCI canonical format
-            if "status" in df.columns and all(c in df.columns for c in UCI_FEATURE_COLS):
-                X = df[UCI_FEATURE_COLS].copy()
-                y = df["status"].astype(int)
-                return X, y
-    return None
+    from sklearn.base import clone
+    from sklearn.model_selection import GridSearchCV
+
+    oof = np.full(len(y), np.nan)
+    for tr, te in _group_cv(y, groups, outer_splits).split(X, y, groups):
+        y_tr, g_tr = y.iloc[tr], groups.iloc[tr]
+        gs = GridSearchCV(clone(pipe), grid, scoring="roc_auc",
+                          cv=_group_cv(y_tr, g_tr, 4), n_jobs=-1)
+        gs.fit(X.iloc[tr], y_tr, groups=g_tr)
+        oof[te] = gs.predict_proba(X.iloc[te])[:, 1]
+    return oof
 
 
-def _load_audio_dataset() -> Optional[Tuple[pd.DataFrame, pd.Series, pd.Series]]:
+def group_train_test_split(X: pd.DataFrame, y: pd.Series, groups: pd.Series,
+                           n_splits: int = 4, random_state: int = RANDOM_STATE):
     """
-    Tải features từ audio recordings trong data/raw/parkinson/.
+    Chia train/test theo bệnh nhân, giữ tỉ lệ lớp (StratifiedGroupKFold, lấy fold đầu làm test).
+    n_splits=4 → ~25% subject vào test (UCI chỉ có 8 người Control).
 
-    Returns (X, y, groups) hoặc None nếu không có data.
-    groups: subject ID (để dùng GroupKFold — tránh data leakage)
+    Trả về (train_idx, test_idx). Đảm bảo không subject nào xuất hiện ở cả hai tập.
     """
-    parkinson_dir = RAW_PARKINSON_DIR
-    if not parkinson_dir.exists():
-        return None
+    train_idx, test_idx = next(_group_cv(y, groups, n_splits, random_state).split(X, y, groups))
 
-    audio_ext = {".wav", ".mp3", ".flac", ".ogg", ".m4a"}
-    rows = []
-
-    for label_dir in ["parkinson", "control"]:
-        class_dir = parkinson_dir / label_dir
-        if not class_dir.exists():
-            continue
-        label = 1 if label_dir == "parkinson" else 0
-        for audio_file in sorted(class_dir.rglob("*")):
-            if audio_file.suffix.lower() not in audio_ext:
-                continue
-            try:
-                feats = extract_features_from_file(audio_file)
-                feats["label"]   = label
-                feats["subject"] = audio_file.stem.split("_")[0]  # subject ID from filename
-                rows.append(feats)
-            except Exception:
-                continue
-
-    if not rows:
-        return None
-
-    df = pd.DataFrame(rows)
-    X  = df.drop(columns=["label", "subject"])
-    y  = df["label"]
-    groups = df["subject"]
-    return X, y, groups
+    overlap = set(groups.iloc[train_idx]) & set(groups.iloc[test_idx])
+    assert not overlap, f"Data leakage: subject xuất hiện ở cả train và test: {overlap}"
+    return train_idx, test_idx
 
 
 def train_parkinson_model(verbose: bool = True) -> TrainResult:
     """
-    Huấn luyện và so sánh nhiều model ML trên Parkinson dataset.
+    Huấn luyện và so sánh LR / SVM / RF / GradientBoosting.
 
-    Ưu tiên:
-      1. UCI CSV dataset (features đã có)
-      2. Audio recordings (trích xuất features)
+    1. Tải dataset (ưu tiên UCI CSV, sau đó audio recordings) kèm subject ID.
+    2. Chia train/test theo bệnh nhân (StratifiedGroupKFold, ~25% subject vào test).
+    3. Với mỗi model: GridSearchCV (CV theo nhóm bệnh nhân trên tập train, scoring ROC-AUC)
+       → model triển khai; đánh giá trên tập test giữ riêng.
+    4. Nested CV theo subject trên toàn bộ dữ liệu → ước lượng ổn định hơn (mọi subject đều
+       được dự đoán out-of-fold một lần); Confusion Matrix và ROC vẽ từ dự đoán này.
+    5. Chọn model có nested-CV ROC-AUC cao nhất. Inner-CV trên tập train (chỉ ~6 người Control)
+       quá nhiễu để làm tiêu chí chọn.
+    6. Lưu pipeline (Imputer → Scaler → Classifier), bảng so sánh và biểu đồ.
 
-    Anti-leakage: dùng GroupKFold nếu có subject ID.
-    Lưu model tốt nhất (theo ROC-AUC) vào models/parkinson_classifier.joblib.
-    Lưu bảng so sánh vào results/parkinson_model_comparison.csv.
-
-    Returns TrainResult của model tốt nhất.
+    Nhãn dự đoán luôn = (xác suất Parkinson ≥ 0.5) để nhất quán với probability hiển thị.
     """
-    from sklearn.model_selection import train_test_split, GroupShuffleSplit
-    from sklearn.preprocessing import StandardScaler
     from sklearn.impute import SimpleImputer
+    from sklearn.model_selection import GridSearchCV
     from sklearn.pipeline import Pipeline
+    from sklearn.preprocessing import StandardScaler
 
     _RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     _MODELS_DIR.mkdir(parents=True, exist_ok=True)
-    _FEATURES_DIR.mkdir(parents=True, exist_ok=True)
 
-    # ── Tải dataset ──────────────────────────────────────────────────────
-    groups = None
-    uci = _load_uci_dataset()
-
-    if uci is not None:
-        X, y = uci
-        if verbose:
-            print(f"📂 UCI Parkinson's Dataset: {len(y)} mẫu, "
-                  f"{y.sum()} Parkinson, {(y == 0).sum()} Control")
-        # Không có subject info trong UCI canonical CSV → random split
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.2, stratify=y, random_state=42,
+    data = _load_uci_dataset()
+    dataset_type = "uci"
+    if data is None:
+        data = _load_audio_dataset()
+        dataset_type = "audio"
+    if data is None:
+        raise FileNotFoundError(
+            "Không tìm thấy dataset Parkinson. Hãy đặt file 'parkinsons.data' vào data/ hoặc "
+            "audio recordings vào data/raw/parkinson/{parkinson,control}/."
         )
-    else:
-        audio_data = _load_audio_dataset()
-        if audio_data is None:
-            raise FileNotFoundError(
-                "Không tìm thấy dataset Parkinson.\n"
-                "Hãy đặt file 'parkinsons.data' vào data/ hoặc\n"
-                "audio recordings vào data/raw/parkinson/{parkinson,control}/."
-            )
-        X, y, groups = audio_data
-        if verbose:
-            print(f"📂 Audio Dataset: {len(y)} mẫu")
-        # Anti-leakage: GroupShuffleSplit
-        gss = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
-        train_idx, test_idx = next(gss.split(X, y, groups))
-        X_train, X_test = X.iloc[train_idx], X.iloc[test_idx]
-        y_train, y_test = y.iloc[train_idx], y.iloc[test_idx]
+    X, y, groups = data
+    X = X.reset_index(drop=True); y = y.reset_index(drop=True); groups = groups.reset_index(drop=True)
+
+    train_idx, test_idx = group_train_test_split(X, y, groups)
+    X_train, X_test = X.iloc[train_idx], X.iloc[test_idx]
+    y_train, y_test = y.iloc[train_idx], y.iloc[test_idx]
+    g_train = groups.iloc[train_idx]
 
     if verbose:
-        print(f"   Train: {len(y_train)} | Test: {len(y_test)}")
+        print(f"📂 Dataset ({dataset_type}): {len(y)} bản ghi, {groups.nunique()} subject "
+              f"({int(y.sum())} Parkinson / {int((y == 0).sum())} Control bản ghi)")
+        print(f"   Train: {len(y_train)} bản ghi / {g_train.nunique()} subject | "
+              f"Test: {len(y_test)} bản ghi / {groups.iloc[test_idx].nunique()} subject")
 
-    # ── Pipeline: Imputer → Scaler → Classifier ───────────────────────────
-    all_metrics = []
-    best_result = None
-    best_auc    = -1.0
-    best_pipeline = None
+    inner_cv = _group_cv(y_train, g_train, 4)
 
-    for name, clf in _build_models().items():
+    all_metrics: List[Dict] = []
+    fitted: Dict[str, object] = {}
+    nested_probas: Dict[str, np.ndarray] = {}
+
+    for name, (clf, grid) in _build_models().items():
         if verbose:
-            print(f"\n🔄 Training {name}...")
+            print(f"\n🔄 {name}: GridSearchCV ({inner_cv.n_splits}-fold theo subject) + nested CV...")
+        pipe = Pipeline([
+            ("imputer", SimpleImputer(strategy="median")),
+            ("scaler",  StandardScaler()),
+            ("clf",     clf),
+        ])
         try:
-            pipe = Pipeline([
-                ("imputer", SimpleImputer(strategy="median")),
-                ("scaler",  StandardScaler()),
-                ("clf",     clf),
-            ])
-            pipe.fit(X_train, y_train)
-            y_pred  = pipe.predict(X_test)
-            y_proba = pipe.predict_proba(X_test)[:, 1]
-
-            metrics = _evaluate(y_test, y_pred, y_proba, name)
-            all_metrics.append(metrics)
-
-            if verbose:
-                print(f"   ✅ Accuracy={metrics['accuracy']:.4f} "
-                      f"AUC={metrics['roc_auc']:.4f} "
-                      f"Sensitivity={metrics['sensitivity']:.4f} "
-                      f"Specificity={metrics['specificity']:.4f}")
-
-            if metrics["roc_auc"] > best_auc:
-                best_auc      = metrics["roc_auc"]
-                best_result   = metrics
-                best_pipeline = pipe
-
+            gs = GridSearchCV(pipe, grid, scoring="roc_auc", cv=inner_cv, n_jobs=-1)
+            gs.fit(X_train, y_train, groups=g_train)
+            oof = _nested_cv_proba(pipe, grid, X, y, groups)
         except Exception as e:
+            log.warning("%s thất bại: %s", name, e)
             if verbose:
                 print(f"   ❌ {name}: {e}")
+            continue
 
-    if best_pipeline is None:
+        best = gs.best_estimator_
+        y_proba = best.predict_proba(X_test)[:, 1]
+        metrics = _evaluate(y_test, (y_proba >= 0.5).astype(int), y_proba, name)
+        metrics["cv_roc_auc"] = float(gs.best_score_)
+        metrics["best_params"] = {k.replace("clf__", ""): v for k, v in gs.best_params_.items()}
+        nested = _evaluate(y, (oof >= 0.5).astype(int), oof, name)
+        metrics["nested_cv"] = {k: v for k, v in nested.items() if k not in ("model", "report")}
+        all_metrics.append(metrics)
+        fitted[name] = best
+        nested_probas[name] = oof
+
+        if verbose:
+            n = metrics["nested_cv"]
+            print(f"   Inner CV-AUC={metrics['cv_roc_auc']:.4f} | Test: AUC={metrics['roc_auc']:.4f} "
+                  f"Sen={metrics['sensitivity']:.4f} Spe={metrics['specificity']:.4f} | "
+                  f"Nested CV: AUC={n['roc_auc']:.4f} Sen={n['sensitivity']:.4f} "
+                  f"Spe={n['specificity']:.4f} | {metrics['best_params']}")
+
+    if not all_metrics:
         raise RuntimeError("Tất cả model đều thất bại khi huấn luyện.")
 
-    # ── Lưu bảng so sánh (spec mục 12) ───────────────────────────────────
-    comp_rows = []
-    for m in all_metrics:
-        comp_rows.append({
-            "Model"      : m["model"],
-            "Accuracy"   : round(m["accuracy"],    4),
-            "Precision"  : round(m["precision"],   4),
-            "Recall"     : round(m["recall"],      4),
-            "F1"         : round(m["f1"],          4),
-            "ROC-AUC"    : round(m["roc_auc"],     4),
-            "Sensitivity": round(m["sensitivity"], 4),
-            "Specificity": round(m["specificity"], 4),
-        })
+    best_result = max(all_metrics, key=lambda m: m["nested_cv"]["roc_auc"])
+    best_pipeline = fitted[best_result["model"]]
+
+    comp_rows = [{
+        "Model"      : m["model"],
+        "Accuracy"   : round(m["accuracy"],    4),
+        "Precision"  : round(m["precision"],   4),
+        "Recall"     : round(m["recall"],      4),
+        "F1"         : round(m["f1"],          4),
+        "ROC-AUC"    : round(m["roc_auc"],     4),
+        "Sensitivity": round(m["sensitivity"], 4),
+        "Specificity": round(m["specificity"], 4),
+        "Inner_CV_ROC-AUC"    : round(m["cv_roc_auc"], 4),
+        "NestedCV_Accuracy"   : round(m["nested_cv"]["accuracy"],    4),
+        "NestedCV_F1"         : round(m["nested_cv"]["f1"],          4),
+        "NestedCV_ROC-AUC"    : round(m["nested_cv"]["roc_auc"],     4),
+        "NestedCV_Sensitivity": round(m["nested_cv"]["sensitivity"], 4),
+        "NestedCV_Specificity": round(m["nested_cv"]["specificity"], 4),
+        "Best_Params": str(m["best_params"]),
+    } for m in all_metrics]
     comp_df = pd.DataFrame(comp_rows)
-    comp_path = _RESULTS_DIR / "parkinson_model_comparison.csv"
-    comp_df.to_csv(comp_path, index=False)
+    comp_df.to_csv(COMPARISON_CSV_PATH, index=False)
     if verbose:
-        print(f"\n📊 Bảng so sánh:\n{comp_df.to_string(index=False)}")
-        print(f"\n💾 Lưu bảng so sánh: {comp_path}")
+        print(f"\n📊 Bảng so sánh:\n{comp_df.drop(columns='Best_Params').T.to_string(header=False)}")
+        print(f"💾 {COMPARISON_CSV_PATH}")
 
-    # ── Lưu plots ─────────────────────────────────────────────────────────
-    best_proba = best_pipeline.predict_proba(X_test)[:, 1]
-    _save_plots(y_test, best_proba,
-                best_result["confusion_matrix"],
-                best_result["model"],
-                _RESULTS_DIR)
+    _save_plots(y, nested_probas, best_result["nested_cv"]["confusion_matrix"],
+                best_result["model"], _RESULTS_DIR)
 
-    # ── Lưu model tốt nhất (joblib) ───────────────────────────────────────
+    split_info = {
+        "train_size": int(len(y_train)), "test_size": int(len(y_test)),
+        "train_subjects": int(g_train.nunique()),
+        "test_subjects": int(groups.iloc[test_idx].nunique()),
+        "strategy": "StratifiedGroupKFold (subject-wise)",
+    }
     bundle = {
         "pipeline"     : best_pipeline,
         "model_name"   : best_result["model"],
         "feature_names": list(X.columns),
-        "metrics"      : best_result,
+        "metrics"      : {k: v for k, v in best_result.items() if k != "report"},
         "comparison"   : comp_rows,
-        "dataset_type" : "uci" if uci is not None else "audio",
+        "dataset_type" : dataset_type,
+        "split"        : split_info,
     }
     joblib.dump(bundle, PARKINSON_MODEL_PATH)
     if verbose:
-        print(f"\n✅ Best model: {best_result['model']} (AUC={best_auc:.4f})")
-        print(f"💾 Lưu model: {PARKINSON_MODEL_PATH}")
+        print(f"\n✅ Best model (theo nested-CV AUC): {best_result['model']} "
+              f"(nested-CV AUC={best_result['nested_cv']['roc_auc']:.4f}, "
+              f"test AUC={best_result['roc_auc']:.4f})")
+        print(f"💾 {PARKINSON_MODEL_PATH}")
 
     return TrainResult(
         model_name       = best_result["model"],
@@ -663,11 +656,17 @@ def train_parkinson_model(verbose: bool = True) -> TrainResult:
         roc_auc          = best_result["roc_auc"],
         sensitivity      = best_result["sensitivity"],
         specificity      = best_result["specificity"],
-        train_size       = len(y_train),
-        test_size        = len(y_test),
+        cv_roc_auc       = best_result["cv_roc_auc"],
+        train_size       = split_info["train_size"],
+        test_size        = split_info["test_size"],
+        train_subjects   = split_info["train_subjects"],
+        test_subjects    = split_info["test_subjects"],
         model_path       = str(PARKINSON_MODEL_PATH),
         report           = best_result["report"],
         confusion_matrix = best_result["confusion_matrix"],
+        best_params      = best_result["best_params"],
+        nested_cv        = best_result["nested_cv"],
+        comparison       = comp_rows,
     )
 
 
@@ -675,7 +674,7 @@ def train_parkinson_model(verbose: bool = True) -> TrainResult:
 #  PHASE 6 — INFERENCE
 # ══════════════════════════════════════════════════════════════════════════════
 
-def _load_bundle():
+def load_parkinson_bundle() -> Dict:
     """Tải model bundle từ disk."""
     if not PARKINSON_MODEL_PATH.exists():
         raise FileNotFoundError("Parkinson model is not trained yet.")
@@ -683,236 +682,208 @@ def _load_bundle():
 
 
 def is_model_trained() -> bool:
-    """Kiểm tra model đã được huấn luyện chưa."""
     return PARKINSON_MODEL_PATH.exists()
 
 
-def predict_parkinson(audio_path: str | Path) -> Dict:
-    """
-    Suy luận Parkinson từ file audio thực.
+def get_model_info() -> Dict:
+    """Thông tin model đã train (tên, metrics, bảng so sánh, cách chia dữ liệu)."""
+    b = load_parkinson_bundle()
+    return {
+        "model": b["model_name"],
+        "dataset_type": b.get("dataset_type"),
+        "n_features": len(b["feature_names"]),
+        "metrics": json_safe(b.get("metrics", {})),
+        "comparison": json_safe(b.get("comparison", [])),
+        "split": b.get("split"),
+    }
 
-    Trích xuất đặc trưng từ audio → ánh xạ sang feature space của model
-    → predict → trả về kết quả.
 
-    Returns
-    -------
-    dict: prediction, probability, model, features (tóm tắt)
-    """
-    bundle   = _load_bundle()
-    pipeline = bundle["pipeline"]
+def build_model_input(audio_feats: Dict[str, float], bundle: Dict) -> pd.DataFrame:
+    """Ánh xạ đặc trưng audio sang đúng thứ tự cột model đã train. Cột thiếu → NaN (imputer)."""
     feat_names = bundle["feature_names"]
-    dataset_type = bundle.get("dataset_type", "uci")
-    model_name = bundle["model_name"]
-
-    # Trích xuất đặc trưng audio
-    audio_feats = extract_features_from_file(audio_path)
-
-    # Xây dựng input vector phù hợp với feature_names của pipeline
-    if dataset_type == "uci":
-        # Ánh xạ audio features → UCI feature space
-        row: Dict[str, float] = {}
-        for audio_key, uci_key in _AUDIO_TO_UCI.items():
-            row[uci_key] = audio_feats.get(audio_key, 0.0)
-        for col in feat_names:
-            if col not in row:
-                row[col] = 0.0
-        X_input = pd.DataFrame([{col: row[col] for col in feat_names}])
+    if bundle.get("dataset_type", "uci") == "uci":
+        source = {uci: audio_feats.get(a, np.nan) for a, uci in _AUDIO_TO_UCI.items()}
     else:
-        # Audio dataset mode: dùng trực tiếp extracted features
-        X_input = pd.DataFrame([
-            {col: audio_feats.get(col, 0.0) for col in feat_names}
-        ])
+        source = audio_feats
+    return pd.DataFrame([{c: source.get(c, np.nan) for c in feat_names}], columns=feat_names)
 
-    pred  = int(pipeline.predict(X_input)[0])
+
+def json_safe(v):
+    """NaN/Inf → None, numpy → Python (JSON chuẩn không có NaN)."""
+    if isinstance(v, dict):
+        return {k: json_safe(x) for k, x in v.items()}
+    if isinstance(v, (list, tuple)):
+        return [json_safe(x) for x in v]
+    if isinstance(v, (np.integer,)):
+        return int(v)
+    if isinstance(v, (float, np.floating)):
+        return float(v) if math.isfinite(v) else None
+    return v
+
+
+def _round(v: Optional[float], nd: int) -> Optional[float]:
+    return round(float(v), nd) if v is not None and math.isfinite(float(v)) else None
+
+
+def _features_summary(f: Dict[str, float]) -> Dict[str, Optional[float]]:
+    return {
+        "f0_mean"      : _round(f.get("f0_mean"), 2),
+        "f0_std"       : _round(f.get("f0_std"), 2),
+        "jitter_local" : _round(f.get("jitter_local"), 6),
+        "shimmer_local": _round(f.get("shimmer_local"), 6),
+        "hnr"          : _round(f.get("hnr"), 2),
+        "nhr"          : _round(f.get("nhr"), 6),
+        "voiced_ratio" : _round(f.get("voiced_ratio"), 3),
+        "duration_sec" : _round(f.get("duration_sec"), 2),
+    }
+
+
+def _quality_warnings(f: Dict[str, float]) -> List[str]:
+    warns = []
+    if f.get("duration_sec", 0) < 1.0:
+        warns.append("Đoạn ghi âm quá ngắn (< 1 giây) — nên nói 'Aaaa' kéo dài 3–5 giây.")
+    if f.get("voiced_ratio", 0) < 0.3 or not math.isfinite(f.get("jitter_local", float("nan"))):
+        warns.append("Không phát hiện đủ đoạn hữu thanh ổn định — kết quả kém tin cậy. "
+                     "Hãy ngân nguyên âm /a/ đều giọng trong môi trường yên tĩnh.")
+    return warns
+
+
+def _audio_info(audio_path, feats: Dict[str, float]) -> Dict:
+    try:
+        original_sr = int(librosa.get_samplerate(str(audio_path)))
+    except Exception:
+        original_sr = None
+    return {
+        "duration_sec": _round(feats.get("duration_sec"), 2),
+        "sample_rate": SR,
+        "original_sample_rate": original_sr,
+    }
+
+
+def predict_parkinson(audio_path: str | Path, bundle: Optional[Dict] = None) -> Dict:
+    """
+    Suy luận Parkinson từ file audio (dùng cho Flask API và Raspberry Pi).
+
+    Returns dict: prediction, probability, model, risk_pct, features_summary,
+    audio_info, warnings, disclaimer.
+    """
+    if bundle is None:
+        bundle = load_parkinson_bundle()
+    pipeline = bundle["pipeline"]
+
+    audio_feats = extract_features_from_file(audio_path)
+    X_input = build_model_input(audio_feats, bundle)
+
     proba = float(pipeline.predict_proba(X_input)[0][1])
-
-    label = "Parkinson" if pred == 1 else "Control"
+    label = "Parkinson" if proba >= 0.5 else "Control"
 
     return {
-        "prediction"  : label,
-        "probability" : round(proba, 4),
-        "model"       : model_name,
-        "risk_pct"    : round(proba * 100, 2),
-        "features_summary": {
-            "f0_mean"      : round(audio_feats.get("f0_mean", 0.0), 2),
-            "jitter_local" : round(audio_feats.get("jitter_local", 0.0), 6),
-            "shimmer_local": round(audio_feats.get("shimmer_local", 0.0), 6),
-            "hnr"          : round(audio_feats.get("hnr", 0.0), 2),
-            "nhr"          : round(audio_feats.get("nhr", 0.0), 6),
-            "ppe"          : round(audio_feats.get("ppe", 0.0), 4),
-            "duration_sec" : round(audio_feats.get("duration_sec", 0.0), 2),
-        },
-        "hardware_info": {
-            "microphone": "INMP441 (I2S MEMS) — simulated via computer mic",
-            "processor" : "Raspberry Pi 4 — simulated on server",
-            "sample_rate": f"{SR} Hz",
-        },
-        "disclaimer": (
-            "This system is intended for research and preliminary screening purposes only. "
-            "It is not a medical diagnostic tool and should not replace professional medical evaluation."
-        ),
+        "prediction"      : label,
+        "probability"     : round(proba, 4),
+        "model"           : bundle["model_name"],
+        "risk_pct"        : round(proba * 100, 2),
+        "features_summary": _features_summary(audio_feats),
+        "audio_info"      : _audio_info(audio_path, audio_feats),
+        "warnings"        : _quality_warnings(audio_feats),
+        "model_metrics"   : json_safe({k: bundle.get("metrics", {}).get("nested_cv", {}).get(k)
+                                        for k in ("roc_auc", "sensitivity", "specificity")}),
+        "disclaimer"      : DISCLAIMER_EN,
+        "disclaimer_vi"   : DISCLAIMER_VI,
     }
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-#  BACKWARD COMPAT — screen_parkinson() (rule-based, kept for compatibility)
+#  BACKWARD COMPAT — screen_parkinson() cho /api/parkinson/screen
 # ══════════════════════════════════════════════════════════════════════════════
+
+def _risk_level(risk_pct: float) -> Tuple[str, str]:
+    if risk_pct >= 60:
+        return ("⚠️ Nguy cơ cao",
+                "Phát hiện nhiều dấu hiệu bất thường. Khuyến nghị tham khảo bác sĩ chuyên khoa thần kinh.")
+    if risk_pct >= 30:
+        return ("🔶 Nguy cơ trung bình",
+                "Một số đặc trưng giọng nói bất thường nhẹ. Nên theo dõi định kỳ và tham vấn bác sĩ.")
+    return ("✅ Nguy cơ thấp",
+            "Giọng nói trong phạm vi bình thường. Không phát hiện dấu hiệu Parkinson rõ rệt.")
+
 
 def screen_parkinson(audio_path) -> Dict:
     """
-    Điểm vào chính cho Flask API /api/parkinson/screen.
+    Điểm vào cho /api/parkinson/screen.
 
-    Nếu model ML đã train → dùng ML (predict_parkinson).
-    Nếu chưa train → fallback về rule-based screening cũ.
+    Model ML đã train → predict_parkinson. Chưa train (hoặc lỗi model) → rule-based theo ngưỡng MDVP.
     """
     if is_model_trained():
         try:
             result = predict_parkinson(audio_path)
-            # Gộp thêm format cũ để tương thích với frontend hiện tại
-            risk_pct = result["risk_pct"]
-            if risk_pct >= 60:
-                level_vi = "⚠️ Nguy cơ cao"
-                advice = ("Phát hiện nhiều dấu hiệu bất thường. "
-                          "Khuyến nghị tham khảo bác sĩ chuyên khoa thần kinh.")
-            elif risk_pct >= 30:
-                level_vi = "🔶 Nguy cơ trung bình"
-                advice = ("Một số đặc trưng giọng nói bất thường nhẹ. "
-                          "Nên theo dõi định kỳ và tham vấn bác sĩ.")
-            else:
-                level_vi = "✅ Nguy cơ thấp"
-                advice = ("Giọng nói trong phạm vi bình thường. "
-                          "Không phát hiện dấu hiệu Parkinson rõ rệt.")
+            level_vi, advice = _risk_level(result["risk_pct"])
             return {
                 **result,
-                "risk_score"   : risk_pct,
+                "risk_score"   : result["risk_pct"],
                 "risk_level_vi": level_vi,
                 "advice"       : advice,
                 "features"     : result["features_summary"],
             }
-        except Exception:
-            pass   # fallback về rule-based
+        except Exception as e:
+            log.warning("ML Parkinson predict lỗi, dùng rule-based: %s", e)
 
-    # ── Rule-based fallback ───────────────────────────────────────────────
     return _rule_based_screen(audio_path)
 
 
 def _rule_based_screen(audio_path) -> Dict:
-    """Rule-based Parkinson screening (fallback khi chưa có ML model)."""
-    from pathlib import Path as _Path
-    y, sr = preprocess_audio_parkinson(audio_path)
-    feats = extract_parkinson_features(y, sr)
-
-    indicators = []
+    """
+    Rule-based screening dựa trên ngưỡng bệnh lý MDVP (Kay Elemetrics):
+    Jitter local 1.04%, Shimmer local 3.81%, NHR 0.19; HNR < 20 dB được coi là giảm.
+    """
+    feats = extract_features_from_file(audio_path)
+    indicators: List[Dict] = []
     risk_score = 0.0
 
     def _add(feature, detail, severity, weight):
         indicators.append({"feature": feature, "detail": detail,
-                            "severity": severity, "weight": weight})
+                           "severity": severity, "weight": weight})
         return weight
 
-    # Jitter
-    if feats["jitter_local"] > 0.020:
-        risk_score += _add("Jitter cao bất thường",
-                           f"Jitter = {feats['jitter_local']:.4f} (ngưỡng < 0.010)",
-                           "cao", 0.15)
-    elif feats["jitter_local"] > 0.012:
-        risk_score += _add("Jitter hơi cao",
-                           f"Jitter = {feats['jitter_local']:.4f}",
-                           "trung bình", 0.08)
+    jit, shim = feats.get("jitter_local", np.nan), feats.get("shimmer_local", np.nan)
+    hnr, nhr = feats.get("hnr", np.nan), feats.get("nhr", np.nan)
 
-    # Shimmer
-    if feats["shimmer_local"] > 0.15:
-        risk_score += _add("Shimmer cao",
-                           f"Shimmer = {feats['shimmer_local']:.4f} (ngưỡng < 0.10)",
-                           "cao", 0.15)
-    elif feats["shimmer_local"] > 0.10:
-        risk_score += _add("Shimmer hơi cao",
-                           f"Shimmer = {feats['shimmer_local']:.4f}",
-                           "trung bình", 0.08)
+    if jit > 0.0208:
+        risk_score += _add("Jitter cao", f"Jitter = {jit*100:.2f}% (ngưỡng MDVP 1.04%)", "cao", 0.25)
+    elif jit > 0.0104:
+        risk_score += _add("Jitter vượt ngưỡng", f"Jitter = {jit*100:.2f}%", "trung bình", 0.15)
 
-    # HNR
-    if feats["hnr"] < 10:
-        risk_score += _add("HNR rất thấp — giọng khàn/thở",
-                           f"HNR = {feats['hnr']:.1f} dB (bình thường > 20 dB)",
-                           "cao", 0.15)
-    elif feats["hnr"] < 20:
-        risk_score += _add("HNR thấp",
-                           f"HNR = {feats['hnr']:.1f} dB",
-                           "trung bình", 0.08)
+    if shim > 0.0762:
+        risk_score += _add("Shimmer cao", f"Shimmer = {shim*100:.2f}% (ngưỡng MDVP 3.81%)", "cao", 0.25)
+    elif shim > 0.0381:
+        risk_score += _add("Shimmer vượt ngưỡng", f"Shimmer = {shim*100:.2f}%", "trung bình", 0.15)
 
-    # F0 range (giảm trong PD → monotone)
-    if feats["f0_mean"] > 0:
-        if feats["f0_range"] < 30:
-            risk_score += _add("Dải tần giọng rất hẹp (monotone)",
-                               f"F0 range = {feats['f0_range']:.1f} Hz",
-                               "cao", 0.12)
-        elif feats["f0_range"] < 60:
-            risk_score += _add("Dải tần giọng hơi hẹp",
-                               f"F0 range = {feats['f0_range']:.1f} Hz",
-                               "trung bình", 0.06)
+    if hnr < 12:
+        risk_score += _add("HNR rất thấp — giọng khàn/thở", f"HNR = {hnr:.1f} dB (bình thường > 20 dB)",
+                           "cao", 0.25)
+    elif hnr < 20:
+        risk_score += _add("HNR thấp", f"HNR = {hnr:.1f} dB", "trung bình", 0.15)
 
-    # PPE
-    if feats["ppe"] > 0.5:
-        risk_score += _add("Entropy pitch cao (PPE)",
-                           f"PPE = {feats['ppe']:.3f}",
-                           "cao", 0.12)
-    elif feats["ppe"] > 0.3:
-        risk_score += _add("PPE hơi cao",
-                           f"PPE = {feats['ppe']:.3f}",
-                           "trung bình", 0.06)
-
-    # NHR
-    if feats["nhr"] > 0.10:
-        risk_score += _add("Tỷ lệ nhiễu cao (NHR)",
-                           f"NHR = {feats['nhr']:.4f}",
-                           "trung bình", 0.08)
+    if nhr > 0.19:
+        risk_score += _add("Tỷ lệ nhiễu/hài cao (NHR)", f"NHR = {nhr:.3f} (ngưỡng MDVP 0.19)",
+                           "trung bình", 0.15)
 
     risk_score = min(risk_score, 1.0)
-    risk_pct   = round(risk_score * 100, 1)
-
-    if risk_pct >= 60:
-        level_vi = "⚠️ Nguy cơ cao"
-        advice   = ("Phát hiện nhiều dấu hiệu bất thường trong giọng nói. "
-                    "Khuyến nghị tham khảo bác sĩ chuyên khoa thần kinh.")
-        pred     = "Parkinson"
-    elif risk_pct >= 30:
-        level_vi = "🔶 Nguy cơ trung bình"
-        advice   = ("Một số đặc trưng giọng nói bất thường nhẹ. "
-                    "Nên theo dõi định kỳ và tham vấn bác sĩ.")
-        pred     = "Control"
-    else:
-        level_vi = "✅ Nguy cơ thấp"
-        advice   = ("Giọng nói trong phạm vi bình thường. "
-                    "Không phát hiện dấu hiệu Parkinson rõ rệt.")
-        pred     = "Control"
+    risk_pct = round(risk_score * 100, 1)
+    level_vi, advice = _risk_level(risk_pct)
 
     return {
-        "prediction"    : pred,
-        "probability"   : round(risk_score, 4),
-        "risk_score"    : risk_pct,
-        "risk_level_vi" : level_vi,
-        "advice"        : advice,
-        "indicators"    : indicators,
-        "model"         : "Rule-based (chưa train ML)",
-        "features"      : {k: round(v, 4) if isinstance(v, float) else v
-                           for k, v in feats.items()},
-        "features_summary": {
-            "f0_mean"      : round(feats.get("f0_mean", 0.0), 2),
-            "jitter_local" : round(feats.get("jitter_local", 0.0), 6),
-            "shimmer_local": round(feats.get("shimmer_local", 0.0), 6),
-            "hnr"          : round(feats.get("hnr", 0.0), 2),
-            "nhr"          : round(feats.get("nhr", 0.0), 6),
-            "ppe"          : round(feats.get("ppe", 0.0), 4),
-            "duration_sec" : round(feats.get("duration_sec", 0.0), 2),
-        },
-        "hardware_info": {
-            "microphone" : "INMP441 (I2S MEMS) — simulated via computer mic",
-            "processor"  : "Raspberry Pi 4 — simulated on server",
-            "sample_rate": f"{SR} Hz",
-        },
-        "disclaimer": (
-            "This system is intended for research and preliminary screening purposes only. "
-            "It is not a medical diagnostic tool and should not replace professional medical evaluation. "
-            "Hệ thống chỉ phục vụ mục đích nghiên cứu và sàng lọc ban đầu."
-        ),
+        "prediction"      : "Parkinson" if risk_pct >= 60 else "Control",
+        "probability"     : round(risk_score, 4),
+        "risk_score"      : risk_pct,
+        "risk_pct"        : risk_pct,
+        "risk_level_vi"   : level_vi,
+        "advice"          : advice,
+        "indicators"      : indicators,
+        "model"           : "Rule-based (chưa train ML)",
+        "features"        : json_safe({k: round(v, 6) for k, v in feats.items()}),
+        "features_summary": _features_summary(feats),
+        "audio_info"      : _audio_info(audio_path, feats),
+        "warnings"        : _quality_warnings(feats),
+        "disclaimer"      : DISCLAIMER_EN,
+        "disclaimer_vi"   : DISCLAIMER_VI,
     }

@@ -1,5 +1,5 @@
-Model,Accuracy,Precision,Recall,F1,ROC-AUC,Sensitivity,Specificity
-LogisticRegression,0.9231,0.9333,0.9655,0.9492,0.9241,0.9655,0.8
-SVM,0.8974,0.931,0.931,0.931,0.9621,0.931,0.8
-RandomForest,0.9231,0.9333,0.9655,0.9492,0.9621,0.9655,0.8
-GradientBoosting,0.8462,0.8966,0.8966,0.8966,0.8931,0.8966,0.7
+Model,Accuracy,Precision,Recall,F1,ROC-AUC,Sensitivity,Specificity,Inner_CV_ROC-AUC,NestedCV_Accuracy,NestedCV_F1,NestedCV_ROC-AUC,NestedCV_Sensitivity,NestedCV_Specificity,Best_Params
+LogisticRegression,0.7143,1.0,0.6216,0.7667,0.973,0.6216,1.0,0.7526,0.641,0.7266,0.7972,0.6327,0.6667,{'C': 0.01}
+SVM,0.7551,0.7551,1.0,0.8605,0.9662,1.0,0.0,0.7544,0.7077,0.8179,0.5951,0.8707,0.2083,"{'C': 0.1, 'gamma': 0.01}"
+RandomForest,0.7551,0.8788,0.7838,0.8286,0.8378,0.7838,0.6667,0.7139,0.6769,0.785,0.7137,0.7823,0.3542,"{'max_depth': 4, 'min_samples_leaf': 3}"
+GradientBoosting,0.6327,0.8519,0.6216,0.7188,0.5923,0.6216,0.6667,0.6903,0.7385,0.835,0.601,0.8776,0.3125,"{'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}"
