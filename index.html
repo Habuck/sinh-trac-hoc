@@ -325,6 +325,33 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
 .pron-grade{text-align:center;margin-top:14px;font-size:1.4rem;font-weight:800}
 .pron-feedback{margin-top:10px;padding:14px;border-radius:var(--rs);border:1px solid var(--brd);background:rgba(0,0,0,.2);font-size:.83rem;color:var(--txt);line-height:1.5}
 
+/* ── Parkinson Voice Screening ──────────────────────── */
+.pk-hero{display:flex;align-items:center;gap:14px;padding:18px;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(6,182,212,.08));border:1px solid rgba(99,102,241,.25);border-radius:14px;margin-bottom:16px}
+.pk-orb{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--pri),var(--cyan));box-shadow:0 0 24px rgba(99,102,241,.45);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.5rem;animation:breathe 3.5s ease-in-out infinite}
+.pk-hero-text h3{font-size:1rem;font-weight:800;color:var(--txt);margin-bottom:4px}
+.pk-hero-text p{font-size:.78rem;color:var(--mut);line-height:1.5}
+.pk-model-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:999px;font-size:.68rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3);color:var(--pri);margin-top:8px}
+.pk-result{display:none;margin-top:16px;animation:fadeUp .3s ease}
+.pk-result.show{display:block}
+.pk-result-banner{padding:16px 20px;border-radius:12px;margin-bottom:12px;font-size:1rem;font-weight:800;letter-spacing:.3px;display:flex;align-items:center;gap:12px}
+.pk-result-banner.parkinson{background:rgba(239,68,68,.14);border:1.5px solid var(--red);color:var(--red)}
+.pk-result-banner.control{background:rgba(16,185,129,.12);border:1.5px solid var(--grn);color:var(--grn)}
+.pk-prob-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.pk-prob-label{font-size:.78rem;color:var(--mut);width:120px;flex-shrink:0}
+.pk-prob-bar-wrap{flex:1;height:10px;background:var(--bg3);border-radius:999px;overflow:hidden}
+.pk-prob-bar{height:100%;border-radius:999px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.pk-prob-val{font-size:.85rem;font-weight:800;font-family:'JetBrains Mono',monospace;width:44px;text-align:right;flex-shrink:0}
+.pk-feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.pk-feat{text-align:center;padding:10px 6px;border-radius:10px;border:1px solid var(--brd);background:rgba(255,255,255,.03)}
+.pk-feat .k{font-size:.6rem;color:var(--mut);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.pk-feat .v{font-size:.95rem;font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--txt)}
+.pk-train-row{display:flex;align-items:center;gap:10px;margin-top:14px;padding:14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--brd)}
+.pk-train-info{flex:1;font-size:.78rem;color:var(--mut);line-height:1.5}
+.pk-train-status{font-size:.72rem;margin-top:6px}
+.pk-disclaimer{margin-top:14px;padding:14px;border-radius:10px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);font-size:.75rem;color:var(--org);line-height:1.6}
+.pk-disclaimer strong{display:block;margin-bottom:4px}
+@media(max-width:700px){.pk-feat-grid{grid-template-columns:repeat(2,1fr)}}
+
 /* ── Section dividers ────────────────────────────────── */
 .section-divider{display:flex;align-items:center;gap:14px;margin:32px 0 18px;padding:0 4px}
 .section-divider .section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--brd),transparent)}
@@ -386,6 +413,7 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
       <a class="nav-link" href="#phan-tich">Phân tích</a>
       <a class="nav-link" href="#phat-am">Phát âm</a>
       <a class="nav-link" href="#y-te">Y tế</a>
+      <a class="nav-link" href="#parkinson">Parkinson</a>
       <a class="nav-link" href="#sap-toi">Sắp tới</a>
     </div>
     <div style="display:flex;align-items:center;gap:10px">
@@ -503,8 +531,8 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
           <div class="gender-label" id="genderRealtime">Thiên hướng: trung tính</div>
         </div>
 
-        <!-- Tone ging -->
-        <div class="tone-current" id="toneCurrent">Quãng ging hiện tại: --</div>
+        <!-- Tone giọng -->
+        <div class="tone-current" id="toneCurrent">Quãng giọng hiện tại: --</div>
         <div class="tone-grid">
           <div class="tone-chip" id="tone_bass">Bass<br>85–155 Hz</div>
           <div class="tone-chip" id="tone_baritone">Baritone<br>110–196 Hz</div>
@@ -520,7 +548,7 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
           <div class="emotion-chip" id="emo_angry">😠 Tức giận</div>
           <div class="emotion-chip" id="emo_fear">😨 Lo lắng</div>
           <div class="emotion-chip" id="emo_surprise">😲 Ngạc nhiên</div>
-          <div class="emotion-chip" id="emo_neutral"> Bình thưng</div>
+          <div class="emotion-chip" id="emo_neutral"> Bình thường</div>
         </div>
 
         <!-- AI Emotion -->
@@ -535,13 +563,13 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
         <div class="range-grid">
           <div class="range-stat"><div class="k">Nốt thấp nhất</div><div class="v" id="rangeLow">--</div></div>
           <div class="range-stat"><div class="k">Nốt cao nhất</div><div class="v" id="rangeHigh">--</div></div>
-          <div class="range-stat"><div class="k">ộ rộng</div><div class="v" id="rangeSpan">--</div></div>
+          <div class="range-stat"><div class="k">Độ rộng</div><div class="v" id="rangeSpan">--</div></div>
           <div class="range-stat"><div class="k">Loại quãng</div><div class="v" id="rangeType">--</div></div>
         </div>
 
         <!-- STT -->
         <div class="stt-box" id="sttText">Nội dung nhận dạng sẽ hiện ở đây...</div>
-        <div class="stt-muted" id="sttStatus">Nhận dạng ging nói chạy đồng thi khi bấm Bắt đầu.</div>
+        <div class="stt-muted" id="sttStatus">Nhận dạng giọng nói chạy đồng thời khi bấm Bắt đầu.</div>
       </div>
 
 
@@ -551,7 +579,7 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
           <div class="card-title-icon cyan">🇻🇳</div>
           Luyện Phát Âm Tiếng Việt — AI ánh Giá Ngữ iệu
         </div>
-        <p style="color:var(--mut);font-size:.82rem;margin-bottom:16px">Chn câu mẫu → Nghe mẫu → Ghi âm → AI chấm điểm ngữ điệu, âm sắc, nhịp điệu</p>
+        <p style="color:var(--mut);font-size:.82rem;margin-bottom:16px">Chọn câu mẫu → Nghe mẫu → Ghi âm → AI chấm điểm ngữ điệu, âm sắc, nhịp điệu</p>
 
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
           <button class="btn-primary" onclick="taiDanhSachCau()" id="btnLoadSentences">📋 Tải danh sách câu</button>
@@ -563,7 +591,7 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
         </div>
 
         <div class="pron-ref-box" id="pronRefBox" style="display:none">
-          <div style="font-size:.7rem;color:var(--mut);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Câu mẫu cần đc:</div>
+          <div style="font-size:.7rem;color:var(--mut);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">Câu mẫu cần đọc:</div>
           <div class="pron-ref-text" id="pronRefText"></div>
           <div class="pron-audio-row">
             <span style="font-size:.78rem;color:var(--mut);font-weight:600;flex-shrink:0">🔊 Nghe mẫu:</span>
@@ -603,7 +631,7 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
           <div class="card-title-icon green">🤧</div>
           Phân Tích Tiếng Ho — AI Chẩn oán
         </div>
-        <p style="color:var(--mut);font-size:.82rem;margin-bottom:16px">Upload hoặc ghi âm tiếng ho → AI phân loại: ho khan, ho có đm, không phải ho</p>
+        <p style="color:var(--mut);font-size:.82rem;margin-bottom:16px">Upload hoặc ghi âm tiếng ho → AI phân loại: ho khan, ho có đờm, không phải ho</p>
 
         <div class="med-row">
           <button class="btn-record" id="btnCoughRec" onclick="toggleCoughRec()">🎙 Ghi âm ho</button>
@@ -612,7 +640,7 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
 
         <div class="upload-area">
           <span class="upload-icon">🎵</span>
-          <div class="upload-text">Kéo thả file audio hoặc bấm để chn</div>
+          <div class="upload-text">Kéo thả file audio hoặc bấm để chọn</div>
           <div class="upload-hint">Hỗ trợ .wav · .mp3 · .flac · .ogg · .m4a · .webm</div>
           <input id="coughFile" type="file" accept=".wav,.mp3,.flac,.ogg,.m4a,.webm">
         </div>
@@ -635,22 +663,22 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
           <div class="card-title-icon purple">🧠</div>
           Sàng Lc Trầm Cảm Qua Ging Nói
         </div>
-        <p style="color:var(--mut);font-size:.82rem;margin-bottom:16px">Ghi âm ging nói ~10 giây → AI phân tích pitch, energy, jitter, shimmer, nhịp nói → đánh giá nguy cơ</p>
+        <p style="color:var(--mut);font-size:.82rem;margin-bottom:16px">Ghi âm giọng nói ~10 giây → AI phân tích pitch, energy, jitter, shimmer, nhịp nói → đánh giá nguy cơ</p>
 
         <div class="med-row">
-          <button class="btn-record" id="btnDepRec" onclick="toggleDepRec()">🎙 Ghi âm ging nói</button>
+          <button class="btn-record" id="btnDepRec" onclick="toggleDepRec()">🎙 Ghi âm giọng nói</button>
           <span id="depRecStatus" style="font-size:.8rem;color:var(--mut)">Sẵn sàng (nói ~10 giây)</span>
         </div>
 
         <div class="upload-area">
           <span class="upload-icon">🎤</span>
-          <div class="upload-text">Kéo thả file audio hoặc bấm để chn</div>
+          <div class="upload-text">Kéo thả file audio hoặc bấm để chọn</div>
           <div class="upload-hint">Hỗ trợ .wav · .mp3 · .flac · .ogg · .m4a · .webm</div>
           <input id="depFile" type="file" accept=".wav,.mp3,.flac,.ogg,.m4a,.webm">
         </div>
 
         <div style="margin-top:14px">
-          <button class="btn-primary" onclick="analyzeDep()" id="btnDepAnalyze">🔬 Sàng lc trầm cảm</button>
+          <button class="btn-primary" onclick="analyzeDep()" id="btnDepAnalyze">🔬 Sàng lọc trầm cảm</button>
         </div>
 
         <div class="med-result" id="depResult">
@@ -664,10 +692,106 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
       </div>
 
 
+      <!-- ══════════════════════════════════════════════════════════
+           PARKINSON VOICE SCREENING — Spec §16
+           POST /api/parkinson/predict  |  POST /api/parkinson/train
+      ═══════════════════════════════════════════════════════════════ -->
+      <div class="section-divider" id="parkinson">
+        <div class="section-line"></div>
+        <div class="section-label done">🗣️ Parkinson Voice Screening</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="card" id="pkCard">
+        <!-- Hero -->
+        <div class="pk-hero">
+          <div class="pk-orb">🧠</div>
+          <div class="pk-hero-text">
+            <h3>Nhận diện giọng nói — Sàng lọc Parkinson</h3>
+            <p>Đo F0 · Jitter · Shimmer · HNR · NHR bằng Praat (chuẩn MDVP của UCI) → so sánh Logistic Regression · SVM · Random Forest · Gradient Boosting<br>Phần cứng mục tiêu: <strong style="color:var(--cyan)">INMP441 (I2S MEMS) + Raspberry Pi 4</strong></p>
+            <div class="pk-model-badge" id="pkModelBadge">⚪ Chưa train ML model</div>
+          </div>
+        </div>
+
+        <!-- Upload -->
+        <div class="upload-area">
+          <span class="upload-icon">🎤</span>
+          <div class="upload-text">Kéo thả file audio hoặc bấm để chọn</div>
+          <div class="upload-hint">Nói kéo dài âm "Aaaa" ~5 giây · WAV · MP3 · FLAC · OGG · WebM</div>
+          <input id="pkFile" type="file" accept=".wav,.mp3,.flac,.ogg,.m4a,.webm">
+        </div>
+
+        <!-- Record -->
+        <div class="med-row" style="margin-top:10px">
+          <button class="btn-record" id="btnPkRec" onclick="togglePkRec()">🎙 Ghi âm (5 giây)</button>
+          <span id="pkRecStatus" style="font-size:.8rem;color:var(--mut)">Sẵn sàng — nói "Aaaa" kéo dài ~5 giây</span>
+        </div>
+
+        <!-- Live waveform canvas -->
+        <canvas id="pkWaveCanvas" height="60" style="width:100%;border-radius:10px;background:rgba(0,0,0,.3);margin:10px 0;display:none"></canvas>
+
+        <!-- Analyze button -->
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <button class="btn-primary" onclick="analyzePk()" id="btnPkAnalyze">🔬 Phân tích Parkinson</button>
+          <span id="pkAnalyzeStatus" style="font-size:.8rem;color:var(--mut)"></span>
+        </div>
+
+        <!-- Result card -->
+        <div class="pk-result" id="pkResult">
+          <div class="pk-result-banner control" id="pkBanner">
+            🧠 <span id="pkLabel">Kết quả sẽ hiển thị ở đây</span>&nbsp;—&nbsp;<span id="pkProbText"></span>
+          </div>
+
+          <!-- Probability bar -->
+          <div class="pk-prob-row">
+            <div class="pk-prob-label">Xác suất Parkinson</div>
+            <div class="pk-prob-bar-wrap"><div class="pk-prob-bar" id="pkProbBar" style="width:0%;background:var(--pri)"></div></div>
+            <div class="pk-prob-val" id="pkProbPct">0%</div>
+          </div>
+
+          <!-- Quality warnings -->
+          <ul class="med-indicators" id="pkWarnings" style="display:none"></ul>
+
+          <!-- Waveform + audio info -->
+          <div style="font-size:.72rem;color:var(--mut);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;font-weight:700">Waveform audio đã phân tích</div>
+          <canvas id="pkResultWave" height="70" style="width:100%;border-radius:10px;background:rgba(0,0,0,.3);margin-bottom:6px"></canvas>
+          <div class="pk-feat-grid" id="pkAudioInfo" style="margin-bottom:12px"></div>
+
+          <!-- Feature summary -->
+          <div style="font-size:.72rem;color:var(--mut);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;font-weight:700">Đặc trưng giọng nói trích xuất (Praat)</div>
+          <div class="pk-feat-grid" id="pkFeatGrid"></div>
+
+          <!-- Model info -->
+          <div style="font-size:.78rem;color:var(--mut);margin-top:8px">
+            Model sử dụng: <strong id="pkModelName" style="color:var(--pri)">—</strong>
+            &nbsp;|&nbsp; Dataset: <strong style="color:var(--cyan)">UCI Parkinson's Voice (195 bản ghi · 32 người)</strong>
+            <span id="pkModelMetrics"></span>
+          </div>
+        </div>
+
+        <!-- Train model section -->
+        <div class="pk-train-row">
+          <div class="pk-train-info">
+            <strong style="color:var(--txt)">🤖 Train ML Model — UCI Parkinson's Dataset</strong><br>
+            So sánh Logistic Regression · SVM · Random Forest · Gradient Boosting · chia train/test theo bệnh nhân → lưu model có nested-CV ROC-AUC cao nhất
+            <div class="pk-train-status" id="pkTrainStatus">Chưa train — bấm để bắt đầu (cần file data/parkinsons.data)</div>
+          </div>
+          <button class="btn-secondary" onclick="trainPk()" id="btnPkTrain" style="flex-shrink:0;white-space:nowrap">🚀 Train</button>
+        </div>
+
+        <!-- Medical Disclaimer (Spec §17) -->
+        <div class="pk-disclaimer">
+          <strong>⚠️ Medical Disclaimer / Tuyên bố Y tế</strong>
+          This system is intended for <strong>research and preliminary screening purposes only</strong>. It is not a medical diagnostic tool and should not replace professional medical evaluation.<br>
+          <em>Hệ thống chỉ phục vụ mục đích nghiên cứu và sàng lọc ban đầu, không phải công cụ chẩn đoán y khoa và không thay thế đánh giá của chuyên gia y tế.</em>
+        </div>
+      </div>
+
+
       <!--  SẮP TỚI  -->
       <div class="section-divider" id="sap-toi">
         <div class="section-line"></div>
-        <div class="section-label planned">🔮 Sắp triển khai —  tưởng</div>
+        <div class="section-label planned">🔮 Sắp triển khai — Ý tưởng</div>
         <span class="section-count">4 tính năng dự kiến</span>
         <div class="section-line"></div>
       </div>
@@ -682,13 +806,13 @@ canvas{width:100%;display:block;border-radius:var(--rs)}
         <div class="planned-card">
           <div class="pc-icon">🫀</div>
           <div class="pc-title">Phân Tích Âm Tim</div>
-          <div class="pc-desc">Phát hiện tiếng thổi tim, nhịp bất thưng, van tim hở từ audio ống nghe đặt lên ngực.</div>
+          <div class="pc-desc">Phát hiện tiếng thổi tim, nhịp bất thường, van tim hở từ audio ống nghe đặt lên ngực.</div>
           <div class="pc-tags"><span class="pc-tag dataset">PhysioNet/CinC 2016 — 3,000 recordings</span><span class="pc-tag model">CNN + MFCC</span></div>
         </div>
         <div class="planned-card">
           <div class="pc-icon">🗣</div>
           <div class="pc-title">Phát Hiện Parkinson</div>
-          <div class="pc-desc">Phân tích run ging, jitter, shimmer bất thưng. Phát hiện sớm dấu hiệu Parkinson từ ging nói hàng ngày.</div>
+          <div class="pc-desc">Phân tích run giọng, jitter, shimmer bất thường. Phát hiện sớm dấu hiệu Parkinson từ giọng nói hàng ngày.</div>
           <div class="pc-tags"><span class="pc-tag dataset">UCI Parkinson's Dataset</span><span class="pc-tag model">KNN / Random Forest</span></div>
         </div>
         <div class="planned-card">
@@ -731,7 +855,7 @@ async function batDau(){
     src=ctx.createMediaStreamSource(stream);src.connect(analyser);
     dangChay=true;
     $('btnDungAll').disabled=false;$('btnBatDau').disabled=true;
-    $('badge').className='nav-badge on';$('badgeText').textContent='ang lắng nghe…';
+    $('badge').className='nav-badge on';$('badgeText').textContent='Đang lắng nghe…';
     $('waveCard').classList.add('active');
     ghiLog('🟢','Microphone đã kết nối — đang phân tích','xanh');ve();
   }catch(e){
@@ -746,8 +870,8 @@ function dungLai(){
   $('btnDungAll').disabled=true;$('btnBatDau').disabled=false;
   $('badge').className='nav-badge';$('badgeText').textContent='Chưa kết nối';
   $('waveCard').classList.remove('active');
-  $('emotionOrb').className='emotion-orb silent';$('emotionTitle').textContent='Tạm dừng';$('emotionDesc').textContent='ã ngắt microphone.';
-  ghiLog('⬛','ã dừng phân tích','');datLaiChip();capNhatQuangGiong(0);veXuong();
+  $('emotionOrb').className='emotion-orb silent';$('emotionTitle').textContent='Tạm dừng';$('emotionDesc').textContent='Đã ngắt microphone.';
+  ghiLog('⬛','Đã dừng phân tích','');datLaiChip();capNhatQuangGiong(0);veXuong();
 }
 
 function ve(){
@@ -811,7 +935,7 @@ function capNhat(td,fd){
   if(isSilent)emotion='silent';
   else if(rms>.11&&hzE>250)emotion='angry';else if(rms>.09&&hzE>=190)emotion='surprise';else if(rms>.05&&hzE>=170&&hzE<240)emotion='happy';else if(rms>.06&&hzE<170)emotion='fear';else if(rms<.02&&hzE<160)emotion='sad';
   if(now>=emotionHoldUntil&&emotion!==emotionBefore){emotionHoldUntil=now+EMOTION_HOLD_MS;capNhatCamXuc(emotion);
-    if(emotion!=='silent'){ghiLog('😊','Cảm xúc: '+{happy:'Vui vẻ',sad:'Buồn',angry:'Tức giận',fear:'Lo lắng',surprise:'Ngạc nhiên',neutral:'Bình thưng'}[emotion],'')}
+    if(emotion!=='silent'){ghiLog('😊','Cảm xúc: '+{happy:'Vui vẻ',sad:'Buồn',angry:'Tức giận',fear:'Lo lắng',surprise:'Ngạc nhiên',neutral:'Bình thường'}[emotion],'')}
     emotionBefore=emotion}
   const delta=rawRms-volTruoc;
   if(!isSilent&&delta>.08&&now-thoiGianVaTruoc>400){thoiGianVaTruoc=now;soVa++;
@@ -836,8 +960,8 @@ function capNhatBangQuang(){
   $('rangeLow').textContent=midiToNote(lo);$('rangeHigh').textContent=midiToNote(hi);
   $('rangeSpan').textContent=st+' st';$('rangeType').textContent=phanLoaiDoRong(st);
 }
-function batDauDoQuang(){rangeDetectRunning=true;ghiLog('🎼','Bắt đầu đo quãng ging','xanh')}
-function dungDoQuang(){rangeDetectRunning=false;ghiLog('🎼','Dừng đo quãng ging','')}
+function batDauDoQuang(){rangeDetectRunning=true;ghiLog('🎼','Bắt đầu đo quãng giọng','xanh')}
+function dungDoQuang(){rangeDetectRunning=false;ghiLog('🎼','Dừng đo quãng giọng','')}
 async function batDauTatCa(){await batDau();if(!dangChay)return;batDauDoQuang();batDauSTT();startAiEmotion()}
 function dungTatCa(){stopAiEmotion();dungSTT();dungDoQuang();dungLai()}
 function datLaiQuang(){minHz=maxHz=null;['rangeLow','rangeHigh','rangeSpan','rangeType'].forEach(id=>$(id).textContent='--')}
@@ -845,7 +969,7 @@ function capNhatQuangGiong(hz){
   const tones=[['tone_bass',85,155,'Bass'],['tone_baritone',155,196,'Baritone'],['tone_tenor',196,262,'Tenor'],['tone_alto',262,330,'Alto'],['tone_soprano',330,521,'Soprano']];
   tones.forEach(t=>$(t[0]).classList.remove('on'));let name='--',aid='';
   for(const[id,lo,hi,n]of tones)if(hz>=lo&&hz<hi){name=n;aid=id;break}
-  if(aid)$(aid).classList.add('on');$('toneCurrent').textContent=hz>20?'Quãng ging hiện tại: '+name+' ('+hz+' Hz)':'Quãng ging hiện tại: --';
+  if(aid)$(aid).classList.add('on');$('toneCurrent').textContent=hz>20?'Quãng giọng hiện tại: '+name+' ('+hz+' Hz)':'Quãng giọng hiện tại: --';
 }
 function capNhatChip(t){
   const map={yen:['chipYen','on-green'],nho:['chipNho','on-blue'],vua:['chipVua','on-orange'],to:['chipTo','on-red']};
@@ -856,10 +980,10 @@ function datLaiChip(){['chipYen','chipNho','chipVua','chipTo','chipVo'].forEach(
 function capNhatCamXuc(e){
   ['happy','sad','angry','fear','surprise','neutral'].forEach(k=>$('emo_'+k).classList.remove('on'));
   if(e!=='silent'&&$('emo_'+e))$('emo_'+e).classList.add('on');
-  const d={silent:['ang Lắng Nghe...','Hệ thống AI đang phân tích tĩnh lặng.'],happy:['Vui Vẻ & Tích Cực','Năng lượng âm thanh cao, đầy hoan hỉ.'],sad:['Trầm Ngâm & Buồn','Nhịp điệu chậm, âm vực sâu lắng.'],angry:['Mạnh Mẽ & Tức Giận','Sóng âm gay gắt, cưng độ cao.'],fear:['Lo Lắng & Bất An','Rung động âm vực không đu.'],surprise:['Ngạc Nhiên & Bất Ng','Cưng độ âm thanh tăng vt đột ngột.'],neutral:['Trạng Thái Bình Thưng','Sóng âm phẳng, cảm xúc ổn định.']};
+  const d={silent:['Đang Lắng Nghe...','Hệ thống AI đang phân tích tĩnh lặng.'],happy:['Vui Vẻ & Tích Cực','Năng lượng âm thanh cao, đầy hoan hỉ.'],sad:['Trầm Ngâm & Buồn','Nhịp điệu chậm, âm vực sâu lắng.'],angry:['Mạnh Mẽ & Tức Giận','Sóng âm gay gắt, cưng độ cao.'],fear:['Lo Lắng & Bất An','Rung động âm vực không đu.'],surprise:['Ngạc Nhiên & Bất Ng','Cưng độ âm thanh tăng vt đột ngột.'],neutral:['Trạng Thái Bình Thưng','Sóng âm phẳng, cảm xúc ổn định.']};
   $('emotionOrb').className='emotion-orb ' + e;
   if(d[e]){$('emotionTitle').textContent=d[e][0];$('emotionDesc').textContent=d[e][1];}
-  else{$('emotionTitle').textContent='Sẵn sàng';$('emotionDesc').textContent='ang ch âm thanh...';}
+  else{$('emotionTitle').textContent='Sẵn sàng';$('emotionDesc').textContent='Đang chờ âm thanh...';}
 }
 function ghiLog(icon,msg,loai){
   const log=$('logBox'),row=document.createElement('div');row.className='log-row';
@@ -873,11 +997,11 @@ function batDauSTT(){
   if(!SR){$('sttStatus').textContent='Trình duyệt không hỗ trợ.';return}
   if(sttRunning)return;recognition=new SR();const lang=$('sttLang').value;
   recognition.lang=lang;recognition.continuous=true;recognition.interimResults=true;
-  recognition.onstart=()=>{sttRunning=true;$('sttStatus').textContent='ang nghe...';ghiLog('','Bắt đầu nhận dạng','xanh')};
+  recognition.onstart=()=>{sttRunning=true;$('sttStatus').textContent='Đang nghe...';ghiLog('','Bắt đầu nhận dạng','xanh')};
   recognition.onresult=ev=>{let ft='',it='';for(let i=ev.resultIndex;i<ev.results.length;i++){const t=ev.results[i][0].transcript;ev.results[i].isFinal?ft+=t+' ':it+=t}
     const b=$('sttText'),m=((b.dataset.finalText||'')+ft).trim();b.dataset.finalText=m;b.textContent=(m+(it?' '+it:'')).trim()||'Nội dung nhận dạng sẽ hiện ở đây...'};
   recognition.onerror=ev=>{$('sttStatus').textContent='Lỗi: '+ev.error};
-  recognition.onend=()=>{sttRunning=false;$('sttStatus').textContent='ã dừng nhận dạng.'};
+  recognition.onend=()=>{sttRunning=false;$('sttStatus').textContent='Đã dừng nhận dạng.'};
   recognition.start();
 }
 function dungSTT(){if(recognition&&sttRunning)recognition.stop()}
@@ -904,10 +1028,10 @@ async function taiLaiDanhSachMic(){
     st.textContent=mics.length+' mic tìm thấy: '+(sel.options[sel.selectedIndex]?.text||'?');
   }catch(e){st.textContent='Lỗi: '+(e.message||e)}
 }
-$('micSelect').addEventListener('change',function(){selectedMicId=this.value;$('micStatus').textContent='Chn: '+(this.options[this.selectedIndex]?.text||'?')});
+$('micSelect').addEventListener('change',function(){selectedMicId=this.value;$('micStatus').textContent='Chọn: '+(this.options[this.selectedIndex]?.text||'?')});
 
 /* ── AI Emotion ── */
-const AI_EMO_MAP={happy:'😄 Vui vẻ',sad:'😢 Buồn',angry:'😠 Tức giận',fear:'😨 Lo lắng',surprise:'😲 Ngạc nhiên',neutral:' Bình thưng'};
+const AI_EMO_MAP={happy:'😄 Vui vẻ',sad:'😢 Buồn',angry:'😠 Tức giận',fear:'😨 Lo lắng',surprise:'😲 Ngạc nhiên',neutral:' Bình thường'};
 let aiEmoRunning=false,aiEmoInterval=null,aiEmoRecorder=null;
 function startAiEmotion(){
   if(aiEmoRunning)return;aiEmoRunning=true;
@@ -960,20 +1084,20 @@ async function batDauGhiAmPron(){
     pronRecorder.onstop=()=>{pronBlob=new Blob(chunks,{type:'audio/webm'});$('pronUserAudio').src=URL.createObjectURL(pronBlob);
       $('pronUserAudio').style.display='block';rs.getTracks().forEach(t=>t.stop());pronRecording=false;
       $('btnPronRecord').textContent='🎙 Ghi âm';$('btnPronRecord').classList.remove('recording');
-      $('pronRecStatus').textContent='ã ghi xong';$('btnPronEval').disabled=false};
+      $('pronRecStatus').textContent='Đã ghi xong';$('btnPronEval').disabled=false};
     pronRecorder.start();pronRecording=true;$('btnPronRecord').textContent=' Dừng';
-    $('btnPronRecord').classList.add('recording');$('pronRecStatus').textContent='ang ghi...';
+    $('btnPronRecord').classList.add('recording');$('pronRecStatus').textContent='Đang ghi...';
   }catch(e){$('pronRecStatus').textContent='Lỗi: '+e.message}
 }
 function pronFileChosen(){
   const f=$('pronUserFile').files[0];
-  if(f){pronBlob=f;$('pronRecStatus').textContent='ã chn: '+f.name;$('btnPronEval').disabled=false}
+  if(f){pronBlob=f;$('pronRecStatus').textContent='Đã chọn: '+f.name;$('btnPronEval').disabled=false}
 }
 async function danhGiaPhatAm(){
   const file=pronBlob||$('pronUserFile').files[0];
   if(!file){$('pronRecStatus').textContent='Chưa có audio — ghi âm hoặc upload file';return}
-  if(!pronSelectedId){$('pronRecStatus').textContent='Vui lòng chn câu mẫu trước';return}
-  $('btnPronEval').disabled=true;$('pronRecStatus').textContent='ang chấm điểm...';
+  if(!pronSelectedId){$('pronRecStatus').textContent='Vui lòng chọn câu mẫu trước';return}
+  $('btnPronEval').disabled=true;$('pronRecStatus').textContent='Đang chấm điểm...';
   const fd=new FormData();
   fd.append('file',file instanceof Blob&&!(file instanceof File)?new File([file],'pron.webm',{type:'audio/webm'}):file);
   fd.append('reference_id',pronSelectedId);
@@ -1006,17 +1130,17 @@ async function toggleCoughRec(){
     coughRec.onstop=()=>{coughBlob=new Blob(chunks,{type:'audio/webm'});coughRecording=false;
       s.getTracks().forEach(t=>t.stop());
       $('btnCoughRec').textContent='🎙 Ghi âm ho';$('btnCoughRec').classList.remove('recording');
-      $('coughRecStatus').textContent='ã ghi xong ('+Math.round(coughBlob.size/1024)+'KB)'};
+      $('coughRecStatus').textContent='Đã ghi xong ('+Math.round(coughBlob.size/1024)+'KB)'};
     coughRec.start();coughRecording=true;
     $('btnCoughRec').textContent=' Dừng ghi';$('btnCoughRec').classList.add('recording');
-    $('coughRecStatus').textContent='ang ghi... ho vào mic';
+    $('coughRecStatus').textContent='Đang ghi... ho vào mic';
     setTimeout(()=>{if(coughRec?.state==='recording')coughRec.stop()},5000);
   }catch(e){$('coughRecStatus').textContent='Lỗi mic: '+e.message}
 }
 async function analyzeCough(){
   const file=$('coughFile').files[0]||coughBlob;
   if(!file){$('coughRecStatus').textContent='Chưa có audio — ghi âm hoặc upload file';return}
-  $('btnCoughAnalyze').disabled=true;$('coughRecStatus').textContent='ang phân tích...';
+  $('btnCoughAnalyze').disabled=true;$('coughRecStatus').textContent='Đang phân tích...';
   const fd=new FormData();
   fd.append('file',file instanceof Blob&&!(file instanceof File)?new File([file],'cough.webm',{type:'audio/webm'}):file);
   try{const r=await(await fetch('/api/cough/predict',{method:'POST',body:fd})).json();
@@ -1024,7 +1148,7 @@ async function analyzeCough(){
     const colors={dry_cough:'var(--org)',wet_cough:'var(--cyan)',not_cough:'var(--grn)'};
     $('coughLabel').textContent=r.prediction_vi;$('coughLabel').style.color=colors[r.prediction]||'var(--txt)';
     let scHtml='';for(const[k,v]of Object.entries(r.scores_vi)){scHtml+=`<div class="cough-sc"><div class="val">${Math.round(v*100)}%</div><div class="label">${k}</div></div>`}
-    $('coughScores').innerHTML=scHtml;$('coughConf').textContent='ộ tin cậy: '+Math.round(r.confidence*100)+'%';
+    $('coughScores').innerHTML=scHtml;$('coughConf').textContent='Độ tin cậy: '+Math.round(r.confidence*100)+'%';
     $('coughResult').classList.add('show');$('coughRecStatus').textContent='Hoàn tất!';
     ghiLog('🤧','Ho: '+r.prediction_vi+' ('+Math.round(r.confidence*100)+'%)','');
   }catch(e){$('coughRecStatus').textContent=' '+e.message}
@@ -1041,18 +1165,18 @@ async function toggleDepRec(){
     depRec.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
     depRec.onstop=()=>{depBlob=new Blob(chunks,{type:'audio/webm'});depRecording=false;
       s.getTracks().forEach(t=>t.stop());
-      $('btnDepRec').textContent='🎙 Ghi âm ging nói';$('btnDepRec').classList.remove('recording');
-      $('depRecStatus').textContent='ã ghi xong ('+Math.round(depBlob.size/1024)+'KB)'};
+      $('btnDepRec').textContent='🎙 Ghi âm giọng nói';$('btnDepRec').classList.remove('recording');
+      $('depRecStatus').textContent='Đã ghi xong ('+Math.round(depBlob.size/1024)+'KB)'};
     depRec.start();depRecording=true;
     $('btnDepRec').textContent=' Dừng ghi';$('btnDepRec').classList.add('recording');
-    $('depRecStatus').textContent='ang ghi... nói bình thưng ~10 giây';
+    $('depRecStatus').textContent='Đang ghi... nói bình thường ~10 giây';
     setTimeout(()=>{if(depRec?.state==='recording')depRec.stop()},12000);
   }catch(e){$('depRecStatus').textContent='Lỗi mic: '+e.message}
 }
 async function analyzeDep(){
   const file=$('depFile').files[0]||depBlob;
   if(!file){$('depRecStatus').textContent='Chưa có audio — ghi âm hoặc upload file';return}
-  $('btnDepAnalyze').disabled=true;$('depRecStatus').textContent='ang phân tích ging nói...';
+  $('btnDepAnalyze').disabled=true;$('depRecStatus').textContent='Đang phân tích giọng nói...';
   const fd=new FormData();
   fd.append('file',file instanceof Blob&&!(file instanceof File)?new File([file],'voice.webm',{type:'audio/webm'}):file);
   try{const r=await(await fetch('/api/depression/screen',{method:'POST',body:fd})).json();
@@ -1063,7 +1187,7 @@ async function analyzeDep(){
     let indHtml='';for(const ind of r.indicators){
       const cls=ind.severity==='cao'?'sev-cao':ind.severity==='trung bình'?'sev-trung':'';
       indHtml+=`<li class="${cls}"><strong>${ind.feature}</strong> — ${ind.detail}</li>`}
-    $('depIndicators').innerHTML=indHtml||'<li>Không phát hiện dấu hiệu bất thưng</li>';
+    $('depIndicators').innerHTML=indHtml||'<li>Không phát hiện dấu hiệu bất thường</li>';
     const featMap={pitch_mean:'Pitch TB',pitch_std:'Pitch Std',pitch_range:'Pitch Range',energy_mean:'Energy',jitter:'Jitter',shimmer:'Shimmer',hnr:'HNR (dB)',speech_rate:'Nhịp nói',pause_ratio:'Khoảng lặng'};
     let fHtml='';for(const[k,label]of Object.entries(featMap)){const v=r.features[k];if(v!==undefined)fHtml+=`<div class="med-feat"><div class="k">${label}</div><div class="v">${typeof v==='number'?v.toFixed(3):v}</div></div>`}
     $('depFeats').innerHTML=fHtml;$('depAdvice').textContent=r.advice;$('depDisclaimer').textContent=r.disclaimer;
@@ -1075,6 +1199,154 @@ async function analyzeDep(){
 
 veXuong();kiemTraQuyenMic();taiLaiDanhSachMic();
 navigator.mediaDevices?.addEventListener?.('devicechange',taiLaiDanhSachMic);
+
+/* ── Parkinson Voice Screening ── */
+let pkRec=null,pkBlob=null,pkRecording=false,pkWaveAnim=null,pkAudioCtx=null,pkAnalyser=null;
+
+async function togglePkRec(){
+  if(pkRecording){pkRec.stop();return}
+  try{
+    const s=await navigator.mediaDevices.getUserMedia({audio:selectedMicId?{deviceId:{exact:selectedMicId}}:true});
+    const chunks=[];pkRec=new MediaRecorder(s,{mimeType:'audio/webm'});
+    pkRec.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data)};
+    pkRec.onstop=()=>{
+      pkBlob=new Blob(chunks,{type:'audio/webm'});pkRecording=false;
+      s.getTracks().forEach(t=>t.stop());
+      if(pkAudioCtx){pkAudioCtx.close();pkAudioCtx=null}
+      cancelAnimationFrame(pkWaveAnim);
+      $('btnPkRec').textContent='🎙 Ghi âm (5 giây)';$('btnPkRec').classList.remove('recording');
+      $('pkRecStatus').textContent='✅ Đã ghi xong ('+Math.round(pkBlob.size/1024)+'KB) — bấm Phân tích';
+      $('pkWaveCanvas').style.display='block';
+    };
+    pkAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    pkAnalyser=pkAudioCtx.createAnalyser();pkAnalyser.fftSize=1024;
+    const src2=pkAudioCtx.createMediaStreamSource(s);src2.connect(pkAnalyser);
+    const cv=$('pkWaveCanvas');cv.style.display='block';cv.width=cv.parentElement.clientWidth-2;
+    function drawPkWave(){
+      pkWaveAnim=requestAnimationFrame(drawPkWave);
+      const d=new Uint8Array(pkAnalyser.fftSize),w=cv.width,h=cv.height;
+      pkAnalyser.getByteTimeDomainData(d);
+      const cx2=cv.getContext('2d');cx2.clearRect(0,0,w,h);
+      cx2.fillStyle='rgba(11,15,26,.8)';cx2.fillRect(0,0,w,h);
+      const sw=w/d.length;let x=0;cx2.beginPath();
+      for(let i=0;i<d.length;i++){const y2=(d[i]/128)*h/2;i===0?cx2.moveTo(x,y2):cx2.lineTo(x,y2);x+=sw}
+      const g=cx2.createLinearGradient(0,0,w,0);g.addColorStop(0,'#6366f1');g.addColorStop(.5,'#06b6d4');g.addColorStop(1,'#8b5cf6');
+      cx2.strokeStyle=g;cx2.lineWidth=2;cx2.shadowColor='#6366f1';cx2.shadowBlur=10;cx2.stroke();cx2.shadowBlur=0;
+    }
+    drawPkWave();
+    pkRec.start();pkRecording=true;
+    $('btnPkRec').textContent='⏹ Dừng ghi';$('btnPkRec').classList.add('recording');
+    $('pkRecStatus').textContent='🔴 Đang ghi — nói "Aaaa" kéo dài...';
+    setTimeout(()=>{if(pkRec?.state==='recording')pkRec.stop()},5000);
+  }catch(e){$('pkRecStatus').textContent='❌ Lỗi mic: '+e.message}
+}
+
+async function analyzePk(){
+  const file=$('pkFile').files[0]||pkBlob;
+  if(!file){$('pkRecStatus').textContent='⚠️ Chưa có audio — ghi âm hoặc upload file';return}
+  $('btnPkAnalyze').disabled=true;
+  $('pkAnalyzeStatus').textContent='⏳ Đang trích xuất đặc trưng & phân tích...';
+  const mkFd=()=>{const fd=new FormData();fd.append('file',file instanceof Blob&&!(file instanceof File)?new File([file],'voice.webm',{type:'audio/webm'}):file);return fd};
+  try{
+    let r=await(await fetch('/api/parkinson/predict',{method:'POST',body:mkFd()})).json();
+    if(!r.ok&&r.error&&r.error.includes('not trained')){
+      r=await(await fetch('/api/parkinson/screen',{method:'POST',body:mkFd()})).json();
+      if(!r.ok)throw new Error(r.error);
+      r.probability=r.probability!=null?r.probability:(r.risk_score||0)/100;
+    }else if(!r.ok){throw new Error(r.error)}
+    const isPD=r.prediction==='Parkinson';
+    const prob=Math.round((r.probability||0)*100);
+    const banner=$('pkBanner');
+    banner.className='pk-result-banner '+(isPD?'parkinson':'control');
+    $('pkLabel').textContent=isPD?'⚠️ Dấu hiệu Parkinson phát hiện':'✅ Giọng nói bình thường (Control)';
+    $('pkProbText').textContent=prob+'% nguy cơ';
+    $('pkProbBar').style.width=prob+'%';
+    $('pkProbBar').style.background=isPD?'var(--red)':'var(--grn)';
+    $('pkProbPct').textContent=prob+'%';
+    $('pkProbPct').style.color=isPD?'var(--red)':'var(--grn)';
+    $('pkModelName').textContent=r.model||'Rule-based';
+    const fs=r.features_summary||r.features||{};
+    const pct=v=>(v*100).toFixed(2)+'%';
+    const fmap={f0_mean:['F0 mean (Hz)',v=>v.toFixed(1)],f0_std:['F0 std (Hz)',v=>v.toFixed(2)],
+      jitter_local:['Jitter (local)',pct],shimmer_local:['Shimmer (local)',pct],
+      hnr:['HNR (dB)',v=>v.toFixed(2)],nhr:['NHR',v=>v.toFixed(4)],voiced_ratio:['Tỉ lệ hữu thanh',pct]};
+    $('pkFeatGrid').innerHTML=pkGrid(fmap,fs);
+    const ai=r.audio_info||{};
+    $('pkAudioInfo').innerHTML=pkGrid({duration_sec:['Duration (s)',v=>v.toFixed(2)],
+      original_sample_rate:['Sample rate gốc',v=>v+' Hz'],sample_rate:['Sample rate xử lý',v=>v+' Hz']},ai);
+    const warns=r.warnings||[];
+    $('pkWarnings').innerHTML=warns.map(w=>`<li class="sev-trung">${w}</li>`).join('');
+    $('pkWarnings').style.display=warns.length?'block':'none';
+    const mm=r.model_metrics;
+    $('pkModelMetrics').textContent=mm&&mm.roc_auc!=null?` | Nested-CV: AUC ${mm.roc_auc.toFixed(3)} · Sen ${pct(mm.sensitivity)} · Spe ${pct(mm.specificity)}`:'';
+    $('pkResult').classList.add('show');
+    drawPkResultWave(file);
+    $('pkAnalyzeStatus').textContent='✅ Hoàn tất!';
+    ghiLog('🗣️','Parkinson: '+r.prediction+' ('+prob+'%) — '+( r.model||'rule-based'),'');
+  }catch(e){
+    $('pkAnalyzeStatus').textContent='❌ '+e.message;
+    ghiLog('❌','Parkinson lỗi: '+e.message,'do');
+  }
+  finally{$('btnPkAnalyze').disabled=false}
+}
+
+function pkGrid(map,src){
+  let h='';for(const[k,[lbl,fmt]]of Object.entries(map)){const v=src[k];if(v===undefined)continue;
+    h+=`<div class="pk-feat"><div class="k">${lbl}</div><div class="v">${v===null?'—':typeof v==='number'?fmt(v):v}</div></div>`}
+  return h;
+}
+
+async function drawPkResultWave(file){
+  const cv=$('pkResultWave');cv.width=cv.parentElement.clientWidth-2;
+  const ctx=cv.getContext('2d'),w=cv.width,h=cv.height;
+  ctx.clearRect(0,0,w,h);
+  try{
+    const ac=new(window.AudioContext||window.webkitAudioContext)();
+    const buf=await ac.decodeAudioData(await file.arrayBuffer());ac.close();
+    const d=buf.getChannelData(0),step=Math.max(1,Math.floor(d.length/w));
+    let peak=0;for(let i=0;i<d.length;i++)peak=Math.max(peak,Math.abs(d[i]));peak=peak||1;
+    const g=ctx.createLinearGradient(0,0,w,0);g.addColorStop(0,'#6366f1');g.addColorStop(.5,'#06b6d4');g.addColorStop(1,'#8b5cf6');
+    ctx.fillStyle=g;
+    for(let x=0;x<w;x++){let mn=1,mx=-1;
+      for(let j=x*step;j<Math.min(d.length,(x+1)*step);j++){const s=d[j]/peak;if(s<mn)mn=s;if(s>mx)mx=s}
+      if(mx<mn)continue;ctx.fillRect(x,(1-mx)*h/2,1,Math.max(1,(mx-mn)*h/2))}
+  }catch(e){ctx.fillStyle='#94a3b8';ctx.font='12px sans-serif';ctx.fillText('Trình duyệt không giải mã được định dạng này để vẽ waveform',10,h/2)}
+}
+
+function pkShowModelInfo(m){
+  const pct=v=>v==null?'—':(v*100).toFixed(1)+'%';
+  const s=m.split||{},n=m.metrics.nested_cv||{};
+  $('pkModelBadge').textContent=`✅ ${m.model} (nested-CV AUC=${n.roc_auc?.toFixed(3)??'—'})`;
+  $('pkModelBadge').style.cssText='background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);color:var(--grn)';
+  $('pkTrainStatus').textContent=`✅ ${m.model} | Nested-CV theo bệnh nhân: AUC=${n.roc_auc?.toFixed(3)} · Sen=${pct(n.sensitivity)} · Spe=${pct(n.specificity)}`+
+    ` | Test giữ riêng (${s.test_subjects??'?'} người, ${s.test_size??'?'} bản ghi): AUC=${m.metrics.roc_auc?.toFixed(3)} · Sen=${pct(m.metrics.sensitivity)} · Spe=${pct(m.metrics.specificity)}`;
+}
+
+async function trainPk(){
+  $('btnPkTrain').disabled=true;
+  $('pkTrainStatus').textContent='⏳ Đang train LR · SVM · RF · GradientBoosting với GridSearchCV theo bệnh nhân... (30-90 giây)';
+  try{
+    const r=await(await fetch('/api/parkinson/train',{method:'POST'})).json();
+    if(!r.ok)throw new Error(r.error);
+    pkShowModelInfo({model:r.model,metrics:r,split:{test_subjects:r.test_subjects,test_size:r.test_size}});
+    ghiLog('🤖','Parkinson train xong: '+r.model+' CV-AUC='+r.cv_roc_auc+' test AUC='+r.roc_auc,'xanh');
+  }catch(e){
+    $('pkTrainStatus').textContent='❌ '+e.message;
+    ghiLog('❌','Train Parkinson lỗi: '+e.message,'do');
+  }
+  finally{$('btnPkTrain').disabled=false}
+}
+
+// Auto-check model trạng thái khi tải trang
+(async()=>{
+  try{
+    const h=await(await fetch('/api/health')).json();
+    if(h.parkinson_model_ready){
+      const m=await(await fetch('/api/parkinson/model-info')).json();
+      if(m.ok)pkShowModelInfo(m);
+    }
+  }catch(e){}
+})();
 </script>
 </body>
 </html>

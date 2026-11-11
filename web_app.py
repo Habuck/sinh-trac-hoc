@@ -47,7 +47,15 @@ from audio_project.pronunciation import evaluate_pronunciation, list_sentences, 
 from audio_project.emotion import predict_emotion_from_file
 from audio_project.cough import predict_cough, train_cough_model, load_cough_model
 from audio_project.depression import screen_depression
-from audio_project.parkinson import screen_parkinson
+from audio_project.parkinson import (
+    screen_parkinson,
+    predict_parkinson,
+    train_parkinson_model,
+    is_model_trained as parkinson_model_trained,
+    get_model_info as parkinson_model_info_data,
+    PARKINSON_MODEL_PATH,
+    json_safe,
+)
 from audio_project.glucose_alarm import (
     load_glucose_model, predict_glucose_alarm, get_glucose_model_info,
     GLUCOSE_MODEL_PATH,
@@ -108,6 +116,7 @@ def health():
         "model_ready": _safe_load(load_model) is not None,
         "gender_model_ready": _safe_load(load_gender_model) is not None,
         "cough_model_ready": COUGH_MODEL_PATH.exists(),
+        "parkinson_model_ready": parkinson_model_trained(),
     })
 
 
@@ -272,7 +281,10 @@ def depression_screen():
         tmp.unlink(missing_ok=True)
 
 
-# ── Parkinson Screening (INMP441 + Raspberry Pi Simulator) ───────────────
+# ══════════════════════════════════════════════════════════════════════
+# Parkinson Voice Screening — INMP441 + Raspberry Pi
+# Spec §13, §14, §15
+# ══════════════════════════════════════════════════════════════════════
 
 @app.route("/raspi")
 def raspi_simulator():
@@ -282,11 +294,7 @@ def raspi_simulator():
 
 @app.route("/api/parkinson/screen", methods=["POST"])
 def parkinson_screen():
-    """Sàng lọc Parkinson qua phân tích giọng nói.
-
-    Trích xuất: Jitter, Shimmer, HNR, NHR, PPE, MFCC, F0, speech rate.
-    Phần cứng mô phỏng: INMP441 (I2S) + Raspberry Pi 4.
-    """
+    """Backward-compat: rule-based fallback → ML nếu model có sẵn."""
     file = request.files.get("file")
     if not file or not file.filename:
         return jsonify({"ok": False, "error": "Vui lòng chọn file audio."}), 400
@@ -297,6 +305,104 @@ def parkinson_screen():
         return jsonify({"ok": False, "error": str(e)}), 400
     finally:
         tmp.unlink(missing_ok=True)
+
+
+@app.route("/api/parkinson/predict", methods=["POST"])
+def parkinson_predict():
+    """
+    ML-based Parkinson prediction (spec §13).
+
+    Input : multipart/form-data  →  file (audio)
+    Output:
+        ok          : bool
+        prediction  : "Parkinson" | "Control"
+        probability : float 0-1
+        model       : str — model name used
+        risk_pct    : float — probability as percentage
+        features_summary : dict
+        disclaimer  : str
+    """
+    file = request.files.get("file")
+    if not file or not file.filename:
+        return jsonify({"ok": False, "error": "Vui lòng chọn file audio."}), 400
+
+    if not parkinson_model_trained():
+        return jsonify({
+            "ok": False,
+            "error": "Parkinson model is not trained yet.",
+        }), 400
+
+    tmp = _save_temp(file)
+    try:
+        result = predict_parkinson(tmp)
+        return jsonify({"ok": True, **result})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 400
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
+@app.route("/api/parkinson/train", methods=["POST"])
+def parkinson_train():
+    """
+    Train Parkinson ML model on UCI dataset (spec §14).
+
+    Output:
+        ok           : bool
+        model        : str
+        train_size   : int
+        test_size    : int
+        accuracy     : float
+        precision    : float
+        recall       : float
+        f1           : float
+        roc_auc      : float
+        sensitivity  : float
+        specificity  : float
+        cv_roc_auc   : float — ROC-AUC cross-validation theo subject trên tập train
+        nested_cv    : dict — metrics nested CV theo subject trên toàn bộ dữ liệu
+        train_subjects / test_subjects : int — số bệnh nhân mỗi tập (không chồng lấn)
+        model_path   : str
+        comparison   : list — metrics của tất cả model
+    """
+    try:
+        result = train_parkinson_model(verbose=False)
+        return jsonify(json_safe({
+            "ok"            : True,
+            "model"         : result.model_name,
+            "train_size"    : result.train_size,
+            "test_size"     : result.test_size,
+            "train_subjects": result.train_subjects,
+            "test_subjects" : result.test_subjects,
+            "accuracy"      : round(result.accuracy,    4),
+            "precision"     : round(result.precision,   4),
+            "recall"        : round(result.recall,      4),
+            "f1"            : round(result.f1,          4),
+            "roc_auc"       : round(result.roc_auc,     4),
+            "sensitivity"   : round(result.sensitivity, 4),
+            "specificity"   : round(result.specificity, 4),
+            "cv_roc_auc"    : round(result.cv_roc_auc,  4),
+            "nested_cv"     : result.nested_cv,
+            "best_params"   : result.best_params,
+            "model_path"    : result.model_path,
+            "report"        : result.report,
+            "comparison"    : result.comparison,
+        }))
+    except FileNotFoundError as e:
+        return jsonify({"ok": False, "error": str(e)}), 400
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/parkinson/model-info")
+def parkinson_model_info():
+    """Metrics và bảng so sánh của model Parkinson đã train."""
+    if not parkinson_model_trained():
+        return jsonify({"ok": False, "error": "Parkinson model is not trained yet."}), 404
+    try:
+        return jsonify({"ok": True, **parkinson_model_info_data()})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
 
 
 # ── Glucose Alarm Detection (CNN + Mel Spectrogram) ──────────────────────────
