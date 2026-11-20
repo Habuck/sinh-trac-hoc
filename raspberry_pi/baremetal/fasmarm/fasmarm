@@ -1,0 +1,10 @@
+#!/bin/zsh
+# FASMARM v1.44 on Apple Silicon: the official binary is a Linux x86-64 ELF.
+# qemu-x86_64 (brew install qemu) runs it. There is no native macOS build.
+ROOT="${0:A:h}"
+QEMU="${QEMU_X86_64:-$(command -v qemu-x86_64)}"
+if [[ -z "$QEMU" ]]; then
+  echo "Chưa có qemu-x86_64. Cài bằng: brew install qemu" >&2
+  exit 1
+fi
+exec "$QEMU" "$ROOT/fasmarm.x64" "$@"

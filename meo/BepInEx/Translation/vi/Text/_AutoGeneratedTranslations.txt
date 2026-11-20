@@ -1,0 +1,1725 @@
+﻿d测试主菜单=d测试主菜单
+<notset>=<không đặt>
+<color\=cyan>UnityExplorer Toggle</color>\r\n<color\=grey><i>The key to enable or disable UnityExplorer's menu and features.</i></color>=<color\=cyan>Chuyển đổi UnityExplorer</color>\r\n<color\=grey><i>Chìa khóa để bật hoặc tắt menu và tính năng của UnityExplorer.</i></color>
+Scene:=Bối cảnh:
+Object Explorer=Trình khám phá đối tượng
+Up/Down to select, Enter to use, Esc to close=Lên/Xuống để chọn, Enter để sử dụng, Esc để đóng
+AutoCompleter=Tự động hoàn thành
+F7=F7
+Lock=Khóa
+Time:=Thời gian:
+UE <i><color\=grey>4.9.0</color></i>=UE <i><color\=grey>4.9.0</color></i>
+Village=Làng bản
+( Empty )=( Trống )
+Delete archive=Xóa kho lưu trữ
+Do you want to delete all saved data?\r\n<font size\="28"><font color\="#be9e48">Warning</font></font>: This action cannot be undone!!=Bạn có muốn xóa tất cả dữ liệu đã lưu?\r\n<font size\="28"><font color\="#be9e48">Cảnh báo</font></font>: Hành động này không thể hoàn tác được!!
+Play=Chơi
+Choose a save slot to begin=Chọn một vị trí lưu để bắt đầu
+Settings=Cài đặt
+Controls=Điều khiển
+Display=Trưng bày
+Language=Ngôn ngữ
+List of developers=VH bởi Ncn | NguyeZ Gaming
+Options=Tùy chọn
+Total Volume=Âm thanh tổng
+Music Volume=Âm lượng nhạc
+SFX Volume=Khối lượng SFX
+Voice Volume=Âm lượng giọng nói
+Brightness=Độ sáng
+Auto attack=Tự động tấn công
+Aim assist=Hỗ trợ nhắm mục tiêu
+Mouse Aim=Mục tiêu của chuột
+Smart Cast=Truyền thông minh
+Vibration=Rung
+Screen FX=Màn hình FX
+Show DMG=Hiển thị DMG
+Story mode=Chế độ câu chuyện
+Default=Mặc định
+Full screen=Toàn màn hình
+Borderless=Cửa sổ không viền
+VSync=VSync
+Window lock=Khóa cửa sổ
+Reset settings=Đặt lại cài đặt
+Do you want to save the Setting? \r\nReverting to previous display settings countdown: <font color\="#be9e48">15 seconds</font>=Bạn có muốn lưu Cài đặt không?\nTrả lại cài đặt hiển thị trước đó: <font color\="#be9e48">15 giây</font>
+F=F
+w=w
+<font size\="24">Move up</font>=<font size\="24">Di chuyển lên</font>
+s=S
+<font size\="24">Move down</font>=<font size\="24">Di chuyển xuống</font>
+a=Một
+<font size\="24">Move left</font>=<font size\="24">Di chuyển sang trái</font>
+d=d
+<font size\="24">Move right</font>=<font size\="24">Di chuyển sang phải</font>
+W=W
+<font size\="24">Dash</font>=<font size\="24">LƯỚT</font>
+<font size\="24">Attack</font>=<font size\="24">Tấn công</font>
+<font size\="24">Special</font>=<font size\="24">Đặc biệt</font>
+The Night's Sorrowful Cry=Tiếng khóc buồn đêm
+Unlock memories=Mở khóa ký ức
+On that day, the werewolf transformed once again, and an eerie howl echoed through the valley. Little Red Riding Hood sat on the rooftop, gazing at the sky gradually covered by dark clouds. She knew that tonight he would lose control again.1\r\n1\r\n1\r\n1\r\n1\r\n！\r\n！\r\n！\r\n！\r\n2\r\n！\r\n！！\r\n！\r\n！\r\n！\r\n！\r\n！\r\n！\r\n！\r\n！\r\n！\r\n！\r\n3\r\n4\r\n5=Vào ngày hôm đó, người sói lại biến hình một lần nữa và một tiếng hú kỳ lạ vang vọng khắp thung lũng.\nCô bé quàng khăn đỏ ngồi trên sân thượng, nhìn bầu trời dần bị mây đen che phủ.\nCô biết đêm nay anh sẽ lại mất kiểm soát. 1 1 1 1 1 !!!!! ! ! ! 2 !!!! !!!! ! ! ! ! ! ! ! ! ! ! ! ! 3 4 5
+Want some food?=Muốn ăn chút gì không?
+Rue! Wait!=Rue!\nChờ đợi!
+Enemies can drop HP Potions.=Kẻ địch có thể rơi ra Thuốc HP.
+…You sure you won’t rest a couple more days?=…Cậu có chắc là mình sẽ không nghỉ ngơi thêm vài ngày nữa không?
+<font size\="22">Blood Enhancer Research</font>=<font size\="22">Nghiên cứu tăng cường máu</font>
+…I have to go.=…Tôi phải đi.
+Now displays detailed room preview information.=Bây giờ hiển thị thông tin xem trước phòng chi tiết.
+<font size\="22">Decryption of the Dark Magic Mark</font>=<font size\="22">Giải mã dấu ấn ma thuật hắc ám</font>
+Then…=Sau đó…
+Truth lies hidden in the whispers of the forbidden, weaving it into a blade of rebellion.=Sự thật ẩn giấu trong những lời thì thầm của những điều cấm đoán, dệt nên nó thành lưỡi dao nổi loạn.
+Don’t lose that necklace.=Đừng đánh mất chiếc vòng cổ đó.
+Witch's Notes Research=Nghiên cứu ghi chú của phù thủy
+Need more bookshelves=Cần thêm tủ sách
+It’ll keep you safe and bring you back.=Nó sẽ giữ cho bạn an toàn và đưa bạn trở lại.
+Might=Có thể
+Haste=Tốc độ
+Not upgraded=Chưa được nâng cấp
+Revive=Hồi sinh
+Resist=Kháng cự
+Soulfire Prayer=Lời cầu nguyện lửa tâm hồn
+Souls reunited, coalescing into embers of defiance.=Những linh hồn đoàn tụ, hợp lại thành than hồng thách thức.
+That year=Năm đó
+The kingdom’s border was struck first by plague=Biên giới vương quốc bị tấn công đầu tiên bởi bệnh dịch hạch
+These symbols were once merely indecipherable decorations,but a few pages of fragmented witch's notes happened to preserve the corresponding translations.=Những biểu tượng này từng chỉ là những đồ trang trí không thể giải mã được, nhưng một vài trang ghi chú rời rạc của phù thủy đã tình cờ lưu giữ được các bản dịch tương ứng.
+Unlock more research on witches=Mở khóa thêm nghiên cứu về phù thủy
+…Yeah.=…Vâng.
+And then swallowed by floodwaters=Rồi bị nước lũ nuốt chửng
+Rebirth=tái sinh
+Afterglow=Ánh hào quang
+People whispered that it wasn’t nature’s wrath—=Mọi người thì thầm rằng đó không phải là cơn thịnh nộ của thiên nhiên—
+Revelation=Khải Huyền
+Slaying=Giết chóc
+It was the witch, breathing=Đó là mụ phù thủy đang thở
+Backpack=Balo
+Backstab=Đâm sau lưng
+The king rode out with his army=Nhà vua xuất quân cùng quân đội của mình
+Fortune=Vận may
+Awakening=Thức tỉnh
+Fortune favors the bold.=Vận may ủng hộ những người táo bạo.
+Through mud, fire, and gathering shadow=Qua bùn, lửa và bóng tối tụ lại
+Lv.1=Cấp 1
+And when the witch finally fell=Và khi mụ phù thủy cuối cùng ngã xuống
+Click to upgrade. Cost: <img src\='ui:\/\/b5lhv7jqbb8grz' width\='30%' height\='30%'/>15=Bấm để nâng cấp.\nTrị giá: <img src\='ui:\/\/b5lhv7jqbb8grz' width\='30%' height\='30%'/>15
+Even the night seemed to let out a long sigh=Ngay cả màn đêm dường như cũng thở dài
+Maximum HP +20→ +25.=HP tối đa +20→ +25.
+Lv.2=Cấp 2
+Blessings of Life=Phước lành của cuộc sống
+But in the ashes she left behind=Nhưng trong đống tro tàn cô ấy để lại
+They found an infant=Họ tìm thấy một đứa trẻ sơ sinh
+Unlock more blessings=Mở khóa nhiều phước lành hơn
+“End her now,” the ministers urged=“Kết liễu cô ấy ngay bây giờ,” các bộ trưởng thúc giục
+Cursed=bị nguyền rủa
+Don't be afraid to say it, you crave power, right?=Đừng ngại nói ra, bạn khao khát quyền lực phải không?
+Yet the king held the child in silence\n—as if defying fate itself=Thế nhưng nhà vua vẫn giữ đứa bé trong im lặng—như thể đang thách thức số mệnh
+Purify Curse=Thanh lọc lời nguyền
+Destroy=Hủy hoại
+Upgrade Skill  \r\nErosion: 30=Nâng cấp kỹ năng xói mòn: 30
+Magic Card=Thẻ ma thuật
+Upgrade Ability\r\nErosion: 20=Nâng cấp khả năng Xói mòn: 20
+Ability=Khả năng
+Choose a curse=Chọn một lời nguyền
+So she grew up within the palace walls=Vì vậy cô lớn lên trong những bức tường cung điện
+Remove a curse=Xóa bỏ một lời nguyền
+Erosion Curse=Lời nguyền xói mòn
+Treated as the king’s own daughter=Được coi như con gái ruột của nhà vua
+The quiet hope of a broken land—=Niềm hy vọng thầm lặng của một vùng đất tan vỡ—
+Erosion:=Xói mòn:
+Hell 6=địa ngục 6
+Reloading!=Đang tải lại!
+Regular Accessory=Phụ kiện thông thường
+Drag to Combine Accessory=Kéo để kết hợp phụ kiện
+Switch places=Đổi chỗ
+On the night she came of age=Vào đêm cô ấy trưởng thành
+Discard=Loại bỏ
+Breakdown (+55<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)=Phân tích (+55<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)
+The palace blazed with celebration=Cung điện rực rỡ với lễ kỷ niệm
+Cannot be discarded/decomposed=Không thể loại bỏ/phân hủy
+Current time flow rate: X=Tốc độ dòng thời gian hiện tại: X
+A small, dim light beneath the ash=Một ánh sáng nhỏ, mờ ảo dưới lớp tro
+Kill Count:\r\nClear:\r\nBest Time:\r\nDifficulty:=Số lần tiêu diệt: Rõ ràng: Thời điểm tốt nhất: Độ khó:
+Red Riding Hood Hunter=Thợ săn quàng khăn đỏ
+The king prepared a grand ball=Nhà vua chuẩn bị một vũ hội lớn
+Rue=Rue
+f=f
+<font size\="24">Interact</font>=<font size\="24">Tương tác</font>
+q=q
+and the crown of a princess=và vương miện của công chúa
+<font size\="24">Skill 1</font>=<font size\="24">Kỹ năng 1</font>
+e=e
+slowly descended toward her hair.=từ từ rơi xuống tóc cô.
+<font size\="24">Skill 2</font>=<font size\="24">Kỹ năng 2</font>
+r=r
+<font size\="24">Skill 3</font>=<font size\="24">Kỹ năng 3</font>
+t=t
+<font size\="24">Support</font>=<font size\="24">Ủng hộ</font>
+Use Combo Keys=Sử dụng phím tổ hợp
+But the moment the crown touched her hair—=Nhưng khoảnh khắc chiếc vương miện chạm vào tóc cô—
+Press Any Key or Button=Nhấn phím hoặc nút bất kỳ
+Français=người Pháp
+Her blade pierced the king’s heart=Lưỡi kiếm của cô đã xuyên qua trái tim của nhà vua
+Italiano=tiếng Ý
+Deutsch=tiếng Đức
+Español=tiếng Tây Ban Nha
+Fire climbed over the throne=Lửa trèo qua ngai vàng
+português - BR=Bồ Đào Nha - BR
+And in a single night=Và chỉ trong một đêm
+English=Tiếng Anh
+V0.5.6=V0.5.6
+Light and voices were snuffed out together=Ánh sáng và giọng nói cùng nhau bị dập tắt
+<font size\="24">【更新内容】</font>\n·添加了一个开场动画\n·添加并调整了背景音乐\n·补充了大部分音效\n·添加了大量道具\n·完善了老家的各种建筑物和NPC\n·补充了大量事件对话\n·优化了敌人的表现\n·添加了陷阱=<font size\="24">【更新内容】</font>\n· 添加了一个开场动画 ·添加并调整了背景音乐 ·补充了大部分音效 ·添加了大量道具\n·完善了老家的各种建筑物和NPC ·补充了大量事件对话 ·优化了敌人的表现 ·添加了陷阱
+V0.5.5f=V0.5.5f
+<font size\="24">【bug修复】</font>\n·修复了在具有寒风突袭的情况下，部分修改连招的技能会失去效果的问题\n·修复了战术飞踢的升级，额外击退距离没有生效的问题\n·修复了涂毒的升级附带8层中毒没有生效的问题=<font size\="24">[lỗi修复]</font>\n·修复了在具有寒风突袭的情况下，部分修改连招的技能会失去效果的问题\n·修复了战术飞踢的升级，额外击退距离没有生效的问题\n·修复了涂毒的升级附带8层中毒没有生效的问题
+<font size\="24">【bug修复】</font>\n·修复了在老家没有其他角色的问题=<font size\="24">[lỗi修复]</font>\n·修复了在老家没有其他角色的问题
+<font size\="24">【bug修复】</font>\n·修复了大部分教堂的问题\n·修复了一个会导致狂风围巾失去效果的问题=<font size\="24">[lỗi修复]</font>\n·修复了大部分教堂的问题\n·修复了一个会导致狂风围巾失去效果的问题
+<font size\="24">【更新内容】</font>\n·优化了伊丝德拉的手感\n·优化了第一章及第二章怪物的表现\n<font size\="24">【bug修复】</font>\n·修复了大量技能实际效果与文本描述不符的问题=<font size\="24">【更新内容】</font>\n·优化了伊丝德拉的手感\n·优化了第一章及第二章怪物的表现\n<font size\="24">[lỗi修复]</font>\n·修复了大量技能实际效果与文本描述不符的问题
+<font size\="24">【更新内容】</font>\n·添加了乌玛在糖果屋事件的动画\n<font size\="24">【bug修复】</font>\n·修复了在莉薇特的比试中胜利会卡死的问题\n·修复了莉薇特复活后会瞬间改变武器朝向的问题\n·修复了寒风裂空会丢失伤害的问题\n·修复了部分场景水面表现不正确的问题\n·修复了寒霜庇护丢失施法特效的问题\n·修复了极寒投掷画面表现不正确的问题\n·修复了血斩波的撞墙延长持续时间未生效的问题\n·修复了子弹穿过障碍物后，会丢失命中特效的问题\n·修复了道具的属性文本会重复描述的问题\n·修复了部分特效表现不正确的问题\n·修复了影分身的影子不会立即消失的问题\n·修复了会在部分没有诅咒的情况下，会刷出圣水房的问题\n·修复了定时炸弹的中心区域增加升级表现不正确的问题\n·修复了荒芜的实际效果与描述不符的问题\n·修复了部分被动和道具能够通过攻击熊来触发的问题=<font size\="24">【更新内容】</font>\n·添加了乌玛在糖果屋事件的动画\n<font size\="24">[lỗi修复]</font>\n·修复了在莉薇特的比试中胜利会卡死的问题\n·修复了莉薇特复活后会瞬间改变武器朝向的问题\n·修复了寒风裂空会丢失伤害的问题\n·修复了部分场景水面表现不正确的问题\n·修复了寒霜庇护丢失施法特效的问题\n·修复了极寒投掷画面表现不正确的问题\n·修复了血斩波的撞墙延长持续时间未生效的问题\n·修复了子弹穿过障碍物后，会丢失命中特效的问题\n·修复了道具的属性文本会重复描述的问题\n·修复了部分特效表现不正确的问题\n·修复了影分身的影子不会立即消失的问题\n·修复了会在部分没有诅咒的情况下，会刷出圣水房的问题\n·修复了定时炸弹的中心区域增加升级表现不正确的问题\n·修复了荒芜的实际效果与描述不符的问题\n·修复了部分被动和道具能够通过攻击熊来触发的问题
+<font size\="24">【bug修复】</font>\n·修复了多个事件不生效的问题\n·修复了魂强化界面无法点击某些按钮的问题\n·修复了一挥三响的能量弹不会给熊回血的问题\n·修复了寒光折射反弹熔岩蜥蜴会卡死的问题=<font size\="24">[lỗi修复]</font>\n·修复了多个事件不生效的问题\n·修复了魂强化界面无法点击某些按钮的问题\n·修复了一挥三响的能量弹不会给熊回血的问题\n·修复了寒光折射反弹熔岩蜥蜴会卡死的问题
+<font size\="24">【bug修复】</font>\n·修复了部分没有伤害的技能可以触发击飞的问题\n·修复了冰原狂飙选择延长时间后，实际撞击效果没有延长的问题\n·修复了具有回应的情况下，使用风之指引会在错误的地方召唤猫头鹰的问题\n·修复了离群焦虑冷却时间显示错误的问题\n·修复了乌玛的熊在打地鼠小游戏中错误表现的问题=<font size\="24">[lỗi修复]</font>\n·修复了部分没有伤害的技能可以触发击飞的问题\n·修复了冰原狂飙选择延长时间后，实际撞击效果没有延长的问题\n·修复了具有回应的情况下，使用风之指引会在错误的地方召唤猫头鹰的问题\n·修复了离群焦虑冷却时间显示错误的问题\n·修复了乌玛的熊在打地鼠小游戏中错误表现的问题
+<font size\="24">【bug修复】</font>\n·修复了支援技能有概率让自己永久无敌的问题\n·修复了在读档后，道具格子会增加，道具会消失的问题\n·修复了在手柄模式下，会一次性消耗2格冲刺次数的问题\n·修复了在通关第三章后，会进入一个错误场景的问题\n·修复了在手柄模式下，手柄无法移动选项的问题=<font size\="24">[lỗi修复]</font>\n·修复了支援技能有概率让自己永久无敌的问题\n·修复了在读档后，道具格子会增加，道具会消失的问题\n·修复了在手柄模式下，会一次性消耗2格冲刺次数的问题\n·修复了在通关第三章后，会进入一个错误场景的问题\n·修复了在手柄模式下，手柄无法移动选项的问题
+<font size\="24">【bug修复】</font>\n·修复了拖动技能会留下一个持续时间的框的问题\n·修复了无面面具不显示冷却时间的问题\n·修复了主角在被鞭子教徒丢出时，可以通过瞬间冲刺来规避伤害的问题\n·修复了藏匿的生效判定存在错误的问题=<font size\="24">[lỗi修复]</font>\n·修复了拖动技能会留下一个持续时间的框的问题\n·修复了无面面具不显示冷却时间的问题\n·修复了主角在被鞭子教徒丢出时，可以通过瞬间冲刺来规避伤害的问题\n·修复了藏匿的生效判定存在错误的问题
+<font size\="24">【更新内容】</font>\n· 优化了黑妖精的烟雾在战斗中造成卡顿的问题，现在整体会更流畅一些\n<font size\="24">【bug修复】</font>\n·修复了在修女上方对话会直接卡死的问题\n·修复了战意高昂的旗子出现延迟过长的问题\n·修复了手柄模式下，交换技能栏位，没有互动提示的问题\n·修复了乌玛的召唤物会在部分地图卡着不动的问题\n·修复了在路边的火盆升级依然会播放吃鸡腿特效的问题\n·修复了修改手柄键位时，自定义键位会卡死的问题\n·修复了影子追击表现异常的问题=<font size\="24">【更新内容】</font>\n· 优化了黑妖精的烟雾在战斗中造成卡顿的问题，现在整体会更流畅一些\n<font size\="24">[lỗi修复]</font>\n·修复了在修女上方对话会直接卡死的问题\n·修复了战意高昂的旗子出现延迟过长的问题\n·修复了手柄模式下，交换技能栏位，没有互动提示的问题\n·修复了乌玛的召唤物会在部分地图卡着不动的问题\n·修复了在路边的火盆升级依然会播放吃鸡腿特效的问题\n·修复了修改手柄键位时，自定义键位会卡死的问题\n·修复了影子追击表现异常的问题
+<font size\="24">【bug修复】</font>\n·修复了手柄模式下无法关闭最后的通关页面的问题\n·修复了向下施放十字裂地斩时角色动作错误的问题\n·修复了解救铁匠时特效错误的问题\n·修复了一些可能导致无法正常通关的问题\n·修复了在神像前解锁太快导致无法解锁支援技能的问题\n·修复了手柄模式下，使用冷却中的主动会多次播放冷却音效的问题\n·修复了黑骑士在缠绕状态下还在播放跑步动作的问题\n·修复了贪吃蛇在宽松的腰带额外道具栏上属性显示没有翻倍的问题\n·修复了升级宽松的腰带会使得灵魂挂坠弹出导致卡死的问题=<font size\="24">[lỗi修复]</font>\n·修复了手柄模式下无法关闭最后的通关页面的问题\n·修复了向下施放十字裂地斩时角色动作错误的问题\n·修复了解救铁匠时特效错误的问题\n·修复了一些可能导致无法正常通关的问题\n·修复了在神像前解锁太快导致无法解锁支援技能的问题\n·修复了手柄模式下，使用冷却中的主动会多次播放冷却音效的问题\n·修复了黑骑士在缠绕状态下还在播放跑步动作的问题\n·修复了贪吃蛇在宽松的腰带额外道具栏上属性显示没有翻倍的问题\n·修复了升级宽松的腰带会使得灵魂挂坠弹出导致卡死的问题
+<font size\="24">【更新内容】</font>\n·新增了开场动画\n·手柄适配了部分界面和小游戏\n·新增了一套手柄键位方案，可以再控制界面中进行修改\n<font size\="24">【bug修复】</font>\n·修复了在摸猫事件中选择治疗选项会导致镜头错误的问题\n·修复了拥有香蕉皮诅咒后开箱子会卡住的问题\n·修复了切换角色可能会导致卡死的问题\n·修复了雷云不造成伤害、特效错位的问题\n·修复了大力锻打能够重复造成多次伤害的问题\n·修复了射击的描述文案错误的问题\n·修复了快速点击想要升级的技能会直接卡死的问题\n·修复了升级侵蚀度抗性会提高获得的侵蚀度的问题\n·修复了求援技能会错误的显示白色的问题=<font size\="24">【更新内容】</font>\n·新增了开场动画\n·手柄适配了部分界面和小游戏\n·新增了一套手柄键位方案，可以再控制界面中进行修改\n<font size\="24">[lỗi修复]</font>\n·修复了在摸猫事件中选择治疗选项会导致镜头错误的问题\n·修复了拥有香蕉皮诅咒后开箱子会卡住的问题\n·修复了切换角色可能会导致卡死的问题\n·修复了雷云不造成伤害、特效错位的问题\n·修复了大力锻打能够重复造成多次伤害的问题\n·修复了射击的描述文案错误的问题\n·修复了快速点击想要升级的技能会直接卡死的问题\n·修复了升级侵蚀度抗性会提高获得的侵蚀度的问题\n·修复了求援技能会错误的显示白色的问题
+<font size\="24">【bug修复】</font>\n·修复了技能在拖动操作后会消失的问题\n·修复了部分事件完成后无法打开门的问题\n·修复了“解救被困的小黄”后无法正常解锁角色的问题\n·修复了助战角色在完成事件后无法继续对话的问题\n·修复了部分角色对话中缺少“离开”选项的问题\n·修复了解锁新角色选项后镜头异常移动的问题=<font size\="24">[lỗi修复]</font>\n·修复了技能在拖动操作后会消失的问题\n·修复了部分事件完成后无法打开门的问题\n·修复了“解救被困的小黄”后无法正常解锁角色的问题\n·修复了助战角色在完成事件后无法继续对话的问题\n·修复了部分角色对话中缺少“离开”选项的问题\n·修复了解锁新角色选项后镜头异常移动的问题
+V0.5.5e=V0.5.5e
+V0.5.5d=V0.5.5d
+V0.5.5c=V0.5.5c
+From that day on=Từ ngày đó trở đi
+This land carried only one name=Vùng đất này chỉ mang một tên
+V0.5.5b=V0.5.5b
+<font size\="24">【bug修复】</font>\n·修复了冰崩陨击击飞敌人时，不会触发霜翼协击的问题\n·修复了黑妖精会在部分情况下使自己消失的问题\n·修复了在部分情况下BOSS对乌玛的熊无法造成伤害的问题\n·修复了羊头人酋长在部分情况下不会正常进入三阶段的问题\n·修复了寒霜庇护没有正常触发的问题\n·修复了处决触发被动斩杀时，不会正常记录击杀次数的问题\n·修复了战术飞踢同时踢中2名敌人中间时，不会后跳的问题\n·修复了燃油桶的延长3秒升级未生效的问题\n·修复了燃油桶升级技能可储存3次实际为4次的问题\n·修复了霜枪横扫不会触发枪舞的问题\n·修复了野性扑袭在选择了减少冷却天赋后，击杀敌人会卡死的问题\n·修复了一个会导致敌人因为障碍物而不攻击的问题\n·修复了一些可叠加的buff在部分情况下不会叠加的问题=<font size\="24">[lỗi修复]</font>\n·修复了冰崩陨击击飞敌人时,不会触发霜翼协击的问题\n·修复了黑妖精会在部分情况下使自己消失的问题\n·修复了在部分情况下BOSS对乌玛的熊无法造成伤害的问题\n·修复了羊头人酋长在部分情况下不会正常进入三阶段题\n·修复了寒霜庇护没有正常触发的问题\n·修复了处决触发被动斩杀时,不会正常记录击杀次数的问题\n·修复了战术飞踢同时踢中2名敌人中间时,不会后跳的问题\n·修复了燃油桶的延长3秒升级未生效的问题\n·修复了燃油桶升级技能可储存3次实际为4次的问题 ·修复了霜枪横扫发枪舞的问题\n·修复了野性扑袭在选择了减少冷却天赋后,击杀敌人会卡死的问题\n·修复了一个会导致敌人因为障碍物而不攻击的问题\n·修复了一些可叠加的buff在部分情况下不会叠加的问题
+Update Notes=Cập nhật ghi chú
+—Cinderia.=—Cinderia.
+Early Access=Truy cập sớm
+欢迎来到<font color\="#cc0c0c">《灰烬之国》 </font>。游戏目前处于<font color\="#dfc66d">抢先体验阶段 </font>，这意味着在接下来的一段时间里，游戏并不完整，部分模块有可能还处于正在施工的状态，也有可能会遇到各种奇奇怪怪的bug。我猜没有太多恶性bug了（比如存档炸了），但是如果您不幸遇到了<font color\="#dfc66d">……我们先在这里给您磕一个。</font>\r\n\r\n在接下来<font color\="#dfc66d">大约1年</font>的时间里，我们会努力的填补上所有没有做完的模块，<font color\="#dfc66d">包括完整的剧情，翻新音效，性能优化，更多的可用角色，boss，模式，技能，道具，事件等等。以及每天都努力的和bug持续奋战。</font>\r\n\r\n感谢您愿意在这个阶段进入《灰烬之国》。\r\n<font color\="#dfc66d">希望您能玩的开心。</font>=欢迎来到<font color\="#cc0c0c">《灰烬之国》 </font>。游戏目前处于<font color\="#dfc66d">抢先体验阶段 </font>味着在接下来的一段时间里,游戏并不完整\n部分模块有可能还处于正在施工的状态,也有可能\nmột lỗi có thể xảy ra.<font color\="#dfc66d">……我们先在这里给您磕一个。</font>\r\n\r\n在接下来<font color\="#dfc66d">大约1年</font>的时间里，我们会努力的填补上所有没有做完的模块，<font color\="#dfc66d">ông chủ, ông chủ,\nmột lỗi có thể xảy ra.</font>\r\n\r\n感谢您愿意在这个阶段进入《灰烬之国》。\r\n<font color\="#dfc66d">希望您能玩的开心。</font>
+Welcome to <font color\="#cc0c0c">Cinderia </font>.\r\n\r\nCinderia is currently in <font color\="#dfc66d">Early Access </font>. Some content is still in development, and you may encounter a few strange bugs along the way. We hope the truly catastrophic ones are behind us by now (like your save file exploding), but if not, please accept our apologies in advance.\r\n\r\n<font color\="#dfc66d">Over the next year or so </font>, we’ll continue expanding and polishing the game with the full story, updated sound design, performance improvements, more playable characters, bosses, modes, skills, items, events, and more.\r\n\r\nThank you for joining us during development.\r\nWe hope you enjoy Cinderia.\r\n=Chào mừng đến với <font color\="#cc0c0c">Cinderia </font>.\n\r\n\r\nCinderia hiện đang ở <font color\="#dfc66d">Truy cập sớm </font>.\nMột số nội dung vẫn đang được phát triển và bạn có thể gặp một số lỗi lạ trong quá trình phát triển.\nChúng tôi hy vọng những thảm họa thực sự đang ở phía sau chúng tôi (chẳng hạn như tệp lưu của bạn phát nổ), nhưng nếu không, vui lòng chấp nhận lời xin lỗi của chúng tôi trước.\r\n\r\n<font color\="#dfc66d">Trong khoảng một năm tới </font>, chúng tôi sẽ tiếp tục mở rộng và đánh bóng trò chơi với toàn bộ câu chuyện, thiết kế âm thanh cập nhật, cải tiến hiệu suất, nhiều nhân vật, trùm, chế độ, kỹ năng, vật phẩm, sự kiện dễ chơi hơn, v.v.\n\r\n\r\nCảm ơn bạn đã đồng hành cùng chúng tôi trong quá trình phát triển.\nChúng tôi hy vọng bạn thích Cinderia.\r\n
+歡迎來到<font color\="#cc0c0c">《灰燼之國》</font>。遊戲目前處於<font color\="#dfc66d">搶先體驗階段</font>，這意味著在接下來的一段時間裡，遊戲並不完整，部分模組可能仍在開發中，也可能會遇到各種奇奇怪怪的 Bug。我想應該沒有太多惡性 Bug 了（例如存檔爆炸），但如果您不幸遇到了<font color\="#dfc66d">……我們先在這裡向您磕個頭。</font>\r\n\r\n在接下來<font color\="#dfc66d">大約 1 年</font>的時間裡，我們會努力補完所有尚未完成的內容，<font color\="#dfc66d">包括完整劇情、音效重製、效能優化、更多可用角色、Boss、模式、技能、道具、事件等等，以及每天與 Bug 奮戰。</font>\r\n\r\n感謝您願意在這個階段進入《灰燼之國》。\r\n<font color\="#dfc66d">希望您能玩得開心。</font>=歡迎來到<font color\="#cc0c0c">《灰燼之國》</font>。遊戲目前處於<font color\="#dfc66d">搶先體驗階段</font>這意味著在接下來的一段時間裡,遊戲並不完整部\nBạn có thể làm được điều đó không?\nBug. Bug<font color\="#dfc66d">……我們先在這裡向您磕個頭。</font>\r\n\r\n在接下來<font color\="#dfc66d">大約 1 年</font>的時間裡，我們會努力補完所有尚未完成的內容，<font color\="#dfc66d">Ông chủ\nLỗi 奮戰。</font>\r\n\r\n感謝您願意在這個階段進入《灰燼之國》。\r\n<font color\="#dfc66d">希望您能玩得開心。</font>
+Confirm=Xác nhận
+<img src\='ui:\/\/b5lhv7jqwt0w11cm'/width\='11%' height\='11%'>=<img src\='ui:\/\/b5lhv7jqwt0w11cm'/width\='11%' chiều cao\='11%'>
+Benvenuti in <font color\="#cc0c0c">Cinderia</font>.\r\n\r\nCinderia è attualmente in <font color\="#dfc66d">Accesso Anticipato</font>. Alcuni contenuti sono ancora in sviluppo e potreste incontrare qualche strano bug lungo il cammino. Speriamo che quelli davvero catastrofici siano ormai alle spalle (come la scomparsa dei vostri salvataggi), ma in caso contrario, vi chiediamo scusa in anticipo.\r\n\r\n<font color\="#dfc66d">Nel corso del prossimo anno</font>, continueremo ad espandere e migliorare il gioco con la storia completa, un aggiornamento del comparto audio, ottimizzazioni delle prestazioni, più personaggi giocabili, boss, modalità, abilità, oggetti, eventi e molto altro.\r\n\r\nGrazie per averci accompagnato durante lo sviluppo.\r\nSperiamo che vi divertiate in Cinderia.=Benvenuti ở <font color\="#cc0c0c">Cinderia</font>.\n\r\n\r\nCinderia è attualmente in <font color\="#dfc66d">Accesso dự đoán</font>.\nĐiều này có thể xảy ra với một số vấn đề trong sviluppo và potreste incontrare qualche strano bug lungo il cammino.\nSperiamo che quelli davvero catastrofici siano ormai alle spalle (come la scomparsa dei vostri salvataggi), ma in caso contrario, vi chiediamo scusa in anticipo.\r\n\r\n<font color\="#dfc66d">Đây là phần thưởng tiện ích thông báo</font>, tiếp tục quảng cáo về sự thoải mái và di chuyển trong một câu chuyện hoàn chỉnh, một phần bổ sung về âm thanh, sự nổi tiếng của người khác, người có cá tính tốt, ông chủ, phương thức, khả năng, sự kiện, sự kiện và nhiều thứ khác.\n\r\n\r\nGrazie per averci accompagnato durante lo sviluppo.\nSperiamo che vi chuyển hướng ở Cinderia.
+Добро пожаловать в <font color\="#cc0c0c">Cinderia</font>.\r\n\r\nВ настоящее время Cinderia находится в стадии <font color\="#dfc66d">раннего доступа</font>. Некоторые элементы игры всё ещё находятся в разработке, и по пути вы можете столкнуться с различными странными ошибками. Мы надеемся, что самые катастрофические проблемы уже остались позади (например, когда взрывается ваш файл сохранения), но если нет — примите наши извинения заранее.\r\n\r\n<font color\="#dfc66d">В течение следующего года</font> мы продолжим расширять и улучшать игру: добавим полную историю, обновим звуковое оформление, улучшим производительность, добавим больше игровых персонажей, боссов, режимов, навыков, предметов, событий и многое другое.\r\n\r\nСпасибо, что присоединились к нам на этапе разработки.\r\nНадеемся, вам понравится Cinderia.=Добро пожаловать в <font color\="#cc0c0c">Cinderia</font>.\n\r\n\r\nBạn có thể tìm thấy Cinderia ở đâu trên стадии <font color\="#dfc66d">раннего доступа</font>. Некоторые элементы игры всё ещё находятся в разработке, и по пути вы можете столкнуться с различными странными ошибками. Мы надеемся, что самые катастрофические проблемы уже остались позади (например, когда взрывается ваш файл сохранения), но если нет — примите наши извинения заранее.\r\n\r\n<font color\="#dfc66d">В течение следующего года</font> tôi có thể làm điều đó với bạn và bạn có thể:\nулучшим производительность, добавим больше игровых персонажей, боссов, режимов, навыков, предметов,\nbạn sẽ làm được điều đó.\n\r\n\r\nChắc chắn rồi, bạn có thể dễ dàng tìm thấy nó.\nXin chào, bạn đang nói về Cinderia.
+Return=Trở lại
+Localization=Bản địa hóa
+Some localized text is still being refined and may occasionally feel unnatural or inconsistent. The English version is currently the most complete.\r\n\r\nDuring Early Access, we will continue improving the text for all supported languages. Thank you for your patience and feedback.=Một số văn bản đã bản địa hóa vẫn đang được tinh chỉnh và đôi khi có thể cảm thấy không tự nhiên hoặc không nhất quán.\nBản tiếng Anh hiện tại là đầy đủ nhất.\n\r\n\r\nTrong thời gian truy cập sớm, chúng tôi sẽ tiếp tục cải thiện văn bản cho tất cả các ngôn ngữ được hỗ trợ.\nCảm ơn sự kiên nhẫn và phản hồi của bạn.
+Version V0.6.1 (2025-05-14 - f9c70c - steamtest)=Phiên bản V0.6.1 (2025-05-14 - f9c70c - steamtest)
+V0.5.5=V0.5.5
+Backstab!=Sau!
+V0.5.4c=V0.5.4c
+<font size\="24">【bug修复】</font>\n·修复了一些地图的错误问题\n·修复了属性和侵蚀的UI悬停错误的问题\n·修复了一个会导致通关的门消失的问题\n·修复了一个会导致冰封状态下，一直造成冰伤害的问题\n·修复了同时具有荒野嚎叫和兽性觉醒的情况下，无法正常左键的问题\n·修复了通关第一章BOSS房间后的休息房间，能够穿墙出去的问题\n·修复了与图书馆管理员对话时对话与名称重叠的问题\n·修复了进入新房间时如果不立刻进行移动就会触发困倦的问题\n·修复了旋舞不会消除远程子弹的问题\n·修复了在怒火连斩期间拾取魔卡会卡死的问题\n·修复了BOSS演出的部分问题=<font size\="24">[lỗi修复]</font>\n·修复了一些地图的错误问题 ·修复了属性和侵蚀的UI悬停错误的问题\n·修复了一个会导致通关的门消失的问题\n·修复了一个会导致冰封状态下,一直造成冰伤害的问题\n·修复了同时具有荒野嚎叫和兽性觉醒的情况下,无法正常左键的问题\n·修复了通关第一章BOSS房间后的休息房间,能够穿墙出去的问题\n·修复了与图书馆管理员对话时对话与名称重叠的问题\n·修复了进入新房间时如果不立刻进行移动就会触发困倦的问题\n·修复了了在怒火连斩期间拾取魔卡会卡死的问题\n·修复了BOSS演出的部分问题
+V0.5.4b=V0.5.4b
+V0.5.4=V0.5.4
+<font size\="24">【bug修复】</font>\n·修复了第二章的一个场景会导致UI拉伸不正确的问题\n·修复了烟雾弹的影子可以触发割喉的破隐一击附加伤口的问题\n·修复了冰霜镇静不生效的问题\n·修复了打地鼠小游戏在结束时主角会提前消失的问题\n·修复了选择魔卡升级时，会错误出现的左键图标的问题\n·修复了BOSS被冻伤时，冻伤图标没有计时的问题\n·修复了羊头人骑士分离的猪和羊头人不掉落金币的问题\n·修复了火法师子弹特效错误的问题\n·修复了打地鼠和钓鱼小游戏镜头错误的问题\n·修复了可破坏物提灯的光源错误的问题\n·修复了升级主动技能的UI会出现错误的问题\n·修复了第一章一个场景柱子上的火焰不显示的问题\n·修复了教徒投掷的瓶子会消失的问题\n·修复了人鱼的眼泪无效诅咒的UI消失的问题\n·修复了部分场景的地面会消失的问题\n·修复了BOSS演出时，字幕消失的问题\n·修复了小游戏钓鱼的鱼线消失的问题\n·修复了部分情况下，商店的金币图标会消失的问题\n·修复了群狼奔袭选择了分身强化后表现不正确的问题\n·修复了森林幻象与鸠占鹊巢不兼容的问题\n·修复了具有巨盾冲击的情况下直接冲刺就可以击飞敌人的问题\n·修复了莉薇特的部分技能没有被判定为爆炸的问题\n·修复了多个事件不生效的问题=<font size\="24">[lỗi修复]</font>\n·修复了第二章的一个场景会导致UI拉伸不正确的问题\n·修复了烟雾弹的影子可以触发割喉的破隐一击附加伤口的问题\n· Bạn có thể làm được điều đó · Bạn có thể làm được điều đó không?\n·修复了选择魔卡升级时,会错误出现的左键图标的问题\n·修复了BOSS被冻伤时,冻伤图标没有计时的问题\n·修复了羊头人骑士分离的猪和羊头人不掉落金币的问题\n·修复了火法师子弹特效错误的问题 ·修复了打地鼠和钓鱼小游戏镜头错误的问题\n·修复了可破坏物提灯的光源错误的问题 ·修复了升级主动技能的UI会出现错误的问题\n· Bạn có thể làm được điều đó không?\n·修复了人鱼的眼泪无效诅咒的UI消失的问题 ·修复了部分场景的地面会消失的问题\n·修复了BOSS演出时,字幕消失的问题 ·修复了小游戏钓鱼的鱼线消失的问题\n·修复了部分情况下,商店的金币图标会消失的问题\n·修复了群狼奔袭选择了分身强化后表现不正确的问题\n·修复了森林幻象与鸠占鹊巢不兼容的问题\n·修复了具有巨盾冲击的情况下直接冲刺就可以击飞敌人的问题\n· Bạn có thể làm được điều đó không?
+V0.5.3c=V0.5.3c
+<font size\="24">【更新内容】</font>\n·进行了一波较大的优化，整体帧数表现预计将有明显提升。\n<font size\="24">【bug修复】</font>\n·修复了野猪骑士被打下猪时，原本的猪骑士没有死亡的问题\n·修复了部分情况下进入BOSS演出会卡死的问题\n·修复了野猪骑士在主角隐身时会奇怪平移的问题\n·修复了在使用乌玛时，在露的助战场景下露会原地发呆的问题\n·修复了在部分岩浆地图会因为召唤物过多而卡死的问题\n·修复了一些影子技能不会出现影子的问题\n·修复了寒霜庇护没有无敌的问题\n·修复了机枪子弹无法打爆具有引爆升级的燃油桶的问题\n·修复了魔女圣物强化部分战斗开始时技能会不失效的问题\n·修复了道具尖叫掸子的三级至四级升级数值不正确的问题=<font size\="24">【更新内容】</font>\n·进行了一波较大的优化，整体帧数表现预计将有明显提升。\n<font size\="24">[lỗi修复]</font>\n·修复了野猪骑士被打下猪时,原本的猪骑士没有死亡的问题\n·修复了部分情况下进入BOSS演出会卡死的问题\n·修复了野猪骑士在主角隐身时会奇怪平移的问题\n·修复了在使用乌玛时,在露的助战场景下露会原地发呆的问题\n·修复了在部分岩浆地图会因为召唤物过多而卡死的问题\n·修复了一些影子技能不会出现影子的问题 ·修复了寒霜庇护没有无敌的问题\n·修复了机枪子弹无法打爆具有引爆升级的燃油桶的问题\n·修复了魔女圣物强化部分战斗开始时技能会不失效的问题\n·修复了道具尖叫掸子的三级至四级升级数值不正确的问题
+Skills aren't ready yet!=Kỹ năng vẫn chưa sẵn sàng!
+V0.5.3b=V0.5.3b
+V0.5.3=V0.5.3
+<font size\="24">【bug修复】</font>\n·修复了冰柱会阻挡怪物寻路的问题\n·修复了影子会双倍触发剧毒戳刺的问题\n·修复了羊头人斧的指示器可能会消失的问题\n·修复了战术增援会错误刷新在BOSS房间门口的问题\n·修复了魔法茶壶的减cd未生效的问题\n·修复了神奇糖果袋右下角buff一直闪烁的问题=<font size\="24">[lỗi修复]</font>\n·修复了冰柱会阻挡怪物寻路的问题 ·修复了影子会双倍触发剧毒戳刺的问题\n·修复了羊头人斧的指示器可能会消失的问题\n·修复了战术增援会错误刷新在BOSS房间门口的问题 ·修复了魔法茶壶的减cd未生效的问题\n·修复了神奇糖果袋右下角buff一直闪烁的问题
+V0.5.2e=V0.5.2e
+<font size\="24">【更新内容】</font>\n·现在主动和被动会共用刷新次数，不再分别计算\n<font size\="24">【bug修复】</font>\n·修复了猎杀时刻技能升级界面与实际技能CD不符的问题\n·修复了刀扇的冷却减少不触发的问题\n·修复了飞刀连掷选择了不可冲刺的天赋后仍可以冲刺不打断的问题\n·修复了涂毒升级界面显示CD错误的问题\n·修复了精准装填在部分情况下不会触发首次射击暴击的问题\n·修复了超负荷不会触发瘫痪的问题\n·修复了大地崩裂不会触发减CD的问题\n·修复了飓风长啸实际CD与显示不符的问题\n·修复了刀扇和弹射，会让刀扇在远处无法造成伤害\n·修复了在把魔法竖琴放在额外道具栏的情况下，挨打会导致卡死的问题\n·修复了彻骨横扫可能会造成多段伤害的问题\n·修复了一些会导致黑骑士异常平移的问题\n·修复了一些使敌人位移的技能会导致BOSS的转阶段异常的问题\n·修复了连续使用爆裂飞弹会对主目标造成额外一次伤害的问题\n·修复了圣水房间没有存档的问题\n·修复了钓鱼钓上装备碎片奖励会错误显示成金币奖励的问题\n·修复了毒和岩浆会对无敌单位造成伤害的问题\n·修复了闪电链会对无敌的单位造成伤害的问题\n·修复了存钱罐在部分情况下不会生效的问题\n·修复了buff详细框在展开后不消失的问题\n·修复了诅咒困倦不生效的问题=<font size\="24">【更新内容】</font>\n·现在主动和被动会共用刷新次数，不再分别计算\n<font size\="24">[lỗi修复]</font>\n·修复了猎杀时刻技能升级界面与实际技能CD不符的问题\n·修复了刀扇的冷却减少不触发的问题\n·修复了飞刀连掷选择了不可冲刺的天赋后仍可以冲刺不打断的问题\n·修复了涂毒升级界面显示CD错误的问题\n·修复了精准装填在部分情况下不会触发首次射击暴击的问题\n·修复了超负荷不会触发瘫痪的问题 ·修复了大地崩裂不会触发减CD的问题\n·修复了飓风CD\n·修复了在把魔法竖琴放在额外道具栏的情况下导致卡死的问题\n· Bạn có thể làm được điều đó · Bạn có thể làm được điều đó · Bạn có thể làm được\n·修复了一些使敌人位移的技能会导致BOSS的转阶段异常的问题\n·修复了连续使用爆裂飞弹会对主目标造成额外一次伤害的问题\n·修复了圣水房间没有存档的问题\n·修复了钓鱼钓上装备碎片奖励会错误显示成金币奖励的问题\n·修复了毒和岩浆会对无敌单位造成伤害的问题\n·修复了闪电链会对无敌的单位造成伤害的问题\n·修复了存钱罐在部分情况下不会生效的问题 ·修复了buff详细框在展开后不消失的问题\n·修复了诅咒困倦不生效的问题
+V0.5.2d=V0.5.2d
+V0.5.2b=V0.5.2b
+<font size\="24">【更新内容】</font>\n·优化了第二章水面会造成卡顿的问题，现在整体会更流畅一些\n·优化了进入游戏后主菜单画面的帧数表现，整体更稳定流畅\n<font size\="24">【bug修复】</font>\n·尝试修复了会出现空血的小史莱姆卡关的问题\n·修复了打开圣水后，按esc键挂机一段时间会导致游戏闪退的问题\n·修复了喷火器动作和持续时间不匹配的问题\n·修复了拾取腰带时特效位置不正确的问题\n·修复了持斧羊头人的指示器范围与实际碰撞不一致的问题\n·修复了野猫的祝福会永久存在的问题\n·修复了在手柄模式下，升级被动时，多出的被动不会正确展开的问题\n·修复了第三章一个地图墙面缺失的问题\n·修复了存钱罐吸收金币时，金币飞行位置不正确的问题\n·修复了速冻之环实际效果与描述不正确的问题=<font size\="24">【更新内容】</font>\n·优化了第二章水面会造成卡顿的问题，现在整体会更流畅一些\n·优化了进入游戏后主菜单画面的帧数表现，整体更稳定流畅\n<font size\="24">[lỗi修复]</font>\n·尝试修复了会出现空血的小史莱姆卡关的问题\n·修复了打开圣水后,按esc键挂机一段时间会导致游戏闪退的问题\n· Bạn có thể làm được điều đó · Bạn có thể làm được điều đó không?\n·修复了持斧羊头人器范围与实际碰撞不一致的问题\n·修复了野猫的祝福会永久存在的问题\n· Bạn có thể làm được điều đó không?\n·修复了第三章一个地图墙面缺失的问题\n·修复了存钱罐吸收金币时,金币飞行位置不正确的问题\n·修复了速冻之环实际效果与描述不正确的问题
+Absorb=Hấp thụ
+…The fire isn’t out yet.=…Ngọn lửa vẫn chưa tắt.
+V0.5.2=V0.5.2
+Every 3rd dash releases 3 blade waves. Each wave deals 30 damage.=Mỗi lần lướt thứ 3 sẽ phóng ra 3 đợt sóng đao.\nMỗi đợt gây 30 sát thương.
+Blade Step=Bước lưỡi
+<font color\="#cdad7b">Dash</font> attacks throw 6 knives around you. Each knife pierces 2 enemies and deals 12 damage. Costs 2 <font color\="#cdad7b">Energy</font>.=<font color\="#cdad7b">LƯỚT</font> đòn tấn công ném 6 con dao xung quanh bạn.\nMỗi con dao xuyên qua 2 kẻ địch và gây 12 sát thương.\nChi phí 2 <font color\="#cdad7b">Năng lượng</font>.
+Blade Waltz=Blade Waltz
+Pinpoint=Xác định
+Check=Kiểm tra
+V0.5.1f=V0.5.1f
+V0.5.1e=V0.5.1e
+V0.5.1d=V0.5.1d
+<font size\="24">【更新内容】</font>\n·优化了史莱姆在战斗中造成卡顿的问题，现在整体会更流畅一些。\n<font size\="24">【bug修复】</font>\n·调整了魔女圣物临时强化的特效，现在不会随着UI消失而直接消失\n·修复了播放开场动画时，手柄没有锁操作的问题\n·修复了手柄模式下，看不到隐藏的被动的问题\n·修复了返回教堂时，有概率依然保留着战斗UI的问题\n·修复了手柄模式下，升级主动的提示不正确的问题\n·修复了选择消除诅咒时，可以快速选择多个诅咒的问题\n·修复了魔镜升级能力时，提示词未出现的问题\n·修复了在树洞事件中，镜头会出现错误拉远的问题\n·修复了在部分情况下，火箭弹射无法刷新冷却的问题\n·修复了返回教堂时，依然会碰到同角色的问题\n·修复了乌玛的熊不会跳向指定地点的问题\n·修复了BOSS的转阶段移动不会移动到正确位置的问题\n·修复了沙虫钻地后会迅速钻出的问题\n·修复了冰原狂飙持续时间不正确的问题\n·修复了影分身技能偶尔会从另一个地方发射的问题\n·修复了在手柄模式下，技能的悬浮窗前面会空行的问题=<font size\="24">【更新内容】</font>\n·优化了史莱姆在战斗中造成卡顿的问题，现在整体会更流畅一些。\n<font size\="24">[lỗi修复]</font>\n·调整了魔女圣物临时强化的特效,现在不会随着UI消失而直接消失\n·修复了播放开场动画时,手柄没有锁操作的问题\n·修复了手柄模式下,看不到隐藏的被动的问题\n·修复了返回教堂时,有概率依然保留着战斗UI的问题\n·修复了手柄模式下,升级主动的提示不正确的问题\n·修复了选择消除诅咒时,可以快速选择多个诅咒的问题\n·修复了魔镜升级能力时,提示词未出现的问题\n·修复了在树洞事件中,镜头会出现错误拉远的问题\n·修复了在部分情况下,火箭弹射无法刷新冷却的问题\n·修复了返回教堂时,依然会碰到同角色的问题 ·修复了乌玛会跳向指定地点的问题\n·修复了BOSS的转阶段移动不会移动到正的问题 ·修复了沙虫钻地后会迅速钻出的问题\n·修复了冰原狂飙持续时间不正确的问题\n·修复了影分身技能偶尔会从另一个地方发射的问题\n·修复了在手柄模式下,技能的悬浮窗前面会空行的问题
+Last played time:=Lần chơi gần đây nhất:
+Update=Cập nhật
+Total souls:=Tổng số linh hồn:
+Adventure Runs：=Chạy phiêu lưu:
+Location:=Vị trí:
+Do you want to give up on this adventure?\r\n<font size\="28"><font color\="#be9e48">Attention</font></font>: Your progress after leaving the shelter will be lost!!=Bạn có muốn từ bỏ cuộc phiêu lưu này?\r\n<font size\="28"><font color\="#be9e48">Chú ý</font></font>: Tiến trình của bạn sau khi rời khỏi nơi trú ẩn sẽ bị mất!!
+Give up and return to the shelter=Bỏ cuộc và trở về nơi trú ẩn
+Cancel=Hủy bỏ
+OK=ĐƯỢC RỒI
+<img src\='ui:\/\/b5lhv7jqwt0w11cm'/width\='11%' height\='11%'>=<img src\='ui:\/\/b5lhv7jqwt0w11cm'/width\='11%' chiều cao\='11%'>
+V0.5.1c=V0.5.1c
+<color\=cyan>Target Display</color>\r\n<color\=grey><i>The monitor index for UnityExplorer to use, if you have multiple. 0 is the default display, 1 is secondary, etc. Restart recommended when changing this setting. Make sure your extra monitors are the same resolution as your primary monitor.</i></color>=<color\=cyan>Hiển thị mục tiêu</color>\r\n<color\=grey><i>Chỉ mục màn hình để UnityExplorer sử dụng, nếu bạn có nhiều.\n0 là màn hình mặc định, 1 là màn hình phụ, v.v. Nên khởi động lại khi thay đổi cài đặt này.\nĐảm bảo màn hình phụ có cùng độ phân giải với màn hình chính.</i></color>
+<color\=#4C9CD4>float</color>=<color\=#4C9CD4>trôi nổi</color>
+<color\=cyan>Startup Delay Time</color>\r\n<color\=grey><i>The delay on startup before the UI is created.</i></color>=<color\=cyan>Thời gian trễ khởi động</color>\r\n<color\=grey><i>Độ trễ khi khởi động trước khi giao diện người dùng được tạo.</i></color>
+Apply=Áp dụng
+False=SAI
+<color\=cyan>Hide On Startup</color>\r\n<color\=grey><i>Should UnityExplorer be hidden on startup?</i></color>=<color\=cyan>Ẩn khi khởi động</color>\r\n<color\=grey><i>UnityExplorer có nên bị ẩn khi khởi động không?</i></color>
+F7 (<color\=#a8a8a8>UnityEngine</color>.<color\=#92c470>KeyCode</color>)=F7 (<color\=#a8a8a8>UnityEngine</color>.<color\=#92c470>Mã khóa</color>)
+<font size\="24">【更新内容】</font>\n·优化了冰地和燃油在战斗中造成卡顿的问题，现在整体会更流畅一些。\n·重做了第三章BOSS\n·新增了一个死亡动画\n·新增了BOSS转阶段的无敌特效\n<font size\="24">【bug修复】</font>\n·修复了事件NPC可以重复对话的问题\n·修复了与圣像对话瞬间镜头会错位的问题\n·修复了手柄模式下，道具、技能无法换到空位上的问题\n·修复了靠近血瓶时，可以通过快速连按来回2次血的问题\n·修复了在进行额外资源战斗时，使用钩爪脱离战斗区域会导致角色卡住不动的问题\n·修复了一个会导致没有诅咒的情况下进入圣水房间的问题\n·修复了在选择魔卡界面，可以同时又拿魔卡又选择升级的问题\n·修复了在esc界面下，将游戏切换至后台会导致游戏崩溃的问题\n·修复了第三章的BGM会突然消失的问题\n·修复了在助战之后，没法和助战角色对话的问题\n·修复了乌玛的贴图会出现错误的问题\n·修复了战意高昂不生效的问题\n·修复了在手柄模式下冲刺CD时按A，会触发LB+A的支援技能的问题\n·修复了寒霜庇护会导致游戏卡死的问题\n·修复了在手柄模式下升级主动时按键提示错误的问题\n·修复了红果软糖在进入新房间时不出现特效的问题\n·修复了在拖动装备后，无法选中装备栏的问题\n·修复了手柄模式下，无法选择新道具栏的问题\n·修复了手柄模式下，手柄改键失效的问题=<font size\="24">【更新内容】</font>\n·优化了冰地和燃油在战斗中造成卡顿的问题,现在整体会更流畅一些。 ·重做了第三章BOSS\n· 新增了一个死亡动画 ·新增了BOSS转阶段的无敌特效\n<font size\="24">[lỗi修复]</font>\n·修复了事件NPC可以重复对话的问题 ·修复了与圣像对话瞬间镜头会错位的问题\n·修复了手柄模式下,道具、技能无法换到空位上的问题\n·修复了靠近血瓶时,可以通过快速连按来回2次血的问题\n· Bạn có thể làm được điều đó không?\n·修复了一个会导致没有诅咒的情况下进入圣水房间的问题\n·修复了在选择魔卡界面,可以同时又拿魔卡又选择升级的问题\n·修复了在esc界面下,将游戏切换至后台会导致游戏崩溃的问题\n·修复了第三章的BGM会突然消失的问题 ·修复了在助战之后,没法和助战角色对话的问题\n·修复了乌玛的贴图会出现错误的问题 ·修复了战意高昂不生效的问题\n·修复了在手柄模式下冲刺CD时按A,会触发LB+A的支援技能的问题\n·修复了寒霜庇护会导致游戏卡死的问题\n·修复了在手柄模式下升级主动时按键提示错误的问题\n·修复了红果软糖在进入新房间时不出现特效的问题\n· Bạn có thể làm được điều đó không?\n·修复了手柄模式下,手柄改键失效的问题
+V0.5.1=V0.5.1
+V0.4.8e=V0.4.8e
+Ruined Hamlet=Ấp đổ nát
+V0.4.8=V0.4.8
+Alchemy Workshop=Xưởng giả kim
+l=tôi
+Pure Soul=Tâm hồn thuần khiết
+Last Stand: When you would die, return safely to the Shelter instead.=Điểm dừng cuối cùng: Thay vào đó, khi bạn chết, hãy trở về Nơi trú ẩn an toàn.
+Faded Soul Pendant=Mặt dây chuyền linh hồn mờ nhạt
+<font size\="20">Sold Out</font>=<font size\="20">Bán hết</font>
+<font size\="16">Used to upgrade blessings within the Soulfire Prayer</font>=<font size\="16">Được sử dụng để nâng cấp phước lành trong Lời cầu nguyện Soulfire</font>
+When fairy tales crumble to ashes, we use bones as beams and dreams as bricks=Khi những câu chuyện cổ tích tan thành tro bụi, chúng ta dùng xương làm xà và ước mơ như gạch
+Build a shelter=Xây dựng một nơi trú ẩn
+A Dilapidated Shelter=Một nơi trú ẩn đổ nát
+Clear debris from the shelter, expand the camp, unlock more rooms.=Dọn sạch các mảnh vụn khỏi nơi trú ẩn, mở rộng trại, mở khóa thêm phòng.
+Shelter=Nơi trú ẩn
+Under Construction=Đang xây dựng
+<font size\="18">Build</font>=<font size\="18">Xây dựng</font>
+Construction in progress, go out for a bit.=Đang xây dựng, ra ngoài một chút.
+<font size\="18">Required: Witch Research Lab Lv.1</font>=<font size\="18">Yêu cầu: Phòng thí nghiệm nghiên cứu phù thủy Lv.1</font>
+Shattered memories will forge an unyielding will.=Những ký ức tan vỡ sẽ rèn luyện một ý chí kiên cường.
+Soul confession=Lời thú tội linh hồn
+A complete mess=Một mớ hỗn độn
+Child filter:=Bộ lọc con:
+Class filter:=Bộ lọc lớp:
+Searching for:=Đang tìm kiếm:
+Load (Additive)=Tải (Phụ gia)
+Load (Single)=Tải (Đơn)
+[Select a scene]=[Chọn cảnh]
+Scene Loader=Trình tải cảnh
+Sibling Index=Chỉ số anh chị em
+Name=Tên
+Auto-update (1 second)=Tự động cập nhật (1 giây)
+【Bug Fixes】\nFixed an issue where saving/loading a game in a boss room would cause the boss to disappear.\nFixed an issue where immediately clicking Erosion would leave a black background.\nFixed an issue where selecting the Support skill would not take effect immediately.\nFixed an issue where after picking up Yellow back at the Sanctuary, Yellow would immediately spawn in the next level to help.\nFixed an issue where the Elven Longbow could break invisibility.\nFixed an issue where the Dwarf's Hammer's passive cooldown would not be properly refreshed.\nFixed an issue where equipment fragments obtained by dismantling equipment during a conversation would not be immediately counted.\nFixed an issue where Shadow Blade's Shadow Kills would not trigger Death Echoes.=[Sửa lỗi] Đã khắc phục sự cố trong đó việc lưu/tải trò chơi trong phòng trùm sẽ khiến trùm biến mất.\nĐã khắc phục sự cố khi nhấp vào Xói mòn ngay lập tức sẽ để lại nền đen.\nĐã khắc phục sự cố trong đó việc chọn kỹ năng Hỗ trợ sẽ không có hiệu lực ngay lập tức.\nĐã khắc phục sự cố sau khi nhặt được Màu vàng ở Thánh địa, Màu vàng sẽ ngay lập tức xuất hiện ở cấp độ tiếp theo để trợ giúp.\nĐã khắc phục sự cố trong đó Elven Longbow có thể phá vỡ khả năng tàng hình.\nĐã khắc phục sự cố trong đó thời gian hồi chiêu thụ động của Búa Lùn không được làm mới đúng cách.\nĐã khắc phục sự cố trong đó các mảnh trang bị thu được khi tháo dỡ thiết bị trong cuộc trò chuyện sẽ không được tính ngay lập tức.\nĐã khắc phục sự cố trong đó Shadow Blade của Shadow Blade không kích hoạt Death Echoes.
+V0.4.6b=V0.4.6b
+【Bug Fixes】\nFixed an issue where poison damage could trigger the kill condition of the Execution Upgrade.\nFixed an issue where save files did not retain Piggy Bank stack counts.\nFixed an issue where Shadow Assault was not affected by Attack Power.\nFixed an issue where Afterimage's shadow sometimes failed to appear.\nFixed an issue where the Magic Mirror interface could be clicked twice in quick succession.\nFixed an issue where the Faceless Mask visual effect was incorrect.\nFixed an issue that could cause Green's bear HP bar to disappear.\nFixed an issue where, after unlocking Blue through normal progression, character switching did not function properly.\nFixed an issue where Red's invisibility could permanently reduce Movement Speed in certain cases.\nFixed an issue where hedgehogs did not attack.\nFixed an issue where Bloody Execution could execute bosses based on normal enemy HP thresholds.=[Sửa lỗi] Đã khắc phục sự cố trong đó sát thương do chất độc có thể kích hoạt tình trạng tiêu diệt của Nâng cấp Thi hành.\nĐã khắc phục sự cố trong đó các tệp lưu không giữ lại số lượng ngăn xếp Piggy Bank.\nĐã khắc phục sự cố trong đó Shadow Assault không bị ảnh hưởng bởi Sức tấn công.\nĐã khắc phục sự cố đôi khi bóng của Afterimage không xuất hiện.\nĐã khắc phục sự cố trong đó giao diện Magic Mirror có thể được nhấp hai lần liên tiếp.\nĐã khắc phục sự cố trong đó hiệu ứng hình ảnh Mặt nạ vô danh không chính xác.\nĐã khắc phục sự cố có thể khiến thanh HP gấu của Green biến mất.\nĐã khắc phục sự cố trong đó, sau khi mở khóa Blue thông qua tiến trình bình thường, việc chuyển đổi nhân vật không hoạt động bình thường.\nĐã khắc phục sự cố trong đó khả năng tàng hình của Red có thể làm giảm vĩnh viễn Tốc độ di chuyển trong một số trường hợp nhất định.\nĐã khắc phục sự cố khiến nhím không tấn công.\nĐã khắc phục sự cố trong đó Hành Quyết Đẫm Máu có thể xử tử trùm dựa trên ngưỡng HP bình thường của kẻ địch.
+V0.4.6=V0.4.6
+【Update】\nPlaytest version is opened.\n【Bug Fixes】\nFixed an issue where the Ice Ring's effective range and special effect range were inconsistent.\nFixed an issue where the first shot of the Roll Reload skill had abnormal damage.\nFixed an issue where the Dash attack could not be used while using the Escape passive.=[Cập nhật] Đã mở phiên bản Playtest.\n[Sửa lỗi] Đã khắc phục sự cố trong đó phạm vi hiệu quả của Vòng Băng và phạm vi hiệu ứng đặc biệt không nhất quán.\nĐã khắc phục sự cố trong đó phát bắn đầu tiên của kỹ năng Roll Reload có sát thương bất thường.\nĐã khắc phục sự cố không thể sử dụng đòn tấn công Dash khi sử dụng nội tại Escape.
+V0.4.5h=V0.4.5h
+【Update】\nAdjusted most of the ability values of Red, and added some new abilities.\n【Bug Fixes】\nFixed an issue where unlocking all characters didn't unlock Blue and Yellow.\nFixed an issue where the first encounter with Yellow would trigger repeatedly.\nFixed an issue where selecting the talent with increased range for the Yellow Time Bomb didn't take effect.\nFixed an issue where interrupting a throwing knife with a basic attack would still cause energy to continue to drain.\nFixed an issue where characters would unexpectedly disappear after switching characters and then immediately save&load.=[Cập nhật] Điều chỉnh hầu hết các giá trị khả năng của Đỏ và thêm một số khả năng mới.\n[Sửa lỗi] Đã khắc phục sự cố khi mở khóa tất cả các nhân vật không mở khóa được Xanh lam và Vàng.\nĐã khắc phục sự cố trong đó lần chạm trán đầu tiên với Màu Vàng sẽ được kích hoạt liên tục.\nĐã khắc phục sự cố trong đó việc chọn tài năng có phạm vi tăng cho Bom hẹn giờ màu vàng không có hiệu lực.\nĐã khắc phục sự cố trong đó việc làm gián đoạn cú ném dao bằng đòn tấn công cơ bản vẫn khiến năng lượng tiếp tục tiêu hao.\nĐã khắc phục sự cố trong đó các ký tự biến mất đột ngột sau khi chuyển đổi ký tự và sau đó lưu và tải ngay lập tức.
+V0.4.5g=V0.4.5g
+【Update】\nAdjusted most of the ability values of Yellow and Blue, and added some new abilities.\n【Bug Fixes】\nFixed an issue where the Witch Relic's special effects would be misplaced in some cases.\nFixed an issue where the passive temporarily enhanced by the Witch Relic could not be upgraded.\nFixed an issue where the health bonus in the Bakery would not be recorded after save&load.\nFixed an issue where two identical rooms would appear in some cases.\nFixed an issue where Shadow's projectiles would occasionally fire from strange directions.\nFixed an issue where Blue wouldn't unlock properly in the church.\nFixed an issue where loading a save in the church would cause Red to disappear.\nFixed an issue where the trap and turret wouldn't attack destructible objects in the Extra Resource Challenge.\nFixed an issue where the hook would pass through enemies when close to them.\nFixed an issue where the rapid-fire turret wouldn't receive the burst buff.=[Cập nhật] Điều chỉnh hầu hết các giá trị khả năng của Vàng và Xanh lam, đồng thời thêm một số khả năng mới.\n[Sửa lỗi] Đã khắc phục sự cố trong đó các hiệu ứng đặc biệt của Di tích Phù thủy bị đặt sai vị trí trong một số trường hợp.\nĐã khắc phục sự cố không thể nâng cấp nội tại tạm thời của Thánh tích Phù thủy.\nĐã khắc phục sự cố trong đó lượng máu thưởng trong Bánh không được ghi lại sau khi lưu và tải.\nĐã khắc phục sự cố trong đó hai phòng giống hệt nhau xuất hiện trong một số trường hợp.\nĐã khắc phục sự cố trong đó đạn của Shadow đôi khi bắn từ các hướng lạ.\nĐã khắc phục sự cố trong đó Blue không mở khóa đúng cách trong nhà thờ.\nĐã khắc phục sự cố khi tải bản lưu trong nhà thờ sẽ khiến Màu đỏ biến mất.\nĐã khắc phục sự cố trong đó bẫy và tháp pháo không tấn công các vật thể có thể phá hủy trong Thử thách tài nguyên bổ sung.\nĐã khắc phục sự cố trong đó lưỡi câu sẽ xuyên qua kẻ thù khi ở gần chúng.\nĐã khắc phục sự cố trong đó tháp pháo bắn nhanh không nhận được phép nổ.
+V0.4.5f=V0.4.5f
+V0.4.5e=V0.4.5e
+V0.4.5d=V0.4.5d
+【Update】\nAdded Regular equipments.\nAdded 32 new items.\nRebalanced and slightly reworked most of the passive abilities of Red and Yellow.\nReworked the curse system, adding new curses and blessings.\nAdded new event rooms.\n【Bug Fixes】\nFixed an issue where increasing the number of traps in Trap Array would cause the cooldown to be infinite if the maximum number of traps was reached.\nFixed an issue where selecting a passive upgrade for Banestorm would cause the energy consumed to not be equal to Banestorm's base energy.\nFixed an issue where selecting the Incendiary Bomb upgrade would cause the Flamethrower to freeze.\nFixed an issue where selecting Ice Crystal Protrusion would incorrectly refresh the Ice Dragon-related passive.\nFixed several issues that prevented the Blacksmith from unlocking properly.\nFixed an issue where Shadow Strike would summon multiple chakrams while using the Wheel of Judgment.=[Cập nhật] Đã thêm trang bị thông thường.\nĐã thêm 32 mặt hàng mới.\nCân bằng lại và làm lại một chút hầu hết các khả năng bị động của Đỏ và Vàng.\nLàm lại hệ thống nguyền rủa, thêm những lời nguyền và phước lành mới.\nĐã thêm phòng sự kiện mới.\n[Sửa lỗi] Đã khắc phục sự cố trong đó việc tăng số lượng bẫy trong Mảng Bẫy sẽ khiến thời gian hồi chiêu là vô hạn nếu đạt đến số lượng bẫy tối đa.\nĐã khắc phục sự cố trong đó việc chọn nâng cấp thụ động cho Banestorm sẽ khiến năng lượng tiêu thụ không bằng năng lượng cơ bản của Banestorm.\nĐã khắc phục sự cố trong đó việc chọn nâng cấp Bom cháy sẽ khiến Súng phun lửa bị đóng băng.\nĐã khắc phục sự cố trong đó việc chọn Ice Crystal Protrusion sẽ làm mới nội tại liên quan đến Ice Dragon không chính xác.\nĐã khắc phục một số sự cố khiến Thợ rèn không thể mở khóa đúng cách.\nĐã khắc phục sự cố trong đó Shadow Strike sẽ triệu hồi nhiều luân xa trong khi sử dụng Bánh xe phán xét.
+V0.4.5c=V0.4.5c
+V0.4.5b=V0.4.5b
+【Update】\nFixed an issue where Dash would still be considered an attack when using Agile Stride.\nFixed an issue where the game would freeze during the special battle with Blue.\nFixed an issue where the player could move and select options on the main interface in controller mode without disabling the beta instructions.\nFixed an issue where some bullets would not work properly when hitting an enemy with Mark.\nFixed an issue where the Giant Claw Guardian wasn't working properly.\nFixed an issue where the game wouldn't resume after completing the Holy Water room.=[Cập nhật] Đã khắc phục sự cố trong đó Dash vẫn bị coi là đòn tấn công khi sử dụng Agile Stride.\nĐã khắc phục sự cố trò chơi bị treo trong trận chiến đặc biệt với Blue.\nĐã khắc phục sự cố trong đó người chơi có thể di chuyển và chọn các tùy chọn trên giao diện chính ở chế độ bộ điều khiển mà không tắt hướng dẫn beta.\nĐã khắc phục sự cố trong đó một số viên đạn không hoạt động bình thường khi đánh kẻ địch bằng Mark.\nĐã khắc phục sự cố trong đó Người bảo vệ móng vuốt khổng lồ không hoạt động bình thường.\nĐã khắc phục sự cố trò chơi không thể tiếp tục sau khi hoàn thành phòng Nước Thánh.
+V0.4.5a=V0.4.5a
+【Update】\nAdded potion descriptions to the icon description interface\n【Bug Fixes】\nFixed an issue where Hurricane Howl wouldn't cast properly in certain situations.\nFixed an issue where the upgraded Charged Throw would lose its effect.\nFixed an issue where re-selecting an active skill while it was fully charged would cause a UI error.\nFixed an issue where the Frost Shelter upgrade, Frozen Double, was incorrectly positioned.\nFixed an issue where the Magic Card pop-up window in the shop was incorrectly positioned.\nFixed an issue where the spellcasting speed upgrade for Run of the Wolves didn't match the actual effect described.\nFixed an issue where the description for Hellfire Bomb was incorrect.\nFixed an issue where entering a specific shop map would grant extra gold.\nFixed an issue where using Green Fishing would freeze.=[Cập nhật] Đã thêm mô tả thuốc vào giao diện mô tả biểu tượng [Sửa lỗi] Đã khắc phục sự cố khiến Bão Howl không sử dụng chính xác trong một số trường hợp.\nĐã khắc phục sự cố trong đó Charged Throw được nâng cấp sẽ mất tác dụng.\nĐã khắc phục sự cố trong đó việc chọn lại một kỹ năng đang hoạt động khi nó đã được sạc đầy sẽ gây ra lỗi giao diện người dùng.\nĐã khắc phục sự cố trong đó bản nâng cấp Frost Shelter, Frozen Double, được định vị không chính xác.\nĐã khắc phục sự cố trong đó cửa sổ bật lên Thẻ ma thuật trong cửa hàng được đặt không chính xác.\nĐã khắc phục sự cố nâng cấp tốc độ sử dụng phép thuật cho Run of the Wolves không khớp với hiệu ứng thực tế được mô tả.\nĐã khắc phục sự cố trong đó mô tả về Hellfire Bomb không chính xác.\nĐã khắc phục sự cố khi vào bản đồ cửa hàng cụ thể sẽ nhận được thêm vàng.\nĐã khắc phục sự cố khi sử dụng Green Fishing bị treo.
+V0.4.5=V0.4.5
+V0.4.4=V0.4.4
+V0.4.3=V0.4.3
+V0.3.4=V0.3.4
+【Update】\nReworked all enemies' attack-telegraph logic.\nOptimized Blue's parry detection—raising your shield when the enemy flashes white now always triggers a perfect parry.\nReworked Yellow's reload—she can now attack, move, and dash during the reload state.\nAdded a red guiding line feature for navigation.\n【Bug Fixes】\nFixed lava damage not being calculated correctly.\nFixed abnormal sizing of the buff-bar icon frame.\nFixed display issues with fishing prompts in controller mode.\nAdjusted the tooltip position in the item slot for the English version.\nRed's shadow clone now attacks the nearest enemy to itself.\nFixed some combo-altering skills not consuming energy correctly.\nFixed Yellow's timed-bomb VFX not matching the actual detonation timing.\nFixed Blue's flag shrinking to an extremely small size.\nPlus various other minor fixes.=[Cập nhật] Làm lại logic tấn công-điện báo của tất cả kẻ thù.\nTối ưu hóa khả năng phát hiện đòn đỡ của Xanh lam—nâng khiên của bạn lên khi kẻ địch lóe lên màu trắng giờ đây luôn tạo ra một đòn đỡ đòn hoàn hảo.\nLàm lại quá trình tải lại của Vàng—giờ đây cô ấy có thể tấn công, di chuyển và lao tới trong trạng thái tải lại.\nĐã thêm tính năng đường dẫn màu đỏ để điều hướng.\n[Sửa lỗi] Đã sửa lỗi sát thương dung nham không được tính toán chính xác.\nĐã sửa lỗi kích thước bất thường của khung biểu tượng thanh buff.\nĐã khắc phục sự cố hiển thị với lời nhắc câu cá ở chế độ điều khiển.\nĐiều chỉnh vị trí chú giải công cụ trong ô vật phẩm cho phiên bản tiếng Anh.\nPhân thân bóng của Red bây giờ tấn công kẻ địch gần nhất với nó.\nĐã sửa một số kỹ năng thay đổi kết hợp không tiêu thụ năng lượng chính xác.\nĐã sửa lỗi VFX bom hẹn giờ của Vàng không khớp với thời gian phát nổ thực tế.\nĐã sửa lỗi cờ của Blue bị thu nhỏ lại ở kích thước cực nhỏ.\nCộng với nhiều bản sửa lỗi nhỏ khác.
+V0.3.3=V0.3.3
+Scene filter:=Bộ lọc cảnh:
+Name contains:=Tên chứa:
+Search=Tìm kiếm
+0 results=0 kết quả
+Scene Explorer=Trình khám phá cảnh
+Object Search=Tìm kiếm đối tượng
+Inspector=Thanh tra
+Mouse Inspect=Kiểm tra chuột
+Close All=Đóng tất cả
+C# Console=Bảng điều khiển C#
+<font size\="16"><font color\="#505050">Easy now — get too worked up and your soul might rattle loose.</font></font>\r\nSome hit may cause the screen to shake.=<font size\="16"><font color\="#505050">Bây giờ thì dễ thôi - hãy quá bận rộn và tâm hồn bạn có thể sẽ mất kiểm soát.</font></font>\r\nMột số cú đánh có thể khiến màn hình bị rung.
+Compile=Biên dịch
+Reset=Cài lại
+Help=Giúp đỡ
+Compile on Ctrl+R=Biên dịch trên Ctrl + R
+Suggestions=Đề xuất
+Auto-indent=Tự động thụt lề
+Hooks=móc
+Current Hooks=Móc hiện tại
+* Accepted method names are <b>Prefix</b>, <b>Postfix</b>, <b>Finalizer</b> and <b>Transpiler</b> (can define multiple).\n* Your patch methods must be static.\n* Hooks are temporary! Copy the source into your IDE to avoid losing work if you wish to keep it!=* Tên phương thức được chấp nhận là <b>Tiền tố</b>, <b>Hậu tố</b>, <b>Trình hoàn thiện</b> Và <b>Bộ chuyển mã</b> (có thể định nghĩa nhiều).\n* Phương thức vá của bạn phải ở dạng tĩnh.\n* Móc chỉ là tạm thời!\nSao chép nguồn vào IDE của bạn để tránh mất tác phẩm nếu bạn muốn giữ lại!
+NOT SET=KHÔNG ĐẶT
+Choose a class to begin...=Chọn một lớp học để bắt đầu...
+View Methods=Xem phương pháp
+Save and Return=Lưu và trả lại
+Cancel and Return=Hủy và trả lại
+Submit=Nộp
+Generic Arguments=Đối số chung
+Freecam=Freecam
+Begin Freecam=Bắt đầu Freecam
+Enemies Rivet<font color\="#CCCCCC"> killed: 3</font>=Kẻ thù đinh tán<font color\="#CCCCCC"> bị giết: 3</font>
+Enemies you<font color\="#CCCCCC">killed: 3</font>=Kẻ thù của bạn<font color\="#CCCCCC">bị giết: 3</font>
+Gotcha!=Hiểu rồi!
+Dusky Stream Minnow=Dòng suối tối tăm Minnow
+<font size\="100"><font color\="#e6e57c">0</font></font> HITS=<font size\="100"><font color\="#e6e57c">0</font></font> HITS
+Current score=Điểm hiện tại
+rotate=quay
+Move Left / Right (A / D)=Di chuyển sang trái/phải (A/D)
+Drilling pipelines=Đường ống khoan
+Spinning vines constructing pathways=Dây leo xây dựng lối đi
+Connected!=Đã kết nối!
+Right-click to approve=Nhấp chuột phải để phê duyệt
+Fishing=Câu cá
+Cast out=Ném ra ngoài
+Observe the bobber. Pull up with precision!=Quan sát bobber.\nKéo lên với độ chính xác!
+Use grappling hook=Dùng móc vật lộn
+Explosion=Vụ nổ
+Reward=Phần thưởng
+Mining=Khai thác mỏ
+Catch the moment. Hook the treasure!=Hãy nắm bắt khoảnh khắc.\nMóc kho báu!
+Whac-A-Mole=Whac-A-Mole
+Whack-a-Mole=Whack-a-Mole
+Aim at the hole=Nhắm vào cái lỗ
+Reward: =Phần thưởng: 
+Score: =Điểm: 
+-3s=-3 giây
+<font size\="70"><font color\="#e6e57c">0</font></font> Combo=<font size\="70"><font color\="#e6e57c">0</font></font> kết hợp
+Hit the mole. Avoid the bombs!=Đánh vào nốt ruồi.\nTránh những quả bom!
+Lv2=Cấp 2
+Select Upgrade=Chọn nâng cấp
+Select Skill=Chọn kỹ năng
+Refresh=Làm mới
+Convert to upgrade points=Chuyển đổi để nâng cấp điểm
+Change Pos=Thay đổi vị trí
+8 seconds=8 giây
+Lv.4=Cấp 4
+Lv.3=Cấp 3
++40% Sweep Range\r\n=+ Phạm vi quét 40%\r\n
+Area Expansion=Mở rộng khu vực
+Choose=Chọn
+Refresh ( 15 <img src\='ui:\/\/b5lhv7jqs5eij4' width\='50%' height\='50%'/>)=Làm mới ( 15 <img src\='ui:\/\/b5lhv7jqs5eij4' width\='50%' height\='50%'/>)
+Choose support skill=Chọn kỹ năng hỗ trợ
+Offer to the Divine Statue=Dâng lên tượng thần
+Cooldown time: 60=Thời gian hồi chiêu: 60
+As long as a glimmer ignites in your heart, the power of redemption will answer your prayers.=Chỉ cần một tia sáng lóe lên trong trái tim bạn, sức mạnh của sự cứu chuộc sẽ đáp lại lời cầu nguyện của bạn.
+Saint's Statue=Tượng Thánh
+Light of Heaven=Ánh sáng thiên đường
+Unlock=Mở khóa
+Holy light purifies enemies in its range.\nDamages enemies each second.=Ánh sáng thần thánh thanh tẩy kẻ thù trong phạm vi của nó.\nGây sát thương cho kẻ địch mỗi giây.
+Blessing: Devotion=Phước lành: Sùng kính
+<font size\="29">Blessing: Holy Light</font>=<font size\="29">Phước lành: Ánh sáng thánh</font>
+EA version: currently unavailable=Phiên bản EA: hiện không có
+Unknown upgrade=Nâng cấp không xác định
+Build statues to unlock more skills.=Xây dựng tượng để mở khóa thêm kỹ năng.
+Increase damage capability by 34% in 7 seconds. During the duration, deal 28 damage per second to surrounding enemies.=Tăng khả năng sát thương thêm 34% trong 7 giây.\nTrong thời gian hiệu lực, gây 28 sát thương mỗi giây cho kẻ địch xung quanh.
+You can choose <font color\="#d7d7d7">Blessing of Light</font> as a support skill=Bạn có thể chọn <font color\="#d7d7d7">Phước lành ánh sáng</font> như một kỹ năng hỗ trợ
+Cooldown time: 30 seconds=Thời gian hồi chiêu: 30 giây
+Unlocked=Đã mở khóa
+<font size\="26">Unlock Blessing: Devotion</font>=<font size\="26">Mở khóa phước lành: Sự tận tâm</font>
+Unlock skills=Mở khóa kỹ năng
+Clipboard=Bảng nhớ tạm
+Inspect Free Camera=Kiểm tra máy ảnh miễn phí
+Controls:\r\n- WASD / Arrows: Movement\r\n- Space / PgUp: Move up\r\n- LeftCtrl / PgDown: Move down\r\n- Right Mouse Button: Free look\r\n- Shift: Super speed=Điều khiển: - WASD/Mũi tên: Di chuyển - Space/PgUp: Di chuyển lên - LeftCtrl / PgDown: Di chuyển xuống - Nút chuột phải: Nhìn tự do - Shift: Siêu tốc độ
+Move Speed:=Tốc độ di chuyển:
+Freecam Pos:=Vị trí Freecam:
+Use Game Camera?=Sử dụng Máy ảnh trò chơi?
+Memories not yet unlocked.=Ký ức vẫn chưa được mở khóa.
+Cast the past into the crucible, let the fire sift true value for you.=Hãy ném quá khứ vào lò nung, để lửa sàng lọc giá trị đích thực cho bạn.
+Max=Tối đa
+Offer=Lời đề nghị
+<font size\="12">Offer</font>=<font size\="12">Lời đề nghị</font>
+Current paste:=Dán hiện tại:
+Clear Clipboard=Xóa bảng tạm
+<color\=grey>null</color> (<color\=#4C9CD4>object</color>)=<color\=grey>vô giá trị</color> (<color\=#4C9CD4>sự vật</color>)
+Inspect=Thanh tra
+Log=Nhật ký
+Clear=Thông thoáng
+Open Log File=Mở tệp nhật ký
+Log Unity Debug?=Đăng nhập gỡ lỗi Unity?
+Save Options=Tùy chọn lưu
+UI Inspector Results=Kết quả thanh tra giao diện người dùng
+Inspect Under Mouse=Kiểm tra dưới chuột
+<b>Mouse Inspector</b> (press <b>ESC</b> to cancel)=<b>Thanh tra chuột</b> (nhấn <b>THOÁT</b> hủy bỏ)
+Mouse Position:=Vị trí chuột:
+No hits...=Không có lượt truy cập nào...
+<img src\='ui:\/\/b5lhv7jqwt0w11cm'/width\='11%' height\='11%'>=<img src\='ui:\/\/b5lhv7jqwt0w11cm'/width\='11%' chiều cao\='11%'>
+<font size\="24">【更新】</font>\n·更新了主角的形象\n·重做了大部分事件房间\n·重做了怪物的行动逻辑\n·重做了怪物的霸体表现\n·优化了第一章及第二章BOSS战的表现\n·更新了音效\n·新增BOSS房间背景音乐\n·新增了营地npc\n<font size\="24">【bug修复】</font>\n·修复了会在三选一时错误生成事件道具的被动的问题\n·修复了残影不会生效的问题\n·修复了涂毒文本不正确的问题\n·修复了影分身的充能升级，效果与实际不符的问题\n·修复了十字裂地斩升级的影子造成伤害不为50%的问题\n·修复了藏匿的隐身不会触发割喉的问题\n·修复了精神抖擞实际增加的攻击力与文本不符的问题\n·修复了精准装填在同时选择了瞬间上弹和额外榴弹后，瞬间上弹不生效的问题\n·修复了爆裂飞弹选择了冷却返还的天赋后，实际冷却时间降低与文本不符的问题\n·修复了小黄的标记表现不正确的问题\n·修复了旋风枪舞选择了冰封天赋后，无法冻结敌人的问题=<font size\="24">【更新】</font>\n· 更新了主角的形象 ·重做了大部分事件房间 ·重做了怪物的行动逻辑\n· 重做了怪物的霸体表现 ·优化了第一章及第二章BOSS战的表现 ·更新了音效\n· 新增BOSS房间背景音乐 ·新增了营地npc\n<font size\="24">[lỗi修复]</font>\n·修复了会在三选一时错误生成事件道具的被动的问题\n·修复了残影不会生效的问题\n·修复了涂毒文本不正确的问题\n·修复了影分身的充能升级，效果与实际不符的问题\n·修复了十字裂地斩升级的影子造成伤害不为50%的问题\n·修复了藏匿的隐身不会触发割喉的问题\n·修复了精神抖擞实际增加的攻击力与文本不符的问题\n·修复了精准装填在同时选择了瞬间上弹和额外榴弹后，瞬间上弹不生效的问题\n·修复了爆裂飞弹选择了冷却返还的天赋后，实际冷却时间降低与文本不符的问题\n·修复了小黄的标记表现不正确的问题\n·修复了旋风枪舞选择了冰封天赋后，无法冻结敌人的问题
+V0.4.7b=V0.4.7b
+【Update】\nAdjusted the protagonist's hit feedback.\nThe restoration of the sprint bar is now visible on the UI.\nAdded numerous sound effects.\nAdjusted the hierarchy of room detail and equipment information displays.\n【Bug Fixes】\nFixed an issue where the icon for adjusting equipment position was displayed incorrectly in controller mode.\nFixed an issue where the camera position was incorrect in some cases.=[Cập nhật] Điều chỉnh phản hồi đòn đánh của nhân vật chính.\nViệc khôi phục thanh chạy nước rút hiện hiển thị trên giao diện người dùng.\nĐã thêm nhiều hiệu ứng âm thanh.\nĐiều chỉnh thứ bậc hiển thị chi tiết phòng và thông tin thiết bị.\n[Sửa lỗi] Đã khắc phục sự cố trong đó biểu tượng điều chỉnh vị trí thiết bị hiển thị không chính xác trong chế độ điều khiển.\nĐã khắc phục sự cố trong đó vị trí camera không chính xác trong một số trường hợp.
+V0.4.7=V0.4.7
+【Update】\nUpdated new dialogue UI.\nAdjusted the collider of Frost Ring.\nAssisting NPCs will now rest away from traps after combat.\n【Bug Fixes】\nFixed an issue where the controller key remapping function was not working properly.\nFixed an issue where perfect parry damage was abnormal when using Cold Light Refraction.\nFixed an issue where some skills would lose damage after attack speed exceeded a certain threshold.\nFixed an issue where upgrading the Piggy Bank was not working.\nFixed an issue where the HP of the Heart-Piercing Executioner was abnormal.\nFixed an issue where Spread didn't work on the Cannon.\nFixed an issue where there was no damage immunity during resurrection.\nFixed an issue where the player wouldn't close their eyes during the Erosion animation.\nFixed an issue where selecting a Skill when all active skills were maxed would briefly display a two-choice screen.=[Cập nhật] Cập nhật giao diện người dùng hội thoại mới.\nĐiều chỉnh máy va chạm của Frost Ring.\nCác NPC hỗ trợ giờ đây sẽ tránh xa bẫy sau trận chiến.\n[Sửa lỗi] Đã khắc phục sự cố trong đó chức năng ánh xạ lại phím điều khiển không hoạt động bình thường.\nĐã khắc phục sự cố trong đó sát thương phản đòn hoàn hảo là bất thường khi sử dụng Khúc xạ ánh sáng lạnh.\nĐã khắc phục sự cố trong đó một số kỹ năng sẽ mất sát thương sau khi tốc độ tấn công vượt quá một ngưỡng nhất định.\nĐã khắc phục sự cố nâng cấp Piggy Bank không hoạt động.\nĐã khắc phục sự cố trong đó HP của Kẻ hành quyết xuyên tim không bình thường.\nĐã khắc phục sự cố Spread không hoạt động trên Cannon.\nĐã khắc phục sự cố không có khả năng miễn nhiễm sát thương trong quá trình hồi sinh.\nĐã khắc phục sự cố trong đó người chơi không nhắm mắt trong hoạt ảnh Xói mòn.\nĐã khắc phục sự cố trong đó việc chọn Kỹ năng khi tất cả các kỹ năng kích hoạt đã đạt tối đa sẽ hiển thị nhanh màn hình hai lựa chọn.
+V0.4.6e=V0.4.6e
+【Update】\nBalanced the strength of curses\n【Bug Fixes】\nFixed an issue where route icons would unexpectedly disappear.\nFixed an issue where characters would appear mid-air in some maps.\nFixed an issue where the enemy's death animation would be incorrect when killed by Chilled to the Bone.\nFixed an issue where the text displayed incorrectly for some non-text buffs.\nFixed an issue where dropping a Mermaid's Tear and then picking it up again would disable all curses.\nFixed an issue where Perfect Block damage wouldn't apply properly.\nFixed an issue where the actual attack damage increase during Hunting time didn't match the text displayed.=[Cập nhật] Cân bằng sức mạnh của những lời nguyền [Sửa lỗi] Đã khắc phục sự cố trong đó các biểu tượng tuyến đường đột ngột biến mất.\nĐã khắc phục sự cố trong đó các ký tự xuất hiện giữa không trung ở một số bản đồ.\nĐã khắc phục sự cố trong đó hoạt hình khi chết của kẻ địch không chính xác khi bị Chilled to the Bone giết chết.\nĐã khắc phục sự cố trong đó văn bản hiển thị không chính xác đối với một số tính năng không phải văn bản.\nĐã khắc phục sự cố làm rơi Nước mắt Tiên cá rồi nhặt lại sẽ vô hiệu hóa tất cả lời nguyền.\nĐã khắc phục sự cố trong đó sát thương Perfect Block không áp dụng đúng cách.\nĐã khắc phục sự cố mức tăng sát thương tấn công thực tế trong thời gian Săn bắn không khớp với văn bản được hiển thị.
+V0.4.6d=V0.4.6d
+V0.4.6c=V0.4.6c
+You <font color\="#FF9933">won</font> the match against Blacksmith!=Bạn <font color\="#FF9933">thắng</font> trận đấu với Blacksmith!
+Smash the witch's statue!=Đập vỡ bức tượng phù thủy!
+Gain <img src\='ui:\/\/b5lhv7jqq7dk116m' width\='60%' height\='60%'/> 15=Nhận được <img src\='ui:\/\/b5lhv7jqq7dk116m' width\='60%' height\='60%'/> 15
+Slain the treasure guardian! (<font color\="#D0453F">12</font> remaining)=Giết người bảo vệ kho báu!\n(<font color\="#D0453F">12</font> còn lại)
+You will be eroded until you complete it!=Bạn sẽ bị xói mòn cho đến khi bạn hoàn thành nó!
+Beside the Holy Water, protect the <font color\="#FFCC66">purification ritual</font>!=Bên cạnh Nước Thánh, hãy bảo vệ <font color\="#FFCC66">nghi lễ thanh tẩy</font>!
+Don't let the <font color\="#D0453F">enemies</font> get close to interfere!=Đừng để <font color\="#D0453F">kẻ thù</font> lại gần để can thiệp!
+…Mana Ember=…Mana Ember
+Devouring=Nuốt chửng
+Pure Holy Water=Nước Thánh Tinh Khiết
+Alpha0=Alpha0
+Slash=Chém
+Backspace=Phím lùi
+Buy=Mua
+Shadowguard=Người bảo vệ bóng tối
+When you take damage, summon a shade to retaliate against nearby enemies for 75 damage.=Khi bạn nhận sát thương, hãy triệu hồi một bóng râm để trả đũa những kẻ địch ở gần với 75 sát thương.
+Razor Tide=Thủy triều dao cạo
+After combo hit 4, unleash a forward-moving blade wave that deals up to 42 damage.=Sau đòn kết hợp thứ 4, tung ra một làn sóng đao di chuyển về phía trước gây sát thương lên tới 42.
+Hidden Blades=Lưỡi kiếm ẩn
+When you throw Knives, you have a 45% chance to throw 2 extra Knives.=Khi ném Dao, bạn có 45% cơ hội ném thêm 2 Dao.
+Alpha1=Alpha1
+<font size\="8">Low speed</font>=<font size\="8">Tốc độ thấp</font>
+Alpha2=Alpha2
+<font size\="8">Kill a monster</font>=<font size\="8">Giết một con quái vật</font>
+Alpha3=Alpha3
+<font size\="8">Clear mobs</font>=<font size\="8">Xóa mob</font>
+Alpha4=Alpha4
+<font size\="8">Unload card</font>=<font size\="8">Rút thẻ</font>
+Alpha5=Alpha5
+<font size\="8">Unlimited skills</font>=<font size\="8">Kỹ năng không giới hạn</font>
+Alpha6=Alpha6
+<font size\="8">Hide UI</font>=<font size\="8">Ẩn giao diện người dùng</font>
+Alpha7=Alpha7
+Alpha8=Alpha8
+Alpha9=Alpha9
+Equals=Bằng
+<font size\="8">Switch view</font>=<font size\="8">Chuyển đổi chế độ xem</font>
+BackQuote=Quay lạiTrích dẫn
+V=V.
+Keypad2=Bàn phím2
+KeypadMinus=Bàn phímTrừ đi
+KeypadPlus=Bàn phím Plus
+F1=F1
+<font size\="8">Full HP</font>=<font size\="8">HP đầy đủ</font>
+F2=F2
+F3=F3
+<font size\="8">Invincible</font>=<font size\="8">bất khả chiến bại</font>
+F4=F4
+<font size\="8">Attack reduction</font>=<font size\="8">Giảm tấn công</font>
+F5=F5
+<font size\="8">Attack Increase</font>=<font size\="8">Tăng tấn công</font>
+F8=F8
+F9=F9
+Mana Ember=Mana Ember
+Passive Ability=Khả năng thụ động
+Active Skill=Kỹ năng chủ động
+Chest=Ngực
+Open a chest for items=Mở rương lấy vật phẩm
+Money Bag=Túi tiền
+Earn coins=Kiếm xu
+Throw 3 knives, each dealing 20 damage. Costs 3 <font color\="#cdad7b">Energy</font>.=Ném 3 con dao, mỗi con gây 20 sát thương.\nChi phí 3 <font color\="#cdad7b">Năng lượng</font>.
+Desire Mirror=Gương khao khát
+Purify or Upgrade=Thanh lọc hoặc nâng cấp
+Event=Sự kiện
+Random event=Sự kiện ngẫu nhiên
+Store=Cửa hàng
+Money for items=Tiền vật phẩm
+Holy Water=Nước Thánh
+Cake=Bánh ngọt
+Increase Maximum HP=Tăng HP tối đa
+Potion=thuốc
+Upgrade an ability=Nâng cấp một khả năng
+Boss=Ông chủ
+Bad guy is here=Kẻ xấu đang ở đây
+Level up! +1=Lên cấp!\n+1
+Upgrade a skill！=Nâng cấp một kỹ năng!
+Hold down [Shift] to show details=Giữ [Shift] để hiển thị chi tiết
+Quit=Từ bỏ
+Return to title=Quay lại tiêu đề
+Give up=Bỏ cuộc
+Continue=Tiếp tục
+We’re planning to launch Early Access around March.\r\nThe EA version will include 4 more chapters,\r\n4 playable characters, 120+ equipment,\r\n160+ unique active & passive skills per character,\r\nShelter progression system, story content, and music.\r\nAfter entering Early Access, we’ll continue to update the game,\r\nMore story, difficulty modes, new characters.=Chúng tôi dự định ra mắt Quyền truy cập sớm vào khoảng tháng 3.\nPhiên bản EA sẽ bao gồm thêm 4 chương, 4 nhân vật có thể chơi được, hơn 120 trang bị, hơn 160 kỹ năng chủ động và thụ động độc đáo cho mỗi nhân vật, hệ thống tiến triển Nơi trú ẩn, nội dung câu chuyện và âm nhạc.\nSau khi vào Early Access, chúng tôi sẽ tiếp tục cập nhật trò chơi, Thêm câu chuyện, chế độ khó, nhân vật mới.
+Next Plan:=Kế hoạch tiếp theo:
+You clear the Demo Version!\r\nFor now, that’s all the content available in this version.=Bạn xóa phiên bản Demo!\nHiện tại, đó là tất cả nội dung có sẵn trong phiên bản này.
+Thanks for playing!=Cảm ơn vì đã chơi!
+Accept a curse=Chấp nhận một lời nguyền
+Drag to Change Pos=Kéo để thay đổi vị trí
+Pause=Tạm dừng
+Each Strength provides <font color\="#fff691">1%</font> Attack Damage, <font color\="#fff691">7%</font> Critical Damage. Extends enemy's Stun duration by <font color\="#fff691">7%</font>.=Mỗi sức mạnh cung cấp <font color\="#fff691">1%</font> Sát thương tấn công, <font color\="#fff691">7%</font> Thiệt hại nghiêm trọng.\nKéo dài thời gian choáng của kẻ địch thêm <font color\="#fff691">7%</font>.
+Strength=Sức mạnh
+Allows you to deal more damage to enemies.=Cho phép bạn gây thêm sát thương cho kẻ thù.
+Deals 6 damage per second per stack for 5 seconds.=Gây 6 sát thương mỗi giây mỗi lần cộng dồn trong 5 giây.
+Poisoned=Bị đầu độc
+Knives can destroy enemy projectiles. Knife Crit Chance +10%.=Dao có thể phá hủy đạn của kẻ thù.\nTỉ lệ chí mạng bằng dao +10%.
+Deadeye=Mắt cụt
+After dashing, spray poison mist forward, applying 2 Poison stacks. Cooldown 2.5s.=Sau khi lao tới, phun sương độc về phía trước, áp dụng 2 điểm cộng dồn Độc.\nThời gian hồi chiêu 2,5 giây.
+Poison Pouch=Túi độc
+Your <font color\="#cdad7b">Dash</font> Attack becomes a 2-hit <font color\="#cdad7b">Cross Slash</font>. Each hit deals 16 damage.=Của bạn <font color\="#cdad7b">LƯỚT</font> Cuộc tấn công trở thành 2 đòn <font color\="#cdad7b">Chém chéo</font>.\nMỗi đòn đánh gây 16 sát thương.
+Cross Step=bước chéo
+Current Strength: <font color\="#65ec6d">14</font> (<font color\="#72d1f0">7</font> Base<font color\="#65ec6d">+7</font> Bonus)\r\nCurrently provides: <font color\="#65ec6d">7%</font> Attack Damage, <font color\="#65ec6d">1.75%</font> Critical Damage, <font color\="#65ec6d">1.75%</font> Extends enemy Stun duration.=Sức mạnh hiện tại: <font color\="#65ec6d">14</font> (<font color\="#72d1f0">7</font> Căn cứ<font color\="#65ec6d">+7</font> Tiền thưởng) Hiện cung cấp: <font color\="#65ec6d">7%</font> Sát thương tấn công, <font color\="#65ec6d">1.75%</font> Thiệt hại nghiêm trọng, <font color\="#65ec6d">1.75%</font> Kéo dài thời gian choáng của kẻ địch.
+The old is saved!=Cái cũ được cứu!
+<font size\="22">Accept</font>=<font size\="22">Chấp nhận</font>
+<font size\="22">Replace<font size\="14">（1/5）</font></font>=<font size\="22">Thay thế<font size\="14">（1/5）</font></font>
+Unfair Bargain=Thương lượng không công bằng
+Press=Nhấn
+Attack=Tấn công
+Knife Throw=Ném dao
+Dash: Evade Enemy Attacks=Dash: Né tránh các cuộc tấn công của kẻ thù
+Copy=Sao chép
+Loaded Dice=Xúc xắc đã nạp
+Dash not ready yet!=Dash chưa sẵn sàng!
+<img src\='ui:\/\/b5lhv7jqmroo114o' width\='40%' height\='40%'/> Strength+6\r\n<img src\='ui:\/\/b5lhv7jqmroo114p' width\='40%' height\='40%'/> Agility+2\r\n<img src\='ui:\/\/b5lhv7jqmroo114q' width\='40%' height\='40%'/> Spirit+3=<img src\='ui:\/\/b5lhv7jqmroo114o' width\='40%' height\='40%'/> Sức mạnh +6\r\n<img src\='ui:\/\/b5lhv7jqmroo114p' width\='40%' height\='40%'/> Nhanh nhẹn+2\r\n<img src\='ui:\/\/b5lhv7jqmroo114q' width\='40%' height\='40%'/> Tinh Thần+3
+…Incoherent murmuring…=…Tiếng thì thầm không mạch lạc…
+Regular=Thường xuyên
+Library=Thư viện
+Archive discovered relics and mend the fractured boundary.=Lưu trữ phát hiện di tích và hàn gắn ranh giới bị đứt gãy.
+Fish Bone Soup=Súp xương cá
+Gain temporary shield=Có được lá chắn tạm thời
+What's to eat today?=Hôm nay ăn gì?
+Play Time:=Thời gian chơi:
+Deaths:=Tử vong:
+Boss Kill:=Giết Boss:
+Kill Count:=Số lần tiêu diệt:
+Total Damage:=Tổng thiệt hại:
+Max Damage:=Sát thương tối đa:
+Taken Damage:=Thiệt hại nhận:
+Healing:=Đang lành lại:
+Earned <img src\='ui:\/\/b5lhv7jqs5eij4' width\='25%' height\='25%'/>: =kiếm được <img src\='ui:\/\/b5lhv7jqs5eij4' width\='25%' height\='25%'/>: 
+Earned <img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>:=kiếm được <img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>:
+Collected <img src\='ui:\/\/b5lhv7jqbb8grz' width\='35%' height\='35%'/>:=Đã sưu tầm <img src\='ui:\/\/b5lhv7jqbb8grz' width\='35%' height\='35%'/>:
+Collected <img src\='ui:\/\/b5lhv7jqfqygzk' width\='25%' height\='25%'/>:=Đã sưu tầm <img src\='ui:\/\/b5lhv7jqfqygzk' width\='25%' height\='25%'/>:
+Collected <img src\='ui:\/\/b5lhv7jqq7dk116m' width\='30%' height\='30%'/>:=Đã sưu tầm <img src\='ui:\/\/b5lhv7jqq7dk116m' width\='30%' height\='30%'/>:
+Collected <img src\='ui:\/\/b5lhv7jqjze1yd' width\='45%' height\='45%'/>:=Đã sưu tầm <img src\='ui:\/\/b5lhv7jqjze1yd' width\='45%' height\='45%'/>:
+Character=Tính cách
+Clears: 13=Xóa: 13
+Treasure Map=Bản đồ kho báu
+Enemies Defeated:\r\nCompleted:\r\nBest Time:\r\nHighest Trial:=Kẻ thù bị đánh bại: Đã hoàn thành: Thời gian tốt nhất: Thử thách cao nhất:
+Go=Đi
+Resource acquisition rate +75%.=Tỷ lệ thu được tài nguyên +75%.
+Full=Đầy
+Enemies deal  additional damage.=Kẻ địch gây thêm sát thương.
+Take a rest. Your wounds will heal over time.=Hãy nghỉ ngơi.\nVết thương của bạn sẽ lành theo thời gian.
+Item=Mục
+Preserve the Ember=Bảo quản Ember
+Current Win Streak: 4=Chuỗi thắng hiện tại: 4
+Open a total of <font color\="#C5AC6E">50/50</font> chests=Mở tổng cộng <font color\="#C5AC6E">50/50</font> rương
+New Relic!=Di tích mới!
+Fate=Định mệnh
+(Not Selected)=(Không được chọn)
+Wealth Fortune=Sự giàu có
+Leave=Rời khỏi
+<font size\="40">The first room reward is guaranteed to be <font color\="#DABA67">Mana Ember</font>.</font>=<font size\="40">Phần thưởng phòng đầu tiên được đảm bảo là <font color\="#DABA67">Mana Ember</font>.</font>
+Fortune Telling=Bói toán
+Crown of Thorns=Vương miện gai
+…Not enough resources=…Không đủ tài nguyên
+Pick up=Nhặt lên
+Tree Hollow=Rỗng cây
+Give your greed to the dark, and your fortune to the hollow.=Trao lòng tham của bạn cho bóng tối và vận may của bạn cho kẻ trống rỗng.
+Try to light all the candles!=Hãy cố gắng thắp sáng tất cả các ngọn nến!
+Light/Extinguish candles=Thắp/dập tắt nến
+Light candles=Thắp nến
+Wager=cá cược
+Odds1.74=Tỷ lệ cược1,74
+One-Eyed Zhang Zhiqiu=Trương Chí Khâu Một Mắt
+Attack Power: 80=Sức tấn công: 80
+Speed: 4=Tốc độ: 4
+Slave Gladiatorium=Đấu trường nô lệ
+Take Aim!=Hãy nhắm mục tiêu!
+Arcane Manuscript!=Bản thảo bí ẩn!
+2 Spell Cards Sealing Ancient Magic=2 Thẻ Phép Phong Ấn Ma Thuật Cổ Xưa
+<font size\="35">Skip</font>=<font size\="35">Nhảy</font>
+Version V0.6.1=Phiên bản V0.6.1
+…The Witch’s scent.=…Mùi của Phù Thủy.
+Breakdown (+5<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)=Phân tích (+5<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)
+Equip: Move Speed +0.8%=Trang bị: Tốc độ di chuyển +0,8%
+Tattered Boots=Giày rách
+Cripple=què quặt
+Trance=xuất thần
+The lower your <font color\="#cdad7b">Energy</font>, the faster your cooldowns, up to +40%.=của bạn càng thấp <font color\="#cdad7b">Năng lượng</font>, thời gian hồi chiêu của bạn càng nhanh, lên tới +40%.
+Reduce Damage by 25% and Move Speed by 33%.=Giảm sát thương 25% và tốc độ di chuyển 33%.
+Armor Break=Phá giáp
+Armor-broken targets take 35% increased damage.=Mục tiêu bị phá giáp sẽ nhận thêm 35% sát thương.
+When you inflict <font color\="#f1b957">Cripple</font>, Sunder, or Stun, you have a 25% chance to summon a Shade to <font color\="#cdad7b">Thrust</font> the target for 40 damage.=Khi bạn gây ra <font color\="#f1b957">què quặt</font>, Sunder hoặc Choáng, bạn có 25% cơ hội triệu hồi Bóng tối để <font color\="#cdad7b">Lực đẩy</font> mục tiêu gây 40 sát thương.
+Shade Pursuit=Truy đuổi bóng râm
+While stationary, gain +180% <font color\="#cdad7b">Energy</font> regeneration speed.=Khi đứng yên, tăng +180% <font color\="#cdad7b">Năng lượng</font> tốc độ tái sinh.
+Stillness=Sự tĩnh lặng
+Help!=Giúp đỡ!
+Grant=Khoản trợ cấp
+Over here!=Ở đây!
+Eat=Ăn
+Talk=Nói chuyện
+Fuck… that was tight.=Quái... chặt quá.
+Thanks, kid.=Cảm ơn, nhóc.
+Where’d you even come from?=Bạn thậm chí đến từ đâu?
+…You said there’s a place we can hide?=…Anh nói có một nơi chúng ta có thể trốn?
+That’s great!!=Thật tuyệt vời!!
+Can you take me there? Not that I’m scared.=Bạn có thể đưa tôi đến đó được không?\nKhông phải là tôi sợ.
+…Two’s better than one.=…Hai tốt hơn một.
+…This way.=…Lối này.
+…First time… makes you dizzy.=…Lần đầu tiên… làm bạn choáng váng.
+Huh? …What’d you say?=Hả?\n…Anh vừa nói gì cơ?
+Aaaah—!=Aaaa—!
+…Safe travels.=…Chuyến đi an toàn.
+How do I open it…?=Làm cách nào để mở nó…?
+Open=Mở
+Everfull Chalice=Chén Thánh đầy đủ
++1 Strength\n+3 Intelligence=+1 Sức mạnh +3 Trí tuệ
+Enter Room: Gain 6 Shield for 25s.=Vào phòng: Nhận 6 Khiên trong 25 giây.
+Rare Accessory=Phụ kiện hiếm
+On kill, release 4 blood waves, dealing 15 damage each.=Khi tiêu diệt, phóng ra 4 đợt máu, mỗi đợt gây 15 sát thương.
+Blood Echo=Tiếng vang máu
+If you haven’t attacked for 1.25s, your next attack becomes a Heavy <font color\="#cdad7b">Thrust</font> that deals 35 damage and always Backstabs.=Nếu bạn không tấn công trong 1,25 giây, đòn tấn công tiếp theo của bạn sẽ trở thành đòn nặng <font color\="#cdad7b">Lực đẩy</font> gây 35 sát thương và luôn Đâm sau.
+All-Out Strike=Tấn công toàn diện
+<font color\="#cdad7b">Slash</font>es and <font color\="#cdad7b">Cross Slash</font>es have an 18% chance to release a <font color\="#cdad7b">Blade Wave</font> that deals 30 damage to enemies it passes through.=<font color\="#cdad7b">Chém</font>es và <font color\="#cdad7b">Chém chéo</font>es có 18% cơ hội để phát hành một <font color\="#cdad7b">Sóng lưỡi</font> gây 30 sát thương cho kẻ địch mà nó đi qua.
+Aftercut=Hậu mãi
+Fuck!=Mẹ kiếp!
+Get out of my house!=Ra khỏi nhà tôi!
+Eat this!=Ăn cái này đi!
+Come on!=Cố lên!
+Tch. Bunch of trash!=Tch.\nMột lũ rác rưởi!
+Stubborn Old Chuck=Ông già Chuck bướng bỉnh
+Sir, it’s dangerous here.=Thưa ngài, ở đây nguy hiểm.
+Want to come to the shelter?=Bạn muốn đến nơi trú ẩn?
+Get lost. This is my home.=Bị lạc.\nĐây là nhà của tôi.
+No one’s making me leave.=Không ai bắt tôi phải rời đi.
+Okay… I’ll go.=Được rồi… tôi sẽ đi.
+Wait!=Chờ đợi!
+Worldtree Seed=Hạt giống cây thế giới
++2 Agility\n+2 Intelligence=+2 Nhanh nhẹn +2 Trí tuệ
+Equip: Gain +15% Max HP.=Trang bị: Tăng +15% HP tối đa.
+Excellent Accessory=Phụ kiện tuyệt vời
+Breakdown (+30<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)=Phân tích (+30<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)
+Don’t die, kid.=Đừng chết nhé nhóc.
+I don’t need this stuff anymore. Take it.=Tôi không cần thứ này nữa.\nLấy nó đi.
+Equip: Attack Speed +2%=Trang bị: Tốc độ tấn công +2%
+Corroded Dagger=Dao găm bị ăn mòn
+Abyssal Mask=Mặt nạ vực thẳm
++3 Agility\n+2 Intelligence=+3 Nhanh nhẹn +2 Trí tuệ
+Kill: Fear all nearby enemies for 2s (Cooldown: 10.5s).=Tiêu diệt: Sợ hãi tất cả kẻ địch xung quanh trong 2 giây (Thời gian hồi chiêu: 10,5 giây).
+5 Tattered Pages=5 trang rách
+Melee: 8% chance to summon a falling lightblade, dealing 60 damage.=Cận chiến: 8% cơ hội triệu hồi một thanh kiếm ánh sáng rơi xuống, gây 60 sát thương.
++2 Strength\n+2 Agility=+2 Sức mạnh +2 Nhanh nhẹn
+Sacred Scales=Cân thánh
+Notes=Ghi chú
+After combo hit 5, throw 4 Knives forward. Each Knife pierces up to 2 enemies and deals 20 damage. Costs 2 <font color\="#cdad7b">Energy</font>.=Sau khi combo trúng 5, ném 4 Dao về phía trước.\nMỗi con dao xuyên qua tối đa 2 kẻ địch và gây 20 sát thương.\nChi phí 2 <font color\="#cdad7b">Năng lượng</font>.
+Steel Hail=Mưa đá thép
+Baron De La Muerte=Nam tước De La Muerte
+You have trampled her land.=Bạn đã chà đạp đất của cô ấy.
+Your name is not on the list of pardon.=Tên của bạn không có trong danh sách ân xá.
+Death sentence!=Bản án tử hình!
+Ashen Judicator=Thẩm phán Ashen
+De La Muerte=De La Muerte
+Baron=Nam tước
+Clears: 0=Xóa: 0
+Current Win Streak: 0=Chuỗi thắng hiện tại: 0
+Destroy <font color\="#C5AC6E">670/400</font> environment objects=Hủy hoại <font color\="#C5AC6E">670/400</font> đối tượng môi trường
+Diovegia Pickaxe=Cuốc Diovegia
+Good thing you woke up.=May là bạn đã tỉnh dậy.
+Don’t push yourself this time, alright?=Lần này đừng ép mình nữa nhé?
+Oh right, that old man was asking if there was anything here he could help repair.=Ồ đúng rồi, ông già đó đang hỏi ở đây ông có thể giúp sửa chữa gì không.
+Breakdown (+0<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)=Phân tích (+0<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)
+Special Accessory=Phụ kiện đặc biệt
+The one you rescued earlier.=Người mà bạn đã cứu trước đó.
+Old Grimm=Grimm già
+These notes you brought back…=Những ghi chú bạn đã mang về…
+I’ve seen them in the hands of those robed people. They treated them like treasure.=Tôi đã nhìn thấy chúng trong tay những người mặc áo choàng đó.\nHọ đối xử với họ như báu vật.
+Can you read them?=Bạn có thể đọc chúng không?
+Let me see?=Để tôi xem nhé?
+Upgrade the library to unlock more research=Nâng cấp thư viện để mở khóa nhiều nghiên cứu hơn
+Build a library to unlock more research=Xây dựng thư viện để mở khóa nhiều nghiên cứu hơn
+These symbols were once indecipherable decoration, until scattered witch's notes provided the key.=Những biểu tượng này từng là vật trang trí không thể giải mã được, cho đến khi những ghi chú rải rác của phù thủy cung cấp chìa khóa.
+Research=Nghiên cứu
+These fanatics commonly carry enhancement elixirs within; some reform into stable forms upon the host's death.=Những kẻ cuồng tín này thường mang theo thuốc cường hóa bên trong;\nmột số cải tổ thành các hình thức ổn định sau cái chết của vật chủ.
+Sister Magda=Chị Magda
+Those zombies=Những thây ma đó
+Ask something=Hỏi điều gì đó
+You've trampled her land.=Bạn đã chà đạp vùng đất của cô ấy.
+After the Witch-Tide,=Sau Thủy triều phù thủy,
+By precisely controlling the frequency and fluctuation curve of the input magic, we can safely harness those so-called “dangerous spells.”=Bằng cách kiểm soát chính xác tần số và đường cong dao động của ma thuật đầu vào, chúng ta có thể khai thác cái gọi là “ma thuật nguy hiểm” một cách an toàn.
+the world is no longer what it was.=thế giới không còn như xưa nữa.
+Dark magic corrupts the land, even the dead find no rest.=Ma thuật hắc ám làm tha hóa vùng đất, ngay cả người chết cũng không được yên nghỉ.
+Now villages, roads, and fields are filled with wandering dead.=Bây giờ làng mạc, đường sá, đồng ruộng đầy rẫy xác chết lang thang.
+That's why everyone turned this place into a sanctuary.=Đó là lý do tại sao mọi người đều biến nơi này thành nơi tôn nghiêm.
+Black flames=Ngọn lửa đen
+At first, people just came here to hide temporarily.=Lúc đầu người ta chỉ đến đây để ẩn náu tạm thời.
+Then more came, and no one dared return to their homes.=Sau đó còn nhiều hơn nữa, và không ai dám trở về nhà của mình.
+Some boarded up windows, some piled barricades at doors.=Một số che cửa sổ lại, một số dựng rào chắn ở cửa ra vào.
+We've held out here until now.=Chúng ta đã cầm cự ở đây cho đến bây giờ.
+These are the mana remnants left by the Dark Witch.=Đây là tàn dư mana do Phù thủy bóng tối để lại.
+Spread across the kingdom by the ravaging cults.=Lây lan khắp vương quốc bởi những giáo phái tàn phá.
+Ordinary folk who touch it are quickly consumed by the black fire.=Người bình thường chạm vào sẽ nhanh chóng bị ngọn lửa đen thiêu rụi.
+And become one of those things.=Và trở thành một trong những điều đó.
+Yet you can withstand its power.=Tuy nhiên, bạn có thể chịu được sức mạnh của nó.
+That's why Ella believes you might truly save this world.=Đó là lý do tại sao Ella tin rằng bạn có thể thực sự cứu được thế giới này.
+Ella=Ella
+Death is but a threshold; fate's curtain has not yet fallen.=Cái chết chỉ là một ngưỡng cửa;\nbức màn định mệnh vẫn chưa buông xuống.
+When taking fatal damage, gain 0->1 revival chance, restoring 50% HP.=Khi nhận sát thương chí mạng, nhận được 0->1 cơ hội hồi sinh, phục hồi 50% HP.
+The Wheel of Fate grinds.=Bánh xe định mệnh đang mài mòn.
+Increase you maximum HP by 0->10.=Tăng HP tối đa của bạn thêm 0->10.
+Power slumbers in the embers.=Nguồn điện ngủ quên trong than hồng.
+You can dash 0->1 more times.=Bạn có thể gạch ngang 0->1 lần nữa.
+Wounds heal, even after the storm passes.=Vết thương sẽ lành ngay cả sau khi cơn bão đi qua.
+After clearing each room, restore 0->1 HP.=Sau khi dọn sạch từng phòng, khôi phục 0->1 HP.
+Corrosion sweeps the land, yet halts at this barrier.=Sự ăn mòn quét qua đất đai nhưng lại dừng lại ở rào cản này.
+Gain 0->2.5% Erosion resistance.=Tăng 0->2,5% khả năng chống xói mòn.
+You can dash 1 more times.=Bạn có thể lao thêm 1 lần nữa.
+Gain 0->10% more Equipment Fragments when you Disassemble items.=Nhận thêm 0->10% Mảnh Trang bị khi bạn Tháo rời vật phẩm.
+Shattered light still breathes, awaiting rekindling.=Ánh sáng tan vỡ vẫn còn thở, chờ được thắp lại.
+Gain an additional 0->1 refresh charges.=Nhận thêm phí làm mới 0->1.
+In the dark of night, the dagger whispers truths.=Trong đêm tối, con dao găm thì thầm sự thật.
+Deal 0->4% more damage to Boss.=Gây thêm 0->4% sát thương cho Boss.
+Crowns will fall; fire shall crown the victor.=Vương miện sẽ rơi;\nlửa sẽ trao vương miện cho người chiến thắng.
+Gain 0->1 item slots.=Nhận 0->1 ô vật phẩm.
+The traveler's burden is heavier than what meets the eye.=Gánh nặng của người lữ hành nặng nề hơn những gì mắt thấy.
+When attacking enemies from behind, deal an extra 0->5% damage.=Khi tấn công kẻ địch từ phía sau, gây thêm 0->5% sát thương.
+Even steel bows when the gale sweeps past.=Ngay cả thép cũng cong cong khi cơn gió thổi qua.
+Gain 0->10 Gold at the start of the expedition.=Nhận 0->10 Vàng khi bắt đầu chuyến thám hiểm.
+Gold still glimmers when the dark tide recedes.=Vàng vẫn lấp lánh khi thủy triều đen tối rút đi.
+Gain 0->1 of All Status.=Đạt được 0->1 của Tất cả Trạng thái.
+Fortune ever favors those who take the first step.=Vận may luôn ưu ái những người đi bước đầu tiên.
+Lv.0=Lv.0
+Lina=Lina
+Belle=Belle
+You fight out there, I mind the pot here.=Anh đánh ngoài đó, tôi để ý cái nồi ở đây.
+No one's ruining my cooking.=Không ai phá hỏng việc nấu nướng của tôi cả.
+Milena=Milena
+My eyes are getting worse.=Mắt tôi càng ngày càng tệ.
+Dropped a needle and spent ages looking for it.=Đánh rơi một cây kim và mất hàng thế kỷ để tìm kiếm nó.
+Ha! You’re back!=Hà!\nBạn đã trở lại!
+That teleport just scared me to death!=Dịch chuyển tức thời đó làm tôi sợ chết khiếp!
+This place is pretty nice!=Nơi này khá đẹp!
+Just… kinda busted.=Chỉ là… hơi bị phá sản.
+Fixing stuff is what I do best.=Sửa chữa đồ đạc là việc tôi làm tốt nhất.
+But I’ll need some… stone!=Nhưng tôi sẽ cần một ít… đá!
+Give stone =Tặng đá 
+ Not yet= Chưa
+No rush!=Không vội vàng!
+Give the craftsman 5 stones.=Đưa cho người thợ 5 viên đá.
+Give the stone=Đưa đá
+I can’t make sense of this either.=Tôi cũng không thể hiểu được điều này.
+Don’t ask me to read this stuff.=Đừng yêu cầu tôi đọc những thứ này.
+Mm…=Ừm…
+Maybe it’s…=Có lẽ nó…
+The air out there… smells awful.=Không khí ngoài kia… có mùi kinh khủng.
+Heavy Hand=nặng tay
+<font color\="#cdad7b">Slash</font> damage +35%. On hit, 25% chance to <font color\="#f1b957">Cripple</font> for 6s.=<font color\="#cdad7b">Chém</font> thiệt hại +35%.\nKhi trúng đòn, có 25% cơ hội <font color\="#f1b957">què quặt</font> trong 6 giây.
+Slip Away=Trượt đi
+After dashing, you have a 25% chance to enter <font color\="#f1b957">Stealth</font> for 2.5s.=Sau khi lao vào, bạn có 25% cơ hội vào cuộc <font color\="#f1b957">tàng hình</font> trong 2,5 giây.
+Perform a 5-hit melee combo in front of you, dealing 10/10/10/15/30 damage.=Thực hiện combo cận chiến 5 đòn trước mặt, gây sát thương 10/10/10/15/30.
+Melee attacks deal 250% damage; other attacks deal 180%.\nAlso deal an extra 60 <font color\="#cdad7b">Shadow</font> damage to the first target hit.=Các đòn tấn công cận chiến gây 250% sát thương;\ncác đòn tấn công khác gây ra 180%.\nĐồng thời giải quyết thêm 60 <font color\="#cdad7b">Bóng tối</font> sát thương lên mục tiêu đầu tiên trúng phải.
+Ambush Strike=Cuộc tấn công phục kích
+Move Speed -16% and you are unseen. Your first attack from <font color\="#f1b957">Stealth</font> breaks <font color\="#f1b957">Stealth</font> and triggers <font color\="#f1b957">Ambush Strike</font>.=Tốc độ di chuyển -16% và bạn không bị nhìn thấy.\nCuộc tấn công đầu tiên của bạn từ <font color\="#f1b957">tàng hình</font> nghỉ giải lao <font color\="#f1b957">tàng hình</font> và kích hoạt <font color\="#f1b957">Cuộc tấn công phục kích</font>.
+Stealth=tàng hình
+Choose or Upgrade an ability=Chọn hoặc nâng cấp một khả năng
+…No words on it?=…Không có từ nào trên đó?
+Shadow Lunge=Bóng Lunge
+<font color\="#cdad7b">Dash</font> in a chosen direction, becoming untargetable during the dash. Summon shadows that perform 6 piercing strikes along the path, each dealing 40 damage. Cooldown: 9s.=<font color\="#cdad7b">LƯỚT</font> theo hướng đã chọn, trở nên không thể bị chọn làm mục tiêu trong lúc lao tới.\nTriệu hồi những cái bóng thực hiện 6 đòn xuyên qua đường đi, mỗi đòn gây 40 sát thương.\nThời gian hồi chiêu: 9 giây.
+9Sec=9 giây
+Blade Fan=Quạt cánh
+Consume 2 <font color\="#cdad7b">Energy</font> to throw knives around you, dealing 50 damage. After casting, 3 knives drop on the ground nearby. Cooldown: 4s.=Tiêu thụ 2 <font color\="#cdad7b">Năng lượng</font> ném dao xung quanh bạn, gây 50 sát thương.\nSau khi thi triển, 3 con dao rơi xuống đất gần đó.\nThời gian hồi chiêu: 4 giây.
+4Sec=4 giây
+A chest…=Một cái rương…
+No longer dash. Only summon shadows. Cooldown reduced by 2s. Stores 2 charges.=Không còn gạch ngang nữa.\nChỉ triệu hồi bóng tối.\nThời gian hồi chiêu giảm đi 2 giây.\nLưu trữ 2 khoản phí.
+Form Shift=Thay đổi biểu mẫu
+Final strike deals 800% damage and Stuns for 2.5s.=Đòn cuối cùng gây 800% sát thương và choáng trong 2,5 giây.
+Additional Instances=Phiên bản bổ sung
+Summoned shadow count increased by 3.=Số lượng bóng được triệu hồi tăng thêm 3.
+Sustain=duy trì
+Gain 5 Shield for 6 seconds after casting.=Nhận 5 Khiên trong 6 giây sau khi thi triển.
+Status Effect=Hiệu ứng trạng thái
+Piercing strikes <font color\="#f1b957">Cripple</font> enemies on hit.=Cuộc đình công xuyên thấu <font color\="#f1b957">què quặt</font> kẻ thù đang bị tấn công.
+Area Increase=Tăng diện tích
+<font color\="#cdad7b">Shadow</font> attack range increased by 100%, damage increased by 25.=<font color\="#cdad7b">Bóng tối</font> phạm vi tấn công tăng 100%, sát thương tăng 25.
+Burst Surge=bùng nổ
+Buy items from the merchant=Mua vật phẩm từ người bán
+9.0Sec=9,0 giây
+…The Witch’s card.=… Tấm thẻ của Phù thủy.
+Hookshot=Bắn móc
+Fire a steel chain that deals 40 damage and Stuns for 1s. Hitting an enemy or terrain pulls you forward, performing a spinning slash that deals 50 damage. Cooldown: 6s.=Bắn một sợi xích thép gây 40 sát thương và choáng trong 1 giây.\nĐánh trúng kẻ địch hoặc địa hình sẽ kéo bạn về phía trước, thực hiện một nhát chém xoay tròn gây 50 sát thương.\nThời gian hồi chiêu: 6 giây.
+6Sec=6 giây
+Blade Barrage=Lưỡi kiếm
+After a brief charge, unleash 3 blade waves in a forward cone. Charging increases waves up to 7 after 1.5s. Each wave deals 40 damage. Cooldown: 10s.=Sau một khoảng thời gian ngắn, giải phóng 3 làn sóng lưỡi kiếm theo hình nón về phía trước.\nSạc tăng sóng lên 7 sau 1,5 giây.\nMỗi đợt gây 40 sát thương.\nThời gian hồi chiêu: 10 giây.
+10Sec=10 giây
+Worn Spellstaff=Phép thuật mòn
+Equip: Skill Damage +5%=Trang bị: Sát thương kỹ năng +5%
+Whenever the target is hit, it takes extra X damage (X \= stacks). Each stack lasts 5s.=Bất cứ khi nào mục tiêu bị bắn trúng, sẽ nhận thêm X sát thương (X \= cộng dồn).\nMỗi ngăn xếp kéo dài 5 giây.
+Wound=Vết thương
+<font color\="#cdad7b">Blade Wave</font>s have a 40% chance to return and hit again.=<font color\="#cdad7b">Sóng lưỡi</font>s có 40% cơ hội quay lại và đánh lần nữa.
+Boomerang Blade=Lưỡi Boomerang
+<font color\="#cdad7b">Cross Slash</font>es gain +14% Crit Chance and apply 1 Bleed stack on hit.=<font color\="#cdad7b">Chém chéo</font>es nhận được +14% Cơ hội chí mạng và gây 1 điểm chảy máu khi đánh.
+Crimson Cross=Chữ thập đỏ thẫm
+Max <font color\="#cdad7b">Energy</font> +4. <font color\="#cdad7b">Energy</font> regen +25%.=Tối đa <font color\="#cdad7b">Năng lượng</font> +4. <font color\="#cdad7b">Năng lượng</font> hồi phục +25%.
+Gain 16 Shield at the start of charging, decaying over 3s.=Nhận 16 Khiên khi bắt đầu nạp năng lượng, giảm dần trong 3 giây.
+Casting at full charge releases 6 additional waves.=Truyền khi sạc đầy sẽ giải phóng thêm 6 sóng.
+Precision Cast=Đúc chính xác
+Each hit on the same target increases damage by 10.=Mỗi đòn đánh vào cùng một mục tiêu sẽ tăng sát thương thêm 10.
+<font color\="#cdad7b">Dash</font> forward. Attacking during the dash deals 15 damage.=<font color\="#cdad7b">LƯỚT</font> phía trước.\nTấn công trong lúc lao tới gây 15 sát thương.
+Dash=LƯỚT
+Combo Scaling=Chia tỷ lệ kết hợp
+Instant cast refunds 50% Cooldown.=Sử dụng ngay lập tức hoàn lại 50% thời gian hồi chiêu.
+Cooldown Reduction=Giảm thời gian hồi chiêu
+Wave distance increases by 40% with charge time. Damage to distant enemies increased up to 100%.=Khoảng cách sóng tăng 40% theo thời gian sạc.\nSát thương lên kẻ địch ở xa tăng lên tới 100%.
+Charge speed increased by 100%.=Tốc độ sạc tăng 100%.
+Cast Speed=Tốc độ truyền
+10.0Sec=10,0 giây
+Stamina=Sự bền bỉ
+Wildcat=Mèo hoang
+Meow~=Meow~
+Blessing of the Wildcat=Phước lành của mèo hoang
+Wildcat Witch=Phù thủy mèo hoang
+Ahem! Don’t touch things.=Ừm!\nĐừng chạm vào mọi thứ.
+Sigh… no chance.=Haiz… không có cơ hội đâu.
+Fine. Tell me what you want.=Khỏe.\nHãy cho tôi biết bạn muốn gì.
+The cat… where did it go…=Con mèo… nó đi đâu rồi…
+Reward? Speak up!=Phần thưởng?\nHãy lên tiếng!
+…Bell?=…Chuông?
+Restore 30 HP.=Phục hồi 30 HP.
+<font color\="#7FC6E4">Bell</font>\nStrength +1\nAgility +3\n<font color\="#A5D69D"><font size\="17">Equip: +4% Movement Speed\nMove: Every 8 meters traveled, deals 20 bell damage in a small area around you.</font>=<font color\="#7FC6E4">Chuông</font>\nSức mạnh +1 Nhanh nhẹn +3\n<font color\="#A5D69D"><font size\="17">Trang bị: +4% tốc độ di chuyển Di chuyển: Mỗi 8 mét di chuyển, gây 20 sát thương hình chuông trong một khu vực nhỏ xung quanh bạn.</font>
+…A bell?=…Một cái chuông?
+<font color\="#7FC6E4"><font color\="#f1b957">Fish</font> Bone</font>\nAgility +4\n<font color\="#A5D69D"><font size\="17">Equip: +1% Crit Chance\nCrit: Summon a cat to attack enemies for 7 seconds. Cooldown: 4 seconds.</font>=<font color\="#7FC6E4"><font color\="#f1b957">Cá</font> Xương</font>\nNhanh nhẹn +4\n<font color\="#A5D69D"><font size\="17">Trang bị: +1% Cơ hội chí mạng Chí mạng: Triệu hồi một con mèo để tấn công kẻ thù trong 7 giây.\nThời gian hồi chiêu: 4 giây.</font>
+…A fishbone?=…Xương cá?
+Then… can you heal me?=Vậy thì… bạn có thể chữa lành cho tôi không?
+…Fishbone?=…Xương cá?
+Then…healme?=Sau đó…chữa lành?
+The fish bone.=Xương cá.
+Equip: +1% Crit Chance\nOn Crit: Summon a Cat to attack enemies for 7s. Cooldown 4s.=Trang bị: +1% Cơ hội chí mạng khi chí mạng: Triệu hồi một con mèo để tấn công kẻ thù trong 7 giây.\nThời gian hồi chiêu 4 giây.
++4 Agility=+4 Nhanh nhẹn
+Lucky Fishbone=Xương cá may mắn
+Fine. Take it.=Khỏe.\nLấy nó đi.
+Mm………=Ừm………
+Roadblock Henchman C=Kẻ cản đường tay sai C
+Roadblock Henchman B=Kẻ cản đường tay sai B
+Stop! Hand everything over!=Dừng lại!\nHãy giao nộp mọi thứ!
+I said pay up!! Are you deaf?!=Tôi nói trả tiền!\nBạn có bị điếc không?!
+Holy shit!=Mẹ kiếp!
+!(whistle)=!(còi)
+Boss!=Ông chủ!
+Girl, you hurt my man for no reason.=Cô gái à, em đã vô cớ làm tổn thương người đàn ông của anh.
+That’s not okay, is it?=Điều đó không ổn phải không?
+I won’t make it hard—leave some money.=Tôi sẽ không làm khó đâu – hãy để lại một ít tiền.
+In return, I’ll give you something useful.=Đổi lại, tôi sẽ cho bạn thứ gì đó hữu ích.
+Boss… you mean the trash we pick up off the ground?=Sếp… ý bạn là rác chúng tôi nhặt được trên mặt đất?
+Shut up, idiot.=Im đi, đồ ngốc.
+15coins=15 xu
+Annoying Black Flame=Ngọn lửa đen khó chịu
+Smart choice.=Sự lựa chọn thông minh.
+Let her pass. Move along.=Hãy để cô ấy đi qua.\nDi chuyển theo.
+Roadblock Henchman A=Kẻ cản đường tay sai A
+<font color\="#cdad7b">Kick</font>s deal +15% damage. On hit, <font color\="#cdad7b">Kick</font>s have a 35% chance to Stun for 1.6s.=<font color\="#cdad7b">Đá</font>s gây +15% sát thương.\nKhi bị đánh, <font color\="#cdad7b">Đá</font>s có 35% cơ hội gây choáng trong 1,6 giây.
+Steel-Toed=Mũi thép
+After combo hit 4, vanish briefly and summon 2 Shades in front. Each Shade slashes nearby enemies for 36 damage.=Sau khi combo đạt 4, biến mất trong chốc lát và triệu hồi 2 Shade ở phía trước.\nMỗi Bóng tối chém kẻ thù gần đó với 36 sát thương.
+Vanish Arts=nghệ thuật biến mất
+The lower your HP, the higher your melee damage, up to +50%.=HP của bạn càng thấp, sát thương cận chiến của bạn càng cao, lên tới +50%.
+Blood Frenzy=Máu điên cuồng
+Roadblock Big Brother=Rào cản Big Brother
+<font color\="#cdad7b">Knife Throw</font> becomes a tight straight-line volley. Knife damage +35%.=<font color\="#cdad7b">Ném dao</font> trở thành một cú vô lê theo đường thẳng chặt chẽ.\nSát thương dao +35%.
+Tetherblades=Tetherblade
+Link=liên kết
+Knives <font color\="#f1b957">Link</font> all enemies they hit for 6s. Cooldown 3s.=Những con dao <font color\="#f1b957">liên kết</font> tất cả kẻ thù họ đánh trong 6 giây.\nThời gian hồi chiêu 3 giây.
+When a linked unit takes damage, other linked units also take 40% of that damage. Move Speed -35% while linked.=Khi một đơn vị liên kết chịu sát thương, các đơn vị liên kết khác cũng nhận 40% sát thương đó.\nTốc độ di chuyển -35% khi được liên kết.
+Enemies slowly regenerate HP.=Kẻ địch hồi phục HP từ từ.
+Lingering Weakness=Điểm yếu kéo dài
+Max HP +20=HP tối đa +20
+Get a Skill=Nhận một kỹ năng
+Delicious Cake=Bánh ngon
+7Sec=7 giây
+Throw a cloud of dark mist to create a shadow. <font color\="#cdad7b">Shadow</font>s have 28 base damage, pursue enemies, and last 6s. Stores 2 charges. Cooldown: 7s.=Ném một đám mây sương mù đen để tạo ra một cái bóng. <font color\="#cdad7b">Bóng tối</font>s có 28 sát thương cơ bản, truy đuổi kẻ thù và 6 giây cuối cùng.\nLưu trữ 2 khoản phí.\nThời gian hồi chiêu: 7 giây.
+Shadow Clone=Bản sao bóng tối
+Leap to target location, dealing 110 damage in an X-shaped area and Stunning for 1.5s. Cooldown: 9s.=Nhảy tới vị trí mục tiêu, gây 110 sát thương trong khu vực hình chữ X và Làm choáng trong 1,5 giây.\nThời gian hồi chiêu: 9 giây.
+Cross Impact=Tác động chéo
+Cracked Bird Egg=Trứng chim nứt
++2 Strength\n+2 Intelligence=+2 Sức mạnh +2 Trí tuệ
+Equip: Create a shell that blocks one instance of damage (Cooldown: 36s).=Trang bị: Tạo một lớp vỏ chặn một trường hợp sát thương (Thời gian hồi chiêu: 36 giây).
+Need more coins=Cần thêm xu
+KILL=GIẾT
+Elven Longbow=Cung Elf
++6 Agility=+6 Nhanh nhẹn
+<font color\="#cdad7b">Dash</font>: Fire an arrow that pierces an enemy, dealing 12 damage.=<font color\="#cdad7b">LƯỚT</font>: Bắn một mũi tên xuyên qua kẻ địch, gây 12 sát thương.
+Equip: Every 8s, gain a charge. Your next <font color\="#cdad7b">Dash</font> Attack deals +30 damage.=Trang bị: Cứ sau 8 giây, nhận được một điểm tích lũy.\nTiếp theo của bạn <font color\="#cdad7b">LƯỚT</font> Tấn công gây +30 sát thương.
++4 Strength\n+2 Agility=+4 Sức mạnh +2 Nhanh nhẹn
+Bloodstained Scythe=Lưỡi hái dính máu
+Enemy deaths nearby reduce Cooldown by 1s.=Kẻ địch chết ở gần sẽ giảm Thời gian hồi chiêu đi 1 giây.
+Cooldown Refund=Hoàn trả thời gian hồi chiêu
+Leave a shadow that repeats the skill after 2.5s, dealing 50% damage and Stunning for 1s.=Để lại một cái bóng lặp lại kỹ năng sau 2,5 giây, gây 50% sát thương và Làm choáng trong 1 giây.
+Hit enemies are <font color\="#f1b957">Link</font>ed for 5s.=Đánh kẻ thù là <font color\="#f1b957">liên kết</font>ed trong 5 giây.
+Critical Chance increased by 35%.=Cơ hội chí mạng tăng 35%.
+Critical Boost=Tăng cường quan trọng
+Base damage +30. Area of effect increased by 30%.=Sát thương cơ bản +30.\nPhạm vi hiệu ứng tăng 30%.
+Enemies at the center take damage twice.=Kẻ địch ở trung tâm sẽ nhận sát thương hai lần.
+Equip: Gain +18% Max HP.\nEquip: HP potion restore 30% more HP.=Trang bị: Tăng +18% HP tối đa.\nTrang bị: Thuốc HP phục hồi thêm 30% HP.
++3 Agility\n+3 Intelligence=+3 Nhanh nhẹn +3 Trí tuệ
+(Materials insufficient) Upgrade the equipment in your first slot.  =(Không đủ vật liệu) Nâng cấp thiết bị ở ô đầu tiên của bạn.  
+Breakdown (+95<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)=Sự cố (+95<img src\='ui:\/\/b5lhv7jqg2191155' width\='40%' height\='40%'/>)
+Epic Accessory=Phụ kiện sử thi
+<font color\="#cdad7b">Dash</font>: Conjure an arrow to pierce an enemy, dealing 12 damage.\n<font color\="#cdad7b">Dash</font>: 50% chance to conjure a second arrow.=<font color\="#cdad7b">LƯỚT</font>: Tạo ra một mũi tên xuyên qua kẻ địch, gây 12 sát thương.\n<font color\="#cdad7b">LƯỚT</font>: 50% cơ hội tạo ra mũi tên thứ hai.
++9 Agility=+9 Nhanh nhẹn
+Equip: +2% Crit Chance\nOn Crit: Summon a Cat to attack enemies for 7s. Cooldown 3s.=Trang bị: +2% Tỉ lệ chí mạng khi chí mạng: Triệu hồi một con mèo để tấn công kẻ thù trong 7 giây.\nThời gian hồi chiêu 3 giây.
++7 Agility=+7 Nhanh nhẹn
+Stitch=Khâu
+After combo hit 4, add 2 rapid <font color\="#cdad7b">Thrust</font>s. Each <font color\="#cdad7b">Thrust</font> deals 18 damage.=Sau combo đánh 4 thì cộng nhanh 2 <font color\="#cdad7b">Lực đẩy</font>S.\nMỗi <font color\="#cdad7b">Lực đẩy</font> gây 18 sát thương.
+Venom Thrust=Lực đẩy nọc độc
+<font color\="#cdad7b">Thrust</font> attacks apply 2 Poison stacks.=<font color\="#cdad7b">Lực đẩy</font> đòn tấn công gây 2 điểm độc.
+Arcane Scholar=Học giả bí ẩn
+Orbit Blade=Lưỡi quỹ đạo
+Melee hits have a 10% chance to summon an orbiting disc for 4.5s, dealing 15 damage on contact.=Các đòn đánh cận chiến có 10% cơ hội triệu hồi một đĩa quay quanh trong 4,5 giây, gây 15 sát thương khi tiếp xúc.
+Nightstalker=Kẻ đi đêm
+On kill, enter <font color\="#f1b957">Stealth</font> for 2.8s. Triggers at most once every 3.6s.=Khi giết, hãy nhập <font color\="#f1b957">tàng hình</font> trong 2,8 giây.\nKích hoạt tối đa 3,6 giây một lần.
+…Perfect timing.=…Thời điểm hoàn hảo.
+Now I can get back to my research.=Bây giờ tôi có thể quay lại nghiên cứu của mình.
+…Did you say… shelter?=…Có phải cậu vừa nói… nơi trú ẩn?
+Mm… sure. Have fun out there.=Ừm… chắc chắn rồi.\nHãy vui vẻ ở ngoài đó nhé.
+Me? No way I’m going.=Tôi?\nKhông đời nào tôi sẽ đi.
+What matters is figuring out how magic and Erosion interact.=Điều quan trọng là tìm ra cách ma thuật và Xói mòn tương tác với nhau.
+You said… what? You can absorb… this magic?=Bạn nói… cái gì?\nBạn có thể hấp thụ… phép thuật này?
+And your body hasn’t rotted away?=Và cơ thể của bạn vẫn chưa bị thối rữa?
+What did you say just now—shelter? A shelter, right?=Vừa rồi cậu vừa nói gì—nơi trú ẩn?\nMột nơi trú ẩn phải không?
+Please take me with you. I’ll be useful.=Hãy đưa tôi đi cùng bạn.\nTôi sẽ có ích.
+Oh! This is…=Ồ!\nĐây là…
+Oh—ohh—!=Ồ—ồ—!
+…Goodbye.=…Tạm biệt.
+Traveler over there!=Lữ khách ở đó!
+Awoo—=Ối—
+Serinta needs your help!=Serinta cần sự giúp đỡ của bạn!
+That’s… your name?=Đó là… tên của bạn?
+It’s the deer’s name.=Đó là tên của con nai.
+I’m Uma! The forest’s doctor.=Tôi là Uma!\nBác sĩ của rừng.
+I want crystals!=Tôi muốn tinh thể!
+The sparkly kind!=Loại lấp lánh!
+Ah—it’s for making medicine.=À—nó dùng để làm thuốc.
+Screee—=Rên rỉ—
+Give 5 Equipment Fragments=Tặng 5 mảnh trang bị
+Hand Over Crystal=Bàn giao pha lê
+Eek~=Ếch~
+Whine—whine—=Rên—rên—
+(whimper)=(rên)
+It’s okay—you’ll get better!=Không sao đâu - bạn sẽ khỏe lại thôi!
+ No= KHÔNG
+Hand over crystals =Bàn giao tinh thể 
+ Get an item= Nhận một mục
+Cleanse Corruption into Blessing=Làm sạch tham nhũng thành phước lành
+Obtain 1 Forest Relic=Nhận 1 di tích rừng
+Obtain Item=Nhận vật phẩm
+Heal=Chữa lành
+Restore 40 <font color\="#f1b957">Heal</font>th=Khôi phục 40 <font color\="#f1b957">Chữa lành</font>th
+Cleanse Curse=làm sạch lời nguyền
+May thorns guard your steps.=Có thể gai bảo vệ bước đi của bạn.
+ Cleanse a curse = Làm sạch một lời nguyền 
+Heal =Chữa lành 
+Druid=Druid
+The backpack is full   =Ba lô đã đầy   
+Aow!=Ôi!
+Serinta=Serinta
+Equip: +5 Armor.\nEquip: For every 4 Armor you have, gain +1% damage.=Trang bị: +5 Giáp.\nTrang bị: Với mỗi 4 Giáp bạn có, bạn sẽ nhận được +1% sát thương.
++2 Agility\n+3 Intelligence=+2 Nhanh nhẹn +3 Trí tuệ
+Inventory Full!=Hàng tồn kho đầy đủ!
+Thornrose=hoa gai
+The forest can be your friend! What do you seek?=Rừng có thể là bạn của bạn!\nBạn tìm kiếm điều gì?
+Chirp-chirp… chirp=Chíp-típ…típ
+Grrr…=Grrr…
+Guh… guh-guh=Guh... guh-guh
+Ambush Strike!=Cuộc tấn công phục kích!
+Caved Helm=Mũ bảo hiểm
+Equip: Max HP +10=Trang bị: HP tối đa +10
+What’s inside…?=Bên trong có gì…?
+Equip: The final hit of your combo gains +35% Critical Chance.=Trang bị: Đòn đánh cuối cùng trong combo của bạn nhận được +35% Cơ hội Chí mạng.
+Oaken Cane=Mía Sồi
+Backstab\nAmbush Strike!=Cuộc tấn công phục kích đâm sau lưng!
+Moonlit Branch=Nhánh trăng
+Help "Uma" heal animals=Giúp "Uma" chữa lành động vật
+You’re finally awake.=Cuối cùng bạn cũng tỉnh dậy.
+Though, she feels a bit strange too.=Tuy nhiên, cô cũng cảm thấy hơi lạ.
+She’s waiting for you over there.=Cô ấy đang đợi bạn ở đó.
+The young lady you brought back seems quite clever…=Cô gái trẻ mà bạn mang về có vẻ khá thông minh…
+Those in black robes=Những người mặc áo choàng đen
+About food=Về đồ ăn
+Those in black robes are the witch's followers.=Những người mặc áo choàng đen là tín đồ của phù thủy.
+When they first came, they said the witch would bring a new age.=Khi mới đến, họ nói rằng mụ phù thủy sẽ mang đến một thời đại mới.
+That magic would give everyone a better life.=Phép thuật đó sẽ mang lại cho mọi người một cuộc sống tốt đẹp hơn.
+Many followed them then.=Nhiều người đã theo họ sau đó.
+But later, dark magic blighted the crops, even the dead found no rest.=Nhưng sau đó, ma thuật hắc ám tàn phá mùa màng, ngay cả người chết cũng không tìm được sự yên nghỉ.
+And everyone's lives were ruined.=Và cuộc sống của mọi người đều bị hủy hoại.
+After clearing each room, restore 1->2 HP.=Sau khi dọn sạch từng phòng, hồi 1->2 HP.
+Gain 1->2 item slots.=Nhận được 1->2 ô vật phẩm.
+What are the rest of these scribbles supposed to be?=Phần còn lại của những nét vẽ nguệch ngoạc này được cho là gì?
+All nonsense. Useless.=Tất cả đều vô nghĩa.\nVô ích.
+No one could understand this anyway.=Dù sao thì không ai có thể hiểu được điều này.
+Got enough stone?=Có đủ đá không?
+get -5  <img src\='ui:\/\/b5lhv7jqq7dk116m' width\='35%' height\='35%'/> =nhận được -5  <img src\='ui:\/\/b5lhv7jqq7dk116m' width\='35%' height\='35%'/> 
+Then let’s get to work!=Sau đó hãy bắt tay vào làm việc!
+Alright—time to work!=Được rồi—đến giờ làm việc rồi!
+Oh, and one more thing!=Ồ, và một điều nữa!
+It’s fine! She’s tough as nails!=Không sao đâu!\nCô ấy cứng như đinh đóng cột!
+<font size\="18">Required: Shelter Lv.4,Training Officer</font>=<font size\="18">Yêu cầu: Nơi trú ẩn Lv.4, Cán bộ huấn luyện</font>
+<font size\="18">A crude training ground with wooden posts, the only place to practice in the shelter.\n\nNo function in EA version.</font>=<font size\="18">Sân tập thô sơ với những cột gỗ, nơi duy nhất để tập luyện trong hầm trú ẩn.\n\n\nKhông có chức năng trong phiên bản EA.</font>
+<font size\="29">Training Grounds</font>=<font size\="29">Sân tập</font>
+<font size\="18">Required: Shelter Lv.3,Trader</font>=<font size\="18">Yêu cầu: Nơi trú ẩn Lv.3, Thương nhân</font>
+<font size\="18">A workbench filled with bottles and jars for making emergency potions for the shelter.\n\nCan convert resources.</font>=<font size\="18">Một chiếc bàn làm việc chứa đầy chai lọ để pha chế thuốc khẩn cấp cho nơi trú ẩn.\n\n\nCó thể chuyển đổi tài nguyên.</font>
+<font size\="29">Alchemy Table</font>=<font size\="29">Bàn giả kim</font>
+<font size\="18">Required: Shelter Lv.3</font>=<font size\="18">Yêu cầu: Nơi trú ẩn Lv.3</font>
+<font size\="18">Between whispered prayers and candlelight lie forgotten stories.\n\nNo function in EA version.</font>=<font size\="18">Giữa những lời cầu nguyện thì thầm và ánh nến là những câu chuyện bị lãng quên.\n\n\nKhông có chức năng trong phiên bản EA.</font>
+<font size\="29">Confessional</font>=<font size\="29">xưng tội</font>
+<font size\="18">Required: Shelter Lv.2,Scavenger</font>=<font size\="18">Yêu cầu: Nơi trú ẩn Lv.2, Người nhặt rác</font>
+<font size\="18">A scavenger’s shelf piled with items recovered from the ruins.\n\nGrants 1 Equipment.</font>=<font size\="18">Kệ của người nhặt rác chất đầy những vật phẩm được tìm thấy từ đống đổ nát.\n\n\nTặng 1 trang bị.</font>
+<font size\="29">Junk Hut</font>=<font size\="29">Túp lều rác</font>
+<font size\="18">Required: Shelter Lv.2,Diviner</font>=<font size\="18">Yêu cầu: Nơi trú ẩn Lv.2, Nhà tiên tri</font>
+Built.=Được xây dựng.
+<font size\="18">A wanderer’s tent, hiding mysterious whispers.\n\nIt can foretell your fate.</font>=<font size\="18">Lều của kẻ lang thang, ẩn chứa những lời thì thầm bí ẩn.\n\n\nNó có thể báo trước số phận của bạn.</font>
+<font size\="29">Fortune Tent</font>=<font size\="29">Lều may mắn</font>
+<font size\="18">Required: Shelter Lv.2</font>=<font size\="18">Yêu cầu: Nơi trú ẩn Lv.2</font>
+We just take it one day at a time.=Chúng tôi chỉ thực hiện nó một ngày một lần.
+These days...=Những ngày này...
+<font size\="18">A crudely repaired Saint's Statue, bringing hope to the sanctuary.\n\nResearch support skills.</font>=<font size\="18">Tượng Thánh được sửa chữa thô sơ, mang lại hy vọng cho thánh đường.\n\n\nKỹ năng hỗ trợ nghiên cứu.</font>
+I want… a room…=Tôi muốn… một căn phòng…
+Books… notes… samples… and you.=Sách… ghi chú… mẫu… và bạn.
+<font size\="18">A simple kitchen providing food for the sanctuary.\n\nGain temporary boons before battle.</font>=<font size\="18">Một căn bếp đơn giản cung cấp thức ăn cho thánh đường.\n\n\nĐạt được lợi ích tạm thời trước trận chiến.</font>
+<font size\="29">Kitchen</font>=<font size\="29">Phòng bếp</font>
+Still a complete mess.=Vẫn là một mớ hỗn độn.
+<font size\="18">Collect scattered witch notes and study them.\n\nResearch new tactics.</font>=<font size\="18">Thu thập các ghi chú phù thủy rải rác và nghiên cứu chúng.\n\n\nNghiên cứu chiến thuật mới.</font>
+You can absorb Mana Embers...=Bạn có thể hấp thụ Than hồng Mana...
+with no signs of rejection.=không có dấu hiệu từ chối.
+Unless a form of ether-conducting layer in your body has mutated.=Trừ khi một dạng lớp dẫn ether trong cơ thể bạn bị đột biến.
+And that usually only happens when...=Và điều đó thường chỉ xảy ra khi...
+…I want a room.=…Tôi muốn một căn phòng.
+Uh...=Ờ...
+That's... theoretically impossible.=Điều đó... về mặt lý thuyết là không thể.
+…You didn’t forget, right?=…Cậu không quên, phải không?
+About the room.=Về phòng.
+That means your mana channels are open,=Điều đó có nghĩa là kênh mana của bạn đang mở,
+I mean…=Ý tôi là…
+<font size\="29">Anti-Witch Lab</font>=<font size\="29">Phòng thí nghiệm chống phù thủy</font>
+It’s fine—no hurry.=Không sao đâu - không cần vội.
+So—did you see her?=Vậy—bạn có thấy cô ấy không?
+<font size\="18">Required: Anti-Witch Lab Lv.1</font>=<font size\="18">Yêu cầu: Phòng thí nghiệm chống phù thủy Lv.1</font>
+<font size\="16">Upgrade</font>=<font size\="16">Nâng cấp</font>
+<font size\="16">Lv1</font>=<font size\="16">Cấp 1</font>
+I got separated from my niece!=Tôi đã bị tách khỏi cháu gái của tôi!
+Just tell her I’m here!=Chỉ cần nói với cô ấy là tôi ở đây!
+Anyway, if something needs fixing, come find me!=Dù sao đi nữa, nếu có gì cần sửa chữa, hãy đến tìm tôi!
+Close=Đóng
+<font size\="18">Border Chapel, protecting everyone from undead and dark cultists.</font>=<font size\="18">Nhà nguyện Biên giới, bảo vệ mọi người khỏi những kẻ sùng bái xác sống và bóng tối.</font>
+A dilapidated sanctuary, littered with rubble and rotten wood.=Một thánh đường đổ nát, ngổn ngang gạch vụn và gỗ mục nát.
+Crits have a 50% chance to restore 1 <font color\="#cdad7b">Energy</font> (0.4s cooldown).=Chí mạng có 50% cơ hội hồi phục 1 <font color\="#cdad7b">Năng lượng</font> (thời gian hồi chiêu 0,4 giây).
+Surge=Tăng đột biến
+Blade Cyclone=Lốc xoáy lưỡi
+Unleash a moving blade cyclone dealing 80 damage per second for 3s. Cooldown: 14s.=Giải phóng một cơn lốc lưỡi kiếm đang di chuyển, gây 80 sát thương mỗi giây trong 3 giây.\nThời gian hồi chiêu: 14 giây.
+14Sec=14 giây
+Equip: Armor +5=Trang bị: Giáp +5
+Be careful, explosives!=Hãy cẩn thận, chất nổ!
+Cracked Buckler=Chiếc khiên bị nứt
+Equip: Every 100 meters moved, gain Gale Guard. When hit, it triggers an 8 Shield barrier for 2.5s.=Trang bị: Mỗi 100 mét di chuyển sẽ nhận được Gale Guard.\nKhi bị tấn công, nó sẽ kích hoạt lá chắn 8 Lá chắn trong 2,5 giây.
++1 Agility\n+1 Intelligence=+1 Nhanh nhẹn +1 Trí tuệ
+Gale Scarf=Khăn quàng cổ
+Each damage tick reduces Cooldown by 0.2s.=Mỗi tích tắc gây sát thương sẽ giảm Thời gian hồi chiêu đi 0,2 giây.
+When ending, cyclone explodes into 12 blade waves, each dealing 20 damage.=Khi kết thúc, lốc xoáy phát nổ thành 12 đợt đao, mỗi đợt gây 20 sát thương.
+Damage per second increased by 40.=Sát thương mỗi giây tăng thêm 40.
+Damage Increase=Tăng sát thương
+Gain 4 Shield per second while inside. Shield lasts 3s.=Nhận 4 Lá chắn mỗi giây khi ở bên trong.\nLá chắn tồn tại trong 3 giây.
+Whoa! You’re amazing!=Ối!\nBạn thật tuyệt vời!
+How’d you get that good with knives? Throwing them at rabbits every day?=Làm thế nào bạn có thể sử dụng dao tốt như vậy?\nNém chúng vào thỏ mỗi ngày?
+Rivet=đinh tán
+Duration +1.5s.=Thời lượng +1,5 giây.
+14.0Sec=14,0 giây
+Cyclone pulls enemies toward its center.=Lốc xoáy kéo kẻ thù về phía trung tâm của nó.
+Duration Extension=Gia hạn thời lượng
+Uh… the repair guy… he…=Uh… anh chàng sửa chữa… anh ấy…
+Huh? You’ve seen my uncle? Is he okay?=Hả?\nBạn đã nhìn thấy chú tôi chưa?\nAnh ấy ổn chứ?
+A shelter?=Một nơi trú ẩn?
+I wanna see it too!=Tôi cũng muốn xem nó!
+Huh?!=Hả?!
+Huh?=Hả?
+B-boss! It’s her!=B-ông chủ!\nĐó là cô ấy!
+Little girl, last time I let you go.=Cô bé, lần trước anh đã để em đi.
+Leave some money, or my brothers won’t let you pass.=Để lại một ít tiền, nếu không anh em tôi sẽ không cho bạn qua.
+Shut up! Shut up!=Câm miệng!\nCâm miệng!
+Boss, the trash is over there!=Sếp, thùng rác ở kia kìa!
+And now you start a fight again. Is that appropriate?=Và bây giờ bạn bắt đầu một cuộc chiến một lần nữa.\nĐiều đó có phù hợp không?
+Unreadable Notes x8=Ghi chú không thể đọc được x8
+10coins=10 xu
+get 8  <img src\='ui:\/\/b5lhv7jqjze1yd' width\='50%' height\='50%'/> =nhận được 8  <img src\='ui:\/\/b5lhv7jqjze1yd' width\='50%' height\='50%'/> 
+…Just borrowing it.=…Chỉ mượn nó thôi.
+Charge Throw=Ném phí
+<font color\="#cdad7b">Knife Throw</font> can be charged to add more Knives, up to +6 Knives.=<font color\="#cdad7b">Ném dao</font> có thể sạc để thêm nhiều Dao, tối đa +6 Dao.
+Adrenaline=Adrenalin
+While above 60% <font color\="#cdad7b">Energy</font>, gain +35% melee damage.=Trong khi trên 60% <font color\="#cdad7b">Năng lượng</font>, tăng +35% sát thương cận chiến.
+Still not dead, huh, kid.=Vẫn chưa chết hả nhóc.
+I told you I’m not leaving.=Tôi đã nói với bạn là tôi sẽ không rời đi.
+This is my house.=Đây là nhà của tôi.
+My only house.=Ngôi nhà duy nhất của tôi.
+Stop talking and get out.=Đừng nói nữa và đi ra ngoài.
+Come back.=Sự trở lại.
+Equip: +2% Critical Chance.\nEquip: Enemies that stare at you for over 3s are Petrified for 1.5s (Cooldown: 8s).=Trang bị: +2% Tỉ lệ chí mạng.\nTrang bị: Kẻ địch nhìn chằm chằm vào bạn trong hơn 3 giây sẽ bị Hóa đá trong 1,5 giây (Thời gian hồi chiêu: 8 giây).
+Take this with you. I might not…=Hãy mang cái này theo bạn.\nTôi có thể không…
+Medusa's Eye=Con mắt của Medusa
+Just go, go.=Cứ đi đi.
+Hookline=Dây câu
+<font color\="#cdad7b">Dash</font> attacks that hit multiple enemies <font color\="#f1b957">Link</font> them for 3.5s.=<font color\="#cdad7b">LƯỚT</font> đòn tấn công trúng nhiều kẻ thù <font color\="#f1b957">liên kết</font> chúng trong 3,5 giây.
+Poison duration +6s. Poison damage cannot deal the killing blow.=Thời gian độc +6 giây.\nSát thương độc không thể gây ra đòn kết liễu.
+Slow Poison=Chất độc chậm
+<font color\="#cdad7b">Dash</font> attacks apply 1 Bleed stack on hit.=<font color\="#cdad7b">LƯỚT</font> đòn tấn công áp dụng 1 điểm chảy máu khi đánh.
+Crimson Dash=LƯỚT đỏ thẫm
+Brass Knuckles=Đốt ngón tay bằng đồng
+Equip: +1% Attack Speed.\nEquip: +6% Critical Chance.=Trang bị: +1% tốc độ tấn công.\nTrang bị: +6% Tỉ lệ chí mạng.
+Get an Ability=Nhận một Ability
+Embers=than hồng
+6.0Sec=6,0 giây
+Hitting terrain refunds 70% Cooldown.=Đánh vào địa hình sẽ hoàn lại 70% thời gian hồi chiêu.
+Direct hits deal +60 damage.=Đòn đánh trực tiếp gây +60 sát thương.
+Direct hits apply 4 stacks of <font color\="#f1b957">Wound</font>.=Lượt truy cập trực tiếp áp dụng 4 điểm cộng dồn <font color\="#f1b957">Vết thương</font>.
+Spinning slash damage +25, radius +60%.=Sát thương của đòn chém xoay +25, bán kính +60%.
+Additional Charges=Phí bổ sung
+Cooldown reduced by 2s. Stores 2 charges.=Thời gian hồi chiêu giảm đi 2 giây.\nLưu trữ 2 khoản phí.
+No longer dash. Pull enemies to your position and Stun for 2s.=Không còn gạch ngang nữa.\nKéo kẻ địch đến vị trí của bạn và Choáng trong 2 giây.
+Rescue <font color\="#C5AC6E">3/3</font> Survivors=Giải thoát <font color\="#C5AC6E">3/3</font> Người sống sót
+Radiant Torch=Ngọn đuốc rạng rỡ
+You’re back.=Bạn đã trở lại.
+The girl you rescued earlier has woken up.=Cô gái mà bạn cứu lúc trước đã tỉnh dậy.
+Maybe her situation is similar to yours.=Có lẽ hoàn cảnh của cô ấy cũng giống bạn.
+Go see her.=Đi gặp cô ấy đi.
+But she’s still alive.=Nhưng cô ấy vẫn còn sống.
+…The troublesome part is, she seems to have suffered corruption from the witch as well.=…Phần rắc rối là, có vẻ như cô ấy cũng đã bị mụ phù thủy làm hư hỏng.
+Uncle is so loud…=Bác ồn ào quá…
+Looks like the repairs aren’t my job today.=Có vẻ như việc sửa chữa không phải là công việc của tôi hôm nay.
+Those black flames… they don’t seem to hurt me.=Những ngọn lửa đen đó… chúng dường như không làm tổn thương tôi.
+Anyway, if you’re tired, just call me.=Dù sao đi nữa, nếu bạn mệt mỏi, hãy gọi cho tôi.
+…Though I get a little dizzy.=…Mặc dù tôi hơi chóng mặt.
+ Switch = Đổi nhân vật
+Chat =Trò chuyện 
+Blacksmith Girl=Cô gái thợ rèn
+…I wanna go too!=…Tôi cũng muốn đi!
+Tell me something fun you ran into~=Hãy kể cho tôi điều gì đó thú vị mà bạn đã gặp phải~
+No…=KHÔNG…
+Tch… then let me out!=Chậc…thả tôi ra!
+You’re fighting the Witch, right?=Bạn đang chiến đấu với mụ phù thủy phải không?
+Increase you maximum HP by 10->20.=Tăng HP tối đa của bạn thêm 10->20.
+Wow, you brought her back.=Wow, bạn đã đưa cô ấy trở lại.
+I knew she would be alright!=Tôi biết cô ấy sẽ ổn thôi!
+…Let’s make something to eat.=…Hãy làm gì đó để ăn nhé.
+Goat Milk=Sữa Dê
+Armor +20 for first 6 battles.=Giáp +20 trong 6 trận đầu.
+Roasted Grasshopper=Châu chấu nướng
+Backstab Damage +100% for first 8 battles.=Sát thương đâm sau lưng +100% trong 8 trận đầu tiên.
+Ale=bia
+Critical Rate +20% for first 4 battles.=Tỷ lệ chí mạng +20% trong 4 trận chiến đầu tiên.
+Ate Roasted Grasshopper\nBackstab Damage +100% for the first 8 battles.=Ăn Grasshopper Backstab Sát thương +100% trong 8 trận đầu tiên.
+They’re coming…=Chúng đang đến…
+Takes 32 fire damage per second. Each second of burning increases damage by an additional 25%.=Chịu 32 sát thương lửa mỗi giây.\nMỗi giây đốt sẽ tăng thêm 25% sát thương.
+Ignite=Đốt cháy
+Reload speed +150%.=Tốc độ tải lại +150%.
+Fast Reload=Tải lại nhanh
+At the end of your combo, throw a firebomb that deals 20 damage and leaves burning ground for 1.25s.=Khi kết thúc combo, hãy ném một quả bom lửa gây 20 sát thương và để lại mặt đất cháy trong 1,25 giây.
+Firestarter=Bình chữa cháy
+Every 3s, your next dash leaps forward and detonates on landing.=Cứ sau 3 giây, cú lao tiếp theo của bạn sẽ nhảy về phía trước và phát nổ khi tiếp đất.
+Dropkick=Dropkick
+Deals 80 area damage to all enemies around the impact point.=Gây 80 sát thương diện rộng cho tất cả kẻ địch xung quanh điểm va chạm.
+Grenade=Lựu đạn
+Scroll of Cinders=Cuộn than
++3 Intelligence=+3 Trí tuệ
+Melee Hit: Launch 4 fireballs at nearby enemies, each dealing 12 damage (Cooldown: 2s).=Đòn cận chiến: Phóng 4 quả cầu lửa vào kẻ địch ở gần, mỗi quả gây 12 sát thương (Thời gian hồi chiêu: 2 giây).
+On reload, the final round becomes a grenade.=Khi nạp lại, viên đạn cuối cùng sẽ trở thành một quả lựu đạn.
+Basic attack: finisher.=Đòn tấn công cơ bản: đòn kết liễu.
+Bomb Load=Tải bom
+Sweep=Quét
+Dash=LƯỚT
+<font color\="#f1b957">Sweep</font> damage +28% and a 50% chance to apply <font color\="#f1b957">Cripple</font> for 2.5s.=<font color\="#f1b957">Quét</font> sát thương +28% và 50% cơ hội áp dụng <font color\="#f1b957">què quặt</font> trong 2,5 giây.
+Deadly Sweep=Quét chết người
+<font color\="#cdad7b">Dash</font> a short distance forward.=<font color\="#cdad7b">LƯỚT</font> một khoảng cách ngắn về phía trước.
+Melee combos gain +3% Crit Chance. <font color\="#f1b957">Slam</font> attacks gain an additional +45% Crit Chance.=Các combo cận chiến tăng +3% Cơ hội chí mạng. <font color\="#f1b957">cú đánh</font> các đòn tấn công có thêm +45% cơ hội chí mạng.
+All-Out=Toàn lực
+Basic attack: hit 1.=Đòn tấn công cơ bản: đánh 1.
+Fire a shell, dealing 32 damage. Automatically reloads when ammo is empty.=Bắn một quả đạn pháo, gây 32 sát thương.\nTự động nạp đạn khi hết đạn.
+Shot=Bắn
+Slam=cú đánh
+Basic attack: hit 2.=Đòn đánh cơ bản: đánh 2.
+Impact=Sự va chạm
+Perform a 3-hit melee combo in front of you, dealing 15/15/30 damage. Hit 1: Smash (15). Hit 2: <font color\="#f1b957">Impact</font> (15). Hit 3: <font color\="#f1b957">Sweep</font> (30).=Thực hiện combo cận chiến 3 đòn trước mặt, gây sát thương 15/15/30.\nLượt 1: Đập (15).\nLượt 2: <font color\="#f1b957">Sự va chạm</font> (15).\nLượt 3: <font color\="#f1b957">Quét</font> (30).
+Bouncing Flashbang=Flashbang nảy lên
+Your next X hits from any ammo always Crit. Consumes 1 stack when triggered.=X tiếp theo của bạn sẽ trúng đích từ bất kỳ loại đạn nào luôn là chí mạng.\nTiêu tốn 1 điểm khi được kích hoạt.
+Mark=Đánh dấu
+Throw a flashbang that deals 40 damage in an area and applies 1 <font color\="#f1b957">Mark</font> to all enemies hit. After exploding, it bounces forward once and explodes again. Cooldown: 9s.=Ném một flashbang gây 40 sát thương trong một khu vực và áp dụng 1 <font color\="#f1b957">Đánh dấu</font> để tất cả kẻ thù đánh.\nSau khi phát nổ, nó nảy về phía trước một lần và phát nổ lần nữa.\nThời gian hồi chiêu: 9 giây.
+Flame Thrower=Người ném lửa
+Spray flames for 2s, dealing 60 damage per second and Igniting enemies. You can move at 40% speed while firing. Cooldown: 12s.=Phun lửa trong 2 giây, gây 60 sát thương mỗi giây và Đốt cháy kẻ địch.\nBạn có thể di chuyển với tốc độ 40% trong khi bắn.\nThời gian hồi chiêu: 12 giây.
+12Sec=12 giây
+The final explosion also Stuns for 3s.=Vụ nổ cuối cùng cũng gây choáng trong 3 giây.
+Cooldown -3s.=Thời gian hồi chiêu -3 giây.
+On hit, call down a Thunderstrike on a random enemy in the damage area.=Khi bị tấn công, hãy tung ra đòn tấn công Sấm sét vào kẻ thù ngẫu nhiên trong vùng sát thương.
+<font color\="#f1b957">Mark</font> stacks applied +2.=<font color\="#f1b957">Đánh dấu</font> cộng dồn được áp dụng +2.
+Effect Enhancement=Tăng cường hiệu ứng
+Also Blinds enemies for 5s.=Đồng thời làm mù kẻ thù trong 5 giây.
+Adds 1 additional bounce.=Thêm 1 lần nảy bổ sung.
+Equip: Critical Damage +6%=Trang bị: Sát thương chí mạng +6%
+Faded Amulet=Bùa phai màu
+Smells weird.=Có mùi lạ.
+Drink up=Uống đi
+Upgrade an ability! =Nâng cấp một Ability! 
+Dropkick+=Dropkick+
+Every 1.25s, your next dash leaps forward and detonates on landing.=Cứ sau 1,25 giây, cú lao tiếp theo của bạn sẽ nhảy về phía trước và phát nổ khi tiếp đất.
+<font color\="#f1b957">Sweep</font> damage +35% and applies <font color\="#f1b957">Cripple</font> for 4s.=<font color\="#f1b957">Quét</font> sát thương +35% và áp dụng <font color\="#f1b957">què quặt</font> trong 4 giây.
+Deadly Sweep+=Quét chết người+
+I told you not to touch me!=Tôi đã bảo cậu đừng chạm vào tôi mà!
+What do you think I am?=Bạn nghĩ tôi là gì?
+But… the cat…=Nhưng…con mèo…
+The reward. Say it already.=Phần thưởng.\nHãy nói đi.
+Fine… what do you want.=Được rồi… bạn muốn gì.
+I’m not some kind of good luck charm.=Tôi không phải là một loại bùa may mắn.
+Take it and go.=Hãy cầm nó và đi.
+Sunstone=Đá mặt trời
+Attack: Emit a radiant beam forward, dealing 40 area damage. Stuns for 1 second and blinds enemies for 2.5 seconds (Cooldown: 8.5s).=Công kích: Phóng ra một tia sáng về phía trước, gây sát thương 40 vùng.\nChoáng trong 1 giây và làm mù kẻ địch trong 2,5 giây (Thời gian hồi chiêu: 8,5 giây).
+5.5Sec=5,5 giây
+Rush forward, grab the first enemy, and toss it behind you. The landing impact deals 75 damage and briefly Stuns nearby enemies. Cooldown: 5.5s.=Lao về phía trước, tóm lấy kẻ thù đầu tiên và ném nó về phía sau bạn.\nCú va chạm khi tiếp đất gây 75 sát thương và làm choáng kẻ địch ở gần trong thời gian ngắn.\nThời gian hồi chiêu: 5,5 giây.
+Shoulder Throw=Ném vai
+Swap to a magazine loaded with 4 <font color\="#f1b957">Grenade</font> rounds. Cooldown: 12s.=Trao đổi với một tạp chí được tải với 4 <font color\="#f1b957">Lựu đạn</font> vòng.\nThời gian hồi chiêu: 12 giây.
+Precision Reload=Tải lại chính xác
+MISS=CÔ
+Brickbound Shelter=Nơi trú ẩn bằng gạch
++1 Strength\n+1 Intelligence=+1 Sức mạnh +1 Trí tuệ
+Equip: Reduce damage taken by 1.=Trang bị: Giảm sát thương nhận vào đi 1.
+Max HP +10=HP tối đa +10
+Snacks=Đồ ăn nhẹ
+Close-range shots become a shotgun blast. Consume all ammo to fire 6 pellets forward. Each pellet pierces enemies and deals 10 damage. Each ammo consumed fires 2 additional pellets. Cooldown: 5s.=Những cú bắn tầm gần trở thành một vụ nổ súng ngắn.\nTiêu thụ hết đạn để bắn 6 viên về phía trước.\nMỗi viên đạn xuyên qua kẻ thù và gây 10 sát thương.\nMỗi viên đạn tiêu thụ sẽ bắn thêm 2 viên đạn.\nThời gian hồi chiêu: 5 giây.
+Basic ranged bullet that deals 32 damage.=Đạn tầm xa cơ bản gây 32 sát thương.
+Deal 36 Lightning damage to a target.=Gây 36 sát thương sét cho mục tiêu.
+Thunderclap=tiếng sét
+Hitting the turret with a skill upgrades it: +2s duration, +30% Attack Speed, larger size, up to 3 stacks.=Đánh vào tháp pháo bằng kỹ năng sẽ nâng cấp nó: +2 giây thời gian, +30% Tốc độ tấn công, kích thước lớn hơn, tối đa 3 điểm cộng dồn.
+Forge=lò rèn
+Close Quarters=Đóng các khu
+Pierces all enemies for 30 damage and applies <font color\="#f1b957">Forge</font>. Also applies <font color\="#f1b957">Thunderclap</font> to the first enemy hit.=Xuyên qua tất cả kẻ địch với 30 sát thương và áp dụng <font color\="#f1b957">lò rèn</font>.\nCũng áp dụng <font color\="#f1b957">tiếng sét</font> vào kẻ thù đầu tiên tấn công.
+Hammer Throw=Ném búa
+Shooting has a 30% chance to throw a forge hammer instead.=Thay vào đó, việc bắn súng có 30% cơ hội ném búa rèn.
+Storm Toss=cơn bão ném
+Shell=Vỏ bọc
+<font color\="#f1b957">Shell</font>s have a 40% chance to split into 3 shells. Each deals 40% damage to the same target.=<font color\="#f1b957">Vỏ bọc</font>s có 40% cơ hội tách thành 3 vỏ.\nMỗi đòn gây 40% sát thương cho cùng một mục tiêu.
+Split Shot=Chia cú sút
+Cast-Iron Gear=Bánh răng gang
+Equip: The Spell Card in the middle slot gains +50% Spell Card Cooldown Rate.=Trang bị: Bài Phép ở ô giữa tăng +50% Tỷ lệ hồi chiêu Bài Phép.
++2 Agility\n+4 Intelligence=+2 Nhanh nhẹn +4 Trí tuệ
+Ornate Bookmark=Dấu trang trang trí công phu
++4 Intelligence=+4 Trí tuệ
+Kill: Reduce all Spell Card cooldowns by 7%.=Tiêu diệt: Giảm thời gian hồi chiêu của tất cả Bài Phép đi 7%.
+Melee Hit: Launch 5 fireballs at nearby enemies, each dealing 12 damage (Cooldown: 2s).=Đòn cận chiến: Phóng 5 quả cầu lửa vào kẻ địch ở gần, mỗi quả gây 12 sát thương (Thời gian hồi chiêu: 2 giây).
++5 Intelligence=+5 Trí tuệ
++2 Strength\n+5 Intelligence=+2 Sức mạnh +5 Trí tuệ
+Attack: Emit a radiant beam forward, dealing 60 area damage. Stuns for 1 second and blinds enemies for 3 seconds (Cooldown: 6.5s).=Công kích: Phóng ra một tia sáng về phía trước, gây sát thương 60 vùng.\nChoáng trong 1 giây và làm mù kẻ địch trong 3 giây (Thời gian hồi chiêu: 6,5 giây).
+Equip: Reduce damage taken by 1.\nStanding Still: Gain 25 Armor.=Trang bị: Giảm sát thương nhận vào đi 1. Đứng yên: Nhận thêm 25 Giáp.
+Throw height +200%. Damage +35 and area +40%.=Chiều cao ném +200%.\nSát thương +35 và diện tích +40%.
+If you hit only one target, deal 2.4x damage.=Nếu bạn chỉ bắn trúng một mục tiêu, gây sát thương gấp 2,4 lần.
+Place a timed bomb that explodes after 5 seconds, dealing 160 damage to nearby enemies and Stunning them for 1.75 seconds. <font color\="#f1b957">Bomb</font>s can be detonated by other bomb explosions. Cooldown: 9 seconds. Stores 3 charges.=Đặt một quả bom hẹn giờ phát nổ sau 5 giây, gây 160 sát thương cho kẻ địch ở gần và Làm choáng chúng trong 1,75 giây. <font color\="#f1b957">Bom</font>s có thể được kích nổ bởi các vụ nổ bom khác.\nThời gian hồi chiêu: 9 giây.\nLưu trữ 3 khoản phí.
+Time Bomb=Quả bom hẹn giờ
+Deploy a turret with 1.8 attacks per second. It fires <font color\="#f1b957">Burst Rounds</font> at 50% damage. Lasts 8s. Cooldown: 10s.=Triển khai một tháp pháo với 1,8 đòn tấn công mỗi giây.\nNó cháy <font color\="#f1b957">Vòng bùng nổ</font> ở mức thiệt hại 50%.\nKéo dài 8 giây.\nThời gian hồi chiêu: 10 giây.
+Rapid-Fire Turret=Tháp pháo bắn nhanh
+Cooldown reduced by 1.2s.=Thời gian hồi chiêu giảm 1,2 giây.
+The thrown target is Stunned for 2.5s.=Mục tiêu bị ném sẽ bị choáng trong 2,5 giây.
+Stores 3 charges.=Lưu trữ 3 khoản phí.
+Enemies at the landing point also suffer <font color\="#f1b957">Armor Break</font> for 2s.=Kẻ địch ở điểm hạ cánh cũng bị thiệt hại <font color\="#f1b957">Phá giáp</font> trong 2 giây.
+Burst Rounds=Vòng bùng nổ
+Splits into 3 projectiles when fired, each dealing 24 damage.=Chia thành 3 viên đạn khi bắn ra, mỗi viên gây 24 sát thương.
+Turret can be thrown to a distant spot, dealing 75 damage and briefly Stunning on landing.=Tháp pháo có thể được ném đến một điểm xa, gây 75 sát thương và gây choáng trong thời gian ngắn khi tiếp đất.
+After building, turret gains +150% Attack Speed for 2.25s.=Sau khi xây dựng, tháp pháo tăng +150% tốc độ tấn công trong 2,25 giây.
+Frequency Increase=Tăng tần số
+When the turret expires, it explodes for 80 damage to nearby enemies.=Khi tháp pháo hết hạn, nó sẽ phát nổ gây 80 sát thương cho kẻ địch ở gần.
+Passive Trigger=Kích hoạt thụ động
+Turret range +50%.=Tầm bắn của tháp pháo +50%.
+Charge limit +2.=Giới hạn phí +2.
+Base damage +35%.=Sát thương cơ bản +35%.
+Traveler! Uma is here!=Lữ khách!\nUmma đang ở đây!
+Zazu needs your help!=Zazu cần sự giúp đỡ của bạn!
+That’s the hawk’s name.=Đó là tên của diều hâu.
+Hiss…=Rít…
+But the crystals… we still don’t have enough…=Nhưng những viên pha lê… chúng ta vẫn chưa có đủ…
+I’ll make some useful herbs!=Tôi sẽ tạo ra một số loại thảo mộc hữu ích!
+Screech—!=Kêu lên-!
+You’ll be okay!=Bạn sẽ ổn thôi!
+The forest is your friend now! Do you need anything?=Rừng bây giờ là bạn của bạn!\nBạn có cần gì không?
+Everything will… be alright… right…?=Mọi chuyện sẽ… ổn thôi… phải không…?
+Melee: 5% chance to summon an owl to fight for you.=Cận chiến: 5% cơ hội triệu hồi cú để chiến đấu cho bạn.
+Zazu=Zazu
+Overheat=Quá nóng
+Firing grants 1 stack of Overheat for 7s. Each stack increases melee damage by 15%.=Khi bắn sẽ nhận được 1 điểm Quá Nhiệt trong 7 giây.\nMỗi ngăn xếp tăng sát thương cận chiến thêm 15%.
+Static Field=Trường tĩnh
+Taking damage knocks back and briefly Stuns nearby enemies, then strikes them with lightning.=Nhận sát thương sẽ đẩy lùi và làm choáng kẻ địch ở gần trong thời gian ngắn, sau đó tấn công chúng bằng tia sét.
+Barrel Lube=Dầu bôi trơn thùng
+Melee hits grant +8% fire rate for 12s. Stacks up to 5 times.=Các đòn đánh cận chiến tăng tốc độ bắn +8% trong 12 giây.\nCộng dồn tối đa 5 lần.
+Your Critical Damage is reduced by 40%.=Sát thương chí mạng của bạn giảm 40%.
+Shattered Edge=Cạnh vỡ
+During the first 3 reloads of combat, your magazine contains only 3 cluster grenades.=Trong 3 lần nạp đạn đầu tiên, băng đạn của bạn chỉ chứa 3 quả lựu đạn chùm.
+Ignition=Đánh lửa
+All explosions apply Burn for 1.75s.=Tất cả các vụ nổ đều gây hiệu ứng Đốt cháy trong 1,75 giây.
+Opening Barrage=Mở màn
+Strange Tree Hollow=Rỗng cây kỳ lạ
+…You… hi.=…Bạn…chào.
+…Belly… empty.=…Bụng… trống rỗng.
+Give me a little… I’ll give you more back…=Cho tôi một chút… Tôi sẽ trả lại cho bạn nhiều hơn…
+I…=TÔI…
+I’m full…=Tôi no rồi…
+Lv3=Cấp 3
+Candles=Nến
+2 Prayer Candles=2 ngọn nến cầu nguyện
+Lv4=Cấp 4
+Naevea Shadowbloom=Naevea Bóng Tối
+A new toy?=Một món đồ chơi mới?
+I was just bored~=Tôi chỉ thấy chán thôi~
+Come catch me.=Hãy đến bắt tôi.
+Darkmoon Court \nFairy Queen=Nữ hoàng Tiên nữ của Tòa án Darkmoon
+Unstoppable!=Không thể ngăn cản!
+Horn of the Hunt=Sừng săn
+Summon <font color\="#C5AC6E">122/100</font> minions in total=Triệu hồi <font color\="#C5AC6E">122/100</font> tổng số tay sai
+Lucky Rabbit's Foot=Chân Thỏ May Mắn
+Make <font color\="#C5AC6E">13/12</font> purchases in a single battle=Làm <font color\="#C5AC6E">13/12</font> mua hàng trong một trận chiến
+Heavy Shackles=Cùm nặng
+Stun enemies for 120 seconds in total=Làm choáng kẻ địch tổng cộng 120 giây
+That fairy in the forest… does she really exist?=Nàng tiên trong rừng đó… cô ấy có thực sự tồn tại không?
+The sister said there were always stories about fairies tricking travelers before the darkness fell.=Người chị cho biết luôn có những câu chuyện về các nàng tiên lừa gạt du khách trước khi bóng tối buông xuống.
+But I don’t remember any of that.=Nhưng tôi không nhớ bất cứ điều gì về điều đó.
+This nail's bent bad.=Móng tay này bị cong xấu.
+Straighten it out, still good.=Làm thẳng nó ra, vẫn tốt.
+It's so safe here.=Ở đây rất an toàn.
+Elaine=Elaine
+Is this it? My room?=Đây có phải là nó không?\nPhòng của tôi?
+Give them to me.=Đưa chúng cho tôi.
+...Uh, anyway, those notes you found before...=...Ờ, dù sao thì, những ghi chú cậu tìm thấy trước đây...
+The air's a bit damp, but rock salt can absorb it... though that makes the bottles sticky... ah, not important.=Không khí hơi ẩm, nhưng muối đá có thể hấp thụ nó...mặc dù điều đó làm cho chai dính... à, không quan trọng.
+Gain 2 refresh charges.=Nhận được 2 phí làm mới.
+<font size\="22">Fel Flame Disturbance Experiment</font>=<font size\="22">Thí nghiệm nhiễu loạn ngọn lửa Fel</font>
+These magic mirrors seem to carry the Dark Witch's will, but what is their purpose?... Surely not just to ask who's the fairest?=Những chiếc gương thần này tưởng chừng như mang theo ý muốn của Phù thủy Hắc ám nhưng mục đích của chúng là gì?... Chắc chắn không phải chỉ để hỏi xem ai là người công bằng nhất?
+Shops can now refresh their goods.=Các cửa hàng hiện có thể làm mới hàng hóa của mình.
+<font size\="22">Practical Application of Small-Scale Spatial Magic</font>=<font size\="22">Ứng dụng thực tế của Ma thuật không gian quy mô nhỏ</font>
+Magic Mirror rooms can now be encountered.=Bây giờ bạn có thể gặp các phòng Magic Mirror.
+<font size\="22">Magic Mirror's Function Research I</font>=<font size\="22">Nghiên cứu chức năng của Magic Mirror I</font>
+No—maybe we’re missing a critical variable.=Không—có thể chúng ta đang thiếu một biến số quan trọng.
+We have to go back and re-derive everything. No gaps.=Chúng ta phải quay lại và lấy lại mọi thứ.\nKhông có khoảng trống.
+Wait… if “reverse mana feedback” is real, doesn’t that mean all our earlier conclusions are wrong?=Đợi đã… nếu “phản hồi mana ngược” là có thật, chẳng phải điều đó có nghĩa là tất cả các kết luận trước đó của chúng ta đều sai sao?
+Golems can now be found in rooms.=Golem bây giờ có thể được tìm thấy trong phòng.
+<font size\="22">Idol Worship Research</font>=<font size\="22">Nghiên cứu thờ cúng thần tượng</font>
+This device can imprison souls and draw power from them, though many followers seem to enjoy trapping and tormenting souls within.=Thiết bị này có thể giam cầm các linh hồn và hút sức mạnh từ chúng, mặc dù nhiều tín đồ dường như thích nhốt và hành hạ các linh hồn bên trong.
+Grimoires can now be found in rooms.=Grimoires bây giờ có thể được tìm thấy trong phòng.
+<font size\="22">Grimoire and Mind Control</font>=<font size\="22">Grimoire và kiểm soát tâm trí</font>
+No windows? So dark... it's really...=Không có cửa sổ?\nTối quá... thực sự là...
+Perfect!=Hoàn hảo!
+The principle’s simple, really… let me think how to apply it…=Nguyên tắc thật đơn giản… để tôi nghĩ cách áp dụng nó…
+<font size\="22">Soul Vessel Usage Survey</font>=<font size\="22">Khảo sát việc sử dụng Soul Vessel</font>
+Soul Vessels can now be found in rooms.=Bây giờ bạn có thể tìm thấy Soul Vessel trong phòng.
+As long as the flame flickers, the outcome will change accordingly.=Chỉ cần ngọn lửa bập bùng, kết quả sẽ thay đổi tương ứng.
+<font size\="22">Order's Fanaticism Observation</font>=<font size\="22">Quan sát cuồng tín của trật tự</font>
+Holy Seals can now be found in rooms.=Holy Seal bây giờ có thể được tìm thấy trong phòng.
+This small-scale spatial magic is quite practical. Inscribe it on a suitable object, and it becomes portable. Like a ring.=Phép thuật không gian quy mô nhỏ này khá thực tế.\nGhi nó lên một đồ vật phù hợp và nó sẽ trở nên di động được.\nGiống như một chiếc nhẫn.
+It’s insanely risky, but if we precisely control mana flow, the circle’s output skyrockets.=Việc này cực kỳ nguy hiểm, nhưng nếu chúng ta kiểm soát dòng mana một cách chính xác, hiệu suất của vòng tròn sẽ tăng vọt.
+The forbidden grimoire actually lays out how witch spells are built—in detail!=Cuốn ma đạo thư bị cấm thực sự trình bày cách thức tạo ra các phép thuật phù thủy—một cách chi tiết!
+You won’t believe what I just found!=Bạn sẽ không tin những gì tôi vừa tìm thấy!
+It even touches the base assumptions of quantum magic theory.=Nó thậm chí còn chạm đến những giả định cơ bản của lý thuyết ma thuật lượng tử.
+Mana conversion rate is directly tied to a circle’s geometry.=Tỷ lệ chuyển đổi năng lượng được gắn trực tiếp với hình dạng của vòng tròn.
+The Witch's Order views all artifacts of the old religion as absolute heresy. Even common candlesticks.=The Witch's Order coi tất cả các hiện vật của tôn giáo cũ là dị giáo tuyệt đối.\nNgay cả những chân nến thông thường.
+It’s real! The forbidden grimoire isn’t forbidden in the absolute sense.=Nó có thật!\nCuốn ma đạo thư bị cấm không bị cấm theo nghĩa tuyệt đối.
+And the efficiency is miles beyond standard magic—this is a milestone!=Và hiệu quả vượt xa phép thuật tiêu chuẩn hàng dặm—đây là một cột mốc quan trọng!
+If we control the input frequency and waveform, we can safely use those “dangerous spells.”=Nếu chúng ta kiểm soát tần số đầu vào và dạng sóng, chúng ta có thể sử dụng những “bùa nguy hiểm” đó một cách an toàn.
+While these notes hold great research value, a complete grimoire is another matter entirely. Do NOT read it directly!=Mặc dù những ghi chú này có giá trị nghiên cứu rất lớn nhưng một cuốn ma đạo thư hoàn chỉnh lại là một vấn đề khác.\nKHÔNG đọc nó trực tiếp!
+The Dark Witch herself seems to dislike these comically-posed stone statues. But she clearly can't stop every ardent admirer.=Bản thân Phù thủy Hắc ám có vẻ không thích những bức tượng đá có tạo hình hài hước này.\nNhưng cô ấy rõ ràng không thể ngăn cản mọi người hâm mộ cuồng nhiệt.
+Gain 2 item slots.=Nhận được 2 ô vật phẩm.
+Increase you maximum HP by 20->30.=Tăng HP tối đa của bạn thêm 20->30.
+Venison Stew=thịt nai hầm
+Damage +20% to Chapter 1 Boss.=Sát thương +20% cho Boss Chương 1.
+Rye Bread=Bánh mì lúa mạch đen
+Restore 20% missing HP upon entering first 5 rooms.=Khôi phục 20% HP đã mất khi vào 5 phòng đầu tiên.
+This time… I have to…=Lần này… tôi phải…
+Enemies that step on it take 105 damage and cannot move for 4.5 seconds.=Kẻ địch giẫm phải sẽ chịu 105 sát thương và không thể di chuyển trong 4,5 giây.
+Trap=Cạm bẫy
+While rolling, you can sweep with the barrel, dealing 28 area damage.=Trong khi lăn, bạn có thể quét bằng nòng súng, gây sát thương 28 vùng.
+Roll Sweep=Quét cuộn
+After reloading, place 1 trap near you.=Sau khi nạp đạn xong hãy đặt 1 cái bẫy gần bạn.
+Trap Drop=Thả bẫy
+Reloading throws 4 grenades around you.=Tải lại ném 4 quả lựu đạn xung quanh bạn.
+Cover Toss=Quăng nắp
+Ranged hits have a 40% chance to trigger a lightning chain.=Các đòn tấn công tầm xa có 40% cơ hội kích hoạt chuỗi sét.
+Shock Response=Phản ứng sốc
+Killing an enemy loads 1 incendiary shell.=Giết kẻ địch sẽ nhận được 1 quả đạn cháy.
+Pyromaniac=người cuồng lửa
+Spray flames, dealing 30 damage and Igniting enemies for 2.5s.=Phun lửa, gây 30 sát thương và Đốt cháy kẻ thù trong 2,5 giây.
+Incendiary=gây cháy
+Reloading applies 3 <font color\="#f1b957">Mark</font> stacks to 1 random nearby enemy.=Tải lại áp dụng 3 <font color\="#f1b957">Đánh dấu</font> cộng dồn lên 1 kẻ địch ngẫu nhiên ở gần.
+Sneak Mark=Đánh dấu lén
+Flurry=hỗn loạn
+After combo hit 2, add a 3-hit punch flurry. Each hit deals 24 damage.=Sau đòn kết hợp thứ 2, hãy thêm một cú đấm 3 đòn liên tục.\nMỗi đòn đánh gây 24 sát thương.
+Chain Roll=Cuộn xích
+Roll cooldown reduced by 35%.=Thời gian hồi chiêu cuộn giảm 35%.
+Fail <font color\="#C5AC6E">5/5</font> times=Thất bại <font color\="#C5AC6E">5/5</font> lần
+Enchanted Harp=đàn hạc mê hoặc
+You're awake?=Bạn tỉnh rồi à?
+I’m ready.=Tôi đã sẵn sàng.
+Attack +40% for first 5 battles.=Tấn công +40% trong 5 trận đầu tiên.
+Grilled Steak=Bít tết nướng
+Gain 20 temporary Shield.=Nhận được 20 Khiên tạm thời.
+Beef Bone Broth=Nước hầm xương bò
+Ate Beef Bone Soup\nGain 20 Shield. =Ăn Súp Xương Bò Tăng 20 Khiên. 
+Slip Behind=Trượt phía sau
+For 0.7s after dashing through an enemy, attacks against it always Crit.=Trong 0,7 giây sau khi lao qua kẻ địch, tấn công vào kẻ địch đó luôn chí mạng.
+Rust-Eaten Skillet=Chảo rỉ sét
++2 Strength=+2 Sức mạnh
+Damaged: 15% chance to reduce incoming damage by 5.=Bị hư hại: 15% cơ hội giảm 5 sát thương nhận vào.
+<font color\="#cdad7b">Dash</font> to target location, then stab toward the nearest enemy 4 times. Each stab deals 30 AoE damage. Cooldown: 8s.=<font color\="#cdad7b">LƯỚT</font> đến vị trí mục tiêu, sau đó đâm về phía kẻ địch gần nhất 4 lần.\nMỗi nhát đâm gây 30 sát thương AoE.\nThời gian hồi chiêu: 8 giây.
+Lethal Flurry=Cơn lốc chết người
+8Sec=8 giây
+Consume 2 <font color\="#cdad7b">Energy</font> to throw 3 poisoned knives forward. Knives pierce 1 enemy, dealing 30 damage and applying 2 Poison. Cooldown: 8s.=Tiêu thụ 2 <font color\="#cdad7b">Năng lượng</font> ném 3 con dao tẩm độc về phía trước.\nDao đâm xuyên 1 kẻ địch, gây 30 sát thương và gây 2 chất độc.\nThời gian hồi chiêu: 8 giây.
+Poisoned Knives=Dao tẩm độc
+8.0Sec=8,0 giây
+Stores up to 3 charges.=Lưu trữ tối đa 3 lần sạc.
+Hits apply 2s Stun.=Lượt truy cập áp dụng choáng 2 giây.
+Stab range increased by 75%.=Phạm vi đâm tăng 75%.
+Backstab damage increased by 200%.=Sát thương đâm sau lưng tăng 200%.
+Stab count increased by 3.=Số lần đâm tăng thêm 3.
+Passive Effect=Hiệu ứng thụ động
+(Passive) <font color\="#cdad7b">Dash</font>ing has a 30% chance to summon a shadow to stab the nearest enemy.=(Thụ động) <font color\="#cdad7b">LƯỚT</font>ing có 30% cơ hội triệu hồi một cái bóng để đâm kẻ địch gần nhất.
+Equip: Crit Chance +2%=Trang bị: Tỉ lệ chí mạng +2%
+Fingerless Leather Gloves=Găng tay da cụt ngón
+Unleash a blade wave that continuously travels forward for 7 seconds. It ricochets upon hitting a wall. The wave deals 45 damage on contact and applies 1 stack of <font color\="#f1b957">Wound</font>. Cooldown: 12 seconds.=Giải phóng một làn sóng lưỡi kiếm liên tục di chuyển về phía trước trong 7 giây.\nNó nảy lên khi va vào tường.\nSóng gây 45 sát thương khi tiếp xúc và áp dụng 1 điểm cộng dồn. <font color\="#f1b957">Vết thương</font>.\nThời gian hồi chiêu: 12 giây.
+Blood Blade=Lưỡi máu
+15Sec=15 giây
+Summon 3 blades that orbit you, dealing 14 damage on contact. Lasts 4s. Cooldown: 15s.=Triệu hồi 3 lưỡi kiếm quay quanh bạn, gây 14 sát thương khi tiếp xúc.\nKéo dài 4s.\nThời gian hồi chiêu: 15 giây.
+Whirling Blades=Lưỡi xoáy
+(Passive) Casting has an 11% chance to fire an extra Blood Wave lasting 3.5s.=(Nội tại) Thi triển có 11% cơ hội bắn thêm một Đợt Sóng Máu kéo dài 3,5 giây.
+12.0Sec=12,0 giây
+Applies +1 additional <font color\="#f1b957">Wound</font> stack.=Áp dụng +1 bổ sung <font color\="#f1b957">Vết thương</font> ngăn xếp.
+Damage increased by 24.=Sát thương tăng thêm 24.
+Projectile speed +40%. First hit deals +45 damage.=Tốc độ đạn +40%.\nĐòn đánh đầu tiên gây +45 sát thương.
+After bouncing, duration +5s.=Sau khi nảy, thời gian +5 giây.
+After dashing, leave a shade that slashes nearby enemies for 30 damage.=Sau khi lao tới, để lại bóng chém kẻ địch ở gần với 30 sát thương.
+Afterimage=dư ảnh
+Fisherman=ngư dân
+Ah! You scared me to death!=À!\nBạn làm tôi sợ chết khiếp!
+D-don’t hit me.=Đ-đừng đánh tôi.
+I’m not here to cause trouble—I just want to fish.=Tôi không đến đây để gây rắc rối – tôi chỉ muốn câu cá.
+Found this spot recently.=Tìm thấy vị trí này gần đây.
+Half a day and you’ll catch a bunch.=Nửa ngày là bạn sẽ bắt được một đàn.
+Want one?=Bạn muốn một cái?
+Alright =Được rồi 
+ I’ll fish myself = Tôi sẽ tự mình câu cá 
+Redtail Creekfish=Cá Lạch đuôi đỏ
+Reel in=Cuộn vào
+Fish=Cá
+Gain 3 fishing attempts. Rewards vary depending on the type of fish caught.=Đạt được 3 lần câu cá.\nPhần thưởng khác nhau tùy thuộc vào loại cá đánh bắt được.
+Eat fish=Ăn cá
+Restore 35 HP.=Phục hồi 35 HP.
+Hold tight.=Giữ chặt.
+Nothing caught...=Chẳng bắt được gì...
+Umber Violettail=Đuôi tím umber
+Try harder next time.=Hãy cố gắng hơn vào lần sau.
+Critical Damage=sát thương chí mạng
+Current critical damage: <font color\="#65ec6d">250%</font> \= (<font color\="#72d1f0">225%</font> base + <font color\="#65ec6d">25%</font> bonus)=Thiệt hại nghiêm trọng hiện tại: <font color\="#65ec6d">250%</font> \= (<font color\="#72d1f0">225%</font> cơ sở + <font color\="#65ec6d">25%</font> thưởng)
+Increase your normal attack rate.=Tăng tốc độ tấn công bình thường của bạn.
+Increase the rate of normal attacks by <font color\="#65ec6d">0%</font>.=Tăng tốc độ tấn công thông thường lên <font color\="#65ec6d">0%</font>.
+Attack Speed: <font color\="#65ec6d">7%</font>=Tốc độ tấn công: <font color\="#65ec6d">7%</font>
+Reduce the amount of damage you take from attacks.=Giảm lượng sát thương bạn nhận được từ các đòn tấn công.
+Increase armor by <font color\="#65ec6d">0</font>.\r\nThis reduces the damage you take by <font color\="#65ec6d">0%</font>.=Tăng giáp bằng <font color\="#65ec6d">0</font>.\nĐiều này làm giảm thiệt hại bạn phải chịu <font color\="#65ec6d">0%</font>.
+Armor: <font color\="#65ec6d">15</font>  \r\nDamage taken is reduced by <font color\="#65ec6d">7%</font>.=Giáp: <font color\="#65ec6d">15</font>  \r\nThiệt hại nhận được giảm đi bởi <font color\="#65ec6d">7%</font>.
+Armor=Giáp
+Attack Speed=Tốc độ tấn công
+Your Critical Strike deals <font color\="#65ec6d">230%</font> damage (<font color\="#72d1f0">225%</font> base + <font color\="#65ec6d">5%</font> bonus).=Giao dịch tấn công chí mạng của bạn <font color\="#65ec6d">230%</font> hư hại (<font color\="#72d1f0">225%</font> cơ sở + <font color\="#65ec6d">5%</font> thưởng).
+Additional damage that can be dealt on a critical hit.=Sát thương bổ sung có thể được gây ra khi có đòn chí mạng.
+Critical Strike Chance=Cơ hội tấn công chí mạng
+Current critical hit chance: <font color\="#65ec6d">14%</font> \= (<font color\="#72d1f0">7%</font> base + <font color\="#65ec6d">7%</font> bonus)=Cơ hội tấn công chí mạng hiện tại: <font color\="#65ec6d">14%</font> \= (<font color\="#72d1f0">7%</font> cơ sở + <font color\="#65ec6d">7%</font> thưởng)
+Provides a <font color\="#65ec6d">7%</font> (<font color\="#72d1f0">5%</font> base + <font color\="#65ec6d">2%</font> bonus) chance for your damage to critically hit.=Cung cấp một <font color\="#65ec6d">7%</font> (<font color\="#72d1f0">5%</font> cơ sở + <font color\="#65ec6d">2%</font> bonus) có cơ hội gây sát thương chí mạng.
+Provides a certain chance to make your damage critical.=Cung cấp một cơ hội nhất định để làm cho thiệt hại của bạn trở nên nghiêm trọng.
+Poison Coat=Áo độc
+Coat your weapon with poison, causing melee attacks to apply 1 Poison for 4.25s. Cooldown: 18s.=Phủ vũ khí của bạn bằng chất độc, khiến các đòn tấn công cận chiến áp dụng 1 chất độc trong 4,25 giây.\nThời gian hồi chiêu: 18 giây.
+18Sec=18 giây
+16Sec=16 giây
+Gain 20% increased Melee Damage and 30% Attack Speed for 7 seconds. Cooldown: 16s.=Tăng thêm 20% sát thương cận chiến và 30% tốc độ tấn công trong 7 giây.\nThời gian hồi chiêu: 16 giây.
+Hunting Frenzy=Đi săn điên cuồng
+Afterimage+=Dư ảnh+
+While above 40% <font color\="#cdad7b">Energy</font>, gain +45% melee damage.=Trong khi trên 40% <font color\="#cdad7b">Năng lượng</font>, tăng +45% sát thương cận chiến.
+After combo hit 4, unleash a blade wave that travels farther and deals up to 63 damage.=Sau đòn kết hợp thứ 4, giải phóng một làn sóng lưỡi kiếm di chuyển xa hơn và gây sát thương lên tới 63.
+Razor Tide+=Thủy triều dao cạo+
+Adrenaline+=Adrenalin+
+After dashing, leave a shade that slashes nearby enemies for 50 damage.=Sau khi lao tới, để lại bóng chém kẻ địch ở gần với 50 sát thương.
++3 Strength=+3 Sức mạnh
+Equip: +40% Critical Damage.\nEvery 8.5s, your next damage—and your summons' next damage—will Crit.=Trang bị: +40% sát thương chí mạng.\nCứ sau 8,5 giây, sát thương tiếp theo của bạn—và sát thương tiếp theo của vật triệu hồi của bạn—sẽ Chí mạng.
+Melee: Cleave the area ahead, dealing 55 damage (Cooldown: 8s).=Cận chiến: Chém vào khu vực phía trước, gây 55 sát thương (Thời gian hồi chiêu: 8 giây).
++5 Strength=Sức mạnh +5
+Giant's Cleaver=Con dao khổng lồ
+Equip: +60% Critical Damage.\nEvery 6s, your next damage—and your summons' next damage—will Crit.=Trang bị: +60% sát thương chí mạng.\nCứ sau 6 giây, sát thương tiếp theo của bạn—và sát thương tiếp theo của lệnh triệu hồi của bạn—sẽ Chí mạng.
++4 Strength\n+1 Intelligence=+4 Sức mạnh +1 Trí tuệ
+Cold Steel=Thép lạnh
+<font color\="#cdad7b">Thrust</font> Crit Chance +13%. <font color\="#cdad7b">Thrust</font>s execute enemies below 16% HP (Bosses 8%).=<font color\="#cdad7b">Lực đẩy</font> Tỉ lệ chí mạng +13%. <font color\="#cdad7b">Lực đẩy</font>s xử tử kẻ thù dưới 16% HP (Trùm 8%).
+Shadowburst=Bóng tối
+When a Shade expires, it has a 40% chance to Fear nearby enemies.=Khi Bóng tối hết hạn, nó có 40% cơ hội gây Sợ hãi kẻ địch ở gần.
+Feared enemies attempt to flee and have +10% increased chance to be crit.=Kẻ địch sợ hãi cố gắng chạy trốn và tăng 10% khả năng bị chí mạng.
+Hesitation=Do dự
+Using a Spellcard summons a disc that expands its spin radius, dealing 15 damage.=Sử dụng Bài Phép sẽ triệu hồi một chiếc đĩa mở rộng bán kính quay của nó, gây 15 sát thương.
+Judgment Wheel=Bánh xe phán xét
+<font color\="#cdad7b">Dash</font> invulnerability lasts longer. Reflected projectiles deal +675% damage.=<font color\="#cdad7b">LƯỚT</font> sự bất khả xâm phạm kéo dài lâu hơn.\nĐạn phản xạ gây +675% sát thương.
+Deflect=Làm chệch hướng
+<font color\="#cdad7b">Knife Throw</font> cast immediately after dashing becomes a <font color\="#f1b957">Shuriken</font> Throw.=<font color\="#cdad7b">Ném dao</font> niệm ngay sau khi lao tới sẽ trở thành một <font color\="#f1b957">Shuriken</font> Ném.
+Assassinate=ám sát
+Your damage fluctuates between 75% and 105% instead of being fixed.=Sát thương của bạn dao động trong khoảng từ 75% đến 105% thay vì được cố định.
+Wild Variance=Phương sai hoang dã
+Traveler… you’re here…=Lữ khách… bạn đang ở đây…
+Raka needs your help!=Raka cần sự giúp đỡ của bạn!
+That is…?=Đó là…?
+It’s the lynx’s name.=Đó là tên của lynx.
+Ugh…=Ờ…
+It’s already in a very bad state…=Nó đã ở trong tình trạng rất tệ rồi…
+I’ll try… to make something that works…=Tôi sẽ cố gắng… làm thứ gì đó có hiệu quả…
+Awooo—!!=Ôi—!!
+We need crystals… the shining kind…=Chúng ta cần pha lê… loại sáng chói…
+It’s dead…=Nó chết rồi…
+Ahhh!=Ahhh!
+Why would anyone pollute the forest like this!?=Tại sao lại có người làm ô nhiễm rừng như thế này!?
+I want to go too!=Tôi cũng muốn đi!
+Oh, right… do you need anything?=Ồ, phải rồi… bạn có cần gì không?
+You should go ahead!=Bạn nên đi trước!
+Ask them… if anyone is willing to come with me…=Hãy hỏi họ… liệu có ai sẵn lòng đi cùng tôi không…
+But I need to talk to everyone first…=Nhưng tôi cần nói chuyện với mọi người trước…
+You’re… going to challenge the Witch, aren’t you?=Cậu định… thách thức Phù thủy phải không?
+May the stream wash your shadow away.=Mong dòng suối rửa sạch bóng em.
+Everyone…=Mọi người…
+Demon's Pact=Hiệp ước của quỷ
++5 Strength\n+2 Intelligence=+5 Sức mạnh +2 Trí tuệ
+Equip: The next 5 Abilities you learn are upgraded immediately. Erosion gained is increased by 50%, and learning an Ability costs 12 HP.=Trang bị: 5 Kỹ năng tiếp theo bạn học sẽ được nâng cấp ngay lập tức.\nKhả năng xói mòn tăng thêm 50% và học một Kỹ năng tốn 12 HP.
+Your damage fluctuates between 95% and 125% instead of being fixed.=Sát thương của bạn dao động trong khoảng 95% đến 125% thay vì được cố định.
+Surging Chaos=Sự hỗn loạn dâng trào
+Footwork+=Bước chân+
++1 <font color\="#cdad7b">Dash</font> charges. <font color\="#cdad7b">Dash</font> cooldown -18%.=+1 <font color\="#cdad7b">LƯỚT</font> phí. <font color\="#cdad7b">LƯỚT</font> thời gian hồi chiêu -18%.
+Pinpoint+=Xác định+
+<font color\="#cdad7b">Knife Throw</font> becomes a tight straight-line volley. Knife damage +55%.=<font color\="#cdad7b">Ném dao</font> trở thành một cú vô lê theo đường thẳng chặt chẽ.\nSát thương dao +55%.
+Boomerang Blade+=Lưỡi Boomerang+
+<font color\="#cdad7b">Blade Wave</font>s have an 80% chance to return and hit again.=<font color\="#cdad7b">Sóng lưỡi</font>s có 80% cơ hội quay lại và đánh lần nữa.
+5 Broken Stones=5 viên đá vỡ
+Stones=Đá
+Carrot Snowman=Người tuyết cà rốt
+Equip: +8% Spell Card Cooldown Rate.\nEquip: When you use a Spell Card, throw 3 snowballs at the first enemy hit, each dealing 9 damage (Cooldown: 1.5s).=Trang bị: +8% Tốc độ hồi chiêu của Bài Phép.\nTrang bị: Khi bạn sử dụng Bài phép, ném 3 quả cầu tuyết vào kẻ địch đầu tiên trúng phải, mỗi quả gây 9 sát thương (Thời gian hồi chiêu: 1,5 giây).
+Looks disgusting.=Trông thật kinh tởm.
+Knives have a 65% chance to drop to the ground after hitting an enemy.=Dao có 65% khả năng rơi xuống đất sau khi đâm trúng kẻ địch.
+Stuck Blades+=Lưỡi dao bị kẹt+
+When you take damage, summon a shade to retaliate twice, dealing 75 damage each time.=Khi bạn nhận sát thương, triệu hồi một bóng tối để trả đũa hai lần, mỗi lần gây 75 sát thương.
+Shadowguard+=Người bảo vệ bóng tối+
+<font color\="#cdad7b">Thrust</font> Crit Chance +21%. <font color\="#cdad7b">Thrust</font>s execute enemies below 20% HP (Bosses 10%).=<font color\="#cdad7b">Lực đẩy</font> Tỉ lệ chí mạng +21%. <font color\="#cdad7b">Lực đẩy</font>s xử tử kẻ thù dưới 20% HP (Trùm 10%).
+Cold Steel+=Thép lạnh+
+Upgrade a random ability=Nâng cấp Ability ngẫu nhiên
+Mana Potion=Thuốc mana
+Upgrade a skill=Nâng cấp một kỹ năng
+Alchemical Flask=Bình giả kim
+Moonlit Fang=Nanh ánh trăng
+Kill 200 enemies with backstab damage=Tiêu diệt 200 kẻ thù bằng sát thương đâm sau lưng
+You didn’t sleep well this time.=Lần này bạn ngủ không ngon giấc.
+Did she drag you around again?=Cô ấy lại lôi cậu đi nữa à?
+You kept frowning, like you were trying to escape something.=Bạn cứ cau mày như đang cố trốn tránh điều gì đó.
+Now that you're back, don't rush off.=Bây giờ bạn đã trở lại, đừng vội rời đi.
+Let me record this change first.=Hãy để tôi ghi lại sự thay đổi này trước tiên.
+Covered in dust again.=Lại phủ đầy bụi.
+Some bookshelves; research can begin.=Một số giá sách;\nnghiên cứu có thể bắt đầu.
+Out there's nothing but trouble.=Ngoài kia chẳng có gì ngoài rắc rối.
+Uma=Uma
+Traveler…=Lữ khách…
+Sparkling light…=Ánh sáng lấp lánh…
+I like it here.=Tôi thích nó ở đây.
+I will too!=Tôi cũng vậy!
+You are going to defeat the bad witch…=Bạn sẽ đánh bại mụ phù thủy xấu xa…
+Forest Princess=Công chúa rừng
+Let’s go!=Đi thôi!
+Don’t worry, everyone can find food on their own.=Đừng lo lắng, mọi người đều có thể tự tìm thức ăn.
+I want to stay here, with all of you.=Tôi muốn ở lại đây với tất cả các bạn.
+And Ella too.=Và cả Ella nữa.
+I found my way here myself.=Tôi đã tự tìm được đường đến đây.
+Everyone led me here.=Mọi người đã dẫn tôi đến đây.
+It feels like it is protected by warm light.=Cảm giác như được bảo vệ bởi ánh sáng ấm áp.
+This place is different from outside.=Nơi này khác hẳn với bên ngoài.
+Bear=Con gấu
+A gentle animal companion,\nfights with heavy bear swipes and can take hits for you. Only one <font color\="#f1b957">Bear</font> can exist at a time.\nIf you summon again while it’s alive, it instead heals the current <font color\="#f1b957">Bear</font> for 30% HP.\n<font color\="#e7d89e"><font size\="4">\n<font color\="#e7d89e"><font size\="16">Damage: 50\nAttack Speed: 0.4/s\nHP: 56=Một người bạn đồng hành động vật hiền lành, chiến đấu với những cú vuốt gấu nặng nề và có thể nhận đòn thay bạn.\nChỉ có một <font color\="#f1b957">Con gấu</font> có thể tồn tại tại một thời điểm.\nNếu bạn triệu hồi lại khi nó còn sống, thay vào đó nó sẽ chữa lành dòng điện <font color\="#f1b957">Con gấu</font> cho 30% HP.\n<font color\="#e7d89e"><font size\="4">\n<font color\="#e7d89e"><font size\="16">Sát thương: 50 Tốc độ tấn công: 0,4/s HP: 56
+Fire an energy bolt that explodes on the ground, dealing 35 damage in a small area. If it hits an enemy, restore 10 Summon. If it hits your <font color\="#f1b957">Bear</font>, heal it for 5 HP.=Bắn một tia năng lượng phát nổ trên mặt đất, gây 35 sát thương trong một khu vực nhỏ.\nNếu trúng kẻ địch, hồi lại 10 Triệu hồi.\nNếu nó chạm vào bạn <font color\="#f1b957">Con gấu</font>, hồi cho nó 5 HP.
+Nature’s Breath=Hơi thở của thiên nhiên
+If you follow them, you will never get lost.=Nếu bạn đi theo họ, bạn sẽ không bao giờ bị lạc.
+The little wolf, the hedgehog, the owl…=Con sói nhỏ, con nhím, con cú…
+A timid animal companion,\nfires volleys of back spines to aid you from range.\n<font color\="#e7d89e"><font size\="4">\n<font color\="#e7d89e"><font size\="16">Damage: 16\nBurst Count: 3\nAttack Speed: 0.5/s\nDuration: 9.5s=Một người bạn đồng hành động vật nhút nhát, bắn ra hàng loạt gai lưng để hỗ trợ bạn từ xa.\n<font color\="#e7d89e"><font size\="4">\n<font color\="#e7d89e"><font size\="16">Sát thương: 16 Số lần nổ: 3 Tốc độ tấn công: 0,5/s Thời gian: 9,5 giây
+Hedgehog=con nhím
+Sliding has a 28% chance to create grass.=Trượt có 28% cơ hội tạo ra cỏ.
+Leave a shock ring at the target area=Để lại vòng sốc ở vùng mục tiêu
+Quake=Trận động đất
+Grass Slide=Trượt cỏ
+After a combo Sweep, spend 10 Summon to slam for 20 damage and summon 2 hedgehogs to fire a volley of quills. Each hedgehog attacks 6 times.=Sau combo Quét, dùng 10 Triệu hồi để đập gây 20 sát thương và triệu hồi 2 con nhím để bắn một loạt bút lông.\nMỗi con nhím tấn công 6 lần.
+Spine Volley=Bóng chuyền cột sống
+Every 4s, your next Slam becomes a powered Slam that deals 50 damage and triggers 1 quake at the target location.=Cứ sau 4 giây, Slam tiếp theo của bạn sẽ trở thành Slam mạnh mẽ, gây 50 sát thương và gây ra 1 trận động đất tại vị trí mục tiêu.
+Quake Slam=trận động đất
+Wild Pulse=Xung hoang dã
+Every 9s, <font color\="#f1b957">Root</font> all nearby enemies.=Cứ sau 9 giây, <font color\="#f1b957">Gốc</font> tất cả kẻ thù ở gần.
+Ursine Guard=Bảo vệ Ursine
+When you take damage, summon a giant bear to assist you.=Khi bạn bị sát thương, hãy triệu hồi một con gấu khổng lồ để hỗ trợ bạn.
+Streamline=Hợp lý hóa
+Merge your two Sweep hits into one Sweep and set its damage to 30.=Hợp nhất hai đòn quét của bạn thành một đòn quét và đặt sát thương của nó lên 30.
+<font color\="#f1b957">Root</font> the enemy and deal 32 damage per second.=<font color\="#f1b957">Gốc</font> kẻ địch và gây 32 sát thương mỗi giây.
+Root=Gốc
+Perform a 3-hit melee combo in front of you, dealing 12/12/30 damage and restoring 3 Summon per hit. When Summon reaches 100, summon 2 animal companions and reset Summon to 0. Hit 1: Sweep (12). Hit 2: Sweep (12). Hit 3: Heavy Strike (30).=Thực hiện combo cận chiến 3 đòn trước mặt bạn, gây 12/12/30 sát thương và hồi lại 3 Triệu hồi mỗi đòn.\nKhi Triệu hồi đạt 100, triệu hồi 2 thú đồng hành và đặt Triệu hồi về 0. Lượt 1: Quét (12).\nLượt 2: Quét (12).\nLượt 3: Tấn công mạnh (30).
+<font color\="#cdad7b">Dash</font> forward, dealing 15 damage to enemies you pass through.=<font color\="#cdad7b">LƯỚT</font> về phía trước, gây 15 sát thương cho kẻ địch bạn đi qua.
+Nature’s Torrent=Torrent của thiên nhiên
+After a brief charge, fire an energy bolt at the target location, dealing 70 damage to nearby enemies. Cooldown: 6s. Stores up to 5 charges. Can be fired rapidly in succession.=Sau một lần sạc ngắn, bắn một tia năng lượng vào vị trí mục tiêu, gây 70 sát thương cho kẻ địch ở gần.\nThời gian hồi chiêu: 6 giây.\nLưu trữ tối đa 5 khoản phí.\nCó thể bắn nhanh liên tiếp.
+Earthsplit=sự chia cắt trái đất
+Carve a fissure in the ground, dealing 40 damage. After 2s, it erupts: enemies on the fissure take 250 damage and are Slowed for 0.8s. Cooldown: 21s.=Tạo một vết nứt trên mặt đất, gây 40 sát thương.\nSau 2 giây, nó bùng nổ: kẻ địch trên khe nứt nhận 250 sát thương và bị Làm chậm trong 0,8 giây.\nThời gian hồi chiêu: 21 giây.
+21Sec=21 giây
+Eruption count +1.=Số lần phun trào +1.
+(Passive) Each Earthquake in the room reduces this skill’s cooldown by 2s.=(Nội tại) Mỗi ​​trận động đất trong phòng sẽ giảm thời gian hồi chiêu của kỹ năng này đi 2 giây.
+Stepping on the eruption grants 12 Shield for 5s.=Giẫm lên vụ phun trào sẽ cấp 12 Khiên trong 5 giây.
+Fissure and eruption length +50%.=Chiều dài vết nứt và phun trào +50%.
+Eruption delay reduced to 1.2s and Critical Chance +3.5%.=Độ trễ phun trào giảm xuống 1,2 giây và Cơ hội chí mạng +3,5%.
+Eruption damage +45.=Sát thương phun trào +45.
+21.0Sec=21,0 giây
+Sky Burial=Chôn cất bầu trời
+On kill, you have a 40% chance to summon an owl to assist you.=Khi bị tiêu diệt, bạn có 40% cơ hội triệu hồi một con cú để hỗ trợ bạn.
+Battle Sense=Trận chiến
+A flying animal companion,\nbeats its wings to whip up a whirlwind that damages all enemies in its path.\n<font color\="#e7d89e"><font size\="4">\n<font color\="#e7d89e"><font size\="16">Damage: 35\nAttack Speed: 0.5/s\nDuration: 10.5s=Một người bạn đồng hành của động vật bay, đập cánh để tạo ra một cơn lốc gây sát thương cho tất cả kẻ thù trên đường đi của nó.\n<font color\="#e7d89e"><font size\="4">\n<font color\="#e7d89e"><font size\="16">Sát thương: 35 Tốc độ tấn công: 0,5/s Thời gian: 10,5 giây
+Owl=Con cú
+Melee hits have a 9% chance to summon a wolf pup to assist you.=Các đòn đánh cận chiến có 9% cơ hội triệu hồi sói con đến hỗ trợ bạn.
+Packbond=Packbond
+A brave animal companion,\nslashes enemies with its claws to aid you in battle.\n<font color\="#e7d89e"><font size\="4">\n<font color\="#e7d89e"><font size\="16">Damage: 20\nAttack Speed: 1/s\nDuration: 10s=Một người bạn đồng hành động vật dũng cảm, chém kẻ thù bằng móng vuốt của nó để hỗ trợ bạn trong trận chiến.\n<font color\="#e7d89e"><font size\="4">\n<font color\="#e7d89e"><font size\="16">Sát thương: 20 Tốc độ tấn công: 1/s Thời gian: 10s
+Wolf Pup=chó sói
+Whenever you summon a wolf pup, you have a 32% chance to summon an extra pup.=Bất cứ khi nào bạn triệu hồi một con sói con, bạn có 32% cơ hội triệu hồi thêm một con sói con.
+Every 12s, plant a seed nearby.=Cứ sau 12 giây, hãy gieo một hạt giống gần đó.
+Spirit Fruit=trái cây thần
+Eating a <font color\="#f1b957">Spirit Fruit</font> grants +15% Damage and 8 Shield for 12s. The Damage bonus can stack up to 5 times.=Ăn một <font color\="#f1b957">trái cây thần</font> tăng +15% sát thương và 8 lá chắn trong 12 giây.\nPhần thưởng sát thương có thể cộng dồn tối đa 5 lần.
+After some time, it can grow into a <font color\="#f1b957">Spirit Fruit</font>.=Sau một thời gian, nó có thể phát triển thành <font color\="#f1b957">trái cây thần</font>.
+Seed=Hạt giống
+Sproutfield=trường mầm
+Melee hits have an 11% chance to release sleep dust that puts nearby enemies to <font color\="#f1b957">Sleep</font>.=Các đòn đánh cận chiến có 11% cơ hội giải phóng bụi ngủ khiến kẻ địch ở gần <font color\="#f1b957">Ngủ</font>.
+Drowse Dust=bụi buồn ngủ
+Sleep=Ngủ
+After 1s, the target falls asleep for 4s. <font color\="#f1b957">Sleep</font>ing targets can’t act=Sau 1 giây, mục tiêu sẽ ngủ trong 4 giây. <font color\="#f1b957">Ngủ</font>mục tiêu đang nhắm tới không thể hành động
+If you have fewer than 120 Gold, lose 3 HP on room entry.=Nếu bạn có ít hơn 120 Vàng, mất 3 HP khi vào phòng.
+Tightfisted=chặt chẽ
+Stop touching…=Đừng chạm nữa…
+I just want to hide alone.=Tôi chỉ muốn trốn một mình.
+I won’t respond to you anymore.=Tôi sẽ không trả lời bạn nữa.
+Hey, say it, what do you want?=Này, nói đi, cậu muốn gì?
+But where did the cat go…=Nhưng con mèo đã đi đâu…
+And die alone.=Và chết một mình.
+You should go.=Bạn nên đi.
+Turnsoil=đất quay vòng
+After combo hit 3, slam the ground to deal 40 damage to nearby enemies and create magical grass.=Sau combo 3 đòn, đập mạnh xuống đất gây 40 sát thương cho kẻ địch ở gần và tạo ra cỏ ma thuật.
+Overdraw=Rút tiền quá mức
+Nature’s Breath charges +3 and cooldown -40%, but right-click hits generate 50% less Summon.=Hơi thở của thiên nhiên tích lũy +3 và thời gian hồi chiêu -40%, nhưng các cú đánh chuột phải tạo ra Triệu hồi ít hơn 50%.
+R&amp;R=R&R
+Max Summon +50% and base summon count +150%.=Triệu hồi tối đa +50% và số lần triệu hồi cơ bản +150%.
+Grass=Cỏ
+Create <font color\="#f1b957">Grass</font> at the target area. The first time an enemy enters, it is <font color\="#f1b957">Root</font>ed.=Tạo nên <font color\="#f1b957">Cỏ</font> tại khu vực mục tiêu.\nLần đầu tiên kẻ địch bước vào, đó là <font color\="#f1b957">Gốc</font>biên tập.
+Hurricane's Roar=Tiếng gầm của cơn bão
+Summon an owl to build a hurricane, then blast it forward, dealing up to 240 damage and knocking up enemies for 0.9s. Longer charge increases travel distance. Cooldown: 17s.=Triệu hồi một con cú để tạo ra một cơn bão, sau đó thổi nó về phía trước, gây sát thương lên tới 240 và hất tung kẻ thù trong 0,9 giây.\nSạc lâu hơn sẽ tăng khoảng cách di chuyển.\nThời gian hồi chiêu: 17 giây.
+17Sec=17 giây
+If the hurricane hits you, gain 85% Dodge for 4.5s.=Nếu cơn bão tấn công bạn, nhận được 85% né tránh trong 4,5 giây.
+Buff Effect=Hiệu ứng tăng cường
+The owl releases 3 hurricanes instead of 1.=Con cú phóng ra 3 cơn bão thay vì 1.
+Base damage +15 and charge speed +100%.=Sát thương cơ bản +15 và tốc độ sạc +100%.
+Fully charged hurricanes gain +50% Critical Chance.=Các cơn bão được sạc đầy có +50% Cơ hội Chí mạng.
+After casting, the owl has a chance to remain and fight.=Sau khi niệm phép, con cú có cơ hội ở lại và chiến đấu.
+Summon=Triệu hồi
+Cooldown reduced by 5s.=Thời gian hồi chiêu giảm đi 5 giây.
+17.0Sec=17,0 giây
+Every 7th right-click throws a hedgehog, which releases a needle burst around it. Each needle hit deals 24 damage.=Mỗi lần nhấp chuột phải thứ 7 sẽ ném ra một con nhím, nó phóng ra một mũi kim xung quanh nó.\nMỗi mũi kim đâm vào gây 24 sát thương.
+Prickle Pop=Pop gai
+Equip: +2% Critical Chance.\nEquip: +14% Backstab Damage.=Trang bị: +2% Tỉ lệ chí mạng.\nTrang bị: +14% sát thương đâm sau lưng.
++4 Agility\n+1 Intelligence=+4 Nhanh nhẹn +1 Trí tuệ
+Duskfox Tail=đuôi cáo hoàng hôn
++3 Agility\n+1 Intelligence=+3 Nhanh nhẹn +1 Trí tuệ
+Equip: +4% Movement Speed.\nEquip: Moving within 0.5s after a <font color\="#cdad7b">Dash</font> leaves ghostfire on the ground for 1.2s. Enemies in the flames take 40 damage per second.=Trang bị: +4% tốc độ di chuyển.\nTrang bị: Di chuyển trong vòng 0,5 giây sau một <font color\="#cdad7b">LƯỚT</font> để lại ngọn lửa ma trên mặt đất trong 1,2 giây.\nKẻ địch trong ngọn lửa nhận 40 sát thương mỗi giây.
+Equip: Every 7.5s, gain a charge. Your next <font color\="#cdad7b">Dash</font> Attack deals +35 damage.\nEquip: If the empowered <font color\="#cdad7b">Dash</font> Attack kills an enemy, permanently gain +1 damage.=Trang bị: Cứ sau 7,5 giây, nhận được một điểm tích trữ.\nTiếp theo của bạn <font color\="#cdad7b">LƯỚT</font> Tấn công gây +35 sát thương.\nTrang bị: Nếu được trao quyền <font color\="#cdad7b">LƯỚT</font> Tấn công tiêu diệt kẻ địch, nhận thêm +1 sát thương vĩnh viễn.
++6 Strength\n+3 Agility=+6 Sức mạnh +3 Nhanh nhẹn
+Nature Cycle=Chu kỳ tự nhiên
+Channel for 1.2s to restore 40 Summon. Cooldown: 5s. Can only be used within 3s after killing an enemy.=Truyền trong 1,2 giây để khôi phục 40 Triệu hồi.\nThời gian hồi chiêu: 5 giây.\nChỉ có thể sử dụng trong vòng 3 giây sau khi tiêu diệt kẻ thù.
+5Sec=5 giây
+Forest Mirage=Ảo ảnh rừng
+Fire an energy bolt into the target area, dealing 200 AoE damage and triggering a special summon. Cooldown: 24s. Costs 50 Summon.=Bắn một tia năng lượng vào khu vực mục tiêu, gây sát thương 200 AoE và kích hoạt lệnh triệu hồi đặc biệt.\nThời gian hồi chiêu: 24 giây.\nTốn 50 triệu hồi.
+24Sec=24 giây
+On completing the channel, 35% chance to summon a wolf pup, hedgehog, or owl immediately.=Khi hoàn thành kênh, có 35% cơ hội triệu hồi chó sói, nhím hoặc cú ngay lập tức.
+Create <font color\="#f1b957">Grass</font>land beneath you for 4s while channeling.=Tạo nên <font color\="#f1b957">Cỏ</font>hạ cánh bên dưới bạn trong 4 giây trong khi chuyển kênh.
+Max channel time +50% and Summon restored +50%.=Thời gian kênh tối đa +50% và Triệu hồi được khôi phục +50%.
+Summon Boost=Triệu hồi tăng cường
+Gain 5 Shield per second while channeling, lasting 5s.=Nhận 5 Khiên mỗi giây khi niệm chú, kéo dài 5 giây.
+While channeling, Nature’s Breath cooldown rate +150%.=Khi đang niệm chú, tốc độ hồi chiêu của Hơi thở Thiên nhiên +150%.
+Cooldown Rate=Tốc độ hồi chiêu
+5.0Sec=5,0 giây
+When you’re in danger, it’s okay to retreat sometimes.=Khi gặp nguy hiểm, thỉnh thoảng bạn có thể rút lui.
+You don’t have to hold on until the very end every time.=Bạn không cần phải kiên trì cho đến phút cuối cùng.
+After clearing each room, restore 2 HP.=Sau khi dọn sạch từng phòng, hồi phục 2 HP.
+Increase you maximum HP by 30.=Tăng HP tối đa của bạn thêm 30.
+…Okay.=…Được rồi.
+Chain Snare=Bẫy dây chuyền
+Add a chain throw to the end of your combo, dealing 20 damage and <font color\="#f1b957">Link</font>ing enemies in front for 3s.=Thêm một cú ném dây chuyền vào cuối combo của bạn, gây 20 sát thương và <font color\="#f1b957">liên kết</font>tấn công kẻ thù phía trước trong 3 giây.
+Poke=Xô
+Replace your first melee hit with 2 thrown Knives forward. Each Knife pierces up to 2 enemies and deals 20 damage. Costs 1 <font color\="#cdad7b">Energy</font>.=Thay thế đòn cận chiến đầu tiên của bạn bằng 2 con dao ném về phía trước.\nMỗi con dao xuyên qua tối đa 2 kẻ địch và gây 20 sát thương.\nChi phí 1 <font color\="#cdad7b">Năng lượng</font>.
+Cannot perform this action during combat!=Không thể thực hiện hành động này trong khi chiến đấu!
+<img src\='ui:\/\/b5lhv7jqwt0w11cm'/width\='11%' height\='11%'>=<img src\='ui:\/\/b5lhv7jqwt0w11cm'/width\='11%' chiều cao\='11%'>
+When your attacks hit, you have a 15% chance to summon a shade to strike again for 28 damage.=Khi đòn tấn công của bạn trúng đích, bạn có 15% cơ hội triệu hồi một bóng râm để tấn công lần nữa với 28 sát thương.
+Echo Strike=Tiếng vọng tấn công
+Cursed Iron Nails=Những chiếc đinh sắt bị nguyền rủa
+Melee: 14% chance to apply <font color\="#f1b957">Armor Break</font>.=Cận chiến: 14% cơ hội áp dụng <font color\="#f1b957">Phá giáp</font>.
+<font color\="#cdad7b">Dash</font> forward and slash. Can be recast within 3.5s, up to 3 times, dealing 25/40/55 damage. Cooldown: 12s.=<font color\="#cdad7b">LƯỚT</font> về phía trước và gạch chéo.\nCó thể dùng lại trong vòng 3,5 giây, tối đa 3 lần, gây sát thương 25/40/55.\nThời gian hồi chiêu: 12 giây.
+Fury Rush=cơn giận dữ

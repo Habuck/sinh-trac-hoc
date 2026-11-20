@@ -1,0 +1,790 @@
+[Message:   BepInEx] BepInEx 5.4.23.5 - Cinderia (1/1/2025 6:00:00 PM)
+[Info   :   BepInEx] Running under Unity v2023.1.22.12665192
+[Info   :   BepInEx] CLR runtime version: 4.0.30319.42000
+[Info   :   BepInEx] Supports SRE: True
+[Info   :   BepInEx] System platform: Bits64, Windows
+[Message:   BepInEx] Preloader started
+[Info   :   BepInEx] Loaded 1 patcher method from [BepInEx.Preloader 5.4.23.5]
+[Info   :   BepInEx] 1 patcher plugin loaded
+[Info   :   BepInEx] Patching [UnityEngine.CoreModule] with [BepInEx.Chainloader]
+[Message:   BepInEx] Preloader finished
+[Message:   BepInEx] Chainloader ready
+[Message:   BepInEx] Chainloader started
+[Info   :   BepInEx] 4 plugins to load
+[Info   :   BepInEx] Loading [UnityExplorer 4.9.0]
+[Message:UnityExplorer] UnityExplorer 4.9.0 initializing...
+[Message:UnityExplorer] [UniverseLib] UniverseLib 1.5.1 initializing...
+[Message:UnityExplorer] [UniverseLib] Finished UniverseLib initial setup.
+[Message:UnityExplorer] Initialized UnityCrashPrevention for: Canvas.get_renderingDisplaySize
+[Info   :   BepInEx] Loading [XUnity Auto Translator 5.5.1]
+[Info   :XUnity.AutoTranslator] Version of TextMesh Pro: 1.4.0.
+[Warning:  HarmonyX] AccessTools.Method: Could not find method for type TMPro.TMP_Text and name SetCharArray and parameters (int[], int, int)
+[Warning:XUnity.AutoTranslator] Could not hook 'TMP_Text_SetCharArray_Hook3'. Likely due differences between different versions of the engine or text framework.
+[Info   :XUnity.AutoTranslator] Loaded XUnity.AutoTranslator into Unity [2023.1.22f1] game.
+[Info   :   BepInEx] Loading [XUnity Resource Redirector 2.1.0]
+[Info   :   BepInEx] Loading [ZeSS Font Override 1.0.0]
+[Info   :ZeSS Font Override] Plugin ZeSS.FontOverride.BepInEx5.Mono is loaded!
+[Message:   BepInEx] Chainloader startup complete
+[Info   :XUnity.AutoTranslator] Skipping plugin scan because no plugin-specific translations has been registered.
+[Message:UnityExplorer] [UniverseLib] Initialized Legacy Input support
+[Message:UnityExplorer] [UniverseLib] Loaded modern bundle for Unity 2023.1.22f1
+[Message:UnityExplorer] [UniverseLib] UniverseLib 1.5.1 initialized.
+[Message:UnityExplorer] Creating UI...
+[Message:UnityExplorer] UnityExplorer 4.9.0 (Mono) initialized.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '<img src='ui://b5lhv7jqwt0w11cm'/width='11%' height='11%'>'
+[Error  :XUnity.AutoTranslator] Failed: '
+·更新了主角的形象
+·重做了大部分事件房间
+·重做了怪物的行动逻辑
+·重做了怪物的霸体表现
+·优化了第一章及第二章BOSS战的表现
+·更新了音效
+·新增BOSS房间背景音乐
+·新增了营地npc
+'
+[Error  :XUnity.AutoTranslator] Failed: 'V0.4.7b'
+[Error  :XUnity.AutoTranslator] Failed: '【Update】
+Adjusted the protagonist's hit feedback.
+The restoration of the sprint bar is now visible on the UI.
+Added numerous sound effects.
+Adjusted the hierarchy of room detail and equipment information displays.
+【Bug Fixes】
+Fixed an issue where the icon for adjusting equipment position was displayed incorrectly in controller mode.
+Fixed an issue where the camera position was incorrect in some cases.'
+[Error  :XUnity.AutoTranslator] Failed: 'V0.4.7'
+[Error  :XUnity.AutoTranslator] Failed: '【Update】
+Updated new dialogue UI.
+Adjusted the collider of Frost Ring.
+Assisting NPCs will now rest away from traps after combat.
+【Bug Fixes】
+Fixed an issue where the controller key remapping function was not working properly.
+Fixed an issue where perfect parry damage was abnormal when using Cold Light Refraction.
+Fixed an issue where some skills would lose damage after attack speed exceeded a certain threshold.
+Fixed an issue where upgrading the Piggy Bank was not working.
+Fixed an issue where the HP of the Heart-Piercing Executioner was abnormal.
+Fixed an issue where Spread didn't work on the Cannon.
+Fixed an issue where there was no damage immunity during resurrection.
+Fixed an issue where the player wouldn't close their eyes during the Erosion animation.
+Fixed an issue where selecting a Skill when all active skills were maxed would briefly display a two-choice screen.'
+[Error  :XUnity.AutoTranslator] Failed: 'V0.4.6e'
+[Error  :XUnity.AutoTranslator] Failed: '【Update】
+Balanced the strength of curses
+【Bug Fixes】
+Fixed an issue where route icons would unexpectedly disappear.
+Fixed an issue where characters would appear mid-air in some maps.
+Fixed an issue where the enemy's death animation would be incorrect when killed by Chilled to the Bone.
+Fixed an issue where the text displayed incorrectly for some non-text buffs.
+Fixed an issue where dropping a Mermaid's Tear and then picking it up again would disable all curses.
+Fixed an issue where Perfect Block damage wouldn't apply properly.
+Fixed an issue where the actual attack damage increase during Hunting time didn't match the text displayed.'
+[Error  :XUnity.AutoTranslator] Failed: 'V0.4.6d'
+[Error  :XUnity.AutoTranslator] Failed: 'V0.4.6c'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 1294 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 1294 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 1294 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 1294 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 1294 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 1294 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 1294 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 1294 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 1294 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 1294 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'View Methods'
+[Error  :XUnity.AutoTranslator] Failed: 'Choose a class to begin...'
+[Error  :XUnity.AutoTranslator] Failed: 'NOT SET'
+[Error  :XUnity.AutoTranslator] Failed: '* Accepted method names are '
+[Error  :XUnity.AutoTranslator] Failed: 'Prefix'
+[Error  :XUnity.AutoTranslator] Failed: 'Postfix'
+[Error  :XUnity.AutoTranslator] Failed: 'Finalizer'
+[Error  :XUnity.AutoTranslator] Failed: ' and '
+[Error  :XUnity.AutoTranslator] Failed: 'Transpiler'
+[Error  :XUnity.AutoTranslator] Failed: ' (can define multiple).
+* Your patch methods must be static.
+* Hooks are temporary! Copy the source into your IDE to avoid losing work if you wish to keep it!'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3095 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3095 objects.
+[Info   :XUnity.AutoTranslator] Attempting to load TextMesh Pro font from asset bundle.
+[Info   :XUnity.AutoTranslator] Loaded TextMesh Pro font uses version: 1.1.0
+[Warning:XUnity.AutoTranslator] TextMesh Pro version mismatch. Font asset version: 1.1.0, TextMesh Pro version: 1.4.0
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3096 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3096 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3096 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3096 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Right-click to approve'
+[Error  :XUnity.AutoTranslator] Failed: 'Connected!'
+[Error  :XUnity.AutoTranslator] Failed: 'Spinning vines constructing pathways'
+[Error  :XUnity.AutoTranslator] Failed: 'Drilling pipelines'
+[Error  :XUnity.AutoTranslator] Failed: 'Move Left / Right (A / D)'
+[Error  :XUnity.AutoTranslator] Failed: 'rotate'
+[Error  :XUnity.AutoTranslator] Failed: 'Current score'
+[Error  :XUnity.AutoTranslator] Failed: ' HITS'
+[Error  :XUnity.AutoTranslator] Failed: 'Dusky Stream Minnow'
+[Error  :XUnity.AutoTranslator] Failed: 'Gotcha!'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Offer'
+[Error  :XUnity.AutoTranslator] Failed: 'Max'
+[Error  :XUnity.AutoTranslator] Failed: 'Cast the past into the crucible, let the fire sift true value for you.'
+[Error  :XUnity.AutoTranslator] Failed: 'Memories not yet unlocked.'
+[Error  :XUnity.AutoTranslator] Failed: 'Use Game Camera?'
+[Error  :XUnity.AutoTranslator] Failed: 'Freecam Pos:'
+[Error  :XUnity.AutoTranslator] Failed: 'Move Speed:'
+[Error  :XUnity.AutoTranslator] Failed: 'Controls:
+- WASD / Arrows: Movement
+- Space / PgUp: Move up
+- LeftCtrl / PgDown: Move down
+- Right Mouse Button: Free look
+- Shift: Super speed'
+[Error  :XUnity.AutoTranslator] Failed: 'Inspect Free Camera'
+[Error  :XUnity.AutoTranslator] Failed: 'Clipboard'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3581 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3614 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3612 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3633 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3628 objects.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'When you throw Knives, you have a 45% chance to throw 2 extra Knives.'
+[Error  :XUnity.AutoTranslator] Failed: 'Hidden Blades'
+[Error  :XUnity.AutoTranslator] Failed: 'After combo hit 4, unleash a forward-moving blade wave that deals up to 42 damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Razor Tide'
+[Error  :XUnity.AutoTranslator] Failed: 'When you take damage, summon a shade to retaliate against nearby enemies for 75 damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Shadowguard'
+[Error  :XUnity.AutoTranslator] Failed: 'Buy'
+[Error  :XUnity.AutoTranslator] Failed: 'Backspace'
+[Error  :XUnity.AutoTranslator] Failed: 'Slash'
+[Error  :XUnity.AutoTranslator] Failed: 'Alpha0'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3628 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3628 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3628 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3627 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3627 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3627 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3627 objects.
+[Info   :XUnity.AutoTranslator] Toggling fonts of 3627 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3627 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3627 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Drag to Change Pos'
+[Error  :XUnity.AutoTranslator] Failed: 'Accept a curse'
+[Error  :XUnity.AutoTranslator] Failed: 'Thanks for playing!'
+[Error  :XUnity.AutoTranslator] Failed: 'You clear the Demo Version!
+For now, that’s all the content available in this version.'
+[Error  :XUnity.AutoTranslator] Failed: 'Next Plan:'
+[Error  :XUnity.AutoTranslator] Failed: 'We’re planning to launch Early Access around March.
+The EA version will include 4 more chapters,
+4 playable characters, 120+ equipment,
+160+ unique active & passive skills per character,
+Shelter progression system, story content, and music.
+After entering Early Access, we’ll continue to update the game,
+More story, difficulty modes, new characters.'
+[Error  :XUnity.AutoTranslator] Failed: 'Continue'
+[Error  :XUnity.AutoTranslator] Failed: 'Give up'
+[Error  :XUnity.AutoTranslator] Failed: 'Return to title'
+[Error  :XUnity.AutoTranslator] Failed: 'Quit'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3941 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Current Win Streak: 4'
+[Error  :XUnity.AutoTranslator] Failed: 'Preserve the Ember'
+[Error  :XUnity.AutoTranslator] Failed: 'Item'
+[Error  :XUnity.AutoTranslator] Failed: 'Take a rest. Your wounds will heal over time.'
+[Error  :XUnity.AutoTranslator] Failed: 'Enemies deal  additional damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Full'
+[Error  :XUnity.AutoTranslator] Failed: 'Resource acquisition rate +75%.'
+[Error  :XUnity.AutoTranslator] Failed: 'Go'
+[Error  :XUnity.AutoTranslator] Failed: 'Enemies Defeated:
+Completed:
+Best Time:
+Highest Trial:'
+[Error  :XUnity.AutoTranslator] Failed: 'Treasure Map'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Armor-broken targets take 35% increased damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Armor Break'
+[Error  :XUnity.AutoTranslator] Failed: 'Reduce Damage by 25% and Move Speed by 33%.'
+[Error  :XUnity.AutoTranslator] Failed: ', the faster your cooldowns, up to +40%.'
+[Error  :XUnity.AutoTranslator] Failed: 'The lower your '
+[Error  :XUnity.AutoTranslator] Failed: 'Trance'
+[Error  :XUnity.AutoTranslator] Failed: ' the target for 40 damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Thrust'
+[Error  :XUnity.AutoTranslator] Failed: ', Sunder, or Stun, you have a 25% chance to summon a Shade to '
+[Error  :XUnity.AutoTranslator] Failed: 'Cripple'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3555 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3555 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3555 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3555 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3555 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3555 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3555 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3707 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 3707 objects.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Rare Accessory'
+[Error  :XUnity.AutoTranslator] Failed: 'Enter Room: Gain 6 Shield for 25s.'
+[Error  :XUnity.AutoTranslator] Failed: '+1 Strength
++3 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: 'Everfull Chalice'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Info   :XUnity.AutoTranslator] Toggling translations of 4119 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 4119 objects.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'I don’t need this stuff anymore. Take it.'
+[Error  :XUnity.AutoTranslator] Failed: 'Breakdown (+30'
+[Error  :XUnity.AutoTranslator] Failed: 'Excellent Accessory'
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: Gain +15% Max HP.'
+[Error  :XUnity.AutoTranslator] Failed: '+2 Agility
++2 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: 'Worldtree Seed'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Kill: Fear all nearby enemies for 2s (Cooldown: 10.5s).'
+[Error  :XUnity.AutoTranslator] Failed: '+3 Agility
++2 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: 'Abyssal Mask'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Current Win Streak: 0'
+[Error  :XUnity.AutoTranslator] Failed: 'Clears: 0'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Gain 0->2.5% Erosion resistance.'
+[Error  :XUnity.AutoTranslator] Failed: 'Corrosion sweeps the land, yet halts at this barrier.'
+[Error  :XUnity.AutoTranslator] Failed: 'After clearing each room, restore 0->1 HP.'
+[Error  :XUnity.AutoTranslator] Failed: 'Wounds heal, even after the storm passes.'
+[Error  :XUnity.AutoTranslator] Failed: 'You can dash 0->1 more times.'
+[Error  :XUnity.AutoTranslator] Failed: 'Power slumbers in the embers.'
+[Error  :XUnity.AutoTranslator] Failed: 'Increase you maximum HP by 0->10.'
+[Error  :XUnity.AutoTranslator] Failed: 'The Wheel of Fate grinds.'
+[Error  :XUnity.AutoTranslator] Failed: 'When taking fatal damage, gain 0->1 revival chance, restoring 50% HP.'
+[Error  :XUnity.AutoTranslator] Failed: 'Death is but a threshold; fate's curtain has not yet fallen.'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: ' Not yet'
+[Error  :XUnity.AutoTranslator] Failed: 'Give stone '
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: ' for 2.5s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Stealth'
+[Error  :XUnity.AutoTranslator] Failed: 'After dashing, you have a 25% chance to enter '
+[Error  :XUnity.AutoTranslator] Failed: 'Slip Away'
+[Error  :XUnity.AutoTranslator] Failed: ' for 6s.'
+[Error  :XUnity.AutoTranslator] Failed: ' damage +35%. On hit, 25% chance to '
+[Error  :XUnity.AutoTranslator] Failed: 'Heavy Hand'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling translations of 6305 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 6305 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '4Sec'
+[Error  :XUnity.AutoTranslator] Failed: ' to throw knives around you, dealing 50 damage. After casting, 3 knives drop on the ground nearby. Cooldown: 4s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Consume 2 '
+[Error  :XUnity.AutoTranslator] Failed: 'Blade Fan'
+[Error  :XUnity.AutoTranslator] Failed: '9Sec'
+[Error  :XUnity.AutoTranslator] Failed: ' in a chosen direction, becoming untargetable during the dash. Summon shadows that perform 6 piercing strikes along the path, each dealing 40 damage. Cooldown: 9s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Shadow Lunge'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Burst Surge'
+[Error  :XUnity.AutoTranslator] Failed: ' attack range increased by 100%, damage increased by 25.'
+[Error  :XUnity.AutoTranslator] Failed: 'Area Increase'
+[Error  :XUnity.AutoTranslator] Failed: ' enemies on hit.'
+[Error  :XUnity.AutoTranslator] Failed: 'Piercing strikes '
+[Error  :XUnity.AutoTranslator] Failed: 'Status Effect'
+[Error  :XUnity.AutoTranslator] Failed: 'Gain 5 Shield for 6 seconds after casting.'
+[Error  :XUnity.AutoTranslator] Failed: 'Sustain'
+[Error  :XUnity.AutoTranslator] Failed: 'Summoned shadow count increased by 3.'
+[Error  :XUnity.AutoTranslator] Failed: 'Additional Instances'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '10Sec'
+[Error  :XUnity.AutoTranslator] Failed: 'After a brief charge, unleash 3 blade waves in a forward cone. Charging increases waves up to 7 after 1.5s. Each wave deals 40 damage. Cooldown: 10s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Blade Barrage'
+[Error  :XUnity.AutoTranslator] Failed: '6Sec'
+[Error  :XUnity.AutoTranslator] Failed: 'Fire a steel chain that deals 40 damage and Stuns for 1s. Hitting an enemy or terrain pulls you forward, performing a spinning slash that deals 50 damage. Cooldown: 6s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Hookshot'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: Skill Damage +5%'
+[Error  :XUnity.AutoTranslator] Failed: 'Worn Spellstaff'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling translations of 5023 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 5023 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Then…healme?'
+[Error  :XUnity.AutoTranslator] Failed: '…Fishbone?'
+[Error  :XUnity.AutoTranslator] Failed: '…Bell?'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Annoying Black Flame'
+[Error  :XUnity.AutoTranslator] Failed: '15coins'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'When a linked unit takes damage, other linked units also take 40% of that damage. Move Speed -35% while linked.'
+[Error  :XUnity.AutoTranslator] Failed: ' all enemies they hit for 6s. Cooldown 3s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Link'
+[Error  :XUnity.AutoTranslator] Failed: 'Knives '
+[Error  :XUnity.AutoTranslator] Failed: 'Tetherblades'
+[Error  :XUnity.AutoTranslator] Failed: ' becomes a tight straight-line volley. Knife damage +35%.'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Need more coins'
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: Create a shell that blocks one instance of damage (Cooldown: 36s).'
+[Error  :XUnity.AutoTranslator] Failed: '+2 Strength
++2 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: 'Cracked Bird Egg'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: ': Fire an arrow that pierces an enemy, dealing 12 damage.'
+[Error  :XUnity.AutoTranslator] Failed: '+6 Agility'
+[Error  :XUnity.AutoTranslator] Failed: 'Elven Longbow'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: ' attacks apply 2 Poison stacks.'
+[Error  :XUnity.AutoTranslator] Failed: 'Venom Thrust'
+[Error  :XUnity.AutoTranslator] Failed: ' deals 18 damage.'
+[Error  :XUnity.AutoTranslator] Failed: 's. Each '
+[Error  :XUnity.AutoTranslator] Failed: 'After combo hit 4, add 2 rapid '
+[Error  :XUnity.AutoTranslator] Failed: 'Stitch'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling translations of 7726 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 7726 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: ' for 2.8s. Triggers at most once every 3.6s.'
+[Error  :XUnity.AutoTranslator] Failed: 'On kill, enter '
+[Error  :XUnity.AutoTranslator] Failed: 'Nightstalker'
+[Error  :XUnity.AutoTranslator] Failed: 'Melee hits have a 10% chance to summon an orbiting disc for 4.5s, dealing 15 damage on contact.'
+[Error  :XUnity.AutoTranslator] Failed: 'Orbit Blade'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '(whimper)'
+[Error  :XUnity.AutoTranslator] Failed: 'Whine—whine—'
+[Error  :XUnity.AutoTranslator] Failed: 'Screee—'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: Max HP +10'
+[Error  :XUnity.AutoTranslator] Failed: 'Caved Helm'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Help "Uma" heal animals'
+[Error  :XUnity.AutoTranslator] Failed: 'Moonlit Branch'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Then let’s get to work!'
+[Error  :XUnity.AutoTranslator] Failed: 'get -5  '
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'A dilapidated sanctuary, littered with rubble and rotten wood.'
+[Error  :XUnity.AutoTranslator] Failed: 'Border Chapel, protecting everyone from undead and dark cultists.'
+[Error  :XUnity.AutoTranslator] Failed: 'Close'
+[Error  :XUnity.AutoTranslator] Failed: 'Anyway, if something needs fixing, come find me!'
+[Error  :XUnity.AutoTranslator] Failed: 'Just tell her I’m here!'
+[Error  :XUnity.AutoTranslator] Failed: 'I got separated from my niece!'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '14Sec'
+[Error  :XUnity.AutoTranslator] Failed: 'Unleash a moving blade cyclone dealing 80 damage per second for 3s. Cooldown: 14s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Blade Cyclone'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Uh… the repair guy… he…'
+[Error  :XUnity.AutoTranslator] Failed: 'Duration Extension'
+[Error  :XUnity.AutoTranslator] Failed: 'Cyclone pulls enemies toward its center.'
+[Error  :XUnity.AutoTranslator] Failed: '14.0Sec'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: ', gain +35% melee damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'While above 60% '
+[Error  :XUnity.AutoTranslator] Failed: 'Adrenaline'
+[Error  :XUnity.AutoTranslator] Failed: ' can be charged to add more Knives, up to +6 Knives.'
+[Error  :XUnity.AutoTranslator] Failed: 'Charge Throw'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: ' them for 3.5s.'
+[Error  :XUnity.AutoTranslator] Failed: ' attacks that hit multiple enemies '
+[Error  :XUnity.AutoTranslator] Failed: 'Hookline'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: +1% Attack Speed.
+Equip: +6% Critical Chance.'
+[Error  :XUnity.AutoTranslator] Failed: 'Brass Knuckles'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'No longer dash. Pull enemies to your position and Stun for 2s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Cooldown reduced by 2s. Stores 2 charges.'
+[Error  :XUnity.AutoTranslator] Failed: 'Additional Charges'
+[Error  :XUnity.AutoTranslator] Failed: 'Spinning slash damage +25, radius +60%.'
+[Error  :XUnity.AutoTranslator] Failed: 'Direct hits apply 4 stacks of '
+[Error  :XUnity.AutoTranslator] Failed: 'Direct hits deal +60 damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Hitting terrain refunds 70% Cooldown.'
+[Error  :XUnity.AutoTranslator] Failed: '6.0Sec'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Critical Rate +20% for first 4 battles.'
+[Error  :XUnity.AutoTranslator] Failed: 'Ale'
+[Error  :XUnity.AutoTranslator] Failed: 'Backstab Damage +100% for first 8 battles.'
+[Error  :XUnity.AutoTranslator] Failed: 'Roasted Grasshopper'
+[Error  :XUnity.AutoTranslator] Failed: 'Armor +20 for first 6 battles.'
+[Error  :XUnity.AutoTranslator] Failed: 'Goat Milk'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Melee Hit: Launch 4 fireballs at nearby enemies, each dealing 12 damage (Cooldown: 2s).'
+[Error  :XUnity.AutoTranslator] Failed: '+3 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: 'Scroll of Cinders'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '12Sec'
+[Error  :XUnity.AutoTranslator] Failed: 'Spray flames for 2s, dealing 60 damage per second and Igniting enemies. You can move at 40% speed while firing. Cooldown: 12s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Flame Thrower'
+[Error  :XUnity.AutoTranslator] Failed: ' to all enemies hit. After exploding, it bounces forward once and explodes again. Cooldown: 9s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Mark'
+[Error  :XUnity.AutoTranslator] Failed: 'Throw a flashbang that deals 40 damage in an area and applies 1 '
+[Error  :XUnity.AutoTranslator] Failed: 'Bouncing Flashbang'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Info   :XUnity.AutoTranslator] Toggling translations of 9590 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 9590 objects.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Every 1.25s, your next dash leaps forward and detonates on landing.'
+[Error  :XUnity.AutoTranslator] Failed: 'Dropkick+'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Attack: Emit a radiant beam forward, dealing 40 area damage. Stuns for 1 second and blinds enemies for 2.5 seconds (Cooldown: 8.5s).'
+[Error  :XUnity.AutoTranslator] Failed: 'Sunstone'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: Reduce damage taken by 1.'
+[Error  :XUnity.AutoTranslator] Failed: '+1 Strength
++1 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: 'Brickbound Shelter'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Kill: Reduce all Spell Card cooldowns by 7%.'
+[Error  :XUnity.AutoTranslator] Failed: '+4 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: 'Cast-Iron Gear'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Attack: Emit a radiant beam forward, dealing 60 area damage. Stuns for 1 second and blinds enemies for 3 seconds (Cooldown: 6.5s).'
+[Error  :XUnity.AutoTranslator] Failed: '+2 Strength
++5 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: '+5 Intelligence'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Splits into 3 projectiles when fired, each dealing 24 damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Burst Rounds'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Info   :XUnity.AutoTranslator] Toggling translations of 10976 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 10976 objects.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Melee hits grant +8% fire rate for 12s. Stacks up to 5 times.'
+[Error  :XUnity.AutoTranslator] Failed: 'Barrel Lube'
+[Error  :XUnity.AutoTranslator] Failed: 'Taking damage knocks back and briefly Stuns nearby enemies, then strikes them with lightning.'
+[Error  :XUnity.AutoTranslator] Failed: 'Static Field'
+[Error  :XUnity.AutoTranslator] Failed: 'Firing grants 1 stack of Overheat for 7s. Each stack increases melee damage by 15%.'
+[Error  :XUnity.AutoTranslator] Failed: 'Overheat'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Opening Barrage'
+[Error  :XUnity.AutoTranslator] Failed: 'All explosions apply Burn for 1.75s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Ignition'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '2 Prayer Candles'
+[Error  :XUnity.AutoTranslator] Failed: 'Candles'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Stun enemies for 120 seconds in total'
+[Error  :XUnity.AutoTranslator] Failed: 'Heavy Shackles'
+[Error  :XUnity.AutoTranslator] Failed: ' purchases in a single battle'
+[Error  :XUnity.AutoTranslator] Failed: 'Make '
+[Error  :XUnity.AutoTranslator] Failed: 'Lucky Rabbit's Foot'
+[Error  :XUnity.AutoTranslator] Failed: ' minions in total'
+[Error  :XUnity.AutoTranslator] Failed: 'Summon '
+[Error  :XUnity.AutoTranslator] Failed: 'Horn of the Hunt'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'This small-scale spatial magic is quite practical. Inscribe it on a suitable object, and it becomes portable. Like a ring.'
+[Error  :XUnity.AutoTranslator] Failed: 'Holy Seals can now be found in rooms.'
+[Error  :XUnity.AutoTranslator] Failed: 'Order's Fanaticism Observation'
+[Error  :XUnity.AutoTranslator] Failed: 'Soul Vessels can now be found in rooms.'
+[Error  :XUnity.AutoTranslator] Failed: 'Soul Vessel Usage Survey'
+[Error  :XUnity.AutoTranslator] Failed: 'Perfect!'
+[Error  :XUnity.AutoTranslator] Failed: 'No windows? So dark... it's really...'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Restore 20% missing HP upon entering first 5 rooms.'
+[Error  :XUnity.AutoTranslator] Failed: 'Rye Bread'
+[Error  :XUnity.AutoTranslator] Failed: 'Damage +20% to Chapter 1 Boss.'
+[Error  :XUnity.AutoTranslator] Failed: 'Venison Stew'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Roll cooldown reduced by 35%.'
+[Error  :XUnity.AutoTranslator] Failed: 'Chain Roll'
+[Error  :XUnity.AutoTranslator] Failed: 'After combo hit 2, add a 3-hit punch flurry. Each hit deals 24 damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Flurry'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'For 0.7s after dashing through an enemy, attacks against it always Crit.'
+[Error  :XUnity.AutoTranslator] Failed: 'Slip Behind'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Damaged: 15% chance to reduce incoming damage by 5.'
+[Error  :XUnity.AutoTranslator] Failed: '+2 Strength'
+[Error  :XUnity.AutoTranslator] Failed: 'Rust-Eaten Skillet'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'ing has a 30% chance to summon a shadow to stab the nearest enemy.'
+[Error  :XUnity.AutoTranslator] Failed: '(Passive) '
+[Error  :XUnity.AutoTranslator] Failed: 'Passive Effect'
+[Error  :XUnity.AutoTranslator] Failed: 'Stab count increased by 3.'
+[Error  :XUnity.AutoTranslator] Failed: 'Backstab damage increased by 200%.'
+[Error  :XUnity.AutoTranslator] Failed: 'Stab range increased by 75%.'
+[Error  :XUnity.AutoTranslator] Failed: 'Hits apply 2s Stun.'
+[Error  :XUnity.AutoTranslator] Failed: 'Stores up to 3 charges.'
+[Error  :XUnity.AutoTranslator] Failed: '8.0Sec'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'After bouncing, duration +5s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Projectile speed +40%. First hit deals +45 damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Damage increased by 24.'
+[Error  :XUnity.AutoTranslator] Failed: ' stack.'
+[Error  :XUnity.AutoTranslator] Failed: 'Applies +1 additional '
+[Error  :XUnity.AutoTranslator] Failed: '12.0Sec'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Restore 35 HP.'
+[Error  :XUnity.AutoTranslator] Failed: 'Eat fish'
+[Error  :XUnity.AutoTranslator] Failed: 'Gain 3 fishing attempts. Rewards vary depending on the type of fish caught.'
+[Error  :XUnity.AutoTranslator] Failed: 'Fish'
+[Error  :XUnity.AutoTranslator] Failed: ' I’ll fish myself '
+[Error  :XUnity.AutoTranslator] Failed: 'Alright '
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Additional damage that can be dealt on a critical hit.'
+[Error  :XUnity.AutoTranslator] Failed: ' bonus).'
+[Error  :XUnity.AutoTranslator] Failed: ' damage ('
+[Error  :XUnity.AutoTranslator] Failed: 'Your Critical Strike deals '
+[Error  :XUnity.AutoTranslator] Failed: ' bonus)'
+[Error  :XUnity.AutoTranslator] Failed: ' base + '
+[Error  :XUnity.AutoTranslator] Failed: 'Current critical damage: '
+[Error  :XUnity.AutoTranslator] Failed: 'Critical Damage'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Provides a certain chance to make your damage critical.'
+[Error  :XUnity.AutoTranslator] Failed: ' bonus) chance for your damage to critically hit.'
+[Error  :XUnity.AutoTranslator] Failed: 'Provides a '
+[Error  :XUnity.AutoTranslator] Failed: 'Current critical hit chance: '
+[Error  :XUnity.AutoTranslator] Failed: 'Critical Strike Chance'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '18Sec'
+[Error  :XUnity.AutoTranslator] Failed: 'Coat your weapon with poison, causing melee attacks to apply 1 Poison for 4.25s. Cooldown: 18s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Poison Coat'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'After dashing, leave a shade that slashes nearby enemies for 50 damage.'
+[Error  :XUnity.AutoTranslator] Failed: 'Afterimage+'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: +40% Critical Damage.
+Every 8.5s, your next damage—and your summons' next damage—will Crit.'
+[Error  :XUnity.AutoTranslator] Failed: '+3 Strength'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'When a Shade expires, it has a 40% chance to Fear nearby enemies.'
+[Error  :XUnity.AutoTranslator] Failed: 'Shadowburst'
+[Error  :XUnity.AutoTranslator] Failed: 's execute enemies below 16% HP (Bosses 8%).'
+[Error  :XUnity.AutoTranslator] Failed: ' Crit Chance +13%. '
+[Error  :XUnity.AutoTranslator] Failed: 'Cold Steel'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'It’s already in a very bad state…'
+[Error  :XUnity.AutoTranslator] Failed: 'Ugh…'
+[Error  :XUnity.AutoTranslator] Failed: 'It’s the lynx’s name.'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: The next 5 Abilities you learn are upgraded immediately. Erosion gained is increased by 50%, and learning an Ability costs 12 HP.'
+[Error  :XUnity.AutoTranslator] Failed: '+5 Strength
++2 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: 'Demon's Pact'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 's have an 80% chance to return and hit again.'
+[Error  :XUnity.AutoTranslator] Failed: 'Boomerang Blade+'
+[Error  :XUnity.AutoTranslator] Failed: ' becomes a tight straight-line volley. Knife damage +55%.'
+[Error  :XUnity.AutoTranslator] Failed: 'Pinpoint+'
+[Error  :XUnity.AutoTranslator] Failed: ' cooldown -18%.'
+[Error  :XUnity.AutoTranslator] Failed: ' charges. '
+[Error  :XUnity.AutoTranslator] Failed: 'Footwork+'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling translations of 17538 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 17538 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: +8% Spell Card Cooldown Rate.
+Equip: When you use a Spell Card, throw 3 snowballs at the first enemy hit, each dealing 9 damage (Cooldown: 1.5s).'
+[Error  :XUnity.AutoTranslator] Failed: 'Carrot Snowman'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Kill 200 enemies with backstab damage'
+[Error  :XUnity.AutoTranslator] Failed: 'Moonlit Fang'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Everyone led me here.'
+[Error  :XUnity.AutoTranslator] Failed: 'I found my way here myself.'
+[Error  :XUnity.AutoTranslator] Failed: 'Traveler…'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Merge your two Sweep hits into one Sweep and set its damage to 30.'
+[Error  :XUnity.AutoTranslator] Failed: 'Streamline'
+[Error  :XUnity.AutoTranslator] Failed: 'When you take damage, summon a giant bear to assist you.'
+[Error  :XUnity.AutoTranslator] Failed: 'Ursine Guard'
+[Error  :XUnity.AutoTranslator] Failed: ' all nearby enemies.'
+[Error  :XUnity.AutoTranslator] Failed: 'Root'
+[Error  :XUnity.AutoTranslator] Failed: 'Every 9s, '
+[Error  :XUnity.AutoTranslator] Failed: 'Wild Pulse'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Toggling translations of 17654 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 17654 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 17656 objects.
+[Info   :XUnity.AutoTranslator] Toggling translations of 17656 objects.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '21Sec'
+[Error  :XUnity.AutoTranslator] Failed: 'Carve a fissure in the ground, dealing 40 damage. After 2s, it erupts: enemies on the fissure take 250 damage and are Slowed for 0.8s. Cooldown: 21s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Earthsplit'
+[Error  :XUnity.AutoTranslator] Failed: 'After a brief charge, fire an energy bolt at the target location, dealing 70 damage to nearby enemies. Cooldown: 6s. Stores up to 5 charges. Can be fired rapidly in succession.'
+[Error  :XUnity.AutoTranslator] Failed: 'Nature’s Torrent'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Whenever you summon a wolf pup, you have a 32% chance to summon an extra pup.'
+[Error  :XUnity.AutoTranslator] Failed: 'Packbond'
+[Error  :XUnity.AutoTranslator] Failed: 'Melee hits have a 9% chance to summon a wolf pup to assist you.'
+[Error  :XUnity.AutoTranslator] Failed: 'Battle Sense'
+[Error  :XUnity.AutoTranslator] Failed: 'On kill, you have a 40% chance to summon an owl to assist you.'
+[Error  :XUnity.AutoTranslator] Failed: 'Sky Burial'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'ing targets can’t act'
+[Error  :XUnity.AutoTranslator] Failed: 'After 1s, the target falls asleep for 4s. '
+[Error  :XUnity.AutoTranslator] Failed: 'Sleep'
+[Error  :XUnity.AutoTranslator] Failed: 'Drowse Dust'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Max Summon +50% and base summon count +150%.'
+[Error  :XUnity.AutoTranslator] Failed: 'R&amp;R'
+[Error  :XUnity.AutoTranslator] Failed: 'Nature’s Breath charges +3 and cooldown -40%, but right-click hits generate 50% less Summon.'
+[Error  :XUnity.AutoTranslator] Failed: 'Overdraw'
+[Error  :XUnity.AutoTranslator] Failed: 'After combo hit 3, slam the ground to deal 40 damage to nearby enemies and create magical grass.'
+[Error  :XUnity.AutoTranslator] Failed: 'Turnsoil'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '17Sec'
+[Error  :XUnity.AutoTranslator] Failed: 'Summon an owl to build a hurricane, then blast it forward, dealing up to 240 damage and knocking up enemies for 0.9s. Longer charge increases travel distance. Cooldown: 17s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Hurricane's Roar'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: ' leaves ghostfire on the ground for 1.2s. Enemies in the flames take 40 damage per second.'
+[Error  :XUnity.AutoTranslator] Failed: 'Equip: +4% Movement Speed.
+Equip: Moving within 0.5s after a '
+[Error  :XUnity.AutoTranslator] Failed: '+3 Agility
++1 Intelligence'
+[Error  :XUnity.AutoTranslator] Failed: 'Duskfox Tail'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: '24Sec'
+[Error  :XUnity.AutoTranslator] Failed: 'Fire an energy bolt into the target area, dealing 200 AoE damage and triggering a special summon. Cooldown: 24s. Costs 50 Summon.'
+[Error  :XUnity.AutoTranslator] Failed: 'Forest Mirage'
+[Error  :XUnity.AutoTranslator] Failed: '5Sec'
+[Error  :XUnity.AutoTranslator] Failed: 'Channel for 1.2s to restore 40 Summon. Cooldown: 5s. Can only be used within 3s after killing an enemy.'
+[Error  :XUnity.AutoTranslator] Failed: 'Nature Cycle'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
+[Error  :XUnity.AutoTranslator] Batch operation received incorrect number of translations.
+[Error  :XUnity.AutoTranslator] Failed: 'Replace your first melee hit with 2 thrown Knives forward. Each Knife pierces up to 2 enemies and deals 20 damage. Costs 1 '
+[Error  :XUnity.AutoTranslator] Failed: 'Poke'
+[Error  :XUnity.AutoTranslator] Failed: 'ing enemies in front for 3s.'
+[Error  :XUnity.AutoTranslator] Failed: 'Add a chain throw to the end of your combo, dealing 20 damage and '
+[Error  :XUnity.AutoTranslator] Failed: 'Chain Snare'
+[Error  :XUnity.AutoTranslator] A batch operation failed. Disabling batching and restarting failed jobs.
+[Info   :XUnity.AutoTranslator] Re-enabled batching.
